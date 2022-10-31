@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stoppuhr</title>
+    <link rel="icon" href="/Bilder/Bodigat.png" type="image/x-icon">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri&family=Source+Code+Pro:wght@500&family=Syne+Mono&display=swap" rel="stylesheet">
+
+    <style>
+        body {
+            background-color: #202020;
+            border: 1px solid #ffffff;
+            border-radius: 10px;
+            border-width: 3px;
+            margin-top: 10px;
+            text-align: center;
+            justify-content: center;
+            justify-items: center;
+        }
+        
+        .container {
+            display: inline-block;
+            cursor: pointer;
+            margin-top: 7px;
+        }
+        
+        .bar1,
+        .bar2,
+        .bar3 {
+            width: 35px;
+            height: 5px;
+            background-color: rgb(255, 255, 255);
+            margin: 6px 6px;
+            transition: 0.4s;
+        }
+        
+        .change .bar1 {
+            -webkit-transform: rotate(-45deg) translate(-9px, 6px);
+            transform: rotate(-45deg) translate(-9px, 6px);
+        }
+        
+        .change .bar2 {
+            opacity: 0;
+        }
+        
+        .change .bar3 {
+            -webkit-transform: rotate(45deg) translate(-8px, -8px);
+            transform: rotate(45deg) translate(-8px, -8px);
+        }
+        
+        #Überschrift {
+            color: white;
+            text-align: center;
+            text-decoration: dotted;
+        }
+        
+        .button {
+            background-color: #074611;
+            border: none;
+            color: white;
+            padding: 13px 32px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            border-radius: 9px;
+            margin-left: 200px;
+            margin-right: auto;
+        }
+        
+        .button:hover {
+            background-color: #40ff79;
+            color: rgb(255, 255, 255);
+        }
+        
+        #stoppuhr {
+            text-align: center;
+            color: #ffffff;
+            font-size: 50px;
+            font-family: 'Oswald', sans-serif;
+        }
+        
+        #Drückdinger {
+            background-color: #13501d;
+            border: none;
+            color: white;
+            padding: 19px 32px;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 40px;
+            font-weight: 600;
+            border-radius: 9px;
+        }
+        
+        #Drückdinger:hover {
+            background-color: #40ff79;
+            color: rgb(0, 0, 0);
+        }
+        
+        .leer {
+            color: #202020;
+        }
+        
+        .leer a {
+            color: #202020;
+        }
+    </style>
+
+    <script>
+        const anzeige = document.getElementById("stoppuhr");
+
+        var gestoppteZeit = 0;
+        var pause = true;
+        var zuletzt = new Date();
+
+        function start() {
+            pause = false;
+        }
+
+        function pause() {
+            pause = true;
+        }
+
+        function reset() {
+            pause = true;
+            gestoppteZeit = 0;
+            aktualisieren();
+        }
+
+        function aktualisiereZeit() {
+            if (pause === false) {
+                gestoppteZeit += new Date() - zuletzt;
+                aktualisieren();
+            }
+
+            zuletzt = new Date();
+            setTimeout(aktualisiereZeit, 1);
+        }
+
+        function aktualisieren() {
+            let millisekunden = gestoppteZeit % 1000;
+            let sekunden = Math.floor(gestoppteZeit / 1000) % 60;
+            let minuten = Math.floor(gestoppteZeit / 3600000);
+
+            stunden = stunden < 10 ? "0" + stunden : stunden;
+            minuten = minuten < 10 ? "0" + minuten : minuten;
+            sekunden = sekunden < 10 ? "0" + sekunden : sekunden;
+            millisekunden = (millisekunden + "000").slice(0, 3);
+
+            anzeige.innerHTML = stunden + ":" + minuten + ":" + sekunden + "." + millisekunden;
+        }
+
+        aktualisiereZeit();
+    </script>
+
+</head>
+
+<body>
+    <div class="container" onclick="myFunction(this)">
+        <a href="menü.html">
+            <div class="bar1"></div>
+            <div class="bar2"></div>
+            <div class="bar3"></div>
+        </a>
+    </div>
+
+    <button class="button" onclick="window.location.href = '//github.com/Bodigat';">
+        Git Hub
+    </button>
+
+    <h1 id="Überschrift">
+        Stoppe die Zeit ⏲
+    </h1>
+
+    <h1 class="leer">
+        <a>Das ist ein leeres Feld</a>
+    </h1>
+
+
+    <div id="stoppuhr">00:00:00.000</div>
+
+    <h1 class="leer">
+        <a>Das ist ein leeres Feld</a>
+    </h1>
+
+    <div>
+        <button id="Drückdinger" onclick="start()">S T A R T</button>
+
+        <h1 class="leer">
+            <a>Das ist ein leeres Feld</a>
+        </h1>
+
+        <button id="Drückdinger" onclick="pause()">P A U S E</button>
+
+        <h1 class="leer">
+            <a>Das ist ein leeres Feld</a>
+        </h1>
+
+        <button id="Drückdinger" onclick="reset()">R E S E T</button>
+    </div>
+
+    <h1 class="leer">
+        <a>Das ist ein leeres Feld</a>
+    </h1>
+
+    <h1 class="leer">
+        <a>Das ist ein leeres Feld</a>
+    </h1>
+
+</body>
+
+</html>
