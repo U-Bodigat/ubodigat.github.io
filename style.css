@@ -27,11 +27,11 @@ body {
 
 .content h2:nth-child(1) {
     color: transparent;
-    -webkit-text-stroke: 2px #03a9f4;
+    -webkit-text-stroke: 2px #ca0a0a;
 }
 
 .content h2:nth-child(2) {
-    color: #f40303;
+    color: #ff0000;
     animation: animate 4s ease-in-out infinite;
 }
 
