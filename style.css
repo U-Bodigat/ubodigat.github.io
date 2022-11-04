@@ -16,6 +16,7 @@ body {
 
 header {
     background-color: #1a2336;
+    color: #ffffff;
     padding: 16px 100px;
     font-size: 24px;
     position: fixed;
@@ -25,7 +26,7 @@ header {
 }
 
 .content {
-    position: relative;
+    position: center;
 }
 
 .content h2 {
