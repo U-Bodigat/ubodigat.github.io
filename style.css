@@ -25,6 +25,12 @@ header {
     top: 0;
 }
 
+footer {
+    color: #ffffff;
+    background-color: #1a2336;
+    text-align: end;
+}
+
 .content {
     position: center;
 }
