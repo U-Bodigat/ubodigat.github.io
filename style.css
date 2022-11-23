@@ -12,6 +12,7 @@ body {
     align-items: center;
     min-height: 100vh;
     background: rgb(13, 14, 31);
+    cursor: wait;
 }
 
 header {
@@ -26,14 +27,15 @@ header {
 }
 
 footer {
-    background-color: #1a2336;
-    color: #ffffff;
+    background-color: #1f3044;
+    color: #fff;
     padding: 16px 100px;
-    font-size: 24px;
+    font-size: 20px;
     position: fixed;
+    bottom: 0px;
     left: 0;
     right: 0;
-    top: 0;
+    text-align: end;
 }
 
 .content {
