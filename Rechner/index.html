@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="de">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta property="og:site_name" content="U:Bodigat.tk">
+    <meta property="og:url" content="https://ubodigat.tk">
+    <meta property="og:title" content="Rechner | U:Bodigat.tk">
+    <meta property="og:type" content="website">
+    <meta property="og:description" content="Beschreibung!!!!">
+    <meta property="og:image" content="https://cdn.discordapp.com/attachments/927268634492031026/994779232129519656/UBodigat_Werbung.png">
+    <meta property="og:image:secure_url" content="https://cdn.discordapp.com/attachments/927268634492031026/994779232129519656/UBodigat_Werbung.png">
+    <meta property="og:image:width" content="500">
+    <meta property="og:image:height" content="500">
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://ubodigat.tk">
+    <meta property="twitter:title" content="Rechner | U:Bodigat.tk">
+    <meta property="twitter:description" content="Beschreibung!!!!">
+    <title>Rechner | U:Bodigat.tk</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" href="/Wartungsarbeiten Profilbild.png" type="image/x-icon">
+    <link rel="preconnect" href="httpc:\Users\Bodig\AppData\Local\Programs\Microsoft VS Code\resources\app\out\vs\code\electron-sandbox\workbench\workbench.htmls://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Syne+Mono&display=swap" rel="stylesheet">
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-BE1B5EZY35"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+        gtag('js', new Date());
+
+        gtag('config', 'G-BE1B5EZY35');
+    </script>
+    <!-- Google Tag Manager -->
+    <script>
+        (function(w, d, s, l, i) {
+            w[l] = w[l] || [];
+            w[l].push({
+                'gtm.start': new Date().getTime(),
+                event: 'gtm.js'
+            });
+            var f = d.getElementsByTagName(s)[0],
+                j = d.createElement(s),
+                dl = l != 'dataLayer' ? '&l=' + l : '';
+            j.async = true;
+            j.src =
+                'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
+            f.parentNode.insertBefore(j, f);
+        })(window, document, 'script', 'dataLayer', 'GTM-WTDQC48');
+    </script>
+    <!-- End Google Tag Manager -->
+</head>
+
+<body>
+    <!-- Google Tag Manager (noscript) -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-WTDQC48"
+    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
+    <main>
+        <header>
+            <p>U:Bodigat.tk</p>
+            <div id="headerinput">
+                <a href="https://github.com/Bodigat" target="_blank"> <button class="button">GitHub</button></a>
+                <a href="/menü.html"> <button class="button">Zum Menü</button></a>
+            </div>
+        </header>
+    </main>
+
+    <div id='Ergebnisfeld'>
+        <h7 id="textinergebnisfeld"><b>U:Bodigat Taschenrechner</b></h7>
+    </div>
+
+    <table>
+        <tr>
+            <td onclick="löschen()" id="löschen">Löschen</td>
+            <td onclick="löschen()" id="löschen">LOS</td>
+            <td class="leer"></td>
+            <td onclick="Zurück()" id="Zurück">Zurück</td>
+        </tr>
+
+        <tr>
+            <td onclick="appendOperation(7)" class="zahlen">7</td>
+            <td onclick="appendOperation(8)" class="zahlen">8</td>
+            <td onclick="appendOperation(9)" class="zahlen">9</td>
+            <td onclick="appendOperation(' / ')" id="geteilt">÷</td>
+
+            <tr>
+                <td onclick="appendOperation(4)" class="zahlen">4</td>
+                <td onclick="appendOperation(5)" class="zahlen">5</td>
+                <td onclick="appendOperation(6)" class="zahlen">6</td>
+                <td onclick="appendOperation(' * ')" id="mal">x</td>
+            </tr>
+
+            <tr>
+                <td onclick="appendOperation(1)" class="zahlen">1</td>
+                <td onclick="appendOperation(2)" class="zahlen">2</td>
+                <td onclick="appendOperation(3)" class="zahlen">3</td>
+                <td onclick="appendOperation(' - ')" id="minus">-</td>
+            </tr>
+
+            <tr>
+                <td onclick="appendOperation('.')" id="komma">,</td>
+                <td onclick="appendOperation(0)" class="zahlen">0</td>
+                <td onclick="Ergebnis()" id="istgleich">=</td>
+                <td onclick="appendOperation(' + ')" id="plus">+</td>
+            </tr>
+        </tr>
+    </table>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
