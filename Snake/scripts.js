@@ -16,7 +16,7 @@ let foodCollected = false;
 
 placeFood();
 
-setInterval(gameLoop, 200);
+setInterval(gameLoop, 300);
 document.addEventListener('keydown', keyDown);
 
 
