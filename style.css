@@ -115,6 +115,7 @@ footer {
     text-align: center;
     border: 7px solid #0d78808e;
     margin: 50px;
+    font-size: 30px;
     border-radius: 20px;
 }
 
@@ -182,7 +183,8 @@ footer {
 }
 
 #Hintergrundstart {
-    background: black;
+    background-image: url(UBodigat.tk\ Hintergrund.gif);
+    background-size: 100%;
 }
 
 #Beschreibungsüberschrift {
@@ -230,4 +232,47 @@ footer {
 
 #Verlinkungsbutton {
     margin-top: 30%;
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: #fff;
+    text-align: center;
+    margin: 50px;
+    border-radius: 20px;
+}
+
+nav a {
+    border: 0px solid #ffffff;
+    padding: 25px;
+    display: block;
+    color: #ffffff;
+    text-decoration: none;
+}
+
+@media (max-width: 1300px) {
+    nav {
+        flex-direction: column;
+        text-align: center;
+        justify-content: center;
+    }
+    nav a {
+        margin: 10px 0;
+    }
+}
+
+@media (min-width: 1300px) {
+    nav {
+        margin-left: 60%;
+        margin-right: 50%;
+    }
+}
+
+@media (min-width: 1500px) {
+    nav {
+        margin-left: 0%;
+        margin-right: 0%;
+    }
 }
