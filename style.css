@@ -187,26 +187,6 @@ footer {
     background-size: 100%;
 }
 
-#Beschreibungsüberschrift {
-    text-align: start;
-    margin-left: 19%;
-    color: rgb(206, 177, 16);
-    margin-top: -5%;
-}
-
-#Beschreibungsbild {
-    margin-left: 60%;
-    margin-top: -20%;
-}
-
-#Beschreibungstext {
-    color: #fff;
-    margin-right: 40%;
-    padding-top: 50px;
-    margin-left: 30px;
-    user-select: text;
-}
-
 .Verlinkungen {
     color: #ffffff;
     background-color: #0d78808e;
@@ -231,7 +211,29 @@ footer {
 }
 
 #Verlinkungsbutton {
-    margin-top: 30%;
+    margin-top: end;
+    padding-top: 577px;
+    position: relative;
+}
+
+#Beschreibungsüberschrift {
+    text-align: start;
+    margin-left: 19%;
+    color: rgb(206, 177, 16);
+    margin-top: 10px;
+}
+
+#Beschreibungsbild {
+    margin-left: 60%;
+    margin-top: -20%;
+}
+
+#Beschreibungstext {
+    color: #fff;
+    margin-right: 40%;
+    padding-top: 50px;
+    margin-left: 30px;
+    user-select: text;
 }
 
 nav {
@@ -274,5 +276,169 @@ nav a {
     nav {
         margin-left: 0%;
         margin-right: 0%;
+    }
+}
+
+input {
+    border: 0;
+    outline: 0;
+    border-bottom: 2px solid rgb(12, 85, 43);
+    padding: 15px;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    color: #ffff;
+    margin-top: 30px;
+    background: transparent;
+    cursor: text;
+    font-size: 23px;
+    border-bottom-right-radius: 5px 5px;
+    border-bottom-left-radius: 5px 5px;
+}
+
+input:hover {
+    background-color: #283763;
+    text-align: center;
+    color: beige;
+    border: 0;
+    outline: 0;
+    border-bottom: 4px solid #00ff6a;
+}
+
+input:focus {
+    border: 0;
+    outline: 0;
+    border-bottom: 3px solid #00ff6a;
+}
+
+button {
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    background-color: #c2185c8e;
+    color: white;
+    border: unset;
+    padding: 12px;
+    border-radius: 4px;
+    min-width: 160px;
+    font-weight: 600;
+    cursor: pointer;
+    box-shadow: 0px 3px 1px -2px rgb(0 0 0 / 20%), 0px 2px 2px 0px rgb(0 0 0 / 14%), 0px 1px 5px 0px rgb(0 0 0 / 12%);
+}
+
+button:hover {
+    background-color: #ff0066;
+}
+
+#senden {
+    cursor: no-drop;
+    margin-left: 10px;
+}
+
+#kontaktformular {
+    padding: 50px;
+    padding-top: 10px;
+    padding-right: 50px;
+    border-radius: 15px;
+    box-shadow: 0px 10px 10px 5px rgb(0 0 0 / 20%), 0px 2px 2px 0px rgb(0 0 0 / 14%), 0px 1px 5px 0px rgb(0 0 0 / 12%);
+}
+
+#kontaktformularüberschrift {
+    color: #fff;
+    text-align: center;
+    margin-top: 10px;
+}
+
+#zurückbuttonkon {
+    margin-top: 10%;
+}
+
+#grundkontaktformular {
+    width: 100%;
+    padding-top: 5px;
+    height: 10vh;
+    display: flex;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+}
+
+#zwischenablagentext {
+    cursor: pointer;
+}
+
+.Downloadpunkte {
+    color: #ffffff;
+    background-color: #0d78808e;
+    text-align: center;
+    border: 7px solid #0d78808e;
+    margin: 50px;
+    font-size: 30px;
+    border-radius: 20px;
+    font-size: 25px;
+}
+
+.Downloadpunkte a {
+    border: 0px solid #ffffff;
+    padding: 25px;
+    display: block;
+    color: #ffffff;
+    text-decoration: none;
+}
+
+.Downloadpunkte:hover {
+    color: #ffffff;
+    background-color: #00c3ff;
+    border: 7px solid #00c3ff;
+    box-shadow: 0 0 7px #fff, 0 0 10px #fff, 0 0 21px #fff, 0 0 42px #0fa, 0 0 82px #0fa, 0 0 92px #0fa, 0 0 102px #0fa, 0 0 151px #0fa;
+}
+
+@media (max-width: 1700px) {
+    .Downloadpunkte {
+        margin-top: 5%;
+        margin-left: 0%;
+        margin-right: 0%;
+    }
+    #erstesfelddownloadbereich {
+        margin-top: 20%;
+    }
+    td {
+        margin: 10px;
+        margin-top: -60px;
+        padding: 7px;
+    }
+}
+
+@media (max-width: 1500px) {
+    .Downloadpunkte {
+        margin-top: 10%;
+        margin-left: 0%;
+        margin-right: 0%;
+    }
+    #erstesfelddownloadbereich {
+        margin-top: 20%;
+    }
+    td {
+        display: block;
+        margin: 10px 0;
+        margin-top: -60px;
+        padding: 10px;
+    }
+}
+
+@media (max-width: 1300px) {
+    .Downloadpunkte {
+        margin-top: 10%;
+        margin-left: 0%;
+        margin-right: 0%;
+    }
+    #erstesfelddownloadbereich {
+        margin-top: 20%;
+    }
+    td {
+        display: block;
+        margin: 10px 0;
+        margin-top: -60px;
+        padding: 10px;
     }
 }

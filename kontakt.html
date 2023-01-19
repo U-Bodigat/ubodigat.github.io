@@ -10,24 +10,26 @@
     <meta name="author" content="U:Bodigat">
     <meta name="publisher" content="U:Bodigat">
     <meta name="copyright" content="U:Bodigat">
-    <meta name="description" content="Das ist unser Snake Game, hier könnt ihr mit eurer Tastatur ganz einfach Sanke spielen. Am Handy oder tablet kann man ohne eine zusaätzliche Tastatur das Spiel leider nicht Spielen. Wir wünschen euch viel Spaß beim Spielen.">
+    <meta name="description" content="Dieser Text befindet sich noch in arbeit.">
     <meta property="og:site_name" content="U:Bodigat.tk">
     <meta property="og:url" content="https://ubodigat.tk">
-    <meta property="og:title" content="Snake Game | U:Bodigat.tk">
+    <meta property="og:title" content="Kontakt | U:Bodigat.tk">
     <meta property="og:type" content="website">
-    <meta property="og:description" content="Das ist unser Snake Game, hier könnt ihr mit eurer Tastatur ganz einfach Sanke spielen. Am Handy oder tablet kann man ohne eine zusaätzliche Tastatur das Spiel leider nicht Spielen. Wir wünschen euch viel Spaß beim Spielen.">
+    <meta property="og:description" content="Dieser Text befindet sich noch in arbeit.">
     <meta property="og:image" content="https://cdn.discordapp.com/attachments/927268634492031026/994779232129519656/UBodigat_Werbung.png">
     <meta property="og:image:secure_url" content="https://cdn.discordapp.com/attachments/927268634492031026/994779232129519656/UBodigat_Werbung.png">
     <meta property="og:image:width" content="500">
     <meta property="og:image:height" content="500">
     <meta property="twitter:card" content="summary_large_image">
     <meta property="twitter:url" content="https://ubodigat.tk">
-    <meta property="twitter:title" content="Snake Game | U:Bodigat.tk">
-    <meta property="twitter:description" content="Das ist unser Snake Game, hier könnt ihr mit eurer Tastatur ganz einfach Sanke spielen. Am Handy oder tablet kann man ohne eine zusaätzliche Tastatur das Spiel leider nicht Spielen. Wir wünschen euch viel Spaß beim Spielen.">
-    <title>Snake Game | U:Bodigat.tk</title>
+    <meta property="twitter:title" content="Kontakt | U:Bodigat.tk">
+    <meta property="twitter:description" content="Dieser Text befindet sich noch in arbeit.">
+    <meta property="twitter:image" content="https://cdn.discordapp.com/attachments/927268634492031026/994779232129519656/UBodigat_Werbung.png">
+    <title>Kontakt | U:Bodigat.tk</title>
     <link rel="stylesheet" href="style.css">
-    <link rel="icon" href="/Wartungsarbeiten Profilbild.png" type="image/x-icon">
-    <script src="/script.js"></script>
+    <link rel="icon" href="Wartungsarbeiten Profilbild.png" type="image/x-icon">
+    <link rel="apple-touch-icon" href="https://ubodigat.tk/Wartungsarbeiten%20Profilbild.png" />
+    <script src="script.js"></script>
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-BE1B5EZY35"></script>
     <script>
@@ -67,33 +69,25 @@
     <!-- End Google Tag Manager (noscript) -->
     <main>
         <header>
-            <p>U:Bodigat.tk</p>
+            <p>U:Bodigat.tk | Kontakt-Formular</p>
             <div id="headerinput">
                 <a href="https://github.com/Bodigat" target="_blank"> <button class="button">GitHub</button></a>
-                <a href="/menü.html"> <button class="button">Zum Menü</button></a>
+                <a href="download.html"> <button class="button">Download</button></a>
+                <a href="menü.html"> <button class="button">Zum Menü</button></a>
             </div>
         </header>
-
-        <canvas id="canvas" width="1500" height="650"></canvas>
-
-        <div>
-            <h4 id="tastenbelegungenüberschrift">Tastenbelegungen</h4>
-
-            <button id="tastenbelegungen">↑</button>
-            <button id="tastenbelegungen">←</button>
-            <button id="tastenbelegungen">↓</button>
-            <button id="tastenbelegungen">→</button>
-            <div>
-                <button id="tastenbelegungen">Hoch</button>
-                <button id="tastenbelegungen">Links</button>
-                <button id="tastenbelegungen">Runter</button>
-                <button id="tastenbelegungen">Rechts</button>
-            </div>
-        </div>
-
     </main>
 
-    <script src="scripts.js"></script>
+    <form action="mailto:contact@ubodigat.tk" method="post" enctype="text/plain">
+        <h2 id="kontaktformularüberschrift">Kontakt-Formular</h2>
+        <input type="text" placeholder="N A M E" required></input> <br>
+        <input type="email" placeholder="E - M A I L" required></input> <br>
+        <input type="tel" placeholder="T E L E F O N N U M M E R"></input> <br>
+        <input type="text" placeholder="G R U N D" id="grundkontaktformular" required></input> <br>
+        <button type="reset" id="zurückbuttonkon">Z U R Ü C K</button>
+        <button type="submit" value="send" id="senden">S E N D E N</button>
+    </form>
+
 </body>
 
 </html>
