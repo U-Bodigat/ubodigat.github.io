@@ -450,3 +450,8 @@ button:hover {
     margin-top: 20px;
     padding-bottom: 50px;
 }
+
+#überschriftlink {
+    text-decoration: none;
+    color: #fff;
+}

@@ -122,3 +122,8 @@ header p {
     font-size: 30px;
     margin-top: -25px;
 }
+
+#überschriftlink {
+    text-decoration: none;
+    color: #fff;
+}

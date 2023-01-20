@@ -442,3 +442,32 @@ button:hover {
         padding: 10px;
     }
 }
+
+.überschriftenvideos {
+    font-size: 40px;
+    color: #fff;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+}
+
+#Tutorialvideos {
+    margin-top: 6%;
+    margin-bottom: 2%;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+}
+
+@media (max-width: 600px) {
+    .tutorialvideos {
+        width: 100%;
+        height: auto;
+        padding-bottom: 0;
+    }
+}
+
+#überschriftlink {
+    text-decoration: none;
+    color: #fff;
+}

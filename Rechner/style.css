@@ -216,3 +216,8 @@ td:hover {
     background-color: #353535;
     cursor: not-allowed;
 }
+
+#überschriftlink {
+    text-decoration: none;
+    color: #fff;
+}
