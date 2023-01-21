@@ -5,7 +5,9 @@ body {
     margin: 0;
     font-family: 'Open Sans', sans-serif;
     background-image: url(/UBodigat.tk\ \ Lernapp\ Hintergrund.gif);
-    background-size: 100%;
+    background-size: cover;
+    background-attachment: fixed;
+    background-position: center;
     color: #ffffff;
     padding-top: 32px;
     scrollbar-width: thin;
