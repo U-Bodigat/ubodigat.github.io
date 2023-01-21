@@ -40,6 +40,11 @@ header {
     left: 0;
     right: 0;
     top: 0;
+    opacity: 0.8;
+}
+
+header:hover {
+    opacity: 1;
 }
 
 header p {
@@ -73,7 +78,7 @@ footer {
 
 .content {
     position: center;
-    margin-top: 15%;
+    margin-top: 50%;
     margin-left: 50%;
 }
 
@@ -105,8 +110,12 @@ footer {
 }
 
 #zweitertextstartseite {
-    margin-top: 80px;
-    padding-top: 20%;
+    margin-top: 200px;
+}
+
+#startbuttonmenü {
+    margin-top: 70%;
+    margin-left: 80%;
 }
 
 .Menüpunkte {
@@ -184,59 +193,12 @@ footer {
 
 #Hintergrundstart {
     background-image: url(UBodigat.tk\ Hintergrund.gif);
-    background-size: 100%;
+    background-size: cover;
+    background-attachment: fixed;
+    background-position: center;
 }
 
-.Verlinkungen {
-    color: #ffffff;
-    background-color: #0d78808e;
-    text-align: center;
-    border: 7px #0d78808e;
-    border-radius: 0px;
-    position: end;
-    font-size: 30px;
-}
-
-.Verlinkungen a {
-    border: 0px solid #fff;
-    padding: 9.5px;
-    display: block;
-    color: #fff;
-    text-decoration: none;
-}
-
-.Verlinkungen:hover {
-    color: #ffffff;
-    background-color: #00c3ff;
-}
-
-#Verlinkungsbutton {
-    margin-top: end;
-    padding-top: 577px;
-    position: relative;
-}
-
-#Beschreibungsüberschrift {
-    text-align: start;
-    margin-left: 19%;
-    color: rgb(206, 177, 16);
-    margin-top: 10px;
-}
-
-#Beschreibungsbild {
-    margin-left: 60%;
-    margin-top: -20%;
-}
-
-#Beschreibungstext {
-    color: #fff;
-    margin-right: 40%;
-    padding-top: 50px;
-    margin-left: 30px;
-    user-select: text;
-}
-
-nav {
+main {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -246,7 +208,7 @@ nav {
     border-radius: 20px;
 }
 
-nav a {
+main a {
     border: 0px solid #ffffff;
     padding: 25px;
     display: block;
@@ -255,25 +217,25 @@ nav a {
 }
 
 @media (max-width: 1300px) {
-    nav {
+    main {
         flex-direction: column;
         text-align: center;
         justify-content: center;
     }
-    nav a {
+    main a {
         margin: 10px 0;
     }
 }
 
 @media (min-width: 1300px) {
-    nav {
+    main {
         margin-left: 60%;
         margin-right: 50%;
     }
 }
 
 @media (min-width: 1500px) {
-    nav {
+    main {
         margin-left: 0%;
         margin-right: 0%;
     }
@@ -468,6 +430,110 @@ button:hover {
 }
 
 #überschriftlink {
+    text-decoration: none;
+    color: #fff;
+}
+
+#Hintergrundbeschreibung {
+    background-image: url(UBodigat.tk\ Beschreibung\ Hintergrund.png);
+    background-size: cover;
+    background-attachment: fixed;
+    background-position: center;
+}
+
+#beschreibungsüberschrift {
+    color: #fff;
+    text-align: start;
+    margin-top: 5%;
+    margin-left: 10%;
+}
+
+#beschreibungstext {
+    color: #fff;
+    text-align: start;
+    margin-top: 5%;
+    margin-left: 10%;
+    margin-right: 20%;
+    align-items: center;
+    justify-content: center;
+}
+
+.verlinktungenbeschreibung {
+    text-align: center;
+    border-radius: 2px;
+    display: flex;
+    margin-left: 45%;
+    margin-top: 8%;
+}
+
+.buttonsbeschreibungverlinken {
+    padding-left: 20px;
+    margin-left: 5px;
+    text-align: center;
+}
+
+@media (max-width: 1000px) {
+    #beschreibungsüberschrift {
+        margin-top: 15%;
+    }
+    #beschreibungstext {
+        margin-top: 7%;
+        margin-bottom: 20px;
+    }
+    .verlinktungenbeschreibung {
+        padding: 5px;
+        margin-left: 5%;
+        margin-bottom: 20px;
+        min-width: 0px;
+        font-weight: 0;
+    }
+    .buttonsbeschreibungverlinken {
+        padding: 10px;
+    }
+}
+
+@media (max-width: 850px) {
+    #beschreibungsüberschrift {
+        margin-top: 15%;
+    }
+    #beschreibungstext {
+        margin-top: 10%;
+        margin-bottom: 20px;
+    }
+    .verlinktungenbeschreibung {
+        padding: 5px;
+        margin-left: 5%;
+        margin-bottom: 20px;
+        min-width: 0px;
+        font-weight: 0;
+    }
+    .buttonsbeschreibungverlinken {
+        padding: 10px;
+    }
+}
+
+@media (max-width: 550px) {
+    #beschreibungsüberschrift {
+        text-align: center;
+        margin-left: 15px;
+        margin-top: 25%;
+    }
+    #beschreibungstext {
+        margin-top: 10%;
+        margin-bottom: 15px;
+        margin-left: 0px, 0%;
+        margin-right: 0px, 0%;
+        text-align: center;
+    }
+    .verlinktungenbeschreibung {
+        display: none;
+    }
+    .buttonsbeschreibungverlinken {
+        display: none;
+    }
+}
+
+a {
     text-decoration: none;
     color: #fff;
 }
