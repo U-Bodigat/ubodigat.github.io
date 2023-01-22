@@ -421,11 +421,47 @@ button:hover {
     justify-content: center;
 }
 
+@media (max-width: 1060px) {
+    .tutorialvideos {
+        width: 560;
+        height: 315;
+    }
+    .überschriftenvideos {
+        margin-top: 10%;
+        font-size: 35px;
+    }
+}
+
 @media (max-width: 600px) {
     .tutorialvideos {
-        width: 100%;
-        height: auto;
-        padding-bottom: 0;
+        width: 530px;
+        height: 285px;
+    }
+    .überschriftenvideos {
+        margin-top: 10%;
+        font-size: 30px;
+    }
+}
+
+@media (max-width: 540px) {
+    .tutorialvideos {
+        width: 430px;
+        height: 220px;
+    }
+    .überschriftenvideos {
+        margin-top: 10%;
+        font-size: 25px;
+    }
+}
+
+@media (max-width: 440px) {
+    .tutorialvideos {
+        width: 360px;
+        height: 190px;
+    }
+    .überschriftenvideos {
+        margin-top: 10%;
+        font-size: 20px;
     }
 }
 
