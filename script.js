@@ -9,7 +9,7 @@ window, addEventListener("focus", () => {
 // Dies sorgt dafür dass wenn man den tab ändern sich der titel ändert.
 
 function copyText() { //Das script ist dafür verantwortlich das der Text wo definiert ist in der zwischenablage gespeichert wird.
-    var text = "Dieser Text ist leider nicht konfiguriert, melden sie sich beim Webseite-Betrieber. Ihr U:Bodigat.tk Support Team: 'contact@ubodigat.tk'";
+    var text = "Name: Samsung Group Gründungsjahr: 1938 Gründer: Lee Byung-chull Hauptsitz: Seoul, Südkorea Branche: Elektronik, Technologie Mitarbeiter: circa 300.000 (2021) Umsatz: circa 220 Milliarden US-Dollar (2020) Produkte: Smartphones, Tablets, tragbare Geräte, Haushaltsgeräte, Fernseher, Computer, Speicherchips, Halbleiter, Biotechnologie, Finanzdienstleistungen. Trucker_Erik";
     navigator.clipboard.writeText(text).then(function() {
         console.log('Text erfolgreich kopiert');
     }, function(err) {
@@ -18,7 +18,7 @@ function copyText() { //Das script ist dafür verantwortlich das der Text wo def
 }
 
 function copyText2() { //Das script ist dafür verantwortlich das der Text wo definiert ist in der zwischenablage gespeichert wird.
-    var text = "https://www.google.com/url?sa=t&rct=j&q=&esrc=s&source=web&cd=&cad=rja&uact=8&ved=2ahUKEwjixK2t_tr8AhWfSPEDHfaDDEAQFnoECAwQAw&url=https%3A%2F%2Fwww.coolblue.de%2Fberatung%2Frichtiges-ladegeraet-fuer-samsung-galaxy-s22-auswaehlen.html%23%3A~%3Atext%3DMit%2520dem%2520Samsung%252025%2520Watt%2Cdieser%2520Zeit%2520auf%252040%2520Prozent.&usg=AOvVaw3H27gyFtBRPav3Z09JB7yf";
+    var text = "Dieser Text ist leider nicht konfiguriert, melden sie sich beim Webseite-Betrieber. Ihr U:Bodigat.tk Support Team: 'contact@ubodigat.tk'";
     navigator.clipboard.writeText(text).then(function() {
         console.log('Text erfolgreich kopiert');
     }, function(err) {
