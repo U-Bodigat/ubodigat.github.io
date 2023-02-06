@@ -25,3 +25,5 @@ function copyText2() { //Das script ist dafür verantwortlich das der Text wo de
         console.error('Fehler beim Kopieren des Texts: ', err);
     });
 }
+
+//Sort für die copierung der Texte in die Zwischenablage bei der drückung des jeweiligen buttons.
