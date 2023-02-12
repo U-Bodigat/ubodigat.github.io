@@ -188,3 +188,23 @@ header p {
         margin-left: 38%;
     }
 }
+
+@media (max-width: 380px) {
+    #time {
+        text-align: center;
+        align-items: center;
+        justify-content: center;
+        display: block;
+        margin-left: 30%;
+    }
+}
+
+@media (max-width: 320px) {
+    #time {
+        text-align: center;
+        align-items: center;
+        justify-content: center;
+        display: block;
+        margin-left: 29%;
+    }
+}
