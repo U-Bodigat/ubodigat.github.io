@@ -177,3 +177,14 @@ header p {
     text-decoration: none;
     color: #fff;
 }
+
+@media (max-width: 550px) {
+    #time {
+        text-align: center;
+        align-items: center;
+        justify-content: center;
+        display: block;
+        margin-top: 30px;
+        margin-left: 38%;
+    }
+}
