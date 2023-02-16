@@ -84,37 +84,37 @@
 
     <table>
         <tr>
-            <td onclick="löschen()" id="löschen">Löschen</td>
-            <td onclick="löschen()" id="löschen">LOS</td>
-            <td class="leer"></td>
-            <td onclick="Zurück()" id="Zurück">Zurück</td>
+            <td onclick="löschen()" id="löschen" class="rechnertasten">DEL</td>
+            <td onclick="löschen()" id="löschen" class="rechnertasten">LOS</td>
+            <td class="leer" id="löschen" class="rechnertasten">LOS</td>
+            <td onclick="Zurück()" id="Zurück" class="rechenzichen" class="rechnertasten">⟸</td>
         </tr>
 
         <tr>
             <td onclick="appendOperation(7)" class="zahlen">7</td>
             <td onclick="appendOperation(8)" class="zahlen">8</td>
             <td onclick="appendOperation(9)" class="zahlen">9</td>
-            <td onclick="appendOperation(' / ')" id="geteilt">÷</td>
+            <td onclick="appendOperation(' / ')" id="geteilt" class="rechenzichen">÷</td>
 
             <tr>
                 <td onclick="appendOperation(4)" class="zahlen">4</td>
                 <td onclick="appendOperation(5)" class="zahlen">5</td>
                 <td onclick="appendOperation(6)" class="zahlen">6</td>
-                <td onclick="appendOperation(' * ')" id="mal">x</td>
+                <td onclick="appendOperation(' * ')" id="mal" class="rechenzichen">x</td>
             </tr>
 
             <tr>
                 <td onclick="appendOperation(1)" class="zahlen">1</td>
                 <td onclick="appendOperation(2)" class="zahlen">2</td>
                 <td onclick="appendOperation(3)" class="zahlen">3</td>
-                <td onclick="appendOperation(' - ')" id="minus">-</td>
+                <td onclick="appendOperation(' - ')" id="minus" class="rechenzichen">-</td>
             </tr>
 
             <tr>
                 <td onclick="appendOperation('.')" id="komma">,</td>
                 <td onclick="appendOperation(0)" class="zahlen">0</td>
                 <td onclick="Ergebnis()" id="istgleich">=</td>
-                <td onclick="appendOperation(' + ')" id="plus">+</td>
+                <td onclick="appendOperation(' + ')" id="plus" class="rechenzichen">+</td>
             </tr>
         </tr>
     </table>
