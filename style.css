@@ -299,86 +299,6 @@ button:hover {
     justify-content: center;
 }
 
-#zwischenablagentext {
-    cursor: pointer;
-}
-
-.Downloadpunkte {
-    color: #ffffff;
-    background-color: #0d78808e;
-    text-align: center;
-    border: 7px solid #0d78808e;
-    margin: 50px;
-    font-size: 30px;
-    border-radius: 20px;
-    font-size: 25px;
-}
-
-.Downloadpunkte a {
-    border: 0px solid #ffffff;
-    padding: 25px;
-    display: block;
-    color: #ffffff;
-    text-decoration: none;
-}
-
-.Downloadpunkte:hover {
-    color: #ffffff;
-    background-color: #00c3ff;
-    border: 7px solid #00c3ff;
-    box-shadow: 0 0 7px #fff, 0 0 10px #fff, 0 0 21px #fff, 0 0 42px #0fa, 0 0 82px #0fa, 0 0 92px #0fa, 0 0 102px #0fa, 0 0 151px #0fa;
-}
-
-@media (max-width: 1700px) {
-    .Downloadpunkte {
-        margin-top: 5%;
-        margin-left: 0%;
-        margin-right: 0%;
-    }
-    #erstesfelddownloadbereich {
-        margin-top: 20%;
-    }
-    td {
-        margin: 10px;
-        margin-top: -60px;
-        padding: 7px;
-    }
-}
-
-@media (max-width: 1500px) {
-    .Downloadpunkte {
-        margin-top: 10%;
-        margin-left: 0%;
-        margin-right: 0%;
-    }
-    #erstesfelddownloadbereich {
-        margin-top: 20%;
-    }
-    td {
-        display: block;
-        margin: 10px 0;
-        margin-top: -60px;
-        padding: 10px;
-    }
-}
-
-@media (max-width: 1300px) {
-    .Downloadpunkte {
-        margin-top: 10%;
-        margin-left: 0%;
-        margin-right: 0%;
-    }
-    #erstesfelddownloadbereich {
-        margin-top: 20%;
-    }
-    td {
-        display: block;
-        margin: 10px 0;
-        margin-top: -60px;
-        padding: 10px;
-    }
-}
-
 .überschriftenvideos {
     font-size: 40px;
     color: #fff;
@@ -595,4 +515,65 @@ a {
     background-size: contain;
     background-attachment: fixed;
     background-position: center;
+}
+
+#maindownload {
+    margin: 0;
+    padding: 0;
+}
+
+#downloadüberschrift {
+    font-size: 25px;
+    text-align: left;
+    margin-top: -40%;
+    margin-left: 10%;
+}
+
+#downloadbeschreibung {
+    text-align: left;
+    font-size: 15px;
+    margin-top: 2%;
+    margin-left: 15%;
+}
+
+
+/*Ab hier downloads (Tabelle)*/
+
+#anfang {
+    margin-top: 80%;
+}
+
+.Downloadpunkte {
+    text-align: center;
+    font-size: 15px;
+    margin-top: 10%;
+    margin-right: 90%;
+    margin-left: -85%;
+    background-color: #003a1e;
+    border-radius: 20px;
+    padding-top: 0px;
+    padding-bottom: 0px;
+    padding-right: 10px;
+    padding-left: 19px;
+}
+
+.Downloadpunkte a {
+    text-align: center;
+    font-size: 15px;
+    border-radius: 20px;
+    padding: 10;
+}
+
+.Downloadpunkte:hover {
+    text-align: center;
+    font-size: 15px;
+    margin-top: 10%;
+    margin-right: 90%;
+    margin-left: -85%;
+    background-color: #00ff84;
+    border-radius: 20px;
+    padding-top: 0px;
+    padding-bottom: 0px;
+    padding-right: 10px;
+    padding-left: 19px;
 }

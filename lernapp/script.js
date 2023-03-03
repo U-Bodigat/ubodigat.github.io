@@ -40,12 +40,14 @@ function nächstübung() {
         timerInterval = setInterval(function() {
             const dauer_element = document.getElementById("dauer");
             const dauer_in_ms = dauer();
-            const minuten = Math.floor(dauer_in_ms / 60000);
-            const sekunden = Math.floor((dauer_in_ms % 60000) / 1000);
-            const dauer_formatiert = ("0" + minuten).slice(-2) + ":" + ("0" + sekunden).slice(-2);
+            const stunden = Math.floor(dauer_in_ms / (1000 * 60 * 60));
+            const minuten = Math.floor((dauer_in_ms % (1000 * 60 * 60)) / (1000 * 60));
+            const sekunden = Math.floor((dauer_in_ms % (1000 * 60)) / 1000);
+            const dauer_formatiert = ("0" + stunden).slice(-2) + ":" + ("0" + minuten).slice(-2) + ":" + ("0" + sekunden).slice(-2);
             dauer_element.textContent = dauer_formatiert;
         }, 1000);
     }
+
 }
 
 function richtigfalsch() {
