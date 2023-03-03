@@ -4,7 +4,7 @@ body {
     height: 100%;
     margin: 0;
     font-family: 'Open Sans', sans-serif;
-    background-image: url(/UBodigat.tk\ \ Lernapp\ Hintergrund.gif);
+    background-image: url(/Bilder/UBodigat.tk\ \ Lernapp\ Hintergrund.gif);
     background-size: cover;
     background-attachment: fixed;
     background-position: center;
@@ -453,7 +453,22 @@ button:hover {
     padding-bottom: 50px;
 }
 
+#mainstaff {
+    margin-top: 9%;
+}
+
 #überschriftlink {
     text-decoration: none;
     color: #fff;
+}
+
+#übungszeit {
+    margin-top: -10%;
+    padding-left: 55%;
+    font-size: 35px;
+}
+
+#dauer {
+    padding-top: 1%;
+    padding-left: 10%;
 }

@@ -30,6 +30,22 @@ function nächstübung() {
     diefrage.innerHTML = `${dictionary[ran_key]} &nbsp?`;
 
     Antwort.value = "";
+
+    //Übungszeit
+
+    if (!timer_gestartet) {
+        startzeit = new Date().getTime();
+        timer_gestartet = true;
+
+        timerInterval = setInterval(function() {
+            const dauer_element = document.getElementById("dauer");
+            const dauer_in_ms = dauer();
+            const minuten = Math.floor(dauer_in_ms / 60000);
+            const sekunden = Math.floor((dauer_in_ms % 60000) / 1000);
+            const dauer_formatiert = ("0" + minuten).slice(-2) + ":" + ("0" + sekunden).slice(-2);
+            dauer_element.textContent = dauer_formatiert;
+        }, 1000);
+    }
 }
 
 function richtigfalsch() {
@@ -41,4 +57,14 @@ function richtigfalsch() {
             `<div id="lösungstext"> <h4>Das wäre die Lösung gewesen:</h4> <br> ${ran_key} </div>`;
     }
     nächstübung();
+}
+
+//Übungszeittimer
+
+let timer_gestartet = false;
+let startzeit;
+let timerInterval;
+
+function dauer() {
+    return new Date().getTime() - startzeit;
 }
