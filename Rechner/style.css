@@ -29,7 +29,7 @@ body::-webkit-scrollbar-thumb {
 }
 
 header {
-    background-color: #1a2336;
+    background-color: #003a1e;
     color: #fff;
     text-align: start;
     padding: 16px 100px;
@@ -38,6 +38,11 @@ header {
     left: 0;
     right: 0;
     top: 0;
+    opacity: 0.8;
+}
+
+header:hover {
+    opacity: 1;
 }
 
 header p {
@@ -58,7 +63,7 @@ header p {
 }
 
 .button {
-    background-color: #c2185c8e;
+    background-color: #012f6b;
     color: #fff;
     text-decoration: none;
     border: unset;
@@ -71,7 +76,7 @@ header p {
 }
 
 .button:hover {
-    background-color: #ff0066;
+    background-color: #006eff;
 }
 
 .button a {

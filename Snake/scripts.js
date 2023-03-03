@@ -23,14 +23,14 @@ document.addEventListener('keydown', keyDown);
 draw();
 
 function draw() {
-    ctx.fillStyle = '#124053';
+    ctx.fillStyle = '#091b33';
     ctx.fillRect(0, 0, canvas.width, canvas.height);
     ctx.fillStyle = 'white';
 
 
     snake.forEach(part => add(part.x, part.y));
 
-    ctx.fillStyle = '#b700ff';
+    ctx.fillStyle = '#00ff40';
     add(food.x, food.y); // Food
 
     requestAnimationFrame(draw);

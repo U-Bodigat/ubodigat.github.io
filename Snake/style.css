@@ -31,7 +31,7 @@ body::-webkit-scrollbar-thumb {
 }
 
 header {
-    background-color: #1a2336;
+    background-color: #003a1e;
     color: #fff;
     text-align: start;
     padding: 16px 100px;
@@ -40,11 +40,11 @@ header {
     left: 0;
     right: 0;
     top: 0;
+    opacity: 0.8;
 }
 
-header p {
-    position: start;
-    text-align: start;
+header:hover {
+    opacity: 1;
 }
 
 #headerinput {
@@ -60,7 +60,7 @@ header p {
 }
 
 .button {
-    background-color: #c2185c8e;
+    background-color: #012f6b;
     color: #fff;
     text-decoration: none;
     border: unset;
@@ -73,7 +73,7 @@ header p {
 }
 
 .button:hover {
-    background-color: #ff0066;
+    background-color: #006eff;
 }
 
 .button a {
@@ -94,7 +94,7 @@ header p {
     text-align: center;
     justify-content: center;
     align-items: ce;
-    background-color: #c2185c8e;
+    background-color: #00461e;
     color: #fff;
     font-size: 30px;
     border: unset;
@@ -109,9 +109,8 @@ header p {
 
 #tastenbelegungen:hover {
     cursor: crosshair;
-    color: #ffffff;
-    background-color: #ff0000;
-    border: 3px solid rgb(255, 0, 0);
+    color: #000000;
+    background-color: #00ff6e;
     box-shadow: 0 0 7px #fff, 0 0 10px #fff, 0 0 21px #fff, 0 0 42px rgb(255, 255, 255), 0 0 82px rgb(165, 165, 165), 0 0 92px rgb(179, 83, 27), 0 0 102px rgb(255, 255, 255), 0 0 151px rgb(255, 255, 255);
 }
 
