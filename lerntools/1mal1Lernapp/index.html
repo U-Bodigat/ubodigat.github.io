@@ -63,7 +63,7 @@
     <!-- End Google Tag Manager -->
 </head>
 
-<body>
+<body id="einzmaleinzlernapphintergrund">
     <!-- Google Tag Manager (noscript) -->
     <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-WTDQC48"
     height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
@@ -79,8 +79,79 @@
     </nav>
 
     <main>
-        <div>
+        <div id="einmaleinstabelle">
+            <h1>1x1 Lern-App</h1>
+            <p>Wie gut kennst du das 1x1? Versuche, alle Fragen richtig zu beantworten!</p>
+            <div id="question"></div>
+            <label for="answer">Antwort:</label>
+            <input type="number" id="answer">
+            <button id="check-answer-btn">Antwort überprüfen</button>
+            <div id="result"></div>
+            <div id="score"></div>
+            <div id="timer">Verbleibende Zeit: <span id="time-left"></span> Sekunden</div>
 
+            <script>
+                var score = 0;
+                var questionNum = 1;
+                var correctAnswer;
+                var timeLeft = 25;
+                var intervalId;
+
+                function generateQuestion() {
+                    var num1 = Math.floor(Math.random() * 49) + 1;
+                    var num2 = Math.floor(Math.random() * 49) + 1;
+                    var question = num1 + " x " + num2 + " = ";
+                    document.getElementById("question").textContent = question;
+                    correctAnswer = num1 * num2;
+                }
+
+                function checkAnswer() {
+                    var userAnswer = parseInt(document.getElementById("answer").value);
+                    if (isNaN(userAnswer)) {
+                        document.getElementById("result").textContent = "Bitte geben Sie eine Zahl ein.";
+                    } else if (userAnswer === correctAnswer) {
+                        document.getElementById("result").textContent = "Richtig!";
+                        score += 1;
+                        document.getElementById("score").textContent = "Punktestand: " + score;
+                        clearInterval(intervalId);
+                        timeLeft = 25;
+                        startTimer();
+                    } else {
+                        document.getElementById("result").textContent = "Falsch!";
+                        score -= 1;
+                        document.getElementById("score").textContent = "Punktestand: " + score;
+                    }
+                    document.getElementById("answer").value = "";
+                    generateQuestion();
+                }
+
+                function startTimer() {
+                    clearInterval(intervalId);
+                    document.getElementById("check-answer-btn").textContent = "Antwort überprüfen";
+                    intervalId = setInterval(function() {
+                        timeLeft -= 1;
+                        document.getElementById("time-left").textContent = timeLeft;
+                        if (timeLeft === 0) {
+                            clearInterval(intervalId);
+                            timeLeft = 0;
+                            score = 0;
+                            document.getElementById("score").textContent = "Punktestand: " + score;
+                            document.getElementById("result").textContent = "Zeit ist abgelaufen!";
+                            document.getElementById("check-answer-btn").textContent = "Start";
+                        }
+                    }, 1000);
+                }
+
+                document.getElementById("check-answer-btn").addEventListener("click", function() {
+                    if (document.getElementById("check-answer-btn").textContent === "Start") {
+                        timeLeft = 25;
+                    }
+                    startTimer();
+                    checkAnswer();
+                });
+
+                generateQuestion();
+            </script>
         </div>
     </main>
 

@@ -64,6 +64,13 @@ header p {
     cursor: pointer;
 }
 
+#einzmaleinzlernapphintergrund {
+    background-image: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.9)), url(/Bilder/UBodigat.tk\ 1mal1Lernapp\ HIntergrundbild.jpg);
+    background-size: cover;
+    background-attachment: fixed;
+    background-position: center;
+}
+
 #überschriftlink {
     text-decoration: none;
     color: #fff;
@@ -89,4 +96,106 @@ header p {
 .button a {
     color: #fff;
     text-decoration: none;
+}
+
+h1 {
+    text-align: center;
+}
+
+#tabellenüberschrift {
+    text-align: center;
+    margin-top: 5%;
+    font-size: 40px;
+}
+
+#table {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+table {
+    margin: 0 auto;
+    border-collapse: collapse;
+    font-size: 60px;
+    margin-top: 5%;
+}
+
+td,
+th {
+    padding: 10px;
+    border: 1px solid rgb(94, 94, 94);
+}
+
+#einmaleinstabelle {
+    color: #fff;
+}
+
+#tabelleninhalt {
+    font-size: 60px;
+    color: #fff;
+    background-color: transparent;
+    padding: 20px;
+}
+
+
+/*code für 1mal1 tabelle new*/
+
+h1 {
+    margin-top: 50px;
+}
+
+label {
+    font-size: 20px;
+    font-weight: bold;
+    margin-right: 10px;
+}
+
+input {
+    padding: 10px;
+    border-radius: 5px;
+    border: none;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    font-size: 20px;
+}
+
+#einmaleinstabelle button {
+    padding: 10px 20px;
+    background-color: #4CAF50;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    font-size: 20px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+#einmaleinstabelle button:hover {
+    background-color: #3e8e41;
+}
+
+#result {
+    font-size: 24px;
+    margin-top: 20px;
+}
+
+#score {
+    font-size: 20px;
+    margin-top: 20px;
+}
+
+#question {
+    margin-top: 20px;
+    font-size: 30px;
+}
+
+#timer {
+    position: absolute;
+    top: 140px;
+    right: 30px;
+    font-size: 18px;
+    font-weight: bold;
+    padding: 10px;
+    text-align: right;
 }
