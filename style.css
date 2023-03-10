@@ -118,29 +118,92 @@ footer {
     margin-left: 80%;
 }
 
-.Menüpunkte {
+#menütabelle {
+    border-spacing: 20px 45px;
+}
+
+#menütabelle td {
     color: #ffffff;
-    background-color: #0d78808e;
     text-align: center;
-    border: 7px solid #0d78808e;
-    margin: 50px;
+    background-color: #016b596b;
+    border: 5px solid #00ff84b9;
+    padding: 15px;
     font-size: 30px;
+    font-weight: 500;
     border-radius: 20px;
 }
 
-.Menüpunkte a {
-    border: 0px solid #ffffff;
-    padding: 25px;
-    display: block;
+#menütabelle td:hover {
     color: #ffffff;
-    text-decoration: none;
+    background-color: #00ff84b9;
+    border: 5px solid #00ff84b9;
+    box-shadow: 0 0 10px #fff, 0 0 10px #fff, 0 0 21px #fff, 0 0 42px #fff, 0 0 82px #00ff84b9, 0 0 92px #00ff84b9, 0 0 102px #00ff84b9, 0 0 151px #00ff84b9;
 }
 
-.Menüpunkte:hover {
-    color: #ffffff;
-    background-color: #00c3ff;
-    border: 7px solid #00c3ff;
-    box-shadow: 0 0 7px #fff, 0 0 10px #fff, 0 0 21px #fff, 0 0 42px #0fa, 0 0 82px #0fa, 0 0 92px #0fa, 0 0 102px #0fa, 0 0 151px #0fa;
+@media (max-width: 1000px) {
+    #menütabelle td {
+        padding: 10px;
+        font-size: 25px;
+        border: 4px solid #00ff84b9;
+    }
+    #menütabelle td {
+        padding: 10px;
+        font-size: 25px;
+    }
+}
+
+@media (max-width: 840px) {
+    #menütabelle td {
+        padding: 7px;
+        font-size: 20px;
+        border: 4px solid #00ff84b9;
+    }
+    #menütabelle td {
+        padding: 7px;
+        font-size: 20px;
+    }
+}
+
+@media (max-width: 670px) {
+    #menütabelle td {
+        padding: 5px;
+        font-size: 20px;
+        border: 3px solid #00ff84b9;
+        font-weight: 600;
+    }
+    #menütabelle td {
+        padding: 5px;
+        font-size: 20px;
+    }
+}
+
+@media (max-width: 640px) {
+    #erstetabellenmenüpunkt {
+        margin-top: 50%;
+    }
+    #menütabelle td {
+        color: #ffffff;
+        text-align: center;
+        background-color: #016b596b;
+        border: 4px solid #00ff84b9;
+        padding: 15px;
+        font-size: 30px;
+        font-weight: 500;
+        border-radius: 20px;
+    }
+    table,
+    thead,
+    tbody,
+    th,
+    td,
+    tr {
+        display: block;
+    }
+    td {
+        display: block;
+        margin-top: 20px;
+        margin-bottom: 30px;
+    }
 }
 
 .button {
@@ -167,6 +230,13 @@ footer {
 
 #Hintergrundstart {
     background-image: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), url(Bilder/UBodigat.tk\ Hintergrund.gif);
+    background-size: cover;
+    background-attachment: fixed;
+    background-position: center;
+}
+
+#Hintergrundmenü {
+    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.8)), url(Bilder/UBodigat.tk\ Menü\ Hintergrund.jpg);
     background-size: cover;
     background-attachment: fixed;
     background-position: center;
