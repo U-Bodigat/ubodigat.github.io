@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="de-DE">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="verify-v1" content="unique-string">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="keywords" content="website, lernapp, rechner, uhr, snake, description, beschreibung, u, bodigat, u:bodigat, ubodigat">
+    <meta name="author" content="U:Bodigat">
+    <meta name="publisher" content="U:Bodigat">
+    <meta name="copyright" content="U:Bodigat">
+    <meta name="description" content="Das ist unsere Lernapp, mit dieser kann man ganz einfach alles Lernen. Füge einfach eine Frage und die richtige Antwort hinzu gehe dann auf Übung und es werden dir die Fragen gestellt und du must die Richtige Antwort hienschreiben. Wenn du mal was falsch hast wird die das was richtig gewesen wäre natürlich angezeigt. Wir wünschen euch viel Spaß beim lernen mit unserer Lernapp.">
+    <meta property="og:site_name" content="U:Bodigat.tk">
+    <meta property="og:url" content="https://ubodigat.tk">
+    <meta property="og:title" content="Lernapp | U:Bodigat.tk">
+    <meta property="og:type" content="website">
+    <meta property="og:description" content="Das ist unsere Lernapp, mit dieser kann man ganz einfach alles Lernen. Füge einfach eine Frage und die richtige Antwort hinzu gehe dann auf Übung und es werden dir die Fragen gestellt und du must die Richtige Antwort hienschreiben. Wenn du mal was falsch hast wird die das was richtig gewesen wäre natürlich angezeigt. Wir wünschen euch viel Spaß beim lernen mit unserer Lernapp.">
+    <meta property="og:image" content="https://cdn.discordapp.com/attachments/927268634492031026/994779232129519656/UBodigat_Werbung.png">
+    <meta property="og:image:secure_url" content="https://cdn.discordapp.com/attachments/927268634492031026/994779232129519656/UBodigat_Werbung.png">
+    <meta property="og:image:width" content="500">
+    <meta property="og:image:height" content="500">
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://ubodigat.tk">
+    <meta property="twitter:title" content="Lernapp | U:Bodigat.tk">
+    <meta property="twitter:description" content="Das ist unsere Lernapp, mit dieser kann man ganz einfach alles Lernen. Füge einfach eine Frage und die richtige Antwort hinzu gehe dann auf Übung und es werden dir die Fragen gestellt und du must die Richtige Antwort hienschreiben. Wenn du mal was falsch hast wird die das was richtig gewesen wäre natürlich angezeigt. Wir wünschen euch viel Spaß beim lernen mit unserer Lernapp.">
+    <title>Lernapp | U:Bodigat.tk</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js"></script>
+    <link rel="icon" href="/Bilder/Wartungsarbeitenprofilbild.png" type="image/x-icon">
+    <script src="/script.js"></script>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-BE1B5EZY35"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+        gtag('js', new Date());
+
+        gtag('config', 'G-BE1B5EZY35');
+    </script>
+    <!-- Google Tag Manager -->
+    <script>
+        (function(w, d, s, l, i) {
+            w[l] = w[l] || [];
+            w[l].push({
+                'gtm.start': new Date().getTime(),
+                event: 'gtm.js'
+            });
+            var f = d.getElementsByTagName(s)[0],
+                j = d.createElement(s),
+                dl = l != 'dataLayer' ? '&l=' + l : '';
+            j.async = true;
+            j.src =
+                'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
+            f.parentNode.insertBefore(j, f);
+        })(window, document, 'script', 'dataLayer', 'GTM-WTDQC48');
+    </script>
+    <!-- End Google Tag Manager -->
+</head>
+
+<body>
+    <!-- Google Tag Manager (noscript) -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-WTDQC48"
+    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
+    <nav>
+        <header>
+            <p><a id="überschriftlink" href="https://ubodigat.tk">U:Bodigat.tk</a> | Lernapp</p>
+            <div id="headerinput">
+                <a href="/lerntools/lernmenü.html"> <button class="button">Zum Lernmenü</button></a>
+                <a href="/lerntools/lernapp/Übungenhinzu..html"> <button class="button">Übungenhinzufügen</button></a>
+            </div>
+        </header>
+    </nav>
+
+    <main id="main">
+        <div id="übungszeit">
+            <p id="nächste-übung"><b>Übungszeit:</b></p>
+            <div id="dauer">00:00:00</div>
+        </div>
+        <div id="mainstaff">
+            <h1>Frage:</h1>
+            <h3 id="diefrage"></h3>
+
+            <form onsubmit="richtigfalsch(); return false;">
+                <input id="Antwort" type="text" placeholder="A n t w o r t"></input>
+                <h1></h1>
+                <button id="Prüfen">Prüfen</button>
+            </form>
+        </div>
+
+        <h3 id="überprüfungstext"></h3>
+
+    </main>
+
+    <footer>
+        <div>
+            <button onclick="nächstübung()" id="löschen" id="startButton">Übung Starten</button>
+        </div>
+    </footer>
+
+</body>
+
+</html>
