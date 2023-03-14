@@ -102,64 +102,50 @@ header p {
 
 /* Ab hier kein Grundcss code mehr*/
 
-body {
-    background-color: #282c34;
-    color: white;
-    font-family: sans-serif;
-}
-
 .container {
-    max-width: 600px;
-    margin: 0 auto;
-    padding: 20px;
+    text-align: center;
 }
 
 h1 {
-    text-align: center;
+    font-size: 36px;
+    font-weight: bold;
 }
 
-.question {
-    text-align: center;
-    margin-bottom: 30px;
+#question {
+    font-size: 24px;
+    margin: 30px 0;
 }
 
-#word {
-    font-size: 4em;
-    margin-bottom: 10px;
+#choices button {
+    font-size: 18px;
+    margin: 10px;
+    padding: 10px 20px;
+    background-color: #eee;
+    border: none;
+    cursor: pointer;
 }
 
-#answer {
-    padding: 10px;
-    font-size: 1.5em;
-    width: 100%;
-    max-width: 400px;
-    margin-bottom: 10px;
+#submit {
+    font-size: 18px;
+    margin: 30px;
+    padding: 10px 20px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    cursor: pointer;
     border-radius: 10px;
 }
 
-#check-btn,
-#next-btn {
-    background-color: #61dafb;
-    color: black;
-    border: none;
-    padding: 10px 20px;
-    font-size: 1.5em;
-    cursor: pointer;
-    border-radius: 5px;
+#submit:hover {
+    background-color: #21e927;
 }
 
-#check-btn:hover,
-#next-btn:hover {
-    background-color: #2f80ed;
-    color: white;
+#result {
+    font-size: 24px;
+    margin: 30px 0;
 }
 
-.result {
-    display: none;
-    text-align: center;
-}
-
-.result p {
-    font-size: 2em;
-    margin-bottom: 20px;
+#score {
+    font-size: 24px;
+    margin: 30px 0;
 }

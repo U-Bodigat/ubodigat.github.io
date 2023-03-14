@@ -1,60 +1,68 @@
-const words = [
-    "Apfel",
-    "Banane",
-    "Kartoffel",
-    "Erdbeere",
-    "Birne",
-    "Tomate",
-    "Zucchini",
-    "Gurke",
-    "Paprika",
-    "Möhre",
+// Definieren Sie ein Array mit Fragen-Objekten
+let fragen = [{
+        frage: "Was ist die Hauptstadt von Frankreich?",
+        antworten: ["Berlin", "Paris", "Madrid", "Rom"],
+        korrekteAntwort: 1
+    },
+    {
+        frage: "Wer schrieb das Buch 'Die Verwandlung'?",
+        antworten: ["Franz Kafka", "Friedrich Nietzsche", "Thomas Mann", "Hermann Hesse"],
+        korrekteAntwort: 0
+    },
+    {
+        frage: "Was ist die höchste Zahl in einer klassischen Roulette-Spiel?",
+        antworten: ["31", "36", "50", "100"],
+        korrekteAntwort: 1
+    }
 ];
 
-const wordEl = document.getElementById("word");
-const answerEl = document.getElementById("answer");
-const checkBtn = document.getElementById("check-btn");
-const nextBtn = document.getElementById("next-btn");
-const resultMessageEl = document.getElementById("result-message");
-const resultEl = document.querySelector(".result");
+// Initialisieren Sie die Variablen für Punkte und aktuelle Frage
+let punkte = 0;
+let aktuelleFrage = 0;
 
-let currentWordIndex = 0;
+// Funktion zum Laden der aktuellen Frage
+function ladeFrage() {
+    // Elemente für Frage und Antworten im HTML-Dokument finden
+    let frageElement = document.getElementById("frage");
+    let antwortenElement = document.getElementById("antworten");
 
-function generateRandomWord() {
-    const index = Math.floor(Math.random() * words.length);
-    return words[index];
-}
+    // Frage in das HTML-Element einfügen
+    frageElement.textContent = fragen[aktuelleFrage].frage;
 
-function checkAnswer() {
-    const answer = answerEl.value.trim();
-    const word = words[currentWordIndex];
-    if (answer.toLowerCase() === word.toLowerCase()) {
-        resultMessageEl.textContent = "Richtig!";
-        resultMessageEl.style.color = "green";
-    } else {
-        resultMessageEl.textContent = "Falsch!";
-        resultMessageEl.style.color = "red";
+    // Antwort-Buttons im HTML-Element einfügen
+    antwortenElement.innerHTML = "";
+    for (let i = 0; i < fragen[aktuelleFrage].antworten.length; i++) {
+        let button = document.createElement("button");
+        button.textContent = fragen[aktuelleFrage].antworten[i];
+        button.value = i;
+
+        // Event-Listener für die Antwort-Buttons hinzufügen
+        button.onclick = function() {
+            // Wenn die ausgewählte Antwort korrekt ist, erhöhen Sie die Punkte
+            if (this.value == fragen[aktuelleFrage].korrekteAntwort) {
+                punkte++;
+                document.getElementById("ergebnis").textContent = "Richtig!";
+            } else { // Ansonsten Punkte abziehen
+                punkte--;
+                document.getElementById("ergebnis").textContent = "Falsch!";
+            }
+
+            // Punktestand aktualisieren
+            document.getElementById("punkte").textContent = "Punkte: " + punkte;
+
+            // Nächste Frage laden
+            aktuelleFrage++;
+            if (aktuelleFrage < fragen.length) {
+                ladeFrage();
+            } else { // Quiz beendet
+                frageElement.textContent = "Quiz beendet";
+                antwortenElement.innerHTML = "";
+                document.getElementById("submit").style.display = "none"; // Submit-Button ausblenden
+            }
+        }
+        antwortenElement.appendChild(button);
     }
-    resultEl.style.display = "block";
-    answerEl.disabled = true;
-    checkBtn.disabled = true;
 }
 
-function showNextWord() {
-    currentWordIndex++;
-    if (currentWordIndex >= words.length) {
-        currentWordIndex = 0;
-    }
-    const word = generateRandomWord();
-    wordEl.textContent = word;
-    answerEl.value = "";
-    resultEl.style.display = "none";
-    answerEl.disabled = false;
-    checkBtn.disabled = false;
-    answerEl.focus();
-}
-
-checkBtn.addEventListener("click", checkAnswer);
-nextBtn.addEventListener("click", showNextWord);
-
-showNextWord();
+// Laden Sie die erste Frage, wenn die Seite geladen wird
+window.onload = ladeFrage();
