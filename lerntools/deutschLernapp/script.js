@@ -1,68 +1,45 @@
-// Definieren Sie ein Array mit Fragen-Objekten
-let fragen = [{
-        frage: "Was ist die Hauptstadt von Frankreich?",
-        antworten: ["Berlin", "Paris", "Madrid", "Rom"],
-        korrekteAntwort: 1
-    },
-    {
-        frage: "Wer schrieb das Buch 'Die Verwandlung'?",
-        antworten: ["Franz Kafka", "Friedrich Nietzsche", "Thomas Mann", "Hermann Hesse"],
-        korrekteAntwort: 0
-    },
-    {
-        frage: "Was ist die höchste Zahl in einer klassischen Roulette-Spiel?",
-        antworten: ["31", "36", "50", "100"],
-        korrekteAntwort: 1
-    }
-];
+let score = 0;
+let currentQuestion = 1;
 
-// Initialisieren Sie die Variablen für Punkte und aktuelle Frage
-let punkte = 0;
-let aktuelleFrage = 0;
+function checkAnswer(frage, richtigeAntwort) {
+    const form = document.getElementById(frage);
+    const antworten = form.elements[frage];
+    let ausgewaehlt = false;
+    let ausgewaehlteAntwort;
 
-// Funktion zum Laden der aktuellen Frage
-function ladeFrage() {
-    // Elemente für Frage und Antworten im HTML-Dokument finden
-    let frageElement = document.getElementById("frage");
-    let antwortenElement = document.getElementById("antworten");
-
-    // Frage in das HTML-Element einfügen
-    frageElement.textContent = fragen[aktuelleFrage].frage;
-
-    // Antwort-Buttons im HTML-Element einfügen
-    antwortenElement.innerHTML = "";
-    for (let i = 0; i < fragen[aktuelleFrage].antworten.length; i++) {
-        let button = document.createElement("button");
-        button.textContent = fragen[aktuelleFrage].antworten[i];
-        button.value = i;
-
-        // Event-Listener für die Antwort-Buttons hinzufügen
-        button.onclick = function() {
-            // Wenn die ausgewählte Antwort korrekt ist, erhöhen Sie die Punkte
-            if (this.value == fragen[aktuelleFrage].korrekteAntwort) {
-                punkte++;
-                document.getElementById("ergebnis").textContent = "Richtig!";
-            } else { // Ansonsten Punkte abziehen
-                punkte--;
-                document.getElementById("ergebnis").textContent = "Falsch!";
-            }
-
-            // Punktestand aktualisieren
-            document.getElementById("punkte").textContent = "Punkte: " + punkte;
-
-            // Nächste Frage laden
-            aktuelleFrage++;
-            if (aktuelleFrage < fragen.length) {
-                ladeFrage();
-            } else { // Quiz beendet
-                frageElement.textContent = "Quiz beendet";
-                antwortenElement.innerHTML = "";
-                document.getElementById("submit").style.display = "none"; // Submit-Button ausblenden
-            }
+    for (let i = 0; i < antworten.length; i++) {
+        if (antworten[i].checked) {
+            ausgewaehlt = true;
+            ausgewaehlteAntwort = antworten[i].value;
+            break;
         }
-        antwortenElement.appendChild(button);
+    }
+
+    if (ausgewaehlt && ausgewaehlteAntwort === richtigeAntwort) {
+        score++;
+        document.getElementById('punktestand').innerHTML = `Punktestand: ${score}`;
+        document.getElementById(`ergebnis${frage.slice(-1)}`).innerHTML = `Richtig!`;
+    } else {
+        if (ausgewaehlt) {
+            document.getElementById(`ergebnis${frage.slice(-1)}`).innerHTML = `Falsch! Die richtige Antwort ist ${richtigeAntwort.toUpperCase()}.`;
+        } else {
+            document.getElementById(`ergebnis${frage.slice(-1)}`).innerHTML = `Bitte wählen Sie eine Antwort aus.`;
+        }
+        if (score > 0) {
+            score--;
+            document.getElementById('punktestand').innerHTML = `Punktestand: ${score}`;
+        }
+    }
+
+    document.getElementById(frage).reset();
+
+    if (currentQuestion === 1 && ausgewaehlt) {
+        document.getElementById('frage2').style.display = 'block';
+        currentQuestion++;
+    } else if (currentQuestion === 2 && ausgewaehlt) {
+        document.getElementById('frage3').style.display = 'block';
+        currentQuestion++;
+    } else if (currentQuestion === 3 && ausgewaehlt) {
+        document.getElementById('buttonantwort').style.display = 'none';
     }
 }
-
-// Laden Sie die erste Frage, wenn die Seite geladen wird
-window.onload = ladeFrage();

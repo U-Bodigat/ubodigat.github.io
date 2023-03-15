@@ -102,50 +102,128 @@ header p {
 
 /* Ab hier kein Grundcss code mehr*/
 
-.container {
-    text-align: center;
+main {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: rgba(75, 75, 75, 0.699);
+    border-radius: 10px;
+    font-size: 20px;
 }
 
 h1 {
-    font-size: 36px;
-    font-weight: bold;
+    font-size: 40px;
+    margin-bottom: 30px;
+    text-align: center;
 }
 
-#question {
+h2 {
     font-size: 24px;
-    margin: 30px 0;
+    margin-bottom: 20px;
 }
 
-#choices button {
-    font-size: 18px;
-    margin: 10px;
-    padding: 10px 20px;
-    background-color: #eee;
-    border: none;
-    cursor: pointer;
+#p {
+    margin-bottom: 20px;
 }
 
-#submit {
-    font-size: 18px;
-    margin: 30px;
-    padding: 10px 20px;
+form {
+    margin-bottom: 40px;
+}
+
+#buttonantwort {
+    font-size: 20px;
     background-color: #4CAF50;
     color: white;
+    padding: 5px 10px;
     border: none;
+    border-radius: 10px;
     cursor: pointer;
+    margin-top: 20px;
+}
+
+#buttonantwort:hover {
+    background-color: #3e8e41;
+}
+
+
+/* Styling für Frage 1 */
+
+#frage1 {
+    padding: 20px;
     border-radius: 10px;
 }
 
-#submit:hover {
-    background-color: #21e927;
+#frage1 p {
+    font-size: 18px;
 }
 
-#result {
-    font-size: 24px;
-    margin: 30px 0;
+#frage1 label {
+    display: block;
+    margin-bottom: 10px;
+    font-size: 18px;
+    font-weight: bold;
 }
 
-#score {
-    font-size: 24px;
-    margin: 30px 0;
+#frage1 input[type="radio"] {
+    margin-right: 10px;
+    cursor: pointer;
+}
+
+#frage1 input[type="radio"]:hover {
+    background-color: #f5f5f5;
+}
+
+#frage1 input[type="radio"]:checked+label {
+    color: #4CAF50;
+}
+
+#ergebnis {
+    font-weight: bold;
+    font-size: 22px;
+    margin-top: 30px;
+}
+
+
+/* Media-Queries für Mobilgeräte */
+
+@media only screen and (max-width: 600px) {
+    main {
+        padding: 10px;
+    }
+    h1 {
+        font-size: 30px;
+        margin-bottom: 20px;
+    }
+    h2 {
+        font-size: 20px;
+        margin-bottom: 15px;
+    }
+    p {
+        font-size: 16px;
+        margin-bottom: 15px;
+    }
+    form {
+        margin-bottom: 20px;
+    }
+    #buttonantwort {
+        font-size: 16px;
+        margin-top: 15px;
+    }
+    #frage1 {
+        padding: 15px;
+    }
+    #frage1 p {
+        font-size: 16px;
+    }
+    #frage1 label {
+        font-size: 16px;
+        margin-bottom: 8px;
+    }
+    #frage1 input[type="radio"] {
+        margin-right: 8px;
+    }
+    #ergebnis {
+        font-size: 16px;
+        margin-top: 15px;
+    }
 }

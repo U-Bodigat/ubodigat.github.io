@@ -81,13 +81,45 @@
 
     <main>
         <div>
-            <h1>Quiz-App</h1>
+            <h1>Deutsch Rechtschreibung Lernapp</h1>
+            <div id="frage1">
+                <h3>Frage 1:</h3>
+                <p>Was ist das Synonym für "glücklich"?</p>
+                <form id="form1">
+                    <label for="antwort1a"><input type="radio" name="antwort1" value="a" id="antwort1a"> A) froh</label><br>
+                    <label for="antwort1b"><input type="radio" name="antwort1" value="b" id="antwort1b"> B) traurig</label><br>
+                    <label for="antwort1c"><input type="radio" name="antwort1" value="c" id="antwort1c"> C) wütend</label><br>
+                </form>
+                <button id="buttonantwort" onclick="checkAnswer('form1', 'a')">Antworten</button>
+                <p id="ergebnis1"></p>
+            </div>
 
-            <div id="frage"></div>
-            <div id="antworten"></div>
-            <button id="submit">Antwort überprüfen</button>
-            <div id="ergebnis"></div>
-            <div id="punkte"></div>
+            <div id="frage2" style="display: none;">
+                <h3>Frage 2:</h3>
+                <p>Welches Wort ist ein Adjektiv?</p>
+                <form id="form2">
+                    <label for="antwort2a"><input type="radio" name="antwort2" value="a" id="antwort2a"> A) Hund</label><br>
+                    <label for="antwort2b"><input type="radio" name="antwort2" value="b" id="antwort2b"> B) laufen</label><br>
+                    <label for="antwort2c"><input type="radio" name="antwort2" value="c" id="antwort2c"> C) schnell</label><br>
+                </form>
+                <button id="buttonantwort" onclick="checkAnswer('form2', 'c')">Antworten</button>
+                <p id="ergebnis2"></p>
+            </div>
+
+            <div id="frage3" style="display: none;">
+                <h3>Frage 3:</h3>
+                <p>Wie nennt man ein großes, schweres Buch?</p>
+                <form id="form3">
+                    <label for="antwort3a"><input type="radio" name="antwort3" value="a" id="antwort3a"> A) Roman</label><br>
+                    <label for="antwort3b"><input type="radio" name="antwort3" value="b" id="antwort3b"> B) Atlas</label><br>
+                    <label for="antwort3c"><input type="radio" name="antwort3" value="c" id="antwort3c"> C) Enzyklopädie</label><br>
+                </form>
+                <button id="buttonantwort" onclick="checkAnswer('form3', 'c')">Antworten</button>
+                <p id="ergebnis3"></p>
+            </div>
+
+            <p id="punktestand">Punktestand: 0</p>
+
         </div>
     </main>
 
