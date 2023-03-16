@@ -1,45 +1,78 @@
-let score = 0;
-let currentQuestion = 1;
-
-function checkAnswer(frage, richtigeAntwort) {
-    const form = document.getElementById(frage);
-    const antworten = form.elements[frage];
-    let ausgewaehlt = false;
-    let ausgewaehlteAntwort;
-
-    for (let i = 0; i < antworten.length; i++) {
-        if (antworten[i].checked) {
-            ausgewaehlt = true;
-            ausgewaehlteAntwort = antworten[i].value;
-            break;
-        }
+let fragen = [{
+        frage: "Was ist die Mehrzahl von 'Haus'?",
+        antworten: ["Häuser", "Heuser", "Häusen"],
+        korrekteAntwort: 0,
+        bereitsBeantwortet: false
+    },
+    {
+        frage: "Wie nennt man das Gegenteil von 'alt'?",
+        antworten: ["Jung", "Neu", "Früh"],
+        korrekteAntwort: 0,
+        bereitsBeantwortet: false
+    },
+    {
+        frage: "Wie schreibt man 'Apfel'?",
+        antworten: ["Apfel", "Appel", "Apfel"],
+        korrekteAntwort: 2,
+        bereitsBeantwortet: false
+    },
+    {
+        frage: "Welches Wort ist ein Nomen?",
+        antworten: ["Laufen", "Schnell", "Auto"],
+        korrekteAntwort: 2,
+        bereitsBeantwortet: false
+    },
+    {
+        frage: "Wie nennt man das weibliche Haustier von 'Hund'?",
+        antworten: ["Hundin", "Hündin", "Hundchen"],
+        korrekteAntwort: 1,
+        bereitsBeantwortet: false
+    },
+    {
+        frage: "Wie nennt man das Gegenteil von 'Tag'?",
+        antworten: ["Morgen", "Nacht", "Abend"],
+        korrekteAntwort: 1,
+        bereitsBeantwortet: false
     }
+];
 
-    if (ausgewaehlt && ausgewaehlteAntwort === richtigeAntwort) {
-        score++;
-        document.getElementById('punktestand').innerHTML = `Punktestand: ${score}`;
-        document.getElementById(`ergebnis${frage.slice(-1)}`).innerHTML = `Richtig!`;
-    } else {
-        if (ausgewaehlt) {
-            document.getElementById(`ergebnis${frage.slice(-1)}`).innerHTML = `Falsch! Die richtige Antwort ist ${richtigeAntwort.toUpperCase()}.`;
-        } else {
-            document.getElementById(`ergebnis${frage.slice(-1)}`).innerHTML = `Bitte wählen Sie eine Antwort aus.`;
-        }
-        if (score > 0) {
-            score--;
-            document.getElementById('punktestand').innerHTML = `Punktestand: ${score}`;
-        }
-    }
+let punktestand = 0;
+let aktuelleFrageIndex = 0;
 
-    document.getElementById(frage).reset();
-
-    if (currentQuestion === 1 && ausgewaehlt) {
-        document.getElementById('frage2').style.display = 'block';
-        currentQuestion++;
-    } else if (currentQuestion === 2 && ausgewaehlt) {
-        document.getElementById('frage3').style.display = 'block';
-        currentQuestion++;
-    } else if (currentQuestion === 3 && ausgewaehlt) {
-        document.getElementById('buttonantwort').style.display = 'none';
-    }
+function anzeigen() {
+    document.getElementById("frage").innerHTML = fragen[aktuelleFrageIndex].frage;
+    document.getElementById("antworten").innerHTML = "";
+    fragen[aktuelleFrageIndex].antworten.forEach(function(antwort, index) {
+        let radio = document.createElement("input");
+        radio.setAttribute("type", "radio");
+        radio.setAttribute("name", "antworten");
+        radio.setAttribute("value", index);
+        radio.setAttribute("id", "antwort" + index);
+        let label = document.createElement("label");
+        label.setAttribute("for", "antwort" + index);
+        label.innerHTML = antwort;
+        let br = document.createElement("br");
+        document.getElementById("antworten").appendChild(radio);
+        document.getElementById("antworten").appendChild(label);
+        document.getElementById("antworten").appendChild(br);
+    });
 }
+
+function antwortAuswerten() {
+    let ausgewaehlteAntwort = document.querySelector('input[name="antworten"]:checked');
+    if (ausgewaehlteAntwort === null) {
+        alert("Bitte wählen Sie eine Antwort aus.");
+        return;
+    }
+    if (ausgewaehlteAntwort.value == fragen[aktuelleFrageIndex].korrekteAntwort) {
+        punktestand++;
+        alert("Richtig!");
+    } else {
+        punktestand--;
+        let korrekteAntwort = fragen[aktuelleFrageIndex].antworten[fragen[aktuelleFrageIndex].korrekteAntwort];
+        alert("Leider falsch! Die korrekte Antwort lautet: " + korrekteAntwort);
+    }
+    fragen[aktuelleFrageIndex].bereitsBeantwortet = true;
+    anzeigenPunktestand();
+    aktuelleFrageIndex++;
+    if (aktuelleFrageIndex < fragen.length
