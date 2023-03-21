@@ -607,13 +607,6 @@ a {
     margin-right: -45%;
 }
 
-#downloadpage {
-    height: 0;
-    width: 0;
-    margin: 0;
-    padding: 0;
-}
-
 
 /*Ab hier downloads (Tabelle)*/
 
@@ -684,51 +677,4 @@ a {
     margin-top: 20%;
     margin-right: 100%;
     margin-left: -90%;
-}
-
-@media (max-width: 1590px) {
-    #maindownload {
-        width: 100vw;
-        margin-top: 0%;
-        margin-left: 0%;
-        margin-right: -25%;
-    }
-    #downloads {
-        width: 100%;
-        margin-top: 35%;
-        margin-left: -20%;
-        margin-bottom: 5%;
-    }
-    #downloadüberschrift {
-        margin-top: -80%;
-        margin-left: -15%;
-    }
-    #downloadbeschreibung {
-        margin-left: -10%;
-        margin-right: -50%;
-    }
-}
-
-@media (max-width: 1300px) {
-    #maindownload {
-        width: 100%;
-        height: 100%;
-    }
-    #downloads {
-        margin-top: 0%;
-        margin-left: 80%;
-        margin-bottom: 0%;
-    }
-    #downloadüberschrift {
-        margin-top: 150%;
-        margin-left: 80%;
-        margin-right: -190%;
-        margin-bottom: 0%;
-    }
-    #downloadbeschreibung {
-        margin-top: 5%;
-        margin-left: 100%;
-        margin-right: -400%;
-        margin-bottom: 0%;
-    }
 }
