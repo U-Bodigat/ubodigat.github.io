@@ -138,7 +138,7 @@ td {
 }
 
 table#chessboard {
-    align: center;
+    text-align: center;
     border-spacing: 0px;
     border-collapse: collapse;
 }
@@ -169,4 +169,39 @@ div.piece_container {
     display: table-cell;
     vertical-align: bottom;
     height: 52px;
+}
+
+#startbutton {
+    background-color: #012f6b;
+    color: #fff;
+    text-decoration: none;
+    border: unset;
+    padding: 12px;
+    border-radius: 7px;
+    min-width: 160px;
+    font-weight: 600;
+    margin-left: 10px;
+    margin-bottom: 20px;
+    box-shadow: 0px 3px 1px -2px rgb(0 0 0 / 20%), 0px 2px 2px 0px rgb(0 0 0 / 14%), 0px 1px 5px 0px rgb(0 0 0 / 12%);
+}
+
+#startbutton:hover {
+    background-color: #00ffd5;
+}
+
+#schwirigkeitenhintergrund {
+    background-color: #5e6d66;
+    color: #fff;
+    padding: 5px 10px;
+    font-size: 24px;
+    border-radius: 15px;
+}
+
+.statusdiv {
+    background-color: #314736;
+    color: #fff;
+    font-size: 24px;
+    border-radius: 10px;
+    padding: 5px;
+    margin-bottom: 30px;
 }

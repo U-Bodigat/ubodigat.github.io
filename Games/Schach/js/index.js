@@ -6,8 +6,8 @@ let choosingState = 'none';
 
 let game_depth = 3;
 
-const FIRST_BACKGROUND_COLOR = '#AB7B2A';
-const SECOND_BACKGROUND_COLOR = '#FFFAD5';
+const FIRST_BACKGROUND_COLOR = '#FFFAD5';
+const SECOND_BACKGROUND_COLOR = '#AB7B2A';
 
 let cells = [];
 let moveTo = [];

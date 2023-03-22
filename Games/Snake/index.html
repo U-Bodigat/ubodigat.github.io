@@ -10,29 +10,24 @@
     <meta name="author" content="U:Bodigat">
     <meta name="publisher" content="U:Bodigat">
     <meta name="copyright" content="U:Bodigat">
-    <meta name="description" content="Dieser Text befindet sich noch in arbeit.">
+    <meta name="description" content="Das ist unser Snake Game, hier könnt ihr mit eurer Tastatur ganz einfach Sanke spielen. Am Handy oder tablet kann man ohne eine zusaätzliche Tastatur das Spiel leider nicht Spielen. Wir wünschen euch viel Spaß beim Spielen.">
     <meta property="og:site_name" content="U:Bodigat.tk">
     <meta property="og:url" content="https://ubodigat.tk">
-    <meta property="og:title" content="Schach | U:Bodigat.tk">
+    <meta property="og:title" content="Snake Game | U:Bodigat.tk">
     <meta property="og:type" content="website">
-    <meta property="og:description" content="Dieser Text befindet sich noch in arbeit.">
+    <meta property="og:description" content="Das ist unser Snake Game, hier könnt ihr mit eurer Tastatur ganz einfach Sanke spielen. Am Handy oder tablet kann man ohne eine zusaätzliche Tastatur das Spiel leider nicht Spielen. Wir wünschen euch viel Spaß beim Spielen.">
     <meta property="og:image" content="https://cdn.discordapp.com/attachments/927268634492031026/994779232129519656/UBodigat_Werbung.png">
     <meta property="og:image:secure_url" content="https://cdn.discordapp.com/attachments/927268634492031026/994779232129519656/UBodigat_Werbung.png">
     <meta property="og:image:width" content="500">
     <meta property="og:image:height" content="500">
     <meta property="twitter:card" content="summary_large_image">
     <meta property="twitter:url" content="https://ubodigat.tk">
-    <meta property="twitter:title" content="Schach | U:Bodigat.tk">
-    <meta property="twitter:description" content="Dieser Text befindet sich noch in arbeit.">
-    <meta property="twitter:image" content="https://cdn.discordapp.com/attachments/927268634492031026/994779232129519656/UBodigat_Werbung.png">
-    <title>Schach | U:Bodigat.tk</title>
+    <meta property="twitter:title" content="Snake Game | U:Bodigat.tk">
+    <meta property="twitter:description" content="Das ist unser Snake Game, hier könnt ihr mit eurer Tastatur ganz einfach Sanke spielen. Am Handy oder tablet kann man ohne eine zusaätzliche Tastatur das Spiel leider nicht Spielen. Wir wünschen euch viel Spaß beim Spielen.">
+    <title>Snake Game | U:Bodigat.tk</title>
+    <link rel="stylesheet" href="style.css">
     <link rel="icon" href="/Bilder/Wartungsarbeitenprofilbild.png" type="image/x-icon">
-    <link rel="apple-touch-icon" href="https://ubodigat.tk/Bilder/Wartungsarbeitenprofilbild.png" />
-    <link rel="stylesheet" href="/Games/Schach/styles.css">
-    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700,600' rel='stylesheet' type='text/css'>
     <script src="/script.js"></script>
-    <script src="js/jquery.min.js"></script>
-    <script src="js/multithread/multithread.js"></script>
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-BE1B5EZY35"></script>
     <script>
@@ -65,46 +60,40 @@
     <!-- End Google Tag Manager -->
 </head>
 
-<body id="schachhintergrund">
+<body>
     <!-- Google Tag Manager (noscript) -->
     <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-WTDQC48"
     height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <!-- End Google Tag Manager (noscript) -->
-    <nav>
+    <main>
         <header>
-            <p> <a id="überschriftlink" href="https://ubodigat.tk">U:Bodigat.tk</a> | Schach</p>
+            <p><a id="überschriftlink" href="https://ubodigat.tk">U:Bodigat.tk</a> | Snake Spiel</p>
             <div id="headerinput">
                 <a href="https://github.com/Bodigat" target="_blank"> <button class="button">GitHub</button></a>
                 <a href="/Games/gamemenü.html"> <button class="button">Zum Gamemenü</button></a>
             </div>
         </header>
-    </nav>
 
-    <main>
+        <canvas id="canvas" width="1500" height="650"></canvas>
+
         <div>
-            <div id='main'>
-                <div class='statusdiv'>
-                    <p id='status'>Du bist dran ...</p>
-                </div>
-                <div style="float:right">
-                    <button onclick="startGame()" id="startbutton">Zurücksetzten</button>
-                    <p id="schwirigkeitenhintergrund">
-                        <b>Schwirigkeit:</b><br/>
-                        <input type="radio" name="difficulty" value="2"> Einfach<br>
-                        <input type="radio" name="difficulty" value="3"> Mittel<br>
-                        <input type="radio" name="difficulty" value="4" checked="true"> Schwer<br>
-                        <input type="radio" name="difficulty" value="6"> Extrem Schwer<br>
-                    </p>
-                </div>
-                <div id='chessdiv'>
-                    <table id='chessboard'></table>
-                </div>
+            <h4 id="tastenbelegungenüberschrift">Tastenbelegungen</h4>
+
+            <button id="tastenbelegungen">↑</button>
+            <button id="tastenbelegungen">←</button>
+            <button id="tastenbelegungen">↓</button>
+            <button id="tastenbelegungen">→</button>
+            <div>
+                <button id="tastenbelegungen">Hoch</button>
+                <button id="tastenbelegungen">Links</button>
+                <button id="tastenbelegungen">Runter</button>
+                <button id="tastenbelegungen">Rechts</button>
             </div>
-            <script src="js/chessboard.js "></script>
-            <script src="js/index.js "></script>
         </div>
+
     </main>
 
+    <script src="scripts.js"></script>
 </body>
 
 </html>
