@@ -126,3 +126,10 @@ header:hover {
     text-decoration: none;
     color: #fff;
 }
+
+#snakehintergrund {
+    background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.5)), url(/Bilder/UBodigat.tk\ SnakeGame\ Hintergrundbild.jpg);
+    background-size: cover;
+    background-attachment: fixed;
+    background-position: center;
+}
