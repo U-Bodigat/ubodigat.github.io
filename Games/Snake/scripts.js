@@ -23,7 +23,7 @@ document.addEventListener('keydown', keyDown);
 draw();
 
 function draw() {
-    ctx.fillStyle = '#091b33';
+    ctx.fillStyle = '#066e46';
     ctx.fillRect(0, 0, canvas.width, canvas.height);
     ctx.fillStyle = 'white';
 
