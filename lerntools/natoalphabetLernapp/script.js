@@ -29,6 +29,7 @@ const natoAlphabet = [
 
 let currentQuestion = 0;
 let shuffledAlphabet = shuffleArray(natoAlphabet);
+let wordsVisible = false;
 
 function shuffleArray(array) {
     const shuffled = array.slice();
@@ -46,7 +47,7 @@ function showQuestion() {
     letterElement.textContent = shuffledAlphabet[currentQuestion].letter;
     questionElement.textContent = "Welches Wort gehört zum Buchstaben ";
     questionElement.appendChild(letterElement);
-    questionElement.textContent += " ?";
+    questionElement.textContent += "?";
 }
 
 function checkAnswer() {
@@ -62,10 +63,6 @@ function checkAnswer() {
     const speech = new SpeechSynthesisUtterance();
     speech.text = shuffledAlphabet[currentQuestion].word;
     speech.lang = "en-en";
-    // Versuchen Sie, die Lautstärke anzupassen, falls der Browser dies unterstützt
-    if ("volume" in speech) {
-        speech.volume = 100; // Erhöhen Sie den Wert hier, um die Lautstärke anzupassen
-    }
     speechSynthesis.speak(speech);
 
     document.getElementById("answer").value = "";
@@ -74,6 +71,25 @@ function checkAnswer() {
         showQuestion();
     } else {
         alert("Das war die letzte Frage!");
+    }
+}
+
+function showWords() {
+    const wordsElement = document.getElementById("words");
+    wordsElement.innerHTML = "";
+
+    if (wordsVisible) {
+        document.getElementById("toggleButton").textContent = "Wörter anzeigen";
+        wordsVisible = false;
+    } else {
+        for (let i = 0; i < natoAlphabet.length; i++) {
+            const listItem = document.createElement("li");
+            listItem.textContent = natoAlphabet[i].letter + " - " + natoAlphabet[i].word;
+            wordsElement.appendChild(listItem);
+
+        }
+        document.getElementById("toggleButton").textContent = "Wörter ausblenden";
+        wordsVisible = true;
     }
 }
 

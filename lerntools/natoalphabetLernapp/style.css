@@ -134,6 +134,7 @@ h1 {
     background-color: #4CAF50;
     color: white;
     margin-top: 10px;
+    margin-left: 3px;
     border: none;
     border-radius: 10px;
     cursor: pointer;
@@ -144,6 +145,12 @@ h1 {
 .check-btn:hover {
     background-color: #00ff0d;
     color: #575757;
+}
+
+#words {
+    margin-top: 15px;
+    margin-left: 47%;
+    text-align: left;
 }
 
 #natoalphabetlernapphintergrund {
