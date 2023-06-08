@@ -10,26 +10,27 @@
     <meta name="author" content="U:Bodigat">
     <meta name="publisher" content="U:Bodigat">
     <meta name="copyright" content="U:Bodigat">
-    <meta name="description" content="">
+    <meta name="description" content="Dieser Text befindet sich noch in arbeit.">
     <meta property="og:site_name" content="U:Bodigat.tk">
     <meta property="og:url" content="https://ubodigat.tk">
-    <meta property="og:title" content="Game Menü | U:Bodigat.tk">
+    <meta property="og:title" content="PingPong | U:Bodigat.tk">
     <meta property="og:type" content="website">
-    <meta property="og:description" content="">
+    <meta property="og:description" content="Dieser Text befindet sich noch in arbeit.">
     <meta property="og:image" content="https://cdn.discordapp.com/attachments/927268634492031026/994779232129519656/UBodigat_Werbung.png">
     <meta property="og:image:secure_url" content="https://cdn.discordapp.com/attachments/927268634492031026/994779232129519656/UBodigat_Werbung.png">
     <meta property="og:image:width" content="500">
     <meta property="og:image:height" content="500">
     <meta property="twitter:card" content="summary_large_image">
     <meta property="twitter:url" content="https://ubodigat.tk">
-    <meta property="twitter:title" content="Game Menü | U:Bodigat.tk">
-    <meta property="twitter:description" content="">
+    <meta property="twitter:title" content="PingPong | U:Bodigat.tk">
+    <meta property="twitter:description" content="Dieser Text befindet sich noch in arbeit.">
     <meta property="twitter:image" content="https://cdn.discordapp.com/attachments/927268634492031026/994779232129519656/UBodigat_Werbung.png">
-    <title>Game Menü | U:Bodigat.tk</title>
-    <link rel="stylesheet" href="/style.css">
+    <title>PingPong | U:Bodigat.tk</title>
     <link rel="icon" href="/Bilder/Wartungsarbeitenprofilbild.png" type="image/x-icon">
     <link rel="apple-touch-icon" href="https://ubodigat.tk/Bilder/Wartungsarbeitenprofilbild.png" />
-    <script src="/script.js"></script>
+    <link rel="stylesheet" href="/Games/PingPong/style.css">
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700,600' rel='stylesheet' type='text/css'>
+    <script src="/Games/PingPong/script.js"></script>
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-BE1B5EZY35"></script>
     <script>
@@ -62,39 +63,38 @@
     <!-- End Google Tag Manager -->
 </head>
 
-<body id="Hintergrundmenü">
+<body id="pingponghintergrund">
     <!-- Google Tag Manager (noscript) -->
     <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-WTDQC48"
     height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <!-- End Google Tag Manager (noscript) -->
     <nav>
         <header>
-            <p><a id="überschriftlink" href="https://ubodigat.tk">U:Bodigat.tk</a> | Game Menü</p>
+            <p> <a id="überschriftlink" href="https://ubodigat.tk">U:Bodigat.tk</a> | PingPong</p>
             <div id="headerinput">
+                <button onclick="showPopup()" class="button">Erklärung</button>
                 <a href="https://github.com/Bodigat" target="_blank"> <button class="button">GitHub</button></a>
-                <a href="/menü.html"> <button class="button">Zum Menü</button></a>
+                <a href="/Games/gamemenü.html"> <button class="button">Zum Gamemenü</button></a>
             </div>
         </header>
     </nav>
 
-    <div>
-        <table id="menütabelle">
-            <tr>
-                <td>
-                    <a href="/Games/Snake/index.html">Snake Game</a>
-                </td>
-                <td id="erstetabellenmenüpunkt">
-                    <a href="/Games/Schach/index.html">Schach</a>
-                </td>
-                <td>
-                    <a href="/Games/PingPong/index.html">PingPong</a>
-                </td>
-                <td>
-                    <a href="">(Coming soon ...)</a>
-                </td>
-            </tr>
-        </table>
-    </div>
+    <main>
+        <button id="startButton" onclick="startGame()">Start</button>
+        <button id="resetButton" onclick="resetGame()">Reset</button>
+        <div id="game">
+            <div id="score">
+                <div id="scoreB" class="score">0</div>
+                <div id="scoreA" class="score">0</div>
+            </div>
+            <div id="midLine"></div>
+            <div id="paddleA"></div>
+            <div id="paddleB"></div>
+            <div id="ball"></div>
+        </div>
+
+        <script src="script.js"></script>
+    </main>
 
 </body>
 
