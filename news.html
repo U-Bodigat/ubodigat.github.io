@@ -87,8 +87,8 @@
         </section>
         <section>
             <h2>Wetterbericht</h2>
-            <div id="weather-container">
-                <p id="location">Lade Wetterdaten...</p>
+            <div id="weather-info">
+                <img id="weather-icon" src="https://cdn.icon-icons.com/icons2/857/PNG/512/weather-3_icon-icons.com_67743.png" alt="Wetter-Icon">
                 <p id="temperature"></p>
                 <p id="description"></p>
             </div>
@@ -99,31 +99,39 @@
     </main>
 
     <script>
-        window.addEventListener('load', () => {
-            const locationElement = document.getElementById('location');
-            const temperatureElement = document.getElementById('temperature');
-            const descriptionElement = document.getElementById('description');
+        // Stelle eine Verbindung zur OpenWeather API her
+        const apiKey = '516ad7cf647d0ef14dc8563616e85ec4';
+        const weatherUrl = `https://api.openweathermap.org/data/2.5/weather?q=Munich&units=metric&lang=de&appid=${apiKey}`;
 
-            const proxyUrl = 'https://cors-anywhere.herokuapp.com/';
-            const weatherUrl = 'https://www.wetter.com/wetter_aktuell/wettervorhersage/3_tagesvorhersage/deutschland/muenchen/DE0006515.html';
+        // Runde eine Zahl auf die gewünschte Anzahl von Dezimalstellen
+        function roundNumber(number, decimals) {
+            return Math.round(number * 10 ** decimals) / 10 ** decimals;
+        }
 
-            fetch(proxyUrl + weatherUrl)
-                .then(response => response.text())
+        // Hole das Wetter von der API und aktualisiere die Anzeige
+        function fetchWeather() {
+            fetch(weatherUrl)
+                .then(response => response.json())
                 .then(data => {
-                    const parser = new DOMParser();
-                    const htmlDocument = parser.parseFromString(data, 'text/html');
-                    const location = htmlDocument.querySelector('.forecast-location h1').textContent.trim();
-                    const temperature = htmlDocument.querySelector('.forecast-temperature .degree').textContent.trim();
-                    const description = htmlDocument.querySelector('.forecast-text').textContent.trim();
+                    const temperature = roundNumber(data.main.temp, 0); // Auf 0 Dezimalstellen runden
+                    const description = data.weather[0].description;
+                    const icon = data.weather[0].icon;
 
-                    locationElement.textContent = location;
-                    temperatureElement.textContent = temperature;
-                    descriptionElement.textContent = description;
+                    document.getElementById('temperature').textContent = `Temperatur: ${temperature}°C`;
+                    document.getElementById('description').textContent = `Beschreibung: ${description}`;
+                    document.getElementById('weather-icon').src = `http://openweathermap.org/img/wn/${icon}.png`;
                 })
                 .catch(error => {
                     console.log('Fehler beim Abrufen des Wetters:', error);
                 });
-        });
+        }
+
+        // Aktualisiere das Wetter alle 5 Minuten
+        setInterval(fetchWeather, 300000);
+
+        // Rufe das Wetter beim Laden der Seite auf
+        fetchWeather();
+        u
     </script>
 
 </body>

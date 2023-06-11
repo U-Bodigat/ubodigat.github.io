@@ -699,27 +699,23 @@ section {
     margin-left: 80px;
 }
 
-h1 {
-    color: #333333;
+#weather-icon {
+    width: 50px;
+    height: 50px;
+    filter: brightness(200%);
 }
 
-#weather-container {
-    background-color: #464646;
-    width: 300px;
-    margin: 20px auto;
-    padding: 20px;
-    border-radius: 5px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+#weather-info {
+    margin-bottom: 20px;
+    color: #ffffff;
 }
 
-#location {
-    font-weight: bold;
-}
 
-#temperature {
-    font-size: 24px;
-}
+/*Ab hier Wetterbericht (menü.html)*/
 
-#description {
-    color: #666666;
+#Wetterbericht {
+    text-align: end;
+    justify-content: end;
+    align-items: end;
+    margin-top: -200px;
 }

@@ -79,6 +79,14 @@
     </nav>
 
     <div>
+        <div id="Wetterbericht">
+            <h4 id="weather-info">Wetterbericht-München</h4>
+            <div id="weather-info">
+                <img id="weather-icon" src="https://cdn.icon-icons.com/icons2/857/PNG/512/weather-3_icon-icons.com_67743.png" alt="Wetter-Icon">
+                <p id="temperature"></p>
+                <p id="description"></p>
+            </div>
+        </div>
         <table id="menütabelle">
             <tr>
                 <td id="erstetabellenmenüpunkt">
@@ -110,6 +118,41 @@
             </tr>
         </table>
     </div>
+    <script>
+        // Stelle eine Verbindung zur OpenWeather API her
+        const apiKey = '516ad7cf647d0ef14dc8563616e85ec4';
+        const weatherUrl = `https://api.openweathermap.org/data/2.5/weather?q=Munich&units=metric&lang=de&appid=${apiKey}`;
+
+        // Runde eine Zahl auf die gewünschte Anzahl von Dezimalstellen
+        function roundNumber(number, decimals) {
+            return Math.round(number * 10 ** decimals) / 10 ** decimals;
+        }
+
+        // Hole das Wetter von der API und aktualisiere die Anzeige
+        function fetchWeather() {
+            fetch(weatherUrl)
+                .then(response => response.json())
+                .then(data => {
+                    const temperature = roundNumber(data.main.temp, 0); // Auf 0 Dezimalstellen runden
+                    const description = data.weather[0].description;
+                    const icon = data.weather[0].icon;
+
+                    document.getElementById('temperature').textContent = `Temperatur: ${temperature}°C`;
+                    document.getElementById('description').textContent = `Beschreibung: ${description}`;
+                    document.getElementById('weather-icon').src = `http://openweathermap.org/img/wn/${icon}.png`;
+                })
+                .catch(error => {
+                    console.log('Fehler beim Abrufen des Wetters:', error);
+                });
+        }
+
+        // Aktualisiere das Wetter alle 5 Minuten
+        setInterval(fetchWeather, 300000);
+
+        // Rufe das Wetter beim Laden der Seite auf
+        fetchWeather();
+        u
+    </script>
 
 </body>
 
