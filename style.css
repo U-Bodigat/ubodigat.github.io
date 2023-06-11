@@ -685,3 +685,41 @@ a {
     background-attachment: fixed;
     background-position: center;
 }
+
+
+/*Ab hier ist der CSS Code von news.html*/
+
+section {
+    border: 3px solid rgba(45, 156, 78, 0.616);
+    border-radius: 15px;
+    padding: 20px 20px;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    margin-left: 80px;
+}
+
+h1 {
+    color: #333333;
+}
+
+#weather-container {
+    background-color: #464646;
+    width: 300px;
+    margin: 20px auto;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+#location {
+    font-weight: bold;
+}
+
+#temperature {
+    font-size: 24px;
+}
+
+#description {
+    color: #666666;
+}
