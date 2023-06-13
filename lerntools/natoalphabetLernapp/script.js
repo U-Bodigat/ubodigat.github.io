@@ -1,4 +1,4 @@
-// INfotext Funktion
+// Infotext Funktion
 
 function showPopup() {
     alert("Das NATO - Alphabet wird in der Luftfahrt und anderen Kommunikationsbereichen verwendet, um Buchstaben klar und eindeutig zu übermitteln.Es besteht aus speziellen Wörtern, die jedem Buchstaben zugeordnet sind und Verwechslungen minimieren.Es ermöglicht eine präzise Kommunikation und trägt zur Sicherheit und Effizienz bei.");

@@ -13,7 +13,7 @@
     <meta name="description" content="Dieser Text befindet sich noch in Arbeit">
     <meta property="og:site_name" content="U:Bodigat.tk">
     <meta property="og:url" content="https://ubodigat.tk">
-    <meta property="og:title" content="Rechtschreib Lernapp | U:Bodigat.tk">
+    <meta property="og:title" content="Deutsch Lernapp | U:Bodigat.tk">
     <meta property="og:type" content="website">
     <meta property="og:description" content="Dieser Text befindet sich noch in Arbeit">
     <meta property="og:image" content="https://cdn.discordapp.com/attachments/927268634492031026/994779232129519656/UBodigat_Werbung.png">
@@ -22,10 +22,10 @@
     <meta property="og:image:height" content="500">
     <meta property="twitter:card" content="summary_large_image">
     <meta property="twitter:url" content="https://ubodigat.tk">
-    <meta property="twitter:title" content="Rechtschreib Lernapp | U:Bodigat.tk">
+    <meta property="twitter:title" content="Deutsch Lernapp | U:Bodigat.tk">
     <meta property="twitter:description" content="Dieser Text befindet sich noch in Arbeit">
     <meta property="twitter:image" content="https://cdn.discordapp.com/attachments/927268634492031026/994779232129519656/UBodigat_Werbung.png">
-    <title>Rechtschreib Lernapp | U:Bodigat.tk</title>
+    <title>Deutsch Lernapp | U:Bodigat.tk</title>
     <link rel="icon" href="/Bilder/Wartungsarbeitenprofilbild.png" type="image/x-icon">
     <link rel="apple-touch-icon" href="https://ubodigat.tk/Bilder/Wartungsarbeitenprofilbild.png" />
     <script src="/script.js"></script>
@@ -70,7 +70,7 @@
     <!-- End Google Tag Manager (noscript) -->
     <nav>
         <header>
-            <p><a id="überschriftlink" href="https://ubodigat.tk">U:Bodigat.tk</a> | Rechtschreib Lernapp</p>
+            <p><a id="überschriftlink" href="https://ubodigat.tk">U:Bodigat.tk</a> | Deutsch Lernapp</p>
             <div id="headerinput">
                 <button onclick="showPopup()" class="button">INFO</button>
                 <a href="https://github.com/Bodigat" target="_blank"><button class="button">GitHub</button></a>
@@ -80,63 +80,142 @@
     </nav>
 
     <main>
-        <div>
-            <div>
-                <h1>Deutsch Rechtschreibung Lernapp</h1>
-                <p id="punktestand">Punktestand: 0</p>
-                <form id="frage1">
-                    <h3>Frage 1:</h3>
-                    <p>Was ist der Plural von "Haus"?</p>
-                    <label>
-                <input type="radio" name="frage1" value="a">Hauser</input>
-              </label>
-                    <label>
-                <input type="radio" name="frage1" value="b">Häuser</input>
-              </label>
-                    <label>
-                <input type="radio" name="frage1" value="c">Hausen</input>
-              </label>
-                    <br>
-                    <button type="button" id="buttonantwort" onclick="checkAnswer('frage1', 'b')">Antwort</button>
-                    <p id="ergebnis1"></p>
-                </form>
+        <div class="container">
+            <h1 class="title">Deutsch Lern-App</h1>
 
-                <form id="frage2" style="display:none">
-                    <h3>Frage 2:</h3>
-                    <p>Wie nennt man das Gegenteil von "kalt"?</p>
-                    <label>
-                <input type="radio" name="frage2" value="a">Warm</input>
-              </label>
-                    <label>
-                <input type="radio" name="frage2" value="b">Heiß</input>
-              </label>
-                    <label>
-                <input type="radio" name="frage2" value="c">Eisig</input>
-              </label>
-                    <br>
-                    <button type="button" id="buttonantwort" onclick="checkAnswer('frage2', 'a')">Antwort</button>
-                    <p id="ergebnis2"></p>
-                </form>
+            <div id="question-container">
+                <h2 class="question" id="question">Frage:</h2>
+                <input type="text" id="answer-input" class="answer-input">
+                <button id="check-button" class="action-button">Überprüfen</button>
+            </div>
 
-                <form id="frage3" style="display:none">
-                    <h3>Frage 3:</h3>
-                    <p>Wie nennt man das Gegenstück zu "groß"?</p>
-                    <label>
-                <input type="radio" name="frage3" value="a">Klein</input>
-              </label>
-                    <label>
-                <input type="radio" name="frage3" value="b">Hoch</input>
-              </label>
-                    <label>
-                <input type="radio" name="frage3" value="c">Lang</input>
-              </label>
-                    <br>
-                    <button type="button" id="buttonantwort" onclick="checkAnswer('frage3', 'a')">Antwort</button>
-                    <p id="ergebnis3"></p>
-                </form>
+            <div id="result-container">
+                <p id="result"></p>
+                <button id="next-button" class="action-button">Nächste Frage</button>
             </div>
         </div>
     </main>
+
+    <script>
+        // Fragen und Antworten
+        const questions = [{
+                question: 'Welches Wort ist korrekt geschrieben? a) Apfel, b) Appfel, c) Appfel?',
+                answer: 'a) Apfel'
+            }, {
+                question: 'Welches Wort ist falsch geschrieben? a) Schule, b) Schuhle, c) Schuhe?',
+                answer: 'b) Schuhle'
+            }, {
+                question: 'Welches Wort ist korrekt geschrieben? a) Buchstabfehler, b) Buchstabefehler, c) Buchstabfeehler?',
+                answer: 'b) Buchstabefehler'
+            }, {
+                question: 'Setze das richtige Satzzeichen ein: Ich gehe heute ins Kino a) Ich gehe heute ins Kino! b) Ich gehe heute ins Kino, c) Ich gehe heute ins Kino.',
+                answer: 'c) Ich gehe heute ins Kino.'
+            }, {
+                question: 'Setze das richtige Satzzeichen ein: Kannst du mir helfen a) Kannst du mir helfen! b) Kannst du mir helfen, c) Kannst du mir helfen?',
+                answer: 'c) Kannst du mir helfen?'
+            }, {
+                question: 'Setzte den richtigen Artikel ein: Meine Schwester, ___ in Paris lebt, kommt nächste Woche zu Besuch.',
+                answer: 'die'
+            }, {
+                question: 'Setzte den richtigen Artikel ein: ___ Mädchen trägt eine rote Jacke.',
+                answer: 'Das'
+            }, {
+                question: 'Setzte den richtigen Artikel ein: ___ Hund spielt im Park.',
+                answer: 'Der'
+            }, {
+                question: 'Setze im folgenden Satz `das` oder `dass` ein: Es freut mich, ___ du gekommen bist.',
+                answer: 'dass'
+            }, {
+                question: 'Setze im folgenden Satz `das` oder `dass` ein: Hast du den Kuchen probiert? Ja, ___ war wirklich lecker!',
+                answer: 'das'
+            }, {
+                question: 'Setze im folgenden Satz `das` oder `dass` ein: ___ Haus am Ende der Straße ist sehr alt.',
+                answer: 'Das'
+            }, {
+                question: 'Setze im folgenden Satz `das` oder `dass` ein:  ___ ist eine Konjunktion und das ein Artikel oder Pronomen.',
+                answer: 'Dass'
+            }, {
+                question: 'Nach welchem Wort muss ein komme eingefügt werden: Ich gehe morgen einkaufen weil ich noch einige Dinge benötige.',
+                answer: 'einkaufen'
+            }
+            // Weitere Fragen und Antworten hier hinzufügen
+        ];
+
+        let currentQuestion = 0;
+
+        // Fragen mischen
+        shuffleQuestions();
+
+        // Elemente aus dem DOM abrufen
+        const questionElement = document.getElementById('question');
+        const answerInputElement = document.getElementById('answer-input');
+        const checkButtonElement = document.getElementById('check-button');
+        const resultElement = document.getElementById('result');
+        const nextButtonElement = document.getElementById('next-button');
+        const resultContainerElement = document.getElementById('result-container');
+
+        // Frage anzeigen
+        function showQuestion() {
+            questionElement.textContent = questions[currentQuestion].question;
+            answerInputElement.value = '';
+            resultContainerElement.style.display = 'none';
+        }
+
+        // Antwort überprüfen
+        function checkAnswer() {
+            const userAnswer = answerInputElement.value.trim();
+            const correctAnswer = questions[currentQuestion].answer;
+
+            if (userAnswer.toLowerCase() === correctAnswer.toLowerCase()) {
+                resultElement.textContent = 'Richtig!';
+                resultElement.style.color = 'green';
+                speakText('Richtig!');
+            } else {
+                resultElement.textContent = 'Falsch! Die richtige Antwort ist: ' + correctAnswer;
+                resultElement.style.color = 'red';
+                speakText('Falsch! Die richtige Antwort ist: ' + correctAnswer);
+            }
+
+            resultContainerElement.style.display = 'block';
+        }
+
+        // Nächste Frage anzeigen
+        function showNextQuestion() {
+            currentQuestion++;
+            if (currentQuestion >= questions.length) {
+                currentQuestion = 0;
+            }
+            showQuestion();
+        }
+
+        // Text vorlesen
+        function speakText(text) {
+            const speech = new SpeechSynthesisUtterance(text);
+            speech.lang = 'de-DE';
+            window.speechSynthesis.speak(speech);
+        }
+
+        // Event Listener hinzufügen
+        checkButtonElement.addEventListener('click', checkAnswer);
+        nextButtonElement.addEventListener('click', showNextQuestion);
+
+        answerInputElement.addEventListener('keydown', function(event) {
+            if (event.key === 'Enter') {
+                checkAnswer();
+            }
+        });
+
+        // App initialisieren
+        showQuestion();
+
+        // Funktion zum Mischen der Fragen
+        function shuffleQuestions() {
+            for (let i = questions.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [questions[i], questions[j]] = [questions[j], questions[i]];
+            }
+        }
+    </script>
 
 </body>
 
