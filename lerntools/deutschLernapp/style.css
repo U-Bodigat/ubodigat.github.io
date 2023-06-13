@@ -166,3 +166,20 @@ input:focus {
     outline: 0;
     border-bottom: 3px solid #00ff6a;
 }
+
+@media (max-width: 530px) {
+    #info {
+        margin-bottom: 10px;
+    }
+    #headerinput {
+        flex-direction: column;
+    }
+    a {
+        margin-bottom: 10px;
+    }
+    #überschriftlink {
+        margin: auto;
+        margin-left: -80px;
+        margin-right: -5px;
+    }
+}
