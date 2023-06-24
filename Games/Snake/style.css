@@ -128,7 +128,7 @@ header:hover {
 }
 
 #snakehintergrund {
-    background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.5)), url(/Bilder/ubodigat.com\ \ Snake\ Game\ Hintergrund.png);
+    background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.5)), url(/Bilder/ubodigat.com\ Snake\ Game\ Hintergrund.png);
     background-size: cover;
     background-attachment: fixed;
     background-position: center;
