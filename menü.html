@@ -119,8 +119,8 @@
         </table>
     </div>
     <script>
-        // Stelle eine Verbindung zur OpenWeather API her
-        const apiKey = '516ad7cf647d0ef14dc8563616e85ec4';
+        require('dotenv').config();
+        const apiKey = process.env.API_KEY;
         const weatherUrl = `https://api.openweathermap.org/data/2.5/weather?q=Munich&units=metric&lang=de&appid=${apiKey}`;
 
         // Runde eine Zahl auf die gewünschte Anzahl von Dezimalstellen
