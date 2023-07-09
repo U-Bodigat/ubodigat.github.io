@@ -65,13 +65,6 @@ header p {
     cursor: pointer;
 }
 
-#deutschlernapphintergrund {
-    background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.7)), url(/Bilder/ubodigat.com\ NATO\ Alphabet\ Hintergrund.png);
-    background-size: cover;
-    background-attachment: fixed;
-    background-position: center;
-}
-
 #überschriftlink {
     text-decoration: none;
     color: #fff;
@@ -154,7 +147,7 @@ h1 {
 }
 
 #natoalphabetlernapphintergrund {
-    background-image: linear-gradient(rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.9)), url(/Bilder/ubodigat.com\ \ NATO\ Alphabet\ Hintergrund.png);
+    background-image: linear-gradient(rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.9)), url(/Bilder/ubodigat.com\ NATO\ Alphabet\ Hintergrund.png);
     background-size: cover;
     background-attachment: fixed;
     background-position: center;
