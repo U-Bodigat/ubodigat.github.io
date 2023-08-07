@@ -65,13 +65,6 @@ header p {
     cursor: pointer;
 }
 
-#deutschlernapphintergrund {
-    background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.7)), url(/Bilder/ubodigat.com\ Ping\ Pong\ Hintergrund.gif);
-    background-size: cover;
-    background-attachment: fixed;
-    background-position: center;
-}
-
 #überschriftlink {
     text-decoration: none;
     color: #fff;
