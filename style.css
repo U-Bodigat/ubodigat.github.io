@@ -76,6 +76,11 @@ footer {
     text-align: end;
 }
 
+a {
+    text-decoration: none;
+    color: #fff;
+}
+
 .content {
     position: center;
     margin-top: 50%;
@@ -137,7 +142,7 @@ footer {
     color: #ffffff;
     background-color: #00ff84b9;
     border: 5px solid #00ff84b9;
-    box-shadow: 0 0 10px #fff, 0 0 10px #fff, 0 0 21px #fff, 0 0 42px #fff, 0 0 82px #00ff84b9, 0 0 92px #00ff84b9, 0 0 102px #00ff84b9, 0 0 151px #00ff84b9;
+    box-shadow: 0 0 10px #fff, 0 0 50px #ffffff, 0 0 50px #00d66fb9, 0 0 110px #00d66fb9;
 }
 
 @media (max-width: 1000px) {
@@ -204,6 +209,9 @@ footer {
         margin-top: 20px;
         margin-bottom: 30px;
     }
+    #wetterbericht {
+        display: none;
+    }
 }
 
 .button {
@@ -226,20 +234,6 @@ footer {
 .button a {
     color: #fff;
     text-decoration: none;
-}
-
-#Hintergrundstart {
-    background-image: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), url(Bilder/ubodigat.com\ Hintergrund.gif);
-    background-size: cover;
-    background-attachment: fixed;
-    background-position: center;
-}
-
-#Hintergrundmenü {
-    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.8)), url(Bilder/ubodigat.com\ Menü\ Hintergrund.jpg);
-    background-size: cover;
-    background-attachment: fixed;
-    background-position: center;
 }
 
 main {
@@ -434,13 +428,6 @@ button:hover {
     color: #fff;
 }
 
-#Hintergrundbeschreibung {
-    background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.6)), url(Bilder/ubodigat.com\ Beschreibung\ Hintergrund.png);
-    background-size: cover;
-    background-attachment: fixed;
-    background-position: center;
-}
-
 #beschreibungsüberschrift {
     color: #fff;
     text-align: start;
@@ -533,11 +520,6 @@ button:hover {
     }
 }
 
-a {
-    text-decoration: none;
-    color: #fff;
-}
-
 @media (max-width: 1400px) {
     .content {
         font-size: 15px;
@@ -580,12 +562,8 @@ a {
     }
 }
 
-#downloadpage {
-    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(Bilder/ubodigat.com\ download\ Hintergrund.jpg);
-    background-size: cover;
-    background-attachment: fixed;
-    background-position: center;
-}
+
+/*CSS Code für download.hmtl*/
 
 #maindownload {
     margin: 0;
@@ -606,9 +584,6 @@ a {
     margin-left: 25%;
     margin-right: -45%;
 }
-
-
-/*Ab hier downloads (Tabelle)*/
 
 #downloads {
     margin-top: 15%;
@@ -679,6 +654,44 @@ a {
     margin-left: -90%;
 }
 
+
+/*CSS Code für tutorials.html*/
+
+iframe {
+    border-radius: 20px;
+}
+
+
+/*Hintergründe*/
+
+#Hintergrundstart {
+    background-image: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), url(Bilder/ubodigat.com\ Hintergrund.gif);
+    background-size: cover;
+    background-attachment: fixed;
+    background-position: center;
+}
+
+#Hintergrundmenü {
+    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.8)), url(Bilder/ubodigat.com\ Menü\ Hintergrund.jpg);
+    background-size: cover;
+    background-attachment: fixed;
+    background-position: center;
+}
+
+#Hintergrundbeschreibung {
+    background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.6)), url(Bilder/ubodigat.com\ Beschreibung\ Hintergrund.png);
+    background-size: cover;
+    background-attachment: fixed;
+    background-position: center;
+}
+
+#downloadpage {
+    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(Bilder/ubodigat.com\ download\ Hintergrund.jpg);
+    background-size: cover;
+    background-attachment: fixed;
+    background-position: center;
+}
+
 #tutorialshintergrund {
     background-image: linear-gradient(rgba(0, 0, 0, 0.0), rgba(0, 0, 0, 0.9)), url(/Bilder/ubodigat.com\ Tutorial\ Hintergrund.png);
     background-size: cover;
@@ -687,36 +700,14 @@ a {
 }
 
 
-/*Ab hier ist der CSS Code von news.html*/
-
-section {
-    border: 3px solid rgba(45, 156, 78, 0.616);
-    border-radius: 15px;
-    padding: 20px 20px;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    margin-left: 80px;
-}
-
-#weather-icon {
-    width: 50px;
-    height: 50px;
-    filter: brightness(200%);
-}
-
-#weather-info {
-    margin-bottom: 20px;
-    color: #ffffff;
-}
-
-
 /*Ab hier Wetterbericht (menü.html)*/
 
-#Wetterbericht {
+#wetterbericht {
+    color: #24ff5b;
     text-align: end;
     justify-content: end;
     align-items: end;
-    margin-top: -200px;
+    margin-top: -100px;
+    margin-right: 20px;
     margin-bottom: 50px;
 }

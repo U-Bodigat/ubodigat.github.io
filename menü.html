@@ -79,7 +79,7 @@
     </nav>
 
     <div>
-        <div id="Wetterbericht">
+        <div id="wetterbericht">
             <h4 id="weather-info">Wetterbericht-München</h4>
             <div id="weather-info">
                 <img id="weather-icon" src="https://cdn.icon-icons.com/icons2/857/PNG/512/weather-3_icon-icons.com_67743.png" alt="Wetter-Icon">
@@ -119,8 +119,8 @@
         </table>
     </div>
     <script>
-        require('dotenv').config();
-        const apiKey = process.env.API_KEY;
+        // Stelle eine Verbindung zur OpenWeather API her
+        const apiKey = '516ad7cf647d0ef14dc8563616e85ec4';
         const weatherUrl = `https://api.openweathermap.org/data/2.5/weather?q=Munich&units=metric&lang=de&appid=${apiKey}`;
 
         // Runde eine Zahl auf die gewünschte Anzahl von Dezimalstellen

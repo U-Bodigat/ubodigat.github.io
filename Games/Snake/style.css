@@ -93,10 +93,9 @@ header:hover {
 #tastenbelegungen {
     text-align: center;
     justify-content: center;
-    align-items: ce;
     background-color: #00461e;
     color: #fff;
-    font-size: 30px;
+    font-size: 25px;
     border: unset;
     padding: 5px;
     border-radius: 10px;
@@ -118,7 +117,7 @@ header:hover {
     cursor: crosshair;
     text-align: center;
     color: #fff;
-    font-size: 30px;
+    font-size: 25px;
     margin-top: -25px;
 }
 

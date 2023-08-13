@@ -282,12 +282,14 @@ input {
     background: transparent;
     cursor: text;
     font-size: 23px;
+    border-top-right-radius: 5px 5px;
+    border-top-left-radius: 5px 5px;
     border-bottom-right-radius: 5px 5px;
     border-bottom-left-radius: 5px 5px;
 }
 
 input:hover {
-    background-color: #283763;
+    background-color: #28376352;
     text-align: center;
     color: beige;
     cursor: help;
