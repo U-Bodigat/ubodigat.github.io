@@ -186,6 +186,9 @@ a {
     #erstetabellenmenüpunkt {
         margin-top: 50%;
     }
+    #erstetabellenmenüpunkt1mal1 {
+        margin-top: 50%;
+    }
     #menütabelle td {
         color: #ffffff;
         text-align: center;
@@ -211,6 +214,18 @@ a {
     }
     #wetterbericht {
         display: none;
+    }
+}
+
+@media (max-width: 695px) {
+    #erstetabellenmenüpunkt1mal1 {
+        margin-top: 60%;
+    }
+}
+
+@media (max-width: 355px) {
+    #erstetabellenmenüpunkt1mal1 {
+        margin-top: 80%;
     }
 }
 
@@ -384,6 +399,9 @@ button:hover {
         width: 560;
         height: 315;
     }
+    #onevideo {
+        margin-top: 150px;
+    }
     .überschriftenvideos {
         margin-top: 10%;
         font-size: 35px;
@@ -416,6 +434,9 @@ button:hover {
     .tutorialvideos {
         width: 360px;
         height: 190px;
+    }
+    #onevideo {
+        margin-top: 150px;
     }
     .überschriftenvideos {
         margin-top: 10%;
@@ -499,6 +520,12 @@ button:hover {
     }
 }
 
+@media (max-width: 700px) {
+    #beschreibungsüberschrift {
+        margin-top: 150px;
+    }
+}
+
 @media (max-width: 550px) {
     #beschreibungsüberschrift {
         text-align: center;
@@ -517,6 +544,12 @@ button:hover {
     }
     .buttonsbeschreibungverlinken {
         display: none;
+    }
+}
+
+@media (max-width: 490px) {
+    #beschreibungsüberschrift {
+        margin-top: 200px;
     }
 }
 
@@ -710,4 +743,109 @@ iframe {
     margin-top: -100px;
     margin-right: 20px;
     margin-bottom: 50px;
+}
+
+@media (max-width: 1230px) {
+    #wetterbericht {
+        margin-right: 60px;
+    }
+}
+
+
+/*Responsive header*/
+
+@media (max-width: 960px) {
+    #headerinput a {
+        margin-top: 50px;
+    }
+}
+
+@media (max-width: 680px) {
+    #headerinput a {
+        margin-top: 50px;
+    }
+}
+
+@media (max-width: 600px) {
+    #headerinput a {
+        margin-left: 40px;
+        margin-right: -40px;
+    }
+}
+
+@media (max-width: 560px) {
+    #headerinput a {
+        margin-left: 65px;
+        margin-right: -65px;
+    }
+}
+
+@media (max-width: 540px) {
+    header p a {
+        margin-left: -70px;
+    }
+    #headerinput {
+        display: flex;
+        margin-top: -85px;
+        margin-bottom: 0px;
+    }
+    #headerinput a button {
+        font-size: 10px;
+        margin-top: 40px;
+        margin-left: 900px;
+        padding: 10px;
+        min-width: 100px;
+        font-weight: 600;
+        margin-left: 5px;
+    }
+}
+
+@media (max-width: 400px) {
+    nav header div {
+        margin-bottom: 10px;
+    }
+    header p a {
+        margin-left: -70px;
+    }
+    #headerinput {
+        display: flex;
+        margin-top: -80px;
+        margin-bottom: 0px;
+    }
+    #headerinput a button {
+        font-size: 10px;
+        margin-top: 40px;
+        margin-left: 900px;
+        padding: 10px;
+        min-width: 100px;
+        font-weight: 600;
+        margin-left: 5px;
+    }
+}
+
+@media (max-width: 350px) {
+    nav header div {
+        margin-bottom: 10px;
+    }
+    header p a {
+        margin-left: -70px;
+    }
+    #headerinput {
+        display: flex;
+        margin-top: -80px;
+        margin-bottom: 0px;
+    }
+    #headerinput a {
+        margin-left: 80px;
+        margin-right: -80px;
+    }
+    #headerinput a button {
+        font-size: 10px;
+        margin-top: 40px;
+        margin-left: 900px;
+        padding: 10px;
+        min-width: 100px;
+        font-weight: 600;
+        margin-left: 5px;
+    }
 }
