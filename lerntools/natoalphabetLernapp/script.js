@@ -97,7 +97,6 @@ function showWords() {
             const listItem = document.createElement("li");
             listItem.textContent = natoAlphabet[i].letter + " - " + natoAlphabet[i].word;
             wordsElement.appendChild(listItem);
-
         }
         document.getElementById("toggleButton").textContent = "Wörter ausblenden";
         wordsVisible = true;
