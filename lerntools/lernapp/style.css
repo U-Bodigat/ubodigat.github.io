@@ -326,12 +326,25 @@ footer {
 #Prüfen {
     text-align: center;
     margin-top: 15px;
-    margin-left: 60%;
+    margin-left: 30%;
     margin-right: 20px;
+}
+
+#Prüfen:hover {
+    background-color: #00ff0d;
+    color: #575757;
+    font-weight: 800;
 }
 
 #löschen {
     margin-right: 70%;
+}
+
+#löschen:hover {
+    margin-right: 70%;
+    background-color: #00ff0d;
+    color: #575757;
+    font-weight: 800;
 }
 
 #Übungsliste {
@@ -359,6 +372,16 @@ footer {
     margin-left: 60%;
     margin-right: 20px;
     margin-top: 10px;
+}
+
+#Hinzufügebutton h4 {
+    font-weight: 700;
+}
+
+#Hinzufügebutton:hover {
+    background-color: #00ff0d;
+    color: #575757;
+    font-weight: 800;
 }
 
 .button {

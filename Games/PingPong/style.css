@@ -149,16 +149,6 @@ header p {
     border-radius: 50%;
 }
 
-#startButton {
-    padding: 12px 24px;
-    font-size: 20px;
-    border: none;
-    background-color: #000;
-    color: #fff;
-    border-radius: 8px;
-    cursor: pointer;
-}
-
 #midLine {
     position: absolute;
     left: 50%;
@@ -168,14 +158,42 @@ header p {
     background-color: #fff;
 }
 
-#resetButton {
-    padding: 12px 24px;
+#startButton {
+    padding: 12px 34px;
     font-size: 20px;
     border: none;
-    background-color: #000;
-    color: #fff;
+    background-color: #4CAF50;
+    color: white;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 700;
+}
+
+#startButton:hover {
+    background-color: #00ff0d;
+    color: #575757;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+#resetButton {
+    padding: 12px 34px;
+    font-size: 20px;
+    border: none;
+    background-color: #4CAF50;
+    color: white;
     border-radius: 8px;
     margin-bottom: 16px;
+    cursor: pointer;
+    margin-left: 20px;
+    font-weight: 700;
+}
+
+#resetButton:hover {
+    cursor: pointer;
+    background-color: #00ff0d;
+    color: #575757;
+    font-weight: 700;
 }
 
 #pingponghintergrund {

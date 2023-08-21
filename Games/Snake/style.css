@@ -107,6 +107,7 @@ header:hover {
 }
 
 #tastenbelegungen:hover {
+    font-weight: 700;
     cursor: crosshair;
     color: #000000;
     background-color: #00ff6e;

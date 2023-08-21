@@ -87,13 +87,21 @@
                     <p id='status'>Du bist dran ...</p>
                 </div>
                 <div style="float:right">
-                    <button onclick="startGame()" id="startbutton">Zurücksetzten</button>
+                    <button onclick="startGame()" id="startbutton"><h3>Zurücksetzen</h3></button>
                     <p id="schwirigkeitenhintergrund">
                         <b>Schwierigkeit:</b><br/>
-                        <input type="radio" name="difficulty" value="2"> Einfach<br>
-                        <input type="radio" name="difficulty" value="3"> Mittel<br>
-                        <input type="radio" name="difficulty" value="4" checked="true"> Schwer<br>
-                        <input type="radio" name="difficulty" value="6"> Extrem Schwer<br>
+                        <label class="radio-label">
+                            <input type="radio" name="difficulty" value="2"> Einfach<br>
+                        </label>
+                        <label class="radio-label">
+                            <input type="radio" name="difficulty" value="3"> Mittel<br>
+                        </label>
+                        <label class="radio-label">
+                            <input type="radio" name="difficulty" value="4"> Schwer<br>
+                        </label>
+                        <label class="radio-label">
+                            <input type="radio" name="difficulty" value="6"> Extrem Schwer<br>
+                        </label>
                     </p>
                 </div>
                 <div id='chessdiv'>

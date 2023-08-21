@@ -244,6 +244,8 @@ a {
 
 .button:hover {
     background-color: #006eff;
+    color: #003a1e;
+    font-weight: 800;
 }
 
 .button a {
@@ -331,7 +333,6 @@ button {
     justify-content: center;
     align-items: center;
     background-color: #00461e;
-    color: #ffffff;
     border: unset;
     padding: 12px;
     border-radius: 4px;
@@ -342,7 +343,9 @@ button {
 }
 
 button:hover {
-    background-color: #00ff6e;
+    background-color: #00ff0d;
+    color: #575757;
+    font-weight: 800;
 }
 
 #senden {
@@ -474,10 +477,31 @@ button:hover {
     margin-top: 8%;
 }
 
+.verlinktungenbeschreibung button :hover {
+    background-color: #00ff0d;
+    color: #575757;
+    font-weight: 800;
+}
+
 .buttonsbeschreibungverlinken {
+    text-align: center;
+    color: #ffff;
     padding-left: 20px;
     margin-left: 5px;
-    text-align: center;
+}
+
+.buttonsbeschreibungverlinken a :hover {
+    background-color: #00ff0d;
+    color: #575757;
+    font-weight: 800;
+}
+
+#wixwebseitenverlinkungbeschreibung {
+    color: #A0138E;
+}
+
+#discordverlinkungbeschreibeung {
+    color: #5865F2;
 }
 
 @media (max-width: 1000px) {

@@ -9,7 +9,6 @@
 body {
     display: flex;
     justify-content: center;
-    color: #fff;
     align-items: center;
     text-align: center;
     min-height: 100vh;
@@ -65,13 +64,6 @@ header p {
     cursor: pointer;
 }
 
-#schachhintergrund {
-    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.9)), url(/Bilder/ubodigat.com\ Schach\ Hintergrundbild.jpg);
-    background-size: cover;
-    background-attachment: fixed;
-    background-position: center;
-}
-
 #überschriftlink {
     text-decoration: none;
     color: #fff;
@@ -99,111 +91,11 @@ header p {
     text-decoration: none;
 }
 
-
-/*Ab hier keine Grund CSS Code mehr*/
-
-div#main {
-    width: 800px;
-    margin: auto;
-}
-
-table#chessboard img {
-    height: 52px;
-    margin: auto;
-    border: 0px;
-}
-
-img {
-    display: none;
-}
-
-img[src] {
-    display: block;
-}
-
-table#chessboard tr {
-    padding: 0px;
-}
-
-table#chessboard td {
-    padding: 0px;
-    width: 64px;
-    height: 64px;
-}
-
-table#chessboard,
-th,
-td {
-    border: 1px solid #DDD;
-}
-
-table#chessboard {
-    text-align: center;
-    border-spacing: 0px;
-    border-collapse: collapse;
-}
-
-div.highlight_overlay {
-    width: 100%;
-    height: 100%;
-    z-index: 10;
-    background-color: rgba(174, 238, 0, 0);
-}
-
-div.highlight_overlay.enabled {
-    background-color: rgba(174, 238, 0, 0.8);
-}
-
-div.chosen_overlay {
-    width: 100%;
-    height: 100%;
-    z-index: 10;
-    background-color: rgba(238, 226, 4, 0);
-}
-
-div.chosen_overlay.enabled {
-    background-color: rgba(238, 226, 4, 0.8);
-}
-
-div.piece_container {
-    display: table-cell;
-    vertical-align: bottom;
-    height: 52px;
-}
-
-#startbutton {
-    background-color: #012f6b;
-    color: #fff;
-    text-decoration: none;
-    border: unset;
-    padding: 12px;
-    border-radius: 7px;
-    min-width: 160px;
-    font-weight: 600;
-    margin-left: 10px;
-    margin-bottom: 20px;
-    box-shadow: 0px 3px 1px -2px rgb(0 0 0 / 20%), 0px 2px 2px 0px rgb(0 0 0 / 14%), 0px 1px 5px 0px rgb(0 0 0 / 12%);
-}
-
-#startbutton:hover {
-    background-color: #00ffd5;
-}
-
-#schwirigkeitenhintergrund {
-    background-color: #5e6d66;
-    color: #fff;
-    padding: 5px 10px;
-    font-size: 24px;
-    border-radius: 15px;
-}
-
-.statusdiv {
-    background-color: #314736;
-    color: #fff;
-    font-size: 24px;
-    border-radius: 10px;
-    padding: 5px;
-    margin-bottom: 30px;
+#schachhintergrund {
+    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.9)), url(/Bilder/ubodigat.com\ Schach\ Hintergrundbild.jpg);
+    background-size: cover;
+    background-attachment: fixed;
+    background-position: center;
 }
 
 
@@ -303,4 +195,175 @@ div.piece_container {
         font-weight: 600;
         margin-left: 5px;
     }
+}
+
+
+/* Ab hier kein Grundcss code mehr*/
+
+div#main {
+    width: 800px;
+    margin: auto;
+}
+
+table#chessboard img {
+    height: 52px;
+    margin: auto;
+    border: 0px;
+}
+
+img {
+    display: none;
+}
+
+img[src] {
+    display: block;
+}
+
+table#chessboard tr {
+    padding: 0px;
+}
+
+table#chessboard td {
+    padding: 0px;
+    width: 64px;
+    height: 64px;
+}
+
+table#chessboard,
+th,
+td {
+    border: 1px solid #00000000;
+}
+
+table#chessboard {
+    text-align: center;
+    border-spacing: 0px;
+    border-collapse: collapse;
+}
+
+div.highlight_overlay {
+    width: 100%;
+    height: 100%;
+    z-index: 10;
+    background-color: #00000000;
+}
+
+div.highlight_overlay.enabled {
+    background-color: #012f6b;
+}
+
+div.chosen_overlay {
+    width: 100%;
+    height: 100%;
+    z-index: 10;
+    background-color: #00000000;
+}
+
+div.chosen_overlay.enabled {
+    background-color: #00ff6a;
+}
+
+div.piece_container {
+    display: table-cell;
+    vertical-align: bottom;
+    height: 52px;
+}
+
+#startbutton {
+    background-color: #012f6b;
+    color: #fff;
+    text-decoration: none;
+    border: unset;
+    padding: 12px;
+    border-radius: 7px;
+    min-width: 160px;
+    font-weight: 600;
+    margin-left: 10px;
+    margin-bottom: 20px;
+    box-shadow: 0px 3px 1px -2px rgb(0 0 0 / 20%), 0px 2px 2px 0px rgb(0 0 0 / 14%), 0px 1px 5px 0px rgb(0 0 0 / 12%);
+}
+
+.statusdiv {
+    background-color: #314736;
+    color: #fff;
+    font-size: 24px;
+    border-radius: 10px;
+    padding: 5px;
+    margin-bottom: 30px;
+}
+
+#startbutton:hover {
+    cursor: pointer;
+    background-color: #0077ff;
+    color: #333333;
+    font-weight: 900;
+}
+
+#schwirigkeitenhintergrund {
+    text-align: start;
+    margin-left: 40px;
+    background-color: #14291f;
+    color: #fff;
+    cursor: pointer;
+    padding: 5px 10px;
+    font-size: 24px;
+    border-radius: 15px;
+}
+
+#schwirigkeitenhintergrund label.radio-label {
+    display: block;
+    margin-bottom: 5px;
+    cursor: pointer;
+}
+
+#schwirigkeitenhintergrund label.radio-label:hover {
+    color: #00c3ff;
+}
+
+#schwirigkeitenhintergrund input[type="radio"] {
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    width: 20px;
+    height: 20px;
+    margin-right: 8px;
+    border: 2px solid #0055cc;
+    border-radius: 50%;
+    background-color: transparent;
+    outline: none;
+    transition: border-color 0.5s;
+}
+
+#schwirigkeitenhintergrund input[type="radio"]:checked {
+    cursor: pointer;
+    background-color: #00c3ff;
+    border-color: #00c3ff;
+}
+
+#schwirigkeitenhintergrund input:checked {
+    cursor: pointer;
+    color: #00c3ff;
+    background-color: #00c3ff;
+    border-color: #00c3ff;
+}
+
+#chessdiv {
+    border: 1px solid #000;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+#chessboard {
+    width: 100%;
+    height: 100%;
+    table-layout: fixed;
+    border-collapse: collapse;
+}
+
+#chessboard td {
+    width: 12.5%;
+    height: 12.5%;
+    text-align: center;
+    vertical-align: middle;
+    font-size: 18px;
 }
