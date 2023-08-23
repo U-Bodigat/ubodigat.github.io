@@ -143,6 +143,8 @@ td:hover {
 
 #Zurück:hover {
     background-color: red;
+    color: #575757;
+    font-weight: 800;
 }
 
 #geteilt {
@@ -150,7 +152,9 @@ td:hover {
 }
 
 #geteilt:hover {
-    background-color: #ffff00bb;
+    background-color: #006eff;
+    color: #003a1e;
+    font-weight: 800;
 }
 
 #mal {
@@ -158,15 +162,19 @@ td:hover {
 }
 
 #mal:hover {
-    background-color: #ffff00bb;
+    background-color: #006eff;
+    color: #003a1e;
+    font-weight: 800;
 }
 
 #istgleich {
-    background-color: #353535;
+    background-color: #259485;
 }
 
 #istgleich:hover {
-    background-color: blue;
+    background-color: #21f0d4;
+    color: #575757;
+    font-weight: 800;
 }
 
 #plus {
@@ -174,7 +182,9 @@ td:hover {
 }
 
 #plus:hover {
-    background-color: #ffff00bb;
+    background-color: #006eff;
+    color: #003a1e;
+    font-weight: 800;
 }
 
 #komma {
@@ -182,7 +192,9 @@ td:hover {
 }
 
 #komma:hover {
-    background-color: #ffff00bb;
+    background-color: #006eff;
+    color: #003a1e;
+    font-weight: 800;
 }
 
 #minus {
@@ -190,7 +202,9 @@ td:hover {
 }
 
 #minus:hover {
-    background-color: #ffff00bb;
+    background-color: #006eff;
+    color: #003a1e;
+    font-weight: 800;
 }
 
 #löschen {
@@ -199,6 +213,8 @@ td:hover {
 
 #löschen:hover {
     background-color: red;
+    color: #575757;
+    font-weight: 800;
 }
 
 #textinergebnisfeld {
@@ -207,11 +223,15 @@ td:hover {
 }
 
 .zahlen {
-    background-color: rgb(2, 119, 47);
+    background-color: #4CAF50;
+    color: white;
 }
 
 .zahlen:hover {
-    background-color: rgb(238, 174, 0);
+    cursor: pointer;
+    background-color: #00ff0d;
+    color: #575757;
+    font-weight: 800;
 }
 
 .leer {
