@@ -97,6 +97,7 @@ table {
     padding: 2px;
     margin-left: 25%;
     margin-top: 5px;
+    margin-bottom: 7.5px;
     user-select: none;
 }
 
@@ -142,6 +143,8 @@ td:hover {
 
 #Zurück:hover {
     background-color: red;
+    color: #575757;
+    font-weight: 800;
 }
 
 #geteilt {
@@ -149,7 +152,9 @@ td:hover {
 }
 
 #geteilt:hover {
-    background-color: #ffff00bb;
+    background-color: #006eff;
+    color: #003a1e;
+    font-weight: 800;
 }
 
 #mal {
@@ -157,15 +162,19 @@ td:hover {
 }
 
 #mal:hover {
-    background-color: #ffff00bb;
+    background-color: #006eff;
+    color: #003a1e;
+    font-weight: 800;
 }
 
 #istgleich {
-    background-color: #353535;
+    background-color: #259485;
 }
 
 #istgleich:hover {
-    background-color: blue;
+    background-color: #21f0d4;
+    color: #575757;
+    font-weight: 800;
 }
 
 #plus {
@@ -173,7 +182,9 @@ td:hover {
 }
 
 #plus:hover {
-    background-color: #ffff00bb;
+    background-color: #006eff;
+    color: #003a1e;
+    font-weight: 800;
 }
 
 #komma {
@@ -181,7 +192,9 @@ td:hover {
 }
 
 #komma:hover {
-    background-color: #ffff00bb;
+    background-color: #006eff;
+    color: #003a1e;
+    font-weight: 800;
 }
 
 #minus {
@@ -189,7 +202,9 @@ td:hover {
 }
 
 #minus:hover {
-    background-color: #ffff00bb;
+    background-color: #006eff;
+    color: #003a1e;
+    font-weight: 800;
 }
 
 #löschen {
@@ -198,6 +213,8 @@ td:hover {
 
 #löschen:hover {
     background-color: red;
+    color: #575757;
+    font-weight: 800;
 }
 
 #textinergebnisfeld {
@@ -206,11 +223,15 @@ td:hover {
 }
 
 .zahlen {
-    background-color: rgb(2, 119, 47);
+    background-color: #4CAF50;
+    color: white;
 }
 
 .zahlen:hover {
-    background-color: rgb(238, 174, 0);
+    cursor: pointer;
+    background-color: #00ff0d;
+    color: #575757;
+    font-weight: 800;
 }
 
 .leer {
@@ -347,6 +368,12 @@ td:hover {
     }
 }
 
+@media (max-width: 590px) {
+    #Ergebnisfeld {
+        margin-top: 165px;
+    }
+}
+
 @media (max-width: 555px) {
     #Ergebnisfeld {
         margin-left: 5%;
@@ -409,4 +436,103 @@ td:hover {
     background-size: cover;
     background-attachment: fixed;
     background-position: center;
+}
+
+
+/*Responsive header*/
+
+@media (max-width: 960px) {
+    #headerinput a {
+        margin-top: 50px;
+    }
+}
+
+@media (max-width: 680px) {
+    #headerinput a {
+        margin-top: 50px;
+    }
+}
+
+@media (max-width: 600px) {
+    #headerinput a {
+        margin-left: 40px;
+        margin-right: -40px;
+    }
+}
+
+@media (max-width: 560px) {
+    #headerinput a {
+        margin-left: 65px;
+        margin-right: -65px;
+    }
+}
+
+@media (max-width: 540px) {
+    header p a {
+        margin-left: -70px;
+    }
+    #headerinput {
+        display: flex;
+        margin-top: -85px;
+        margin-bottom: 0px;
+    }
+    #headerinput a button {
+        font-size: 10px;
+        margin-top: 40px;
+        margin-left: 900px;
+        padding: 10px;
+        min-width: 100px;
+        font-weight: 600;
+        margin-left: 5px;
+    }
+}
+
+@media (max-width: 400px) {
+    nav header div {
+        margin-bottom: 10px;
+    }
+    header p a {
+        margin-left: -70px;
+    }
+    #headerinput {
+        display: flex;
+        margin-top: -80px;
+        margin-bottom: 0px;
+    }
+    #headerinput a button {
+        font-size: 10px;
+        margin-top: 40px;
+        margin-left: 900px;
+        padding: 10px;
+        min-width: 100px;
+        font-weight: 600;
+        margin-left: 5px;
+    }
+}
+
+@media (max-width: 350px) {
+    nav header div {
+        margin-bottom: 10px;
+    }
+    header p a {
+        margin-left: -70px;
+    }
+    #headerinput {
+        display: flex;
+        margin-top: -80px;
+        margin-bottom: 0px;
+    }
+    #headerinput a {
+        margin-left: 80px;
+        margin-right: -80px;
+    }
+    #headerinput a button {
+        font-size: 10px;
+        margin-top: 40px;
+        margin-left: 900px;
+        padding: 10px;
+        min-width: 100px;
+        font-weight: 600;
+        margin-left: 5px;
+    }
 }

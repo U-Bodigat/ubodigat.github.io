@@ -134,6 +134,18 @@ header p {
     cursor: pointer;
 }
 
+.action-button:hover {
+    display: block;
+    width: 50%;
+    margin-left: 25%;
+    padding: 10px;
+    background-color: #00ff0d;
+    color: #333333;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
 .result {
     font-weight: bold;
     margin-bottom: 10px;
@@ -167,19 +179,101 @@ input:focus {
     border-bottom: 3px solid #00ff6a;
 }
 
-@media (max-width: 530px) {
-    #info {
-        margin-bottom: 10px;
+
+/*Responsive header*/
+
+@media (max-width: 960px) {
+    #headerinput a {
+        margin-top: 50px;
+    }
+}
+
+@media (max-width: 680px) {
+    #headerinput a {
+        margin-top: 50px;
+    }
+}
+
+@media (max-width: 600px) {
+    #headerinput a {
+        margin-left: 40px;
+        margin-right: -40px;
+    }
+}
+
+@media (max-width: 560px) {
+    #headerinput a {
+        margin-left: 65px;
+        margin-right: -65px;
+    }
+}
+
+@media (max-width: 540px) {
+    header p a {
+        margin-left: -70px;
     }
     #headerinput {
-        flex-direction: column;
+        display: flex;
+        margin-top: -85px;
+        margin-bottom: 0px;
     }
-    a {
+    #headerinput a button {
+        font-size: 10px;
+        margin-top: 40px;
+        margin-left: 900px;
+        padding: 10px;
+        min-width: 100px;
+        font-weight: 600;
+        margin-left: 5px;
+    }
+}
+
+@media (max-width: 400px) {
+    nav header div {
         margin-bottom: 10px;
     }
-    #überschriftlink {
-        margin: auto;
-        margin-left: -80px;
-        margin-right: -5px;
+    header p a {
+        margin-left: -70px;
+    }
+    #headerinput {
+        display: flex;
+        margin-top: -80px;
+        margin-bottom: 0px;
+    }
+    #headerinput a button {
+        font-size: 10px;
+        margin-top: 40px;
+        margin-left: 900px;
+        padding: 10px;
+        min-width: 100px;
+        font-weight: 600;
+        margin-left: 5px;
+    }
+}
+
+@media (max-width: 350px) {
+    nav header div {
+        margin-bottom: 10px;
+    }
+    header p a {
+        margin-left: -70px;
+    }
+    #headerinput {
+        display: flex;
+        margin-top: -80px;
+        margin-bottom: 0px;
+    }
+    #headerinput a {
+        margin-left: 80px;
+        margin-right: -80px;
+    }
+    #headerinput a button {
+        font-size: 10px;
+        margin-top: 40px;
+        margin-left: 900px;
+        padding: 10px;
+        min-width: 100px;
+        font-weight: 600;
+        margin-left: 5px;
     }
 }

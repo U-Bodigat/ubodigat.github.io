@@ -9,7 +9,6 @@
 body {
     display: flex;
     justify-content: center;
-    color: #fff;
     align-items: center;
     text-align: center;
     min-height: 100vh;
@@ -65,13 +64,6 @@ header p {
     cursor: pointer;
 }
 
-#schachhintergrund {
-    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.9)), url(/Bilder/ubodigat.com\ Schach\ Hintergrundbild.jpg);
-    background-size: cover;
-    background-attachment: fixed;
-    background-position: center;
-}
-
 #überschriftlink {
     text-decoration: none;
     color: #fff;
@@ -99,8 +91,114 @@ header p {
     text-decoration: none;
 }
 
+#schachhintergrund {
+    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.9)), url(/Bilder/ubodigat.com\ Schach\ Hintergrundbild.jpg);
+    background-size: cover;
+    background-attachment: fixed;
+    background-position: center;
+}
 
-/*Ab hier keine Grund CSS Code mehr*/
+
+/*Responsive header*/
+
+@media (max-width: 960px) {
+    #headerinput a {
+        margin-top: 50px;
+    }
+}
+
+@media (max-width: 680px) {
+    #headerinput a {
+        margin-top: 50px;
+    }
+}
+
+@media (max-width: 600px) {
+    #headerinput a {
+        margin-left: 40px;
+        margin-right: -40px;
+    }
+}
+
+@media (max-width: 560px) {
+    #headerinput a {
+        margin-left: 65px;
+        margin-right: -65px;
+    }
+}
+
+@media (max-width: 540px) {
+    header p a {
+        margin-left: -70px;
+    }
+    #headerinput {
+        display: flex;
+        margin-top: -85px;
+        margin-bottom: 0px;
+    }
+    #headerinput a button {
+        font-size: 10px;
+        margin-top: 40px;
+        margin-left: 900px;
+        padding: 10px;
+        min-width: 100px;
+        font-weight: 600;
+        margin-left: 5px;
+    }
+}
+
+@media (max-width: 400px) {
+    nav header div {
+        margin-bottom: 10px;
+    }
+    header p a {
+        margin-left: -70px;
+    }
+    #headerinput {
+        display: flex;
+        margin-top: -80px;
+        margin-bottom: 0px;
+    }
+    #headerinput a button {
+        font-size: 10px;
+        margin-top: 40px;
+        margin-left: 900px;
+        padding: 10px;
+        min-width: 100px;
+        font-weight: 600;
+        margin-left: 5px;
+    }
+}
+
+@media (max-width: 350px) {
+    nav header div {
+        margin-bottom: 10px;
+    }
+    header p a {
+        margin-left: -70px;
+    }
+    #headerinput {
+        display: flex;
+        margin-top: -80px;
+        margin-bottom: 0px;
+    }
+    #headerinput a {
+        margin-left: 80px;
+        margin-right: -80px;
+    }
+    #headerinput a button {
+        font-size: 10px;
+        margin-top: 40px;
+        margin-left: 900px;
+        padding: 10px;
+        min-width: 100px;
+        font-weight: 600;
+        margin-left: 5px;
+    }
+}
+
+
+/* Ab hier kein Grundcss code mehr*/
 
 div#main {
     width: 800px;
@@ -134,7 +232,7 @@ table#chessboard td {
 table#chessboard,
 th,
 td {
-    border: 1px solid #DDD;
+    border: 1px solid #00000000;
 }
 
 table#chessboard {
@@ -147,22 +245,22 @@ div.highlight_overlay {
     width: 100%;
     height: 100%;
     z-index: 10;
-    background-color: rgba(174, 238, 0, 0);
+    background-color: #00000000;
 }
 
 div.highlight_overlay.enabled {
-    background-color: rgba(174, 238, 0, 0.8);
+    background-color: #012f6b;
 }
 
 div.chosen_overlay {
     width: 100%;
     height: 100%;
     z-index: 10;
-    background-color: rgba(238, 226, 4, 0);
+    background-color: #00000000;
 }
 
 div.chosen_overlay.enabled {
-    background-color: rgba(238, 226, 4, 0.8);
+    background-color: #00ff6a;
 }
 
 div.piece_container {
@@ -185,18 +283,6 @@ div.piece_container {
     box-shadow: 0px 3px 1px -2px rgb(0 0 0 / 20%), 0px 2px 2px 0px rgb(0 0 0 / 14%), 0px 1px 5px 0px rgb(0 0 0 / 12%);
 }
 
-#startbutton:hover {
-    background-color: #00ffd5;
-}
-
-#schwirigkeitenhintergrund {
-    background-color: #5e6d66;
-    color: #fff;
-    padding: 5px 10px;
-    font-size: 24px;
-    border-radius: 15px;
-}
-
 .statusdiv {
     background-color: #314736;
     color: #fff;
@@ -204,4 +290,80 @@ div.piece_container {
     border-radius: 10px;
     padding: 5px;
     margin-bottom: 30px;
+}
+
+#startbutton:hover {
+    cursor: pointer;
+    background-color: #0077ff;
+    color: #333333;
+    font-weight: 900;
+}
+
+#schwirigkeitenhintergrund {
+    text-align: start;
+    margin-left: 40px;
+    background-color: #14291f;
+    color: #fff;
+    cursor: pointer;
+    padding: 5px 10px;
+    font-size: 24px;
+    border-radius: 15px;
+}
+
+#schwirigkeitenhintergrund label.radio-label {
+    display: block;
+    margin-bottom: 5px;
+    cursor: pointer;
+}
+
+#schwirigkeitenhintergrund label.radio-label:hover {
+    color: #00c3ff;
+}
+
+#schwirigkeitenhintergrund input[type="radio"] {
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    width: 20px;
+    height: 20px;
+    margin-right: 8px;
+    border: 2px solid #0055cc;
+    border-radius: 50%;
+    background-color: transparent;
+    outline: none;
+    transition: border-color 0.5s;
+}
+
+#schwirigkeitenhintergrund input[type="radio"]:checked {
+    cursor: pointer;
+    background-color: #00c3ff;
+    border-color: #00c3ff;
+}
+
+#schwirigkeitenhintergrund input:checked {
+    cursor: pointer;
+    color: #00c3ff;
+    background-color: #00c3ff;
+    border-color: #00c3ff;
+}
+
+#chessdiv {
+    border: 1px solid #000;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+#chessboard {
+    width: 100%;
+    height: 100%;
+    table-layout: fixed;
+    border-collapse: collapse;
+}
+
+#chessboard td {
+    width: 12.5%;
+    height: 12.5%;
+    text-align: center;
+    vertical-align: middle;
+    font-size: 18px;
 }

@@ -62,7 +62,7 @@
     <!-- End Google Tag Manager -->
 </head>
 
-<body>
+<body id="kontakthintergrund">
     <!-- Google Tag Manager (noscript) -->
     <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-WTDQC48"
     height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
@@ -78,15 +78,43 @@
         </header>
     </nav>
 
-    <form action="mailto:contact@ubodigat.com" method="post" enctype="text/plain">
+    <form method="post" id="contact-form">
         <h2 id="kontaktformularüberschrift">Kontakt-Formular</h2>
-        <input type="text" placeholder="N A M E" required></input> <br>
-        <input type="email" placeholder="E - M A I L" required></input> <br>
-        <input type="tel" placeholder="T E L E F O N N U M M E R"></input> <br>
-        <input type="text" placeholder="G R U N D" id="grundkontaktformular" required></input> <br>
-        <button type="reset" id="zurückbuttonkon">Z U R Ü C K</button>
-        <button type="submit" value="send" id="senden">S E N D E N</button>
+        <input type="text" name="name" placeholder="V O R N A M E*" required><br>
+        <input type="email" name="email" placeholder="E - M A I L*" required><br>
+        <textarea name="reason" placeholder="G R U N D*" id="grundkontaktformular" required></textarea><br>
+
+        <label for="communication-agreement">
+            <input type="checkbox" id="communication-agreement" name="communication-agreement" required>
+            Ich stimme zu, dass meine Daten für Kommunikationszwecke verwendet werden dürfen.
+        </label><br>
+
+        <h5>Alle Felder mit * sind Pflichtfelder <br> müssen ausgefüllt werden</h5>
+
+        <button type="reset" id="zurückbuttonkon">R E S E T T E N </button>
+        <button type="submit" id="senden">S E N D E N</button>
     </form>
+
+
+    <script>
+        document.getElementById("contact-form").addEventListener("submit", function(event) {
+            event.preventDefault();
+
+            var name = document.querySelector('input[name="name"]').value;
+            var email = document.querySelector('input[name="email"]').value;
+            var reason = document.querySelector('textarea[name="reason"]').value;
+
+            var emailBody = "Vorname: " + name + "\n";
+            emailBody += "E-Mail: " + email + "\n";
+            emailBody += "Grund: " + reason;
+
+            var mailtoLink = "mailto:kontakt@ubodigat.com" +
+                "?subject=" + encodeURIComponent("Neue Kontaktnachricht von ubodigat.com |kontakt.html|") +
+                "&body=" + encodeURIComponent(emailBody);
+
+            window.location.href = mailtoLink;
+        });
+    </script>
 
 </body>
 

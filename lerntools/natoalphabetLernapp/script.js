@@ -3,6 +3,9 @@
 function showPopup() {
     alert("Das NATO - Alphabet wird in der Luftfahrt und anderen Kommunikationsbereichen verwendet, um Buchstaben klar und eindeutig zu übermitteln.Es besteht aus speziellen Wörtern, die jedem Buchstaben zugeordnet sind und Verwechslungen minimieren.Es ermöglicht eine präzise Kommunikation und trägt zur Sicherheit und Effizienz bei.");
 }
+window.onload = function() {
+    alert("Um ein besseres Lernen zu ermöglichen schalten Sie den Ton ein. Jedes Wort wird Ihnen danach richtig vorgesprochen.");
+};
 
 // NATO_Alphabet Funktionen
 
@@ -94,7 +97,6 @@ function showWords() {
             const listItem = document.createElement("li");
             listItem.textContent = natoAlphabet[i].letter + " - " + natoAlphabet[i].word;
             wordsElement.appendChild(listItem);
-
         }
         document.getElementById("toggleButton").textContent = "Wörter ausblenden";
         wordsVisible = true;

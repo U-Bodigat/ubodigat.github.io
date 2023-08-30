@@ -219,39 +219,6 @@ select>option {
     flex: 1;
 }
 
-@media (max-width: 1400px) {
-    .col-1400 {
-        flex-direction: column;
-    }
-    .col-1400>.width-20 {
-        width: 100%;
-        flex: unset;
-    }
-    .col-1400>.width-25 {
-        width: 100%;
-        height: 25%;
-        flex: unset;
-    }
-    .col-1400>.width-50 {
-        width: 100%;
-        flex: unset;
-    }
-    .col-1400>.width-75 {
-        width: 100%;
-        flex: unset;
-    }
-}
-
-@media (max-width: 850px) {
-    header {
-        background-color: #1a2336;
-        padding: 20px 30px;
-    }
-    .col-850 {
-        flex-direction: column;
-    }
-}
-
 #from {
     margin-left: 15%;
     margin-top: 0.75%;
@@ -282,12 +249,14 @@ input {
     background: transparent;
     cursor: text;
     font-size: 23px;
+    border-top-right-radius: 5px 5px;
+    border-top-left-radius: 5px 5px;
     border-bottom-right-radius: 5px 5px;
     border-bottom-left-radius: 5px 5px;
 }
 
 input:hover {
-    background-color: #283763;
+    background-color: #28376352;
     text-align: center;
     color: beige;
     cursor: help;
@@ -356,12 +325,26 @@ footer {
 
 #Prüfen {
     text-align: center;
-    margin: 0;
-    margin-left: 600px;
+    margin-top: 15px;
+    margin-left: 30%;
+    margin-right: 20px;
+}
+
+#Prüfen:hover {
+    background-color: #00ff0d;
+    color: #575757;
+    font-weight: 800;
 }
 
 #löschen {
     margin-right: 70%;
+}
+
+#löschen:hover {
+    margin-right: 70%;
+    background-color: #00ff0d;
+    color: #575757;
+    font-weight: 800;
 }
 
 #Übungsliste {
@@ -386,8 +369,19 @@ footer {
 }
 
 #Hinzufügebutton {
-    margin-left: 62%;
+    margin-left: 60%;
+    margin-right: 20px;
     margin-top: 10px;
+}
+
+#Hinzufügebutton h4 {
+    font-weight: 700;
+}
+
+#Hinzufügebutton:hover {
+    background-color: #00ff0d;
+    color: #575757;
+    font-weight: 800;
 }
 
 .button {
@@ -470,10 +464,125 @@ button:hover {
 #übungszeit {
     margin-top: -10%;
     padding-left: 55%;
+    margin-right: 10px;
     font-size: 35px;
 }
 
 #dauer {
     padding-top: 1%;
     padding-left: 7%;
+}
+
+
+/*Responsive header*/
+
+@media (max-width: 960px) {
+    #headerinput a {
+        margin-top: 50px;
+    }
+    #fragenliste {
+        margin-right: 20%;
+    }
+}
+
+@media (max-width: 680px) {
+    #headerinput a {
+        margin-top: 50px;
+    }
+}
+
+@media (max-width: 600px) {
+    #headerinput a {
+        margin-left: 40px;
+        margin-right: -40px;
+    }
+    #übungszeit {
+        margin-top: -20%;
+    }
+    #nächste-übung b {
+        margin-right: 40px;
+    }
+    form input {
+        margin-left: 20%;
+    }
+    #input2 {
+        margin-left: 20%;
+    }
+}
+
+@media (max-width: 560px) {
+    #headerinput a {
+        margin-left: 65px;
+        margin-right: -65px;
+    }
+}
+
+@media (max-width: 540px) {
+    header p a {
+        margin-left: -70px;
+    }
+    #headerinput {
+        display: flex;
+        margin-top: -85px;
+        margin-bottom: 0px;
+    }
+    #headerinput a button {
+        font-size: 10px;
+        margin-top: 40px;
+        margin-left: 900px;
+        padding: 10px;
+        min-width: 100px;
+        font-weight: 600;
+        margin-left: 5px;
+    }
+}
+
+@media (max-width: 400px) {
+    nav header div {
+        margin-bottom: 10px;
+    }
+    header p a {
+        margin-left: -70px;
+    }
+    #headerinput {
+        display: flex;
+        margin-top: -80px;
+        margin-bottom: 0px;
+    }
+    #headerinput a button {
+        font-size: 10px;
+        margin-top: 40px;
+        margin-left: 900px;
+        padding: 10px;
+        min-width: 100px;
+        font-weight: 600;
+        margin-left: 5px;
+    }
+}
+
+@media (max-width: 350px) {
+    nav header div {
+        margin-bottom: 10px;
+    }
+    header p a {
+        margin-left: -70px;
+    }
+    #headerinput {
+        display: flex;
+        margin-top: -80px;
+        margin-bottom: 0px;
+    }
+    #headerinput a {
+        margin-left: 80px;
+        margin-right: -80px;
+    }
+    #headerinput a button {
+        font-size: 10px;
+        margin-top: 40px;
+        margin-left: 900px;
+        padding: 10px;
+        min-width: 100px;
+        font-weight: 600;
+        margin-left: 5px;
+    }
 }

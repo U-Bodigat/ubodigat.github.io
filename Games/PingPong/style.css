@@ -65,13 +65,6 @@ header p {
     cursor: pointer;
 }
 
-#deutschlernapphintergrund {
-    background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.7)), url(/Bilder/ubodigat.com\ Ping\ Pong\ Hintergrund.gif);
-    background-size: cover;
-    background-attachment: fixed;
-    background-position: center;
-}
-
 #überschriftlink {
     text-decoration: none;
     color: #fff;
@@ -156,16 +149,6 @@ header p {
     border-radius: 50%;
 }
 
-#startButton {
-    padding: 12px 24px;
-    font-size: 20px;
-    border: none;
-    background-color: #000;
-    color: #fff;
-    border-radius: 8px;
-    cursor: pointer;
-}
-
 #midLine {
     position: absolute;
     left: 50%;
@@ -175,19 +158,146 @@ header p {
     background-color: #fff;
 }
 
-#resetButton {
-    padding: 12px 24px;
+#startButton {
+    padding: 12px 34px;
     font-size: 20px;
     border: none;
-    background-color: #000;
-    color: #fff;
+    background-color: #4CAF50;
+    color: white;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 700;
+}
+
+#startButton:hover {
+    background-color: #00ff0d;
+    color: #575757;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+#resetButton {
+    padding: 12px 34px;
+    font-size: 20px;
+    border: none;
+    background-color: #4CAF50;
+    color: white;
     border-radius: 8px;
     margin-bottom: 16px;
+    cursor: pointer;
+    margin-left: 20px;
+    font-weight: 700;
+}
+
+#resetButton:hover {
+    cursor: pointer;
+    background-color: #00ff0d;
+    color: #575757;
+    font-weight: 700;
 }
 
 #pingponghintergrund {
-    background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url(/Bilder/ubodigat.com\ \ Ping\ Pong\ Hintergrund.gif);
+    background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url(/Bilder/ubodigat.com\ Ping\ Pong\ Hintergrund.gif);
     background-size: cover;
     background-attachment: fixed;
     background-position: center;
+}
+
+
+/*Responsive header*/
+
+@media (max-width: 960px) {
+    #headerinput a {
+        margin-top: 50px;
+    }
+}
+
+@media (max-width: 680px) {
+    #headerinput a {
+        margin-top: 50px;
+    }
+}
+
+@media (max-width: 600px) {
+    #headerinput a {
+        margin-left: 40px;
+        margin-right: -40px;
+    }
+}
+
+@media (max-width: 560px) {
+    #headerinput a {
+        margin-left: 65px;
+        margin-right: -65px;
+    }
+}
+
+@media (max-width: 540px) {
+    header p a {
+        margin-left: -70px;
+    }
+    #headerinput {
+        display: flex;
+        margin-top: -85px;
+        margin-bottom: 0px;
+    }
+    #headerinput a button {
+        font-size: 10px;
+        margin-top: 40px;
+        margin-left: 900px;
+        padding: 10px;
+        min-width: 100px;
+        font-weight: 600;
+        margin-left: 5px;
+    }
+}
+
+@media (max-width: 400px) {
+    nav header div {
+        margin-bottom: 10px;
+    }
+    header p a {
+        margin-left: -70px;
+    }
+    #headerinput {
+        display: flex;
+        margin-top: -80px;
+        margin-bottom: 0px;
+    }
+    #headerinput a button {
+        font-size: 10px;
+        margin-top: 40px;
+        margin-left: 900px;
+        padding: 10px;
+        min-width: 100px;
+        font-weight: 600;
+        margin-left: 5px;
+    }
+}
+
+@media (max-width: 350px) {
+    nav header div {
+        margin-bottom: 10px;
+    }
+    header p a {
+        margin-left: -70px;
+    }
+    #headerinput {
+        display: flex;
+        margin-top: -80px;
+        margin-bottom: 0px;
+    }
+    #headerinput a {
+        margin-left: 80px;
+        margin-right: -80px;
+    }
+    #headerinput a button {
+        font-size: 10px;
+        margin-top: 40px;
+        margin-left: 900px;
+        padding: 10px;
+        min-width: 100px;
+        font-weight: 600;
+        margin-left: 5px;
+    }
 }
