@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="de">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="verify-v1" content="unique-string">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="keywords" content="website, lernapp, rechner, uhr, snake, description, beschreibung, u, bodigat, u:bodigat, ubodigat">
+    <meta name="author" content="U:Bodigat">
+    <meta name="publisher" content="U:Bodigat">
+    <meta name="copyright" content="U:Bodigat">
+    <meta name="description" content="Dieser Text befindet sich noch in Arbeit">
+    <meta property="og:site_name" content="U:Bodigat.com">
+    <meta property="og:url" content="https://ubodigat.com">
+    <meta property="og:title" content="Sprachlernapp | U:Bodigat.com">
+    <meta property="og:type" content="website">
+    <meta property="og:description" content="Dieser Text befindet sich noch in Arbeit">
+    <meta property="og:image" content="https://cdn.discordapp.com/attachments/927268634492031026/994779232129519656/UBodigat_Werbung.png">
+    <meta property="og:image:secure_url" content="https://cdn.discordapp.com/attachments/927268634492031026/994779232129519656/UBodigat_Werbung.png">
+    <meta property="og:image:width" content="500">
+    <meta property="og:image:height" content="500">
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://ubodigat.com">
+    <meta property="twitter:title" content="Sprachlernapp | U:Bodigat.com">
+    <meta property="twitter:description" content="Dieser Text befindet sich noch in Arbeit">
+    <meta property="twitter:image" content="https://cdn.discordapp.com/attachments/927268634492031026/994779232129519656/UBodigat_Werbung.png">
+    <title>Sprachlernapp | U:Bodigat.com</title>
+    <link rel="icon" href="/Bilder/Wartungsarbeitenprofilbild.png" type="image/x-icon">
+    <link rel="apple-touch-icon" href="https://ubodigat.com/Bilder/Wartungsarbeitenprofilbild.png" />
+    <script src="/script.js"></script>
+    <link rel="stylesheet" href="/lerntools/sprachlernapp/style.css">
+    <script src="/lerntools/sprachlernapp/script.js"></script>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-BE1B5EZY35"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+        gtag('js', new Date());
+
+        gtag('config', 'G-BE1B5EZY35');
+    </script>
+    <!-- Google Tag Manager -->
+    <script>
+        (function(w, d, s, l, i) {
+            w[l] = w[l] || [];
+            w[l].push({
+                'gtm.start': new Date().getTime(),
+                event: 'gtm.js'
+            });
+            var f = d.getElementsByTagName(s)[0],
+                j = d.createElement(s),
+                dl = l != 'dataLayer' ? '&l=' + l : '';
+            j.async = true;
+            j.src =
+                'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
+            f.parentNode.insertBefore(j, f);
+        })(window, document, 'script', 'dataLayer', 'GTM-WTDQC48');
+    </script>
+    <!-- End Google Tag Manager -->
+</head>
+
+<body id="sprachlernapphintergrund">
+    <!-- Google Tag Manager (noscript) -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-WTDQC48"
+    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
+    <nav>
+        <header>
+            <p><a id="überschriftlink" href="https://ubodigat.com">U:Bodigat.com</a> | Sprachlernapp</p>
+            <div id="headerinput">
+                <a href="https://github.com/Bodigat" target="_blank"><button class="button">GitHub</button></a>
+                <a href="/lerntools/lernmenü.html"><button class="button">Zum Lernmenü</button></a>
+            </div>
+        </header>
+    </nav>
+
+    <main>
+        <div class="app-container">
+            <div class="status-bar">
+                <p id="prompt">Sprechen Sie den folgenden Satz aus:</p>
+                <p id="sentence">Dies ist der zu sprechende Satz.</p>
+            </div>
+            <button id="record-button">
+                <i class="fas fa-microphone"></i> Aufnehmen
+            </button>
+            <button id="next-button" class="next-button">
+                Nächster Satz
+            </button>
+        </div>
+    </main>
+
+    <script>
+        const promptElement = document.getElementById('prompt');
+        const sentenceElement = document.getElementById('sentence');
+        const recordButton = document.getElementById('record-button');
+        const nextButton = document.getElementById('next-button');
+
+        const sentences = [
+            /*1*/
+            "Das ist ein einfacher Satz.",
+            /*2*/
+            "Heute ist das Wetter sehr schön.",
+            /*3*/
+            "Ich lerne gerne neue Dinge.",
+            /*4*/
+            "Die Sprachlern-App ist großartig.",
+            /*5*/
+            "Ich bin müde.",
+            /*6*/
+            "Ich habe Hunger.",
+            /*7*/
+            "Ich bin krank.",
+            /*8*/
+            "Ich habe Durst.",
+            /*9*/
+            "Ich muss auf Toilette.",
+            /*10*/
+            "Ich möchte nach Hause.",
+            /*11*/
+            "Ich möchte spielen.",
+            /*12*/
+            "Ich möchte lesen.",
+            /*13*/
+            "Ich möchte Musik hören.",
+            /*14*/
+            "Ich möchte fernsehen.",
+            /*15*/
+            "Ich möchte etwas essen.",
+            /*16*/
+            "Ich möchte etwas trinken.",
+            /*17*/
+            "Ich möchte schlafen.",
+            /*18*/
+            "Ich möchte mich anziehen.",
+            /*19*/
+            "Ich möchte mich waschen.",
+            /*20*/
+            "Ich möchte meine Zähne putzen.",
+            /*21*/
+            "Ich möchte meine Haare kämmen.",
+            /*22*/
+            "Ich möchte meine Schuhe anziehen.",
+            /*23*/
+            "Ich möchte meine Jacke anziehen.",
+            /*24*/
+            "Ich möchte meine Mütze anziehen.",
+            /*25*/
+            "Ich möchte meine Handschuhe anziehen.",
+            /*26*/
+            "Ich möchte meine Socken anziehen.",
+            /*27*/
+            "Ich bin klein.",
+            /*28*/
+            "Ich bin groß.",
+            /*29*/
+            "Ich bin alt.",
+            /*30*/
+            "Ich bin jung.",
+            /*31*/
+            "Ich bin hübsch.",
+            /*32*/
+            "Ich bin hässlich.",
+            /*33*/
+            "Ich bin schlau.",
+            /*34*/
+            "Ich bin dumm.",
+            /*35*/
+            "Ich bin lustig.",
+            /*36*/
+            "Ich bin ernst.",
+            /*37*/
+            "Ich bin nett.",
+            /*38*/
+            "Ich bin böse.",
+            /*39*/
+            "Ich bin freundlich.",
+            /*40*/
+            "Ich bin unfreundlich.",
+            /*41*/
+            "Ich bin fleißig.",
+            /*42*/
+            "Ich bin faul.",
+            /*43*/
+            "Ich bin glücklich.",
+            /*44*/
+            "Ich bin traurig.",
+            /*45*/
+            "Ich bin wütend.",
+            /*46*/
+            "Ich bin müde.",
+            /*47*/
+            "Ich bin hungrig.",
+            /*48*/
+            "Ich bin durstig.",
+            /*49*/
+            "Ich bin krank.",
+            /*50*/
+            "Ich bin gesund.",
+            // 100 Wörter insgesamt
+            "Berglandschaft",
+            "Sternenhimmel",
+            "Gewitterwolke",
+            "Blumengarten",
+            "Waldlichtung",
+            "Regenbogen",
+            "Kieselstein",
+            "Blumenstrauß",
+            "Schmetterling",
+            "Bienenschwarm",
+            "Meeresbrise",
+            "Donnergrollen",
+            "Mondlicht",
+            "Dämmerung",
+            "Funkelnde Sterne",
+            "Nachtigallengezwitscher",
+            "Sonnenuntergang",
+            "Bachplätschern",
+            "Frühlingsblumen",
+            "Sommerhitze",
+            "Herbstlaub",
+            "Wintersturm",
+            "Nebelwald",
+            "Wüstensand",
+            "Eislandschaft",
+            "Vogelgesang",
+            "Pfützenspringen",
+            "Spielplatzgeräusche",
+            "Straßenverkehr",
+            "Kaffeeklatsch",
+            "Geburtstagsfeier",
+            "Feuerwerk",
+            "Picknick im Park",
+            "Regenschirm",
+            "Buntes Laub",
+            "Schneeflocke",
+            "Wärmflasche",
+            "Schneeballschlacht",
+            "Vogelzug",
+            "Wolkenformation",
+            "Badeurlaub",
+            "Skiabfahrt",
+            "Surfbrett",
+            "Zelten im Wald",
+            "Zweiter Advent",
+            "Karnevalsumzug",
+            "Osterhase",
+            "Sommerurlaub",
+            "Weihnachtsmarkt",
+            "Märchenschloss",
+            "Festliches Abendessen",
+            "Heißluftballon",
+            "Wunderkerze",
+            "Spaziergang am Strand",
+            "Herbstnebel",
+            "Bunt bemalte Ostereier",
+            "Blumenkranz",
+            "Pfingstrose",
+            "Versteckspiel",
+            "Eiscreme",
+            "Gartenparty",
+            "Lichterkette",
+            "Vogelhaus",
+            "Freundschaftsband",
+            "Kuscheldecke",
+            "Regenpfütze",
+            "Herbstwind",
+            "Gewitterblitz",
+            "Kaminfeuer",
+            "Schneemann",
+            "Gruselparty",
+            "Bienenstock",
+            "Fledermaus",
+            "Kürbislaterne",
+            "Heuschober",
+            "Vogelschwarm",
+            "Hängematte",
+            "Himbeereis",
+            "Flugzeugstart",
+            "Blumenvase",
+            "Wassertropfen",
+            "Schneeglöckchen",
+            "Sternschnuppe",
+            "Gewitterregen",
+            "Bienenwabe",
+            "Vogelgezwitscher",
+            "Badesee",
+            "Kerzenlicht",
+            "Sonnenaufgang",
+            "Frühlingsduft",
+            "Herbstsonne",
+            "Winterlandschaft",
+            "Seifenblasen",
+            "Tropenparadies",
+            "Wasserfall",
+            "Kaminfeuer",
+            "Nachtflug",
+            "Berggipfel",
+            "Blumenwiese",
+        ];
+
+        let recognition;
+        let selectedSentence = "";
+
+        function getRandomSentence() {
+            return sentences[Math.floor(Math.random() * sentences.length)];
+        }
+
+        function startRecording() {
+            selectedSentence = getRandomSentence();
+            sentenceElement.textContent = selectedSentence;
+
+            promptElement.textContent = 'Sprechen Sie den folgenden Satz aus:';
+            recordButton.textContent = 'Aufnahme läuft...';
+            recordButton.disabled = true;
+
+            recognition = new webkitSpeechRecognition() || new SpeechRecognition();
+            recognition.lang = 'de-DE';
+
+            recognition.onstart = () => {
+                console.log('Aufnahme gestartet.');
+            };
+
+            recognition.onresult = (event) => {
+                const result = event.results[0][0].transcript;
+                console.log('Erkannter Text:', result);
+                evaluateSpeech(result);
+            };
+
+            recognition.onend = () => {
+                endRecording();
+            };
+
+            recognition.start();
+        }
+
+        function endRecording() {
+            recordButton.textContent = 'Aufnehmen';
+            recordButton.disabled = false;
+
+            nextButton.style.display = 'block';
+            recognition.stop();
+        }
+
+        function evaluateSpeech(result) {
+            const cleanedResult = result.trim().toLowerCase();
+            const cleanedSelectedSentence = selectedSentence.toLowerCase();
+
+            if (cleanedResult === cleanedSelectedSentence) {
+                promptElement.textContent = 'Gut gemacht! Sprechen Sie den nächsten Satz aus:';
+            } else {
+                promptElement.textContent = 'Falsch ausgesprochen. Ich werde es korrekt aussprechen:';
+                speakText(selectedSentence); // Text wird korrekt ausgesprochen
+            }
+        }
+
+        function speakText(text) {
+            const speech = new SpeechSynthesisUtterance(text);
+            speech.lang = 'de-DE';
+            window.speechSynthesis.speak(speech);
+        }
+
+        recordButton.addEventListener('click', startRecording);
+
+        nextButton.addEventListener('click', () => {
+            nextButton.style.display = 'none';
+            startRecording();
+        });
+    </script>
+
+</body>
+
+</html>

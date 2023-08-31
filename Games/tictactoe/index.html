@@ -28,9 +28,9 @@
     <title>Tic Tac Toe | U:Bodigat.com</title>
     <link rel="icon" href="/Bilder/Wartungsarbeitenprofilbild.png" type="image/x-icon">
     <link rel="apple-touch-icon" href="https://ubodigat.com/Bilder/Wartungsarbeitenprofilbild.png" />
-    <link rel="stylesheet" href="/Games/Tictactoe/style.css">
+    <link rel="stylesheet" href="/Games/tictactoe/style.css">
     <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700,600' rel='stylesheet' type='text/css'>
-    <script src="/Games/Tictactoe/script.js"></script>
+    <script src="/Games/tictactoe/script.js"></script>
     <script src="/script.js"></script>
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-BE1B5EZY35"></script>
@@ -129,7 +129,7 @@
                 if (!cell.classList.contains('x') && !cell.classList.contains('o') && !isBotTurn) {
                     cell.classList.add('x');
                     if (checkWin('x')) {
-                        handleWin('Du hast gewonnen!');
+                        handleLose('Du hast gewonnen!');
                     } else if (checkTie()) {
                         handleTie();
                     } else {
@@ -198,6 +198,14 @@
                 gameFinished = true;
                 status.textContent = message;
                 status.style.backgroundColor = '#f78c6b';
+                status.style.color = '#fff';
+                restartButton.style.display = 'block';
+            }
+
+            function handleLose(message) {
+                gameFinished = true;
+                status.textContent = message;
+                status.style.backgroundColor = '#249736';
                 status.style.color = '#fff';
                 restartButton.style.display = 'block';
             }
