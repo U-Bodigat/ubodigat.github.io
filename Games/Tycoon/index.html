@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="de">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="verify-v1" content="unique-string">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="keywords" content="website, lernapp, rechner, uhr, snake, description, beschreibung, u, bodigat, u:bodigat, ubodigat">
+    <meta name="author" content="U:Bodigat">
+    <meta name="publisher" content="U:Bodigat">
+    <meta name="copyright" content="U:Bodigat">
+    <meta name="description" content="Dieser Text befindet sich noch in arbeit.">
+    <meta property="og:site_name" content="U:Bodigat.com">
+    <meta property="og:url" content="https://ubodigat.com">
+    <meta property="og:title" content="Tycoon | U:Bodigat.com">
+    <meta property="og:type" content="website">
+    <meta property="og:description" content="Dieser Text befindet sich noch in arbeit.">
+    <meta property="og:image" content="https://cdn.discordapp.com/attachments/927268634492031026/994779232129519656/UBodigat_Werbung.png">
+    <meta property="og:image:secure_url" content="https://cdn.discordapp.com/attachments/927268634492031026/994779232129519656/UBodigat_Werbung.png">
+    <meta property="og:image:width" content="500">
+    <meta property="og:image:height" content="500">
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://ubodigat.com">
+    <meta property="twitter:title" content="Tycoon | U:Bodigat.com">
+    <meta property="twitter:description" content="Dieser Text befindet sich noch in arbeit.">
+    <meta property="twitter:image" content="https://cdn.discordapp.com/attachments/927268634492031026/994779232129519656/UBodigat_Werbung.png">
+    <title>Tycoon | U:Bodigat.com</title>
+    <link rel="icon" href="/Bilder/Wartungsarbeitenprofilbild.png" type="image/x-icon">
+    <link rel="apple-touch-icon" href="https://ubodigat.com/Bilder/Wartungsarbeitenprofilbild.png" />
+    <link rel="stylesheet" href="/Games/Tycoon/style.css">
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700,600' rel='stylesheet' type='text/css'>
+    <script src="/script.js"></script>
+    <script src="/Games/Tycoon/script.js"></script>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-BE1B5EZY35"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+        gtag('js', new Date());
+
+        gtag('config', 'G-BE1B5EZY35');
+    </script>
+    <!-- Google Tag Manager -->
+    <script>
+        (function(w, d, s, l, i) {
+            w[l] = w[l] || [];
+            w[l].push({
+                'gtm.start': new Date().getTime(),
+                event: 'gtm.js'
+            });
+            var f = d.getElementsByTagName(s)[0],
+                j = d.createElement(s),
+                dl = l != 'dataLayer' ? '&l=' + l : '';
+            j.async = true;
+            j.src =
+                'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
+            f.parentNode.insertBefore(j, f);
+        })(window, document, 'script', 'dataLayer', 'GTM-WTDQC48');
+    </script>
+    <!-- End Google Tag Manager -->
+</head>
+
+<body id="Tycoonhintergrund">
+    <!-- Google Tag Manager (noscript) -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-WTDQC48"
+    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
+    <nav>
+        <header>
+            <p> <a id="überschriftlink" href="https://ubodigat.com">U:Bodigat.com</a> | Tycoon</p>
+            <div id="headerinput">
+                <a href="https://github.com/Bodigat" target="_blank"> <button class="button">GitHub</button></a>
+                <a href="/Games/gamemenü.html"> <button class="button">Zum Gamemenü</button></a>
+            </div>
+        </header>
+    </nav>
+
+    <main>
+        <div class="spiel-container">
+            <div class="status-leiste">
+                <span id="ressourcenAnzahl">0 Ressourcen</span>
+                <span id="gebaudeStatus"></span>
+            </div>
+            <button id="ressourcenSammeln">Ressourcen Sammeln</button>
+            <div class="gebäude">
+                <button id="gebaudeKaufen">Gebäude Kaufen</button>
+                <span id="gebaudeKosten"></span>
+            </div>
+            <div id="gebäudeTabelle" style="display:none;">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Gebäude</th>
+                            <th>Level</th>
+                            <th>Leveln</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- Hier werden die Gebäudezeilen dynamisch hinzugefügt -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        // script.js
+        let ressourcenAnzahl = 0;
+        let gebaudeAnzahl = 0;
+        let gebaudeLevel = 1;
+
+        const ressourcenAnzahlElement = document.getElementById('ressourcenAnzahl');
+        const ressourcenSammelnButton = document.getElementById('ressourcenSammeln');
+        const gebaudeKaufenButton = document.getElementById('gebaudeKaufen');
+        const gebaudeKostenElement = document.getElementById('gebaudeKosten');
+        const gebaudeStatusElement = document.getElementById('gebaudeStatus');
+        const gebaudeTabelle = document.getElementById('gebäudeTabelle');
+
+        ressourcenSammelnButton.addEventListener('click', ressourcenSammeln);
+        gebaudeKaufenButton.addEventListener('click', gebaudeKaufen);
+        gebaudeTabelle.addEventListener('click', levelnHandler);
+
+        function ressourcenSammeln() {
+            ressourcenAnzahl += 1;
+            updateRessourcenAnzahl();
+        }
+
+        function gebaudeKaufen() {
+            if (ressourcenAnzahl >= 10) {
+                ressourcenAnzahl -= 10;
+                gebaudeAnzahl += 1;
+                gebaudeLevel = 1;
+                updateGebaudeAnzahl();
+                updateRessourcenAnzahl();
+                updateGebaudeKosten();
+                updateGebaudeStatus();
+                updateGebaeudeTabelle();
+                gebaudeTabelle.style.display = 'block';
+            } else {
+                alert("Nicht genug Ressourcen, um ein Gebäude zu kaufen!");
+            }
+        }
+
+        function levelnHandler(event) {
+            const target = event.target;
+            if (target.classList.contains('leveln-button')) {
+                const gebaudeNummer = target.getAttribute('data-gebaude');
+                levelGebaude(gebaudeNummer);
+            }
+        }
+
+        function levelGebaude(gebaudeNummer) {
+            alert(`Du levelst Gebäude ${gebaudeNummer}`);
+        }
+
+        function updateGebaudeAnzahl() {
+            const gebaudeStatus = gebaudeAnzahl === 1 ? 'Gebäude' : 'Gebäude';
+            gebaudeStatusElement.textContent = `${gebaudeAnzahl} ${gebaudeStatus}`;
+        }
+
+        function updateRessourcenAnzahl() {
+            ressourcenAnzahlElement.textContent = `${ressourcenAnzahl} Ressourcen`;
+        }
+
+        function updateGebaudeKosten() {
+            const gebaudeKosten = 10 + (gebaudeLevel - 1) * 10;
+            gebaudeKostenElement.textContent = `Kosten: ${gebaudeKosten} Ressourcen`;
+        }
+
+        function updateGebaudeStatus() {
+            gebaudeStatusElement.textContent = `Level ${gebaudeLevel}`;
+        }
+
+        function updateGebaeudeTabelle() {
+            const tbody = gebaudeTabelle.querySelector('tbody');
+            const newRow = document.createElement('tr');
+            newRow.innerHTML = `
+                <td>Gebäude ${gebaudeAnzahl}</td>
+                <td>${gebaudeLevel}</td>
+                <td><button class="leveln-button" data-gebaude="${gebaudeAnzahl}">Leveln</button></td>
+            `;
+            tbody.appendChild(newRow);
+        }
+
+        updateGebaudeKosten();
+        updateGebaudeStatus();
+    </script>
+
+</body>
+
+</html>
