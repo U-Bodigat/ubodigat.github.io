@@ -81,16 +81,15 @@
 
     <main>
         <div class="spiel-container">
-            <div class="status-leiste">
+            <div class="status-leiste" id="statusLeiste">
+                <div id="statusText"></div>
                 <span id="ressourcenAnzahl">0 Ressourcen</span>
-                <span id="gebaudeStatus"></span>
             </div>
-            <button id="ressourcenSammeln">Ressourcen Sammeln</button>
+            <button id="ressourcenSammelnButton">Ressourcen Sammeln</button>
             <div class="gebäude">
-                <button id="gebaudeKaufen">Gebäude Kaufen</button>
-                <span id="gebaudeKosten"></span>
+                <button id="gebaudeKaufenButton">Gebäude Kaufen</button>
             </div>
-            <div id="gebäudeTabelle" style="display:none;">
+            <div id="gebäudeTabelle" style="display:none; margin-top: 20px;">
                 <table>
                     <thead>
                         <tr>
@@ -105,91 +104,20 @@
                 </table>
             </div>
         </div>
+
+        <!-- Modal-Fenster für Gebäudekauf und Leveln -->
+        <div id="modal" class="modal">
+            <div class="modal-content">
+                <span class="close" id="closeModal">&times;</span>
+                <div id="modalText"></div>
+                <div class="modal-buttons">
+                    <button id="modalBuy">Kaufen</button>
+                    <button id="modalCancel">Abbrechen</button>
+                </div>
+            </div>
+        </div>
     </main>
-
-    <script>
-        // script.js
-        let ressourcenAnzahl = 0;
-        let gebaudeAnzahl = 0;
-        let gebaudeLevel = 1;
-
-        const ressourcenAnzahlElement = document.getElementById('ressourcenAnzahl');
-        const ressourcenSammelnButton = document.getElementById('ressourcenSammeln');
-        const gebaudeKaufenButton = document.getElementById('gebaudeKaufen');
-        const gebaudeKostenElement = document.getElementById('gebaudeKosten');
-        const gebaudeStatusElement = document.getElementById('gebaudeStatus');
-        const gebaudeTabelle = document.getElementById('gebäudeTabelle');
-
-        ressourcenSammelnButton.addEventListener('click', ressourcenSammeln);
-        gebaudeKaufenButton.addEventListener('click', gebaudeKaufen);
-        gebaudeTabelle.addEventListener('click', levelnHandler);
-
-        function ressourcenSammeln() {
-            ressourcenAnzahl += 1;
-            updateRessourcenAnzahl();
-        }
-
-        function gebaudeKaufen() {
-            if (ressourcenAnzahl >= 10) {
-                ressourcenAnzahl -= 10;
-                gebaudeAnzahl += 1;
-                gebaudeLevel = 1;
-                updateGebaudeAnzahl();
-                updateRessourcenAnzahl();
-                updateGebaudeKosten();
-                updateGebaudeStatus();
-                updateGebaeudeTabelle();
-                gebaudeTabelle.style.display = 'block';
-            } else {
-                alert("Nicht genug Ressourcen, um ein Gebäude zu kaufen!");
-            }
-        }
-
-        function levelnHandler(event) {
-            const target = event.target;
-            if (target.classList.contains('leveln-button')) {
-                const gebaudeNummer = target.getAttribute('data-gebaude');
-                levelGebaude(gebaudeNummer);
-            }
-        }
-
-        function levelGebaude(gebaudeNummer) {
-            alert(`Du levelst Gebäude ${gebaudeNummer}`);
-        }
-
-        function updateGebaudeAnzahl() {
-            const gebaudeStatus = gebaudeAnzahl === 1 ? 'Gebäude' : 'Gebäude';
-            gebaudeStatusElement.textContent = `${gebaudeAnzahl} ${gebaudeStatus}`;
-        }
-
-        function updateRessourcenAnzahl() {
-            ressourcenAnzahlElement.textContent = `${ressourcenAnzahl} Ressourcen`;
-        }
-
-        function updateGebaudeKosten() {
-            const gebaudeKosten = 10 + (gebaudeLevel - 1) * 10;
-            gebaudeKostenElement.textContent = `Kosten: ${gebaudeKosten} Ressourcen`;
-        }
-
-        function updateGebaudeStatus() {
-            gebaudeStatusElement.textContent = `Level ${gebaudeLevel}`;
-        }
-
-        function updateGebaeudeTabelle() {
-            const tbody = gebaudeTabelle.querySelector('tbody');
-            const newRow = document.createElement('tr');
-            newRow.innerHTML = `
-                <td>Gebäude ${gebaudeAnzahl}</td>
-                <td>${gebaudeLevel}</td>
-                <td><button class="leveln-button" data-gebaude="${gebaudeAnzahl}">Leveln</button></td>
-            `;
-            tbody.appendChild(newRow);
-        }
-
-        updateGebaudeKosten();
-        updateGebaudeStatus();
-    </script>
-
+    <script src="/Games/Tycoon/script.js"></script>
 </body>
 
 </html>
