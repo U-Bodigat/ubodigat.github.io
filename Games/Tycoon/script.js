@@ -1,6 +1,7 @@
 document.addEventListener("DOMContentLoaded", function() {
     let ressourcenAnzahl = 0;
     let gebaudeAnzahl = 0;
+    let gebaudeLevel = 0;
     let gebaudeKosten = 10;
 
     const ressourcenAnzahlElement = document.getElementById("ressourcenAnzahl");
@@ -17,7 +18,6 @@ document.addEventListener("DOMContentLoaded", function() {
     ressourcenSammelnButton.addEventListener("click", ressourcenSammeln);
     gebaudeKaufenButton.addEventListener("click", zeigeGebaudeKosten);
     closeModal.addEventListener("click", schließeModal);
-    modalBuy.addEventListener("click", kaufeGebaude);
     modalCancel.addEventListener("click", schließeModal);
 
     function ressourcenSammeln() {
@@ -31,6 +31,8 @@ document.addEventListener("DOMContentLoaded", function() {
             modalBuy.style.display = "inline-block";
             modalCancel.style.display = "inline-block";
             modal.style.display = "block";
+            modalBuy.removeEventListener("click", levelnGebaude); // Entfernen Sie den Event-Listener für das Leveln
+            modalBuy.addEventListener("click", kaufeGebaude); // Fügen Sie einen Event-Listener für den Kauf hinzu
         } else {
             const benötigteRessourcen = gebaudeKosten - ressourcenAnzahl;
             modalText.innerHTML = `Nicht genug Ressourcen!<br>Du benötigst noch ${benötigteRessourcen} Ressourcen.`;
@@ -44,34 +46,67 @@ document.addEventListener("DOMContentLoaded", function() {
         if (ressourcenAnzahl >= gebaudeKosten) {
             ressourcenAnzahl -= gebaudeKosten;
             gebaudeAnzahl += 1;
-            gebaudeKosten = 10 + gebaudeAnzahl * 10; // Erhöhe die Kosten mit jedem Kauf
+            gebaudeLevel = 0;
+            updateGebaudeAnzahl();
             updateRessourcenAnzahl();
             updateGebaudeKosten();
+            updateGebaudeStatus();
             updateGebaeudeTabelle();
             schließeModal();
             zeigeStatusText(`Gebäude erfolgreich gekauft!`);
+            gebaudeTabelle.style.display = 'block';
         } else {
             zeigeStatusText(`Nicht genug Ressourcen, um das Gebäude zu kaufen!`);
         }
     }
 
-    function zeigeStatusText(text) {
-        statusText.textContent = text;
-        setTimeout(() => {
-            statusText.textContent = "";
-        }, 4000); // Text verschwindet nach 4 Sekunden
+    function levelnGebaude(gebaudeNummer) {
+        const levelnGebaudeKosten = gebaudeLevel === 0 ? 17 : gebaudeLevel * 18;
+        if (ressourcenAnzahl >= levelnGebaudeKosten) {
+            modalText.textContent = `Möchtest du das Gebäude auf Level ${gebaudeLevel + 1} für ${levelnGebaudeKosten} Ressourcen leveln?`;
+            modalBuy.textContent = "Leveln";
+            modalBuy.style.display = "inline-block";
+            modalCancel.style.display = "inline-block";
+            modal.style.display = "block";
+
+            modalBuy.addEventListener("click", () => {
+                ressourcenAnzahl -= levelnGebaudeKosten;
+                gebaudeLevel += 1;
+                updateRessourcenAnzahl(); // Ressourcen aktualisieren
+                updateGebaudeStatus(gebaudeNummer);
+                schließeModal();
+                zeigeStatusText(`Gebäude ${gebaudeNummer} erfolgreich auf Level ${gebaudeLevel} gelevelt!`);
+            });
+        } else {
+            modalText.innerHTML = `Nicht genug Ressourcen!<br>Du benötigst noch ${levelnGebaudeKosten - ressourcenAnzahl} Ressourcen.`;
+            modalBuy.style.display = "none";
+            modalCancel.style.display = "inline-block";
+            modal.style.display = "block";
+        }
     }
 
-    function updateGebaeudeTabelle() {
-        const newRow = document.createElement("tr");
-        newRow.innerHTML = `
-          <td>Gebäude ${gebaudeAnzahl}</td>
-          <td><button class="leveln-button" data-gebaude="${gebaudeAnzahl}">Leveln</button></td>`;
-        gebaudeTabelle.querySelector("tbody").appendChild(newRow);
+    function createGebaudeRow(gebaudeNummer) {
+        const tbody = gebaudeTabelle.querySelector("tbody");
+        const existingRow = tbody.querySelector(`td[data-gebaude="${gebaudeNummer}"]`);
+
+        if (!existingRow) {
+            const newRow = document.createElement("tr");
+            newRow.innerHTML = `
+                <td data-gebaude="${gebaudeNummer}">Gebäude ${gebaudeNummer}</td>
+                <td>Level ${gebaudeLevel}</td>
+                <td><button class="leveln-button" id="leveln-button-${gebaudeNummer}">Leveln</button></td>`;
+            tbody.appendChild(newRow);
+
+            const levelnButton = document.getElementById(`leveln-button-${gebaudeNummer}`);
+            levelnButton.addEventListener("click", () => {
+                levelnGebaude(gebaudeNummer);
+            });
+        }
     }
 
-    function schließeModal() {
-        modal.style.display = "none";
+    function updateGebaudeAnzahl() {
+        const gebaudeStatus = gebaudeAnzahl === 1 ? 'Gebäude' : 'Gebäude';
+        ressourcenAnzahlElement.textContent = `${gebaudeAnzahl} ${gebaudeStatus}`;
     }
 
     function updateRessourcenAnzahl() {
@@ -79,7 +114,33 @@ document.addEventListener("DOMContentLoaded", function() {
     }
 
     function updateGebaudeKosten() {
-        gebaudeKosten = 10 + gebaudeAnzahl * 10; // Aktualisiere die Kosten für das nächste Gebäude
+        gebaudeKosten = 10 + gebaudeAnzahl * 10;
+    }
+
+    function updateGebaudeStatus(gebaudeNummer) {
+        const tbody = gebaudeTabelle.querySelector("tbody");
+        const gebaudeRow = tbody.querySelector(`td[data-gebaude="${gebaudeNummer}"]`);
+        if (gebaudeRow) {
+            gebaudeRow.nextElementSibling.textContent = `Level ${gebaudeLevel}`;
+        }
+    }
+
+    function updateGebaeudeTabelle() {
+        // Erstellen Sie Zeilen für alle vorhandenen Gebäude
+        for (let i = 1; i <= gebaudeAnzahl; i++) {
+            createGebaudeRow(i);
+        }
+    }
+
+    function zeigeStatusText(text) {
+        statusText.textContent = text;
+        setTimeout(() => {
+            statusText.textContent = "";
+        }, 4000);
+    }
+
+    function schließeModal() {
+        modal.style.display = "none";
     }
 
     updateRessourcenAnzahl();
