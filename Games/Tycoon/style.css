@@ -206,9 +206,10 @@ body {
     font-family: Arial, sans-serif;
 }
 
-.game-container {
-    width: 80%;
+.spiel-container {
+    width: 100%;
     margin: 0 auto;
+    margin-top: 10%;
     text-align: center;
     padding: 20px;
 }

@@ -1,8 +1,9 @@
 document.addEventListener("DOMContentLoaded", function() {
     let ressourcenAnzahl = 0;
     let gebaudeAnzahl = 0;
-    let gebaudeLevel = 0;
+    let gebaudeLevel = [];
     let gebaudeKosten = 10;
+    const maxGebaudeLevel = 10;
 
     const ressourcenAnzahlElement = document.getElementById("ressourcenAnzahl");
     const ressourcenSammelnButton = document.getElementById("ressourcenSammelnButton");
@@ -18,6 +19,7 @@ document.addEventListener("DOMContentLoaded", function() {
     ressourcenSammelnButton.addEventListener("click", ressourcenSammeln);
     gebaudeKaufenButton.addEventListener("click", zeigeGebaudeKosten);
     closeModal.addEventListener("click", schließeModal);
+    modalBuy.addEventListener("click", kaufeGebaude);
     modalCancel.addEventListener("click", schließeModal);
 
     function ressourcenSammeln() {
@@ -31,11 +33,9 @@ document.addEventListener("DOMContentLoaded", function() {
             modalBuy.style.display = "inline-block";
             modalCancel.style.display = "inline-block";
             modal.style.display = "block";
-            modalBuy.removeEventListener("click", levelnGebaude); // Entfernen Sie den Event-Listener für das Leveln
-            modalBuy.addEventListener("click", kaufeGebaude); // Fügen Sie einen Event-Listener für den Kauf hinzu
         } else {
             const benötigteRessourcen = gebaudeKosten - ressourcenAnzahl;
-            modalText.innerHTML = `Nicht genug Ressourcen!<br>Du benötigst noch ${benötigteRessourcen} Ressourcen.`;
+            modalText.innerHTML = `Nicht genug Ressourcen! Du benötigst noch ${benötigteRessourcen} Ressourcen.`;
             modalBuy.style.display = "none";
             modalCancel.style.display = "inline-block";
             modal.style.display = "block";
@@ -46,7 +46,7 @@ document.addEventListener("DOMContentLoaded", function() {
         if (ressourcenAnzahl >= gebaudeKosten) {
             ressourcenAnzahl -= gebaudeKosten;
             gebaudeAnzahl += 1;
-            gebaudeLevel = 0;
+            gebaudeLevel.push(0);
             updateGebaudeAnzahl();
             updateRessourcenAnzahl();
             updateGebaudeKosten();
@@ -56,29 +56,35 @@ document.addEventListener("DOMContentLoaded", function() {
             zeigeStatusText(`Gebäude erfolgreich gekauft!`);
             gebaudeTabelle.style.display = 'block';
         } else {
-            zeigeStatusText(`Nicht genug Ressourcen, um das Gebäude zu kaufen!`);
+            modalText.textContent = `Nicht genug Ressourcen! Du benötigst ${gebaudeKosten} Ressourcen, um das Gebäude zu kaufen.`;
+            modalBuy.style.display = "none";
+            modalCancel.style.display = "inline-block";
+            modal.style.display = "block";
         }
     }
 
     function levelnGebaude(gebaudeNummer) {
-        const levelnGebaudeKosten = gebaudeLevel === 0 ? 17 : gebaudeLevel * 18;
+        if (gebaudeLevel[gebaudeNummer - 1] >= maxGebaudeLevel) {
+            zeigeStatusText(`Maximales Level erreicht (${maxGebaudeLevel}).`);
+            return;
+        }
+
+        const levelnGebaudeKosten = gebaudeLevel[gebaudeNummer - 1] * 18;
         if (ressourcenAnzahl >= levelnGebaudeKosten) {
-            modalText.textContent = `Möchtest du das Gebäude auf Level ${gebaudeLevel + 1} für ${levelnGebaudeKosten} Ressourcen leveln?`;
-            modalBuy.textContent = "Leveln";
+            modalText.textContent = `Möchtest du das Gebäude auf Level ${gebaudeLevel[gebaudeNummer - 1] + 1} leveln? (Kosten: ${levelnGebaudeKosten} Ressourcen)`;
             modalBuy.style.display = "inline-block";
             modalCancel.style.display = "inline-block";
             modal.style.display = "block";
 
-            modalBuy.addEventListener("click", () => {
+            modalBuy.onclick = function() {
                 ressourcenAnzahl -= levelnGebaudeKosten;
-                gebaudeLevel += 1;
-                updateRessourcenAnzahl(); // Ressourcen aktualisieren
+                gebaudeLevel[gebaudeNummer - 1] += 1;
                 updateGebaudeStatus(gebaudeNummer);
                 schließeModal();
-                zeigeStatusText(`Gebäude ${gebaudeNummer} erfolgreich auf Level ${gebaudeLevel} gelevelt!`);
-            });
+                zeigeStatusText(`Gebäude ${gebaudeNummer} erfolgreich auf Level ${gebaudeLevel[gebaudeNummer - 1]} gelevelt!`);
+            };
         } else {
-            modalText.innerHTML = `Nicht genug Ressourcen!<br>Du benötigst noch ${levelnGebaudeKosten - ressourcenAnzahl} Ressourcen.`;
+            modalText.textContent = `Nicht genug Ressourcen! Du benötigst ${levelnGebaudeKosten} Ressourcen, um das Gebäude zu leveln.`;
             modalBuy.style.display = "none";
             modalCancel.style.display = "inline-block";
             modal.style.display = "block";
@@ -93,7 +99,7 @@ document.addEventListener("DOMContentLoaded", function() {
             const newRow = document.createElement("tr");
             newRow.innerHTML = `
                 <td data-gebaude="${gebaudeNummer}">Gebäude ${gebaudeNummer}</td>
-                <td>Level ${gebaudeLevel}</td>
+                <td>Level ${gebaudeLevel[gebaudeNummer - 1]}</td>
                 <td><button class="leveln-button" id="leveln-button-${gebaudeNummer}">Leveln</button></td>`;
             tbody.appendChild(newRow);
 
@@ -117,11 +123,17 @@ document.addEventListener("DOMContentLoaded", function() {
         gebaudeKosten = 10 + gebaudeAnzahl * 10;
     }
 
-    function updateGebaudeStatus(gebaudeNummer) {
+    function updateGebaudeStatus() {
+        for (let i = 1; i <= gebaudeAnzahl; i++) {
+            updateGebaudeStatusById(i);
+        }
+    }
+
+    function updateGebaudeStatusById(gebaudeNummer) {
         const tbody = gebaudeTabelle.querySelector("tbody");
         const gebaudeRow = tbody.querySelector(`td[data-gebaude="${gebaudeNummer}"]`);
         if (gebaudeRow) {
-            gebaudeRow.nextElementSibling.textContent = `Level ${gebaudeLevel}`;
+            gebaudeRow.nextElementSibling.textContent = `Level ${gebaudeLevel[gebaudeNummer - 1]}`;
         }
     }
 
