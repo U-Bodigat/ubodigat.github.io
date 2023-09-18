@@ -35,7 +35,7 @@ document.addEventListener("DOMContentLoaded", function() {
             modal.style.display = "block";
         } else {
             const benötigteRessourcen = gebaudeKosten - ressourcenAnzahl;
-            modalText.innerHTML = `Nicht genug Ressourcen! Du benötigst noch ${benötigteRessourcen} Ressourcen.`;
+            modalText.innerHTML = `Nicht genug Ressourcen!<br>Du benötigst noch ${benötigteRessourcen} Ressourcen.`;
             modalBuy.style.display = "none";
             modalCancel.style.display = "inline-block";
             modal.style.display = "block";
@@ -49,6 +49,7 @@ document.addEventListener("DOMContentLoaded", function() {
             gebaudeLevel.push(0);
             updateGebaudeAnzahl();
             updateRessourcenAnzahl();
+            gebaudeKosten = 10 + gebaudeAnzahl * 10;
             updateGebaudeKosten();
             updateGebaudeStatus();
             updateGebaeudeTabelle();
@@ -56,7 +57,7 @@ document.addEventListener("DOMContentLoaded", function() {
             zeigeStatusText(`Gebäude erfolgreich gekauft!`);
             gebaudeTabelle.style.display = 'block';
         } else {
-            modalText.textContent = `Nicht genug Ressourcen! Du benötigst ${gebaudeKosten} Ressourcen, um das Gebäude zu kaufen.`;
+            modalText.textContent = `Nicht genug Ressourcen!<br>Du benötigst ${gebaudeKosten} Ressourcen, um das Gebäude zu kaufen.`;
             modalBuy.style.display = "none";
             modalCancel.style.display = "inline-block";
             modal.style.display = "block";
@@ -69,22 +70,23 @@ document.addEventListener("DOMContentLoaded", function() {
             return;
         }
 
-        const levelnGebaudeKosten = gebaudeLevel[gebaudeNummer - 1] * 18;
-        if (ressourcenAnzahl >= levelnGebaudeKosten) {
-            modalText.textContent = `Möchtest du das Gebäude auf Level ${gebaudeLevel[gebaudeNummer - 1] + 1} leveln? (Kosten: ${levelnGebaudeKosten} Ressourcen)`;
+        const levelKosten = gebaudeLevel[gebaudeNummer - 1] === 0 ? 17 : gebaudeLevel[gebaudeNummer - 1] * 18;
+        if (ressourcenAnzahl >= levelKosten) {
+            modalText.textContent = `Möchtest du das Gebäude auf Level ${gebaudeLevel[gebaudeNummer - 1] + 1} leveln? (Kosten: ${levelKosten} Ressourcen)`;
             modalBuy.style.display = "inline-block";
             modalCancel.style.display = "inline-block";
             modal.style.display = "block";
 
             modalBuy.onclick = function() {
-                ressourcenAnzahl -= levelnGebaudeKosten;
+                ressourcenAnzahl -= levelKosten;
                 gebaudeLevel[gebaudeNummer - 1] += 1;
-                updateGebaudeStatus(gebaudeNummer);
+                updateGebaudeStatusById(gebaudeNummer);
+                updateRessourcenAnzahl(); // Aktualisiere die Ressourcen-Anzeige
                 schließeModal();
                 zeigeStatusText(`Gebäude ${gebaudeNummer} erfolgreich auf Level ${gebaudeLevel[gebaudeNummer - 1]} gelevelt!`);
             };
         } else {
-            modalText.textContent = `Nicht genug Ressourcen! Du benötigst ${levelnGebaudeKosten} Ressourcen, um das Gebäude zu leveln.`;
+            modalText.textContent = `Nicht genug Ressourcen!<br>Du benötigst ${levelKosten} Ressourcen, um das Gebäude zu leveln.`;
             modalBuy.style.display = "none";
             modalCancel.style.display = "inline-block";
             modal.style.display = "block";
@@ -138,7 +140,6 @@ document.addEventListener("DOMContentLoaded", function() {
     }
 
     function updateGebaeudeTabelle() {
-        // Erstellen Sie Zeilen für alle vorhandenen Gebäude
         for (let i = 1; i <= gebaudeAnzahl; i++) {
             createGebaudeRow(i);
         }
@@ -157,4 +158,5 @@ document.addEventListener("DOMContentLoaded", function() {
 
     updateRessourcenAnzahl();
     updateGebaudeKosten();
+    updateGebaudeStatus();
 });
