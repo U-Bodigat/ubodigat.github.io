@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="de">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="verify-v1" content="unique-string">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="keywords" content="website, lernapp, rechner, uhr, snake, description, beschreibung, u, bodigat, u:bodigat, ubodigat">
+    <meta name="author" content="U:Bodigat">
+    <meta name="publisher" content="U:Bodigat">
+    <meta name="copyright" content="U:Bodigat">
+    <meta name="description" content="Dieser Text befindet sich noch in Arbeit">
+    <meta property="og:site_name" content="U:Bodigat.com">
+    <meta property="og:url" content="https://ubodigat.com">
+    <meta property="og:title" content="Führerschein-Lernapp | U:Bodigat.com">
+    <meta property="og:type" content="website">
+    <meta property="og:description" content="Dieser Text befindet sich noch in Arbeit">
+    <meta property="og:image" content="https://cdn.discordapp.com/attachments/927268634492031026/994779232129519656/UBodigat_Werbung.png">
+    <meta property="og:image:secure_url" content="https://cdn.discordapp.com/attachments/927268634492031026/994779232129519656/UBodigat_Werbung.png">
+    <meta property="og:image:width" content="500">
+    <meta property="og:image:height" content="500">
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://ubodigat.com">
+    <meta property="twitter:title" content="Führerschein-Lernapp | U:Bodigat.com">
+    <meta property="twitter:description" content="Dieser Text befindet sich noch in Arbeit">
+    <meta property="twitter:image" content="https://cdn.discordapp.com/attachments/927268634492031026/994779232129519656/UBodigat_Werbung.png">
+    <title>Führerschein-Lernapp | U:Bodigat.com</title>
+    <link rel="icon" href="/Bilder/Wartungsarbeitenprofilbild.png" type="image/x-icon">
+    <link rel="apple-touch-icon" href="https://ubodigat.com/Bilder/Wartungsarbeitenprofilbild.png" />
+    <script src="/script.js"></script>
+    <link rel="stylesheet" href="/lerntools/fuehrerschein/style.css">
+    <script src="/lerntools/fuehrerschein/script.js"></script>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-BE1B5EZY35"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+        gtag('js', new Date());
+
+        gtag('config', 'G-BE1B5EZY35');
+    </script>
+    <!-- Google Tag Manager -->
+    <script>
+        (function(w, d, s, l, i) {
+            w[l] = w[l] || [];
+            w[l].push({
+                'gtm.start': new Date().getTime(),
+                event: 'gtm.js'
+            });
+            var f = d.getElementsByTagName(s)[0],
+                j = d.createElement(s),
+                dl = l != 'dataLayer' ? '&l=' + l : '';
+            j.async = true;
+            j.src =
+                'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
+            f.parentNode.insertBefore(j, f);
+        })(window, document, 'script', 'dataLayer', 'GTM-WTDQC48');
+    </script>
+    <!-- End Google Tag Manager -->
+</head>
+
+<body id="fuehrerscheinhintergrund">
+    <!-- Google Tag Manager (noscript) -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-WTDQC48"
+    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
+    <nav>
+        <header>
+            <p><a id="überschriftlink" href="https://ubodigat.com">U:Bodigat.com</a> | Führerschein-Lernapp</p>
+            <div id="headerinput">
+                <a href="https://ubodigat.com/datenschutz.html" target="_blank"> <button class="button">Datenschutz</button></a>
+                <a href="/lerntools/lernmenü.html"><button class="button">Zum Lernmenü</button></a>
+            </div>
+        </header>
+    </nav>
+
+    <main>
+        <div id="question-container">
+            <p id="question-text">Hier wird die Frage angezeigt.</p>
+            <img id="question-image" src="" alt="Verkehrsschild">
+        </div>
+        <div id="answer-container">
+            <button class="answer-button">Antwort 1</button>
+            <button class="answer-button">Antwort 2</button>
+            <button class="answer-button">Antwort 3</button>
+        </div>
+        <div id="popup-container" class="popup-container">
+            <div id="popup" class="popup">
+                <p id="popup-message"></p>
+                <button onclick="closePopup()">Schließen</button>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        const questions = [{
+                question: "Was bedeutet dieses Verkehrsschild?",
+                image: "/lerntools/fuehrerschein/bilder/Stoppschild.png",
+                answers: [
+                    "A. Stopschild",
+                    "B. Vorfahrt",
+                    "C. Spielstraße"
+                ],
+                correctAnswer: 0
+            },
+            // Weitere Fragen hier hinzufügen
+        ];
+
+        let currentQuestionIndex = 0;
+        let popupShown = false; // Variable, um das Popup nur einmal zu zeigen
+
+        const questionTextElement = document.getElementById('question-text');
+        const questionImageElement = document.getElementById('question-image');
+        const answerContainer = document.getElementById('answer-container');
+
+        function showQuestion(index) {
+            const currentQuestion = questions[index];
+            questionTextElement.textContent = currentQuestion.question;
+            questionImageElement.src = currentQuestion.image;
+
+            answerContainer.innerHTML = '';
+
+            currentQuestion.answers.forEach((answer, index) => {
+                const button = document.createElement('button');
+                button.textContent = answer;
+                button.classList.add('answer-button');
+                button.addEventListener('click', () => checkAnswer(index));
+                answerContainer.appendChild(button);
+            });
+        }
+
+        function checkAnswer(selectedIndex) {
+            const currentQuestion = questions[currentQuestionIndex];
+
+            let resultMessage = '';
+
+            if (selectedIndex === currentQuestion.correctAnswer) {
+                resultMessage = 'Richtig!';
+            } else {
+                resultMessage = 'Falsch. Die richtige Antwort ist: ' + currentQuestion.answers[currentQuestion.correctAnswer];
+            }
+
+            // Anzeigen des Popup-Fensters
+            const popupContainer = document.getElementById('popup-container');
+            const popup = document.getElementById('popup');
+            const popupMessage = document.getElementById('popup-message');
+
+            popupMessage.textContent = resultMessage;
+            popupContainer.style.display = 'flex';
+            popupShown = true; // Popup wurde angezeigt
+
+            currentQuestionIndex++;
+            if (currentQuestionIndex < questions.length) {
+                showQuestion(currentQuestionIndex);
+            }
+        }
+
+        function closePopup() {
+            const popupContainer = document.getElementById('popup-container');
+            popupContainer.style.display = 'none';
+            popupShown = false; // Zurücksetzen der Variable, um das Popup erneut anzeigen zu können
+        }
+
+        showQuestion(currentQuestionIndex);
+    </script>
+
+</body>
+
+</html>
