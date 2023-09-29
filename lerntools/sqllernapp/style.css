@@ -1,0 +1,377 @@
+@import url('https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,500,600,700,800,900');
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    min-height: 100vh;
+    user-select: none;
+    background-color: #26282b;
+}
+
+body::-webkit-scrollbar {
+    width: 12px;
+}
+
+body::-webkit-scrollbar-track {
+    background: #26282b;
+}
+
+body::-webkit-scrollbar-thumb {
+    background-color: #ffffff;
+    border-radius: 20px;
+    border: 4px solid #26282b;
+}
+
+header {
+    background-color: #003a1e;
+    color: #fff;
+    text-align: start;
+    padding: 16px 100px;
+    font-size: 24px;
+    position: fixed;
+    left: 0;
+    right: 0;
+    top: 0;
+    opacity: 0.8;
+}
+
+header:hover {
+    opacity: 1;
+}
+
+header p {
+    position: start;
+    text-align: start;
+}
+
+#headerinput {
+    margin-top: -40px;
+    display: flex;
+    justify-content: end;
+    align-items: flex-end;
+    text-align: end;
+}
+
+#headerinput a button {
+    cursor: pointer;
+}
+
+#überschriftlink {
+    text-decoration: none;
+    color: #fff;
+}
+
+.button {
+    background-color: #012f6b;
+    color: #fff;
+    text-decoration: none;
+    border: unset;
+    padding: 12px;
+    border-radius: 7px;
+    min-width: 160px;
+    font-weight: 600;
+    margin-left: 10px;
+    box-shadow: 0px 3px 1px -2px rgb(0 0 0 / 20%), 0px 2px 2px 0px rgb(0 0 0 / 14%), 0px 1px 5px 0px rgb(0 0 0 / 12%);
+}
+
+.button:hover {
+    background-color: #006eff;
+}
+
+.button a {
+    color: #fff;
+    text-decoration: none;
+}
+
+#sqllernapphintergrund {
+    background-image: linear-gradient(rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.9)), url(/Bilder/ubodigat.com\ sqllernapp\ Hintergrund.png);
+    background-size: cover;
+    background-attachment: fixed;
+    background-position: center;
+}
+
+
+/*Responsive header*/
+
+@media (max-width: 960px) {
+    #headerinput a {
+        margin-top: 50px;
+    }
+}
+
+@media (max-width: 680px) {
+    #headerinput a {
+        margin-top: 50px;
+    }
+}
+
+@media (max-width: 600px) {
+    #headerinput a {
+        margin-left: 40px;
+        margin-right: -40px;
+    }
+}
+
+@media (max-width: 560px) {
+    #headerinput a {
+        margin-left: 65px;
+        margin-right: -65px;
+    }
+}
+
+@media (max-width: 540px) {
+    header p a {
+        margin-left: -70px;
+    }
+    #headerinput {
+        display: flex;
+        margin-top: -85px;
+        margin-bottom: 0px;
+    }
+    #headerinput a button {
+        font-size: 10px;
+        margin-top: 40px;
+        margin-left: 900px;
+        padding: 10px;
+        min-width: 100px;
+        font-weight: 600;
+        margin-left: 5px;
+    }
+}
+
+@media (max-width: 400px) {
+    nav header div {
+        margin-bottom: 10px;
+    }
+    header p a {
+        margin-left: -70px;
+    }
+    #headerinput {
+        display: flex;
+        margin-top: -80px;
+        margin-bottom: 0px;
+    }
+    #headerinput a button {
+        font-size: 10px;
+        margin-top: 40px;
+        margin-left: 900px;
+        padding: 10px;
+        min-width: 100px;
+        font-weight: 600;
+        margin-left: 5px;
+    }
+}
+
+@media (max-width: 350px) {
+    nav header div {
+        margin-bottom: 10px;
+    }
+    header p a {
+        margin-left: -70px;
+    }
+    #headerinput {
+        display: flex;
+        margin-top: -80px;
+        margin-bottom: 0px;
+    }
+    #headerinput a {
+        margin-left: 80px;
+        margin-right: -80px;
+    }
+    #headerinput a button {
+        font-size: 10px;
+        margin-top: 40px;
+        margin-left: 900px;
+        padding: 10px;
+        min-width: 100px;
+        font-weight: 600;
+        margin-left: 5px;
+    }
+}
+
+
+/* Ab hier kein Grundcss code mehr*/
+
+pre::-webkit-scrollbar {
+    height: 7px;
+    background: #333;
+}
+
+pre::-webkit-scrollbar-thumb {
+    background-color: #66ff00a9;
+    border-radius: 10px;
+}
+
+pre::-webkit-scrollbar-thumb:hover {
+    background-color: #66ff00a9;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-color: black;
+    color: white;
+}
+
+#quiz-container {
+    width: 80%;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: rgba(0, 0, 0, 0.8);
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+    text-align: center;
+}
+
+#question {
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+#options {
+    display: flex;
+    flex-direction: column;
+}
+
+.option {
+    margin: 5px 0;
+    padding: 10px;
+    background-color: #333;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.option:hover {
+    background-color: #555;
+}
+
+#sql-input-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+#sql-answer {
+    padding: 10px;
+    width: 60%;
+    border: none;
+    border-radius: 5px 0 0 5px;
+}
+
+#submit-btn {
+    padding: 10px 20px;
+    background-color: #007BFF;
+    color: white;
+    border: none;
+    border-radius: 0 5px 5px 0;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin-left: -5px;
+}
+
+#submit-btn:hover {
+    background-color: #0056b3;
+}
+
+#result {
+    font-size: 24px;
+    text-align: center;
+    margin-top: 20px;
+}
+
+
+/* Stile für die lernen.html */
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-color: black;
+    color: white;
+}
+
+main {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    border-radius: 5px;
+    text-align: left;
+    overflow-x: auto;
+}
+
+#überschriftlernen {
+    font-size: 20px;
+    margin-top: 90px;
+    padding: 6px 20px;
+    margin-right: 73%;
+    margin-bottom: 20px;
+    border-radius: 3px;
+    background-color: #474747;
+}
+
+h1 {
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+h2 {
+    margin-top: 50px;
+}
+
+h3 {
+    font-size: 18px;
+    margin-top: 35px;
+}
+
+ul {
+    list-style-type: disc;
+    margin-left: 20px;
+    margin-top: 10px;
+}
+
+#mainlernensql {
+    margin-bottom: 20px;
+    padding: 6px 20px;
+    border-radius: 5px;
+    background-color: #0f0f0fbe;
+}
+
+pre {
+    background-color: #1e1e1e;
+    color: white;
+    padding: 10px;
+    border-radius: 5px;
+    font-size: 14px;
+    overflow-x: auto;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+code {
+    font-family: Consolas, monospace;
+    font-size: 14px;
+    background-color: #1e1e1e;
+    color: #00e732;
+    padding: 2px 4px;
+    border-radius: 3px;
+    white-space: nowrap;
+    text-align: center;
+    line-height: 1.2;
+}

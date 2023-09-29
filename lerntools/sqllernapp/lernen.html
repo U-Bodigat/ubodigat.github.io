@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="de">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="verify-v1" content="unique-string">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="keywords" content="website, lernapp, rechner, uhr, snake, description, beschreibung, u, bodigat, u:bodigat, ubodigat">
+    <meta name="author" content="U:Bodigat">
+    <meta name="publisher" content="U:Bodigat">
+    <meta name="copyright" content="U:Bodigat">
+    <meta name="description" content="Dieser Text befindet sich noch in Arbeit">
+    <meta property="og:site_name" content="U:Bodigat.com">
+    <meta property="og:url" content="https://ubodigat.com">
+    <meta property="og:title" content="SQL Lernapp | lernen | U:Bodigat.com">
+    <meta property="og:type" content="website">
+    <meta property="og:description" content="Dieser Text befindet sich noch in Arbeit">
+    <meta property="og:image" content="https://cdn.discordapp.com/attachments/927268634492031026/994779232129519656/UBodigat_Werbung.png">
+    <meta property="og:image:secure_url" content="https://cdn.discordapp.com/attachments/927268634492031026/994779232129519656/UBodigat_Werbung.png">
+    <meta property="og:image:width" content="500">
+    <meta property="og:image:height" content="500">
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://ubodigat.com">
+    <meta property="twitter:title" content="SQL Lernapp | lernen | U:Bodigat.com">
+    <meta property="twitter:description" content="Dieser Text befindet sich noch in Arbeit">
+    <meta property="twitter:image" content="https://cdn.discordapp.com/attachments/927268634492031026/994779232129519656/UBodigat_Werbung.png">
+    <title>SQL Lernapp | lernen | U:Bodigat.com</title>
+    <link rel="icon" href="/Bilder/Wartungsarbeitenprofilbild.png" type="image/x-icon">
+    <link rel="apple-touch-icon" href="https://ubodigat.com/Bilder/Wartungsarbeitenprofilbild.png" />
+    <script src="/script.js"></script>
+    <link rel="stylesheet" href="/lerntools/sqllernapp/style.css">
+    <script src="/lerntools/sqllernapp/script.js"></script>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-BE1B5EZY35"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+        gtag('js', new Date());
+
+        gtag('config', 'G-BE1B5EZY35');
+    </script>
+    <!-- Google Tag Manager -->
+    <script>
+        (function(w, d, s, l, i) {
+            w[l] = w[l] || [];
+            w[l].push({
+                'gtm.start': new Date().getTime(),
+                event: 'gtm.js'
+            });
+            var f = d.getElementsByTagName(s)[0],
+                j = d.createElement(s),
+                dl = l != 'dataLayer' ? '&l=' + l : '';
+            j.async = true;
+            j.src =
+                'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
+            f.parentNode.insertBefore(j, f);
+        })(window, document, 'script', 'dataLayer', 'GTM-WTDQC48');
+    </script>
+    <!-- End Google Tag Manager -->
+</head>
+
+<body id="sqllernapphintergrund">
+    <!-- Google Tag Manager (noscript) -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-WTDQC48"
+    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
+    <nav>
+        <header>
+            <p><a id="überschriftlink" href="https://ubodigat.com">U:Bodigat.com</a> | SQL Lernapp | lernen </p>
+            <div id="headerinput">
+                <a href="/lerntools/sqllernapp/index.html"><button class="button">SQL üben</button></a>
+                <!-- <a href="https://ubodigat.com/lerntools/sqllernapp/"><button class="button">SQL lernen</button></a> -->
+                <a href="https://ubodigat.com/datenschutz.html" target="_blank"> <button class="button">Datenschutz</button></a>
+                <a href="/lerntools/lernmenü.html"><button class="button">Zum Lernmenü</button></a>
+            </div>
+        </header>
+    </nav>
+
+    <main id="mainlernensql">
+        <h1 id="überschriftlernen">SQL Grundlagen</h1>
+        <p>
+            SQL (Structured Query Language) ist eine spezielle Programmiersprache, die für die Verwaltung von Daten in relationalen Datenbanken verwendet wird. Sie ermöglicht es, Daten abzurufen, einzufügen, zu aktualisieren und zu löschen. SQL ist eine unverzichtbare
+            Fähigkeit für Datenbankadministratoren und Entwickler, um effizient auf Daten zuzugreifen und diese zu verwalten.
+        </p>
+
+        <h2>SQL-Befehle</h2>
+        <p>
+            SQL bietet eine Vielzahl von Befehlen, um verschiedene Aufgaben in einer Datenbank auszuführen. Hier sind einige der wichtigsten SQL-Befehle:
+        </p>
+        <ul>
+            <li><strong>SELECT:</strong> Zum Abfragen von Daten aus einer Tabelle.</li>
+            <li><strong>INSERT:</strong> Zum Einfügen von neuen Daten in eine Tabelle.</li>
+            <li><strong>UPDATE:</strong> Zum Aktualisieren von vorhandenen Daten in einer Tabelle.</li>
+            <li><strong>DELETE:</strong> Zum Löschen von Daten aus einer Tabelle.</li>
+        </ul>
+
+        <h2 id="sqlBeispiele">SQL-Beispiele</h2>
+        <p>
+            Hier sind einige Beispiele für SQL-Abfragen, um die Verwendung der SQL-Befehle zu verdeutlichen:
+        </p>
+        <pre><code>
+            -- Beispiel 1: Abfrage nach Fahrern aus Deutschland
+            SELECT Vorname, Nachname
+            FROM Fahrer
+            WHERE Land = 'Deutschland';
+        </code></pre>
+
+        <pre><code>
+            -- Beispiel 2: Abfrage nach Teams mit mehr als 100 WM-Punkten
+            SELECT Teamname, WM_Punkte
+            FROM Teams
+            WHERE WM_Punkte > 100;
+        </code></pre>
+
+        <h2 id="sqlOperatoren">SQL-Operatoren</h2>
+        <p>
+            SQL verwendet verschiedene Operatoren, um komplexe Abfragen durchzuführen. Hier sind einige der häufigsten SQL-Operatoren:
+        </p>
+        <ul>
+            <li><strong>Vergleichsoperatoren:</strong> Mit <code>&lt;, &lt;=, =, &lt;&gt;, &gt;=, &gt;</code> können Vergleichsbedingungen in der WHERE-Klausel formuliert werden.</li>
+            <li><strong>Logische Operatoren:</strong> Mit <code>AND, OR, NOT</code> können logische Bedingungen in der WHERE-Klausel formuliert werden.</li>
+            <li><strong>Between-Operator:</strong> Der BETWEEN-Operator wird für Bereichsvergleiche verwendet.</li>
+            <li><strong>Like-Operator:</strong> Mit dem LIKE-Operator können Muster für String-Vergleiche erstellt werden.</li>
+            <li><strong>In-Operator:</strong> Der IN-Operator hilft, wenn Sie eine Liste von Kriterien für gesuchte Daten haben.</li>
+            <li><strong>IS-Operator:</strong> Der IS-Operator wird verwendet, um nach NULL-Werten zu suchen.</li>
+            <li><strong>Distinct-Operator:</strong> Mit DISTINCT können doppelte Einträge aus den Ergebnissen entfernt werden.</li>
+            <li><strong>As-Operator:</strong> Mit dem AS-Operator können Sie berechneten Ergebnisspalten Namen zuweisen.</li>
+        </ul>
+
+        <h2 id="sqlSortierung">Sortierung und Begrenzung</h2>
+        <p>
+            Sie können die Reihenfolge der Abfrageergebnisse steuern und die Ergebnismenge begrenzen:
+        </p>
+        <ul>
+            <li><strong>Order By:</strong> Der ORDER BY-Operator wird verwendet, um Ergebnisse nach bestimmten Kriterien zu sortieren.</li>
+            <li><strong>Limit:</strong> Der LIMIT-Operator beschränkt die Anzahl der zurückgegebenen Datensätze.</li>
+        </ul>
+
+        <h2 id="sqlNull">Arbeiten mit NULL-Werten</h2>
+        <p>
+            NULL-Werte sind in SQL wichtig und werden oft verwendet. Der IS-Operator kann verwendet werden, um NULL-Werte zu finden.
+        </p>
+
+        <h2 id="sqlBerechnungen">Berechnungen in SQL</h2>
+        <p>
+            In SQL können Sie auch Berechnungen durchführen und Ergebnisspalten mit Aliasnamen versehen.
+        </p>
+
+        <h2 id="sqlDML">Data Manipulation Language (DML)</h2>
+        <p>
+            Zur Bearbeitung von Daten gibt es in SQL die Befehle: INSERT, UPDATE und DELETE. Diese Befehlsgruppe wird auch als DML - Data Manipulation Language bezeichnet.
+        </p>
+        <h3>Wie fügt man Daten in eine Tabelle ein?</h3>
+        <p>
+            Mit dem INSERT-Befehl kannst Du Daten in eine Tabelle einfügen. Das geht so:
+        </p>
+        <pre><code>
+            INSERT INTO schueler VALUES (1024, 'Mueller', 'Heinz', '1988-08-14', 'Hüttenweg 6', '64536', 'Oberdorf');
+            INSERT INTO Kurs VALUES ('12I34', 'Inf', 'Datenbanken', 'GK', '2004/01', 2);
+            INSERT INTO Belegt VALUES (1024, '12I34', NULL);
+        </code></pre>
+
+        <p>
+            Der INSERT-Befehl hat den Aufbau:
+        </p>
+        <pre><code>
+            INSERT INTO Tabelle VALUES (Wert_1, Wert_2,... , Wert_n);
+        </code></pre>
+
+        <p>
+            Beim INSERT-Befehl in der bisherigen Form musst Du immer Werte für alle Spalten angeben. Bei der zweiten Form des INSERT-Befehls ist das nicht nötig, denn hier gibst Du hinter dem Tabellennamen die einzelnen Spalten an, die einen Wert erhalten sollen.
+        </p>
+        <pre><code>
+            INSERT INTO Tabelle(Spalte_1, Spalte_2, Spalte_3,...) VALUES (Wert_1, Wert_2, Wert_3, ...);
+        </code></pre>
+
+        <h3>Und wie ändert man Daten?</h3>
+        <p>
+            Dafür gibt es den UPDATE-Befehl. Auch dafür drei Beispiele:
+        </p>
+        <pre><code>
+            UPDATE schueler SET Nachname = 'Müller' WHERE SNr = 1024;
+            UPDATE Kurs SET Thema = 'Datenbanken mit SQL', Stunden = 3  WHERE KursNr = '12I34';
+            UPDATE Belegt SET Punkte = 14 WHERE SNr = 1024 AND KursNr = '12I34';
+        </code></pre>
+
+        <p>
+            Mit UPDATE Tabelle gibst Du an, in welcher Tabelle Daten geändert werden sollen. Mit SET Spalte = Wert gibst Du den neuen Wert für die Spalte an. Mit WHERE Bedingung wählst Du die Datensätze aus, die geändert werden sollen.
+        </p>
+
+        <p>
+            Fehlt die WHERE-Bedingung, so werden alle Datensätze geändert.
+        </p>
+
+        <h3>Ab in den Mülleimer!</h3>
+        <p>
+            Du löschst Datensätze mit dem DELETE-Befehl. Das geht so:
+        </p>
+        <pre><code>
+            DELETE FROM schueler WHERE SNr = 1024;
+            DELETE FROM Kurs WHERE Fach = 'D';
+            DELETE FROM Belegt;
+        </code></pre>
+
+        <p>
+            Beim ersten DELETE-Befehl wird als WHERE-Bedingung ein Schlüsselwert angegeben. Dadurch wird genau ein Datensatz gelöscht. Beim zweiten DELETE-Befehl werden alle Deutsch-Kurse gelöscht. Beim dritten DELETE-Befehl fehlt die WHERE-Bedingung, dadurch werden
+            alle Datensätze gelöscht.
+        </p>
+
+        <h2 id="sqlDDL">Data Definition Language (DDL)</h2>
+        <p>
+            Der Teil von SQL, mit dem Du Tabellen und Datenbanken erstellst, wird DDL - Data Definition Language genannt. Die Tabellen der Datenbank Schule kann man mit diesen CREATE-Befehlen erzeugen:
+        </p>
+        <pre><code>
+            CREATE TABLE schueler (
+                SNr INT(5) PRIMARY KEY,
+                Nachname VARCHAR(40),
+                Vorname VARCHAR(30),
+                Geburtsdatum DATE,
+                StrasseNr VARCHAR(40),
+                PLZ VARCHAR(7),
+                Ort VARCHAR(40)
+            );
+
+            CREATE TABLE Kurs (
+                KursNr VARCHAR(10) PRIMARY KEY,
+                Fach VARCHAR(5),
+                Thema VARCHAR(50),
+                Art ENUM('GK', 'LK'),
+                Halbjahr VARCHAR(10),
+                Stunden INT(1)
+            );
+
+            CREATE TABLE Belegt (
+                SNr INT(5),
+                KursNr VARCHAR(10),
+                Punkte INT(2),
+                PRIMARY KEY (SNr, KursNr)
+            );
+        </code></pre>
+
+        <p>
+            Mit CREATE TABLE Tabelle erhält die Tabelle einen Namen. Dann gibst Du alle Attribute der Tabelle samt ihren Datentypen an. Die Primärschlüssel kennzeichnet man mit PRIMARY KEY.
+        </p>
+
+        <p>
+            Weitere Datentypen findest Du im MySQL-Handbuch.
+        </p>
+
+        <h3>Tabellen leeren und löschen</h3>
+        <p>
+            Mit DELETE FROM Tabelle löschst Du alle Datensätze einer Tabelle. Zum Löschen einer Tabelle nimmst Du den DROP TABLE-Befehl, z. B. DROP TABLE Kurs.
+        </p>
+    </main>
+
+</body>
+
+</html>

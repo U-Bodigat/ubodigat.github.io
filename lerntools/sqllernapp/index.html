@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="de">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="verify-v1" content="unique-string">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="keywords" content="website, lernapp, rechner, uhr, snake, description, beschreibung, u, bodigat, u:bodigat, ubodigat">
+    <meta name="author" content="U:Bodigat">
+    <meta name="publisher" content="U:Bodigat">
+    <meta name="copyright" content="U:Bodigat">
+    <meta name="description" content="Dieser Text befindet sich noch in Arbeit">
+    <meta property="og:site_name" content="U:Bodigat.com">
+    <meta property="og:url" content="https://ubodigat.com">
+    <meta property="og:title" content="SQL Lernapp | U:Bodigat.com">
+    <meta property="og:type" content="website">
+    <meta property="og:description" content="Dieser Text befindet sich noch in Arbeit">
+    <meta property="og:image" content="https://cdn.discordapp.com/attachments/927268634492031026/994779232129519656/UBodigat_Werbung.png">
+    <meta property="og:image:secure_url" content="https://cdn.discordapp.com/attachments/927268634492031026/994779232129519656/UBodigat_Werbung.png">
+    <meta property="og:image:width" content="500">
+    <meta property="og:image:height" content="500">
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://ubodigat.com">
+    <meta property="twitter:title" content="SQL Lernapp | U:Bodigat.com">
+    <meta property="twitter:description" content="Dieser Text befindet sich noch in Arbeit">
+    <meta property="twitter:image" content="https://cdn.discordapp.com/attachments/927268634492031026/994779232129519656/UBodigat_Werbung.png">
+    <title>SQL Lernapp | U:Bodigat.com</title>
+    <link rel="icon" href="/Bilder/Wartungsarbeitenprofilbild.png" type="image/x-icon">
+    <link rel="apple-touch-icon" href="https://ubodigat.com/Bilder/Wartungsarbeitenprofilbild.png" />
+    <script src="/script.js"></script>
+    <link rel="stylesheet" href="/lerntools/sqllernapp/style.css">
+    <script src="/lerntools/sqllernapp/script.js"></script>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-BE1B5EZY35"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+        gtag('js', new Date());
+
+        gtag('config', 'G-BE1B5EZY35');
+    </script>
+    <!-- Google Tag Manager -->
+    <script>
+        (function(w, d, s, l, i) {
+            w[l] = w[l] || [];
+            w[l].push({
+                'gtm.start': new Date().getTime(),
+                event: 'gtm.js'
+            });
+            var f = d.getElementsByTagName(s)[0],
+                j = d.createElement(s),
+                dl = l != 'dataLayer' ? '&l=' + l : '';
+            j.async = true;
+            j.src =
+                'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
+            f.parentNode.insertBefore(j, f);
+        })(window, document, 'script', 'dataLayer', 'GTM-WTDQC48');
+    </script>
+    <!-- End Google Tag Manager -->
+</head>
+
+<body id="sqllernapphintergrund">
+    <!-- Google Tag Manager (noscript) -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-WTDQC48"
+    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
+    <nav>
+        <header>
+            <p><a id="überschriftlink" href="https://ubodigat.com">U:Bodigat.com</a> | SQL Lernapp |lernen </p>
+            <div id="headerinput">
+                <a href="/lerntools/sqllernapp/lernen.html"><button class="button">SQL lernen</button></a>
+                <!-- <a href="https://ubodigat.com/lerntools/sqllernapp/lernen"><button class="button">SQL lernen</button></a> -->
+                <a href="https://ubodigat.com/datenschutz.html" target="_blank"> <button class="button">Datenschutz</button></a>
+                <a href="/lerntools/lernmenü.html"><button class="button">Zum Lernmenü</button></a>
+            </div>
+        </header>
+    </nav>
+
+    <main>
+        <div id="quiz-container">
+            <div id="question">Frage 1: Was bedeutet SQL?</div>
+            <div id="options">
+                <div class="option">Structured Query Language</div>
+                <div class="option">Simple Query Language</div>
+                <div class="option">System Query Language</div>
+                <div class="option">Sequential Query Language</div>
+            </div>
+            <div id="sql-input-container">
+                <input type="text" id="sql-answer" placeholder="Deine SQL-Anfrage">
+                <button id="submit-btn">Einreichen</button>
+            </div>
+            <div id="result"></div>
+        </div>
+    </main>
+
+    <script>
+        const questions = [{
+            question: "Frage 1: Was bedeutet SQL?",
+            answers: [
+                "Structured Query Language",
+                "Simple Query Language",
+                "System Query Language",
+                "Sequential Query Language"
+            ],
+            correctAnswer: "Structured Query Language",
+            type: "multipleChoice"
+        }, {
+            question: "Frage 2: Welcher SQL-Befehl wird verwendet, um Daten aus einer Datenbank abzurufen?",
+            answers: [
+                "SELECT",
+                "INSERT",
+                "UPDATE",
+                "DELETE"
+            ],
+            correctAnswer: "SELECT",
+            type: "multipleChoice"
+        }, {
+            question: "Frage 3: Welcher SQL-Befehl wird verwendet, um Daten in eine Datenbank einzufügen?",
+            answers: [
+                "SELECT",
+                "INSERT",
+                "UPDATE",
+                "DELETE"
+            ],
+            correctAnswer: "INSERT",
+            type: "multipleChoice"
+        }, {
+            question: "Frage 4: Schreibe einen SQL-Befehl, um alle Datensätze aus der Tabelle 'Kunden' auszuwählen.",
+            correctAnswer: "SELECT * FROM Kunden",
+            type: "sqlQuery"
+        }, {
+            question: "Frage 5: Schreibe einen SQL-Befehl, um den Preis für das Produkt 'Handy' in der Tabelle 'Produkte' zu aktualisieren.",
+            correctAnswer: "UPDATE Produkte SET Preis = 500 WHERE Produktname = 'Handy'",
+            type: "sqlQuery"
+        }];
+
+        const additionalQuestions = [{
+                question: "Frage 6: Welcher SQL-Befehl wird verwendet, um Daten aus einer Tabelle 'Bestellungen' abzurufen, bei denen der Gesamtbetrag größer als 1000 ist?",
+                answers: [
+                    "SELECT * FROM Bestellungen WHERE Gesamtbetrag > 1000",
+                    "SELECT * FROM Bestellungen WHERE Gesamtbetrag < 1000",
+                    "SELECT * FROM Bestellungen WHERE Gesamtbetrag = 1000",
+                    "SELECT * FROM Bestellungen WHERE Gesamtbetrag >= 1000"
+                ],
+                correctAnswer: "SELECT * FROM Bestellungen WHERE Gesamtbetrag > 1000",
+                type: "sqlQuery"
+            }, {
+                question: "Frage 7: Schreibe einen SQL-Befehl, um alle Kundennamen aus der Tabelle 'Kunden' abzurufen, die in New York ansässig sind.",
+                correctAnswer: "SELECT Kundennamen FROM Kunden WHERE Stadt = 'New York'",
+                type: "sqlQuery"
+            }, {
+                question: "Frage 8: Schreibe einen SQL-Befehl, um den Durchschnittspreis aller Produkte in der Tabelle 'Produkte' zu berechnen.",
+                correctAnswer: "SELECT AVG(Preis) FROM Produkte",
+                type: "sqlQuery"
+            }, {
+                question: "Frage 9: Welcher SQL-Befehl wird verwendet, um eine neue Tabelle 'Mitarbeiter' mit Spalten für 'Name', 'Alter' und 'Position' zu erstellen?",
+                answers: [
+                    "CREATE TABLE Mitarbeiter (Name VARCHAR(255), Alter INT, Position VARCHAR(255))",
+                    "CREATE TABLE 'Mitarbeiter' ('Name' VARCHAR(255), 'Alter' INT, 'Position' VARCHAR(255))",
+                    "INSERT INTO Mitarbeiter (Name, Alter, Position) VALUES ('Name', 'Alter', 'Position')",
+                    "SELECT * FROM Mitarbeiter"
+                ],
+                correctAnswer: "CREATE TABLE Mitarbeiter (Name VARCHAR(255), Alter INT, Position VARCHAR(255))",
+                type: "sqlQuery"
+            }, {
+                question: "Frage 10: Schreibe einen SQL-Befehl, um alle Produkte aus der Tabelle 'Produkte' abzurufen, deren Preis zwischen 50 und 100 liegt.",
+                correctAnswer: "SELECT * FROM Produkte WHERE Preis BETWEEN 50 AND 100",
+                type: "sqlQuery"
+            }, {
+                question: "Frage 11: Welcher SQL-Befehl wird verwendet, um alle Datensätze aus der Tabelle 'Kunden' zu löschen?",
+                correctAnswer: "DELETE FROM Kunden",
+                type: "sqlQuery"
+            }, {
+                question: "Frage 12: Schreibe einen SQL-Befehl, um den höchsten Preis in der Tabelle 'Produkte' zu finden.",
+                correctAnswer: "SELECT MAX(Preis) FROM Produkte",
+                type: "sqlQuery"
+            },
+            // Weitere Fragen und Aufgaben...
+        ];
+
+        // Füge die zusätzlichen Fragen zum bestehenden Fragenarray hinzu
+        questions.push(...additionalQuestions);
+
+        const questionElement = document.getElementById('question');
+        const optionsContainer = document.getElementById('options');
+        const sqlAnswerInput = document.getElementById('sql-answer');
+        const submitButton = document.getElementById('submit-btn');
+        const resultElement = document.getElementById('result');
+
+        let currentQuestionIndex = 0;
+
+        function displayQuestion() {
+            const currentQuestion = questions[currentQuestionIndex];
+            questionElement.textContent = currentQuestion.question;
+            if (currentQuestion.type === "multipleChoice") {
+                optionsContainer.innerHTML = '';
+                currentQuestion.answers.forEach(answer => {
+                    const option = document.createElement('div');
+                    option.textContent = answer;
+                    option.classList.add('option');
+                    option.addEventListener('click', () => checkAnswer(answer)); // Event-Listener hinzugefügt
+                    optionsContainer.appendChild(option);
+                });
+                sqlAnswerInput.style.display = "none";
+                submitButton.style.display = "none";
+            } else if (currentQuestion.type === "sqlQuery") {
+                optionsContainer.innerHTML = '';
+                sqlAnswerInput.value = '';
+                sqlAnswerInput.style.display = "block";
+                submitButton.style.display = "block";
+            }
+        }
+
+        function checkAnswer(selectedAnswer) {
+            const currentQuestion = questions[currentQuestionIndex];
+            if (selectedAnswer === currentQuestion.correctAnswer) {
+                resultElement.textContent = 'Richtig!';
+            } else {
+                resultElement.textContent = 'Falsch. Versuche es erneut.';
+            }
+            currentQuestionIndex++;
+            if (currentQuestionIndex < questions.length) {
+                setTimeout(displayQuestion, 1000);
+            } else {
+                resultElement.textContent = 'Quiz abgeschlossen!';
+            }
+        }
+
+        submitButton.addEventListener('click', () => {
+            const currentQuestion = questions[currentQuestionIndex];
+            if (currentQuestion.type === "sqlQuery") {
+                const userSqlAnswer = sqlAnswerInput.value.trim();
+                if (userSqlAnswer.toUpperCase() === currentQuestion.correctAnswer.toUpperCase()) {
+                    resultElement.textContent = 'Richtig!';
+                } else {
+                    resultElement.textContent = 'Falsch. Versuche es erneut.';
+                }
+                currentQuestionIndex++;
+                if (currentQuestionIndex < questions.length) {
+                    setTimeout(displayQuestion, 1000);
+                } else {
+                    resultElement.textContent = 'Quiz abgeschlossen!';
+                }
+                sqlAnswerInput.value = '';
+                submitButton.style.display = "none";
+            }
+        });
+
+        displayQuestion();
+    </script>
+
+</body>
+
+</html>
