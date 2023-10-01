@@ -72,6 +72,7 @@
         <header>
             <p><a id="überschriftlink" href="https://ubodigat.com">U:Bodigat.com</a> | SQL Lernapp | lernen </p>
             <div id="headerinput">
+                <a><button onclick="showPopup()" class="button">INFO</button></a>
                 <a href="/lerntools/sqllernapp/index.html"><button class="button">SQL üben</button></a>
                 <!-- <a href="https://ubodigat.com/lerntools/sqllernapp/"><button class="button">SQL lernen</button></a> -->
                 <a href="https://ubodigat.com/datenschutz.html" target="_blank"> <button class="button">Datenschutz</button></a>
@@ -81,6 +82,7 @@
     </nav>
 
     <main id="mainlernensql">
+        <div id="scrollButton" class="scroll-button">&#9650;</div>
         <h1 id="überschriftlernen">SQL Grundlagen</h1>
 
         <div class="search-bar">
@@ -376,6 +378,7 @@
         </table>
 
         <h2 id="sqlAbfrageMitVerknuepftenTabellen">Abfrage mit verknüpften Tabellen</h2>
+        <img src="/lerntools/sqllernapp/img/sqlbeispielabfragen.png" alt="Beispielbild SQL Abfragen">
         <p>
             Oft müssen Inhalte mehrerer Tabellen verknüpft werden. Der Fachbegriff hierfür ist Join. Dafür listet man alle benötigten Tabellen in der FROM-Klausel auf.
         </p>
@@ -707,6 +710,510 @@
                    [...]
                 );
             </code></pre>
+
+        <h2>Wofür SQL?</h2>
+        <p>Damit das DBMS mit der Datenbank kommunizieren kann, wird bei relationalen Datenbanken (also Datenbanken, die auf der relationalen Algebra aufbauen) SQL verwendet. Dabei bietet die Datenbanksprache SQL folgende drei wichtige Funktionalitäten:</p>
+
+        <ul>
+            <li>Tabellen in der Datenbank erzeugen</li>
+            <li>Einträge in Tabellen bearbeiten</li>
+            <li>Datensätze abfragen</li>
+        </ul>
+
+        <h3>Tabellen in der Datenbank</h3>
+        <p>Eine relationale Datenbank ist eine Sammlung von Tabellen (den Relationen). Diese Tabellen haben Spalten und Zeilen.</p>
+
+        <div class="table-container">
+            <table>
+                <tr>
+                    <th>Vorname</th>
+                    <th>Nachname</th>
+                    <th>Alter</th>
+                    <th>Wohnort</th>
+                </tr>
+                <tr>
+                    <td>Leon</td>
+                    <td>Maier</td>
+                    <td>18</td>
+                    <td>München</td>
+                </tr>
+                <tr>
+                    <td>Emma</td>
+                    <td>Maier</td>
+                    <td>16</td>
+                    <td>Paris</td>
+                </tr>
+                <tr>
+                    <td>Max</td>
+                    <td>Mustermann</td>
+                    <td>25</td>
+                    <td>Berlin</td>
+                </tr>
+                <tr>
+                    <td>Amir</td>
+                    <td>Schneider</td>
+                    <td>17</td>
+                    <td>München</td>
+                </tr>
+            </table>
+        </div>
+
+        <p>Die Tabellen-Spalten werden als Attribute bezeichnet und sind durch ihren Namen klassifiziert. Eine Tabellen-Zeile ist ein Datensatz und wird auch Tupel genannt. Ein Wert in einem Feld der Tabelle wird Attributwert genannt.</p>
+
+        <h3>Schlüssel in Datenbanken</h3>
+        <p>Damit Tupel (Zeilen) in einer Relation (Tabelle) eindeutig identifiziert werden können, wird ein Schlüssel benötigt. Der Schlüssel besteht dabei aus einem/mehreren Attribut/en (Spalten). Die Attribute werden so gewählt, dass alle Attributwerte
+            der Tupel über die zugehörigen Attribute eine einzigartige Kombination ergeben.</p>
+
+        <div class="table-container">
+            <table>
+                <tr>
+                    <th>Vorname</th>
+                    <th>Nachname</th>
+                    <th>Alter</th>
+                    <th>Wohnort</th>
+                </tr>
+                <tr>
+                    <td>Leon</td>
+                    <td>Maier</td>
+                    <td>18</td>
+                    <td>München</td>
+                </tr>
+                <tr>
+                    <td>Emma</td>
+                    <td>Maier</td>
+                    <td>16</td>
+                    <td>Paris</td>
+                </tr>
+                <tr>
+                    <td>Max</td>
+                    <td>Mustermann</td>
+                    <td>25</td>
+                    <td>Berlin</td>
+                </tr>
+                <tr>
+                    <td>Amir</td>
+                    <td>Schneider</td>
+                    <td>17</td>
+                    <td>München</td>
+                </tr>
+            </table>
+        </div>
+
+        <p>Ein (Primär-)Schlüssel muss dabei drei Anforderungen entsprechen:</p>
+
+        <ul>
+            <li>Eindeutigkeit: Ein Schlüssel muss so gewählt sein, dass jedes Tupel der Tabelle eindeutig identifiziert wird.</li>
+            <li>Minimalität: Die Anzahl an Attributen für einen Schlüssel muss möglichst klein sein. Der Schlüssel darf also keine unnötigen Attribute enthalten.</li>
+            <li>Definiertheit: Ein jeder Attributwert der zum Schlüssel gehörigen Attribute muss für alle Tupel definiert sein. Einträge, die in Schlüsselspalten stehen, dürfen also nicht leer sein.</li>
+        </ul>
+
+        <h3>Primärschlüssel</h3>
+        <p>Die für den Schlüssel einer Tabelle ausgewählte Menge an Attributen wird Primärschlüssel genannt. Der Primärschlüssel muss die drei oben genannten Eigenschaften erfüllen. Um den Primärschlüssel in einer Tabelle zu kennzeichnen, werden die zum
+            Schlüssel gehörigen Attribute unterstrichen:</p>
+
+        <div class="table-container">
+            <table>
+                <tr>
+                    <th>Vorname</th>
+                    <th>Nachname</th>
+                    <th>Alter</th>
+                    <th>Wohnort</th>
+                </tr>
+                <tr>
+                    <td>Leon</td>
+                    <td>Maier</td>
+                    <td>18</td>
+                    <td>München</td>
+                </tr>
+                <tr>
+                    <td>Emma</td>
+                    <td>Maier</td>
+                    <td>16</td>
+                    <td>Paris</td>
+                </tr>
+                <tr>
+                    <td>Max</td>
+                    <td>Mustermann</td>
+                    <td>25</td>
+                    <td>Berlin</td>
+                </tr>
+                <tr>
+                    <td>Amir</td>
+                    <td>Schneider</td>
+                    <td>17</td>
+                    <td>München</td>
+                </tr>
+            </table>
+        </div>
+
+        <p>In diesem Beispiel ist der Primärschlüssel aus den Attributen Vorname und Nachname zusammengesetzt. Dies ist zulässig, da in der Beispieltabelle jede Kombination aus Vorname und Nachname eindeutig ist! Aber Vorsicht: Wenn weitere Personen eingefügt
+            werden, kann es jedoch passieren, dass die Kombination aus Vorname und Nachname nicht mehr eindeutig ist. Daher benutzt du hier am besten einen ...</p>
+
+        <h3>Surrogatschlüssel (künstlicher Schlüssel)</h3>
+        <p>Ein Surrogatschlüssel (auch künstlicher Schlüssel, synthetischer Schlüssel oder Ersatzschlüssel genannt) wird immer genau dann verwendet, wenn du nicht sicherstellen kannst, dass der Primärschlüssel immer eindeutig sein wird, egal welche Datensätze
+            eingefügt werden. Ein Surrogatschlüssel ist daher meist eine fortlaufende künstlich angelegte Nummer, welche uns die Eindeutigkeit garantiert. Der Surrogatschlüssel ist somit ein spezieller Primärschlüssel, bestehend aus einem künstlich angelegten
+            Attribut.
+        </p>
+
+        <p>In diesem Beispiel könnte das so aussehen:</p>
+
+        <div class="table-container">
+            <table>
+                <tr>
+                    <th>PersonenID</th>
+                    <th>Vorname</th>
+                    <th>Nachname</th>
+                    <th>Alter</th>
+                    <th>Wohnort</th>
+                </tr>
+                <tr>
+                    <td>1</td>
+                    <td>Leon</td>
+                    <td>Maier</td>
+                    <td>18</td>
+                    <td>München</td>
+                </tr>
+                <tr>
+                    <td>2</td>
+                    <td>Emma</td>
+                    <td>Maier</td>
+                    <td>16</td>
+                    <td>Paris</td>
+                </tr>
+                <tr>
+                    <td>3</td>
+                    <td>Max</td>
+                    <td>Mustermann</td>
+                    <td>25</td>
+                    <td>Berlin</td>
+                </tr>
+                <tr>
+                    <td>4</td>
+                    <td>Amir</td>
+                    <td>Schneider</td>
+                    <td>17</td>
+                    <td>München</td>
+                </tr>
+            </table>
+        </div>
+
+        <h3>Fremdschlüssel</h3>
+        <p>Ein Fremdschlüssel ist ein Attribut, welches auf den Primärschlüssel einer anderen Tabelle verweist. Um den Fremdschlüssel zu kennzeichnen, wird dieser überstrichen:</p>
+
+        <div class="table-container">
+            <table>
+                <tr>
+                    <th>PersonenID</th>
+                    <th>Vorname</th>
+                    <th>Nachname</th>
+                    <th>Alter</th>
+                    <th>Wohnort</th>
+                </tr>
+                <tr>
+                    <td>1</td>
+                    <td>Leon</td>
+                    <td>Maier</td>
+                    <td>18</td>
+                    <td>1</td>
+                </tr>
+                <tr>
+                    <td>2</td>
+                    <td>Emma</td>
+                    <td>Maier</td>
+                    <td>16</td>
+                    <td>2</td>
+                </tr>
+                <tr>
+                    <td>3</td>
+                    <td>Max</td>
+                    <td>Mustermann</td>
+                    <td>25</td>
+                    <td>1</td>
+                </tr>
+                <tr>
+                    <td>4</td>
+                    <td>Amir</td>
+                    <td>Schneider</td>
+                    <td>17</td>
+                    <td>2</td>
+                </tr>
+            </table>
+        </div>
+
+        <p>Der Fremdschlüssel Wohnort aus der Tabelle Personen verweist dabei auf den Primärschlüssel StadtID der Tabelle Städte:</p>
+
+        <div class="table-container">
+            <table>
+                <tr>
+                    <th>StadtID</th>
+                    <th>Name</th>
+                    <th>Einwohnerzahl</th>
+                    <th>Land</th>
+                </tr>
+                <tr>
+                    <td>1</td>
+                    <td>Berlin</td>
+                    <td>3.600.000</td>
+                    <td>Deutschland</td>
+                </tr>
+                <tr>
+                    <td>2</td>
+                    <td>Paris</td>
+                    <td>2.100.000</td>
+                    <td>Frankreich</td>
+                </tr>
+                <tr>
+                    <td>3</td>
+                    <td>München</td>
+                    <td>1.400.000</td>
+                    <td>Deutschland</td>
+                </tr>
+            </table>
+        </div>
+
+        <h2>Beispiel</h2>
+        <p>Im folgenden Beispiel werden die Tabellen der Datenbank einer Schule betrachtet. Es gibt die Tabelle "Klassen" und die Tabelle "Lehrkräfte".</p>
+
+        <div class="table-container">
+            <table>
+                <tr>
+                    <th>Klasse</th>
+                    <th>AnzahlSchueler</th>
+                    <th>Klassenleiter</th>
+                </tr>
+                <tr>
+                    <td>7b</td>
+                    <td>23</td>
+                    <td>1</td>
+                </tr>
+                <tr>
+                    <td>8a</td>
+                    <td>21</td>
+                    <td>4</td>
+                </tr>
+                <tr>
+                    <td>10a</td>
+                    <td>17</td>
+                    <td>2</td>
+                </tr>
+                <tr>
+                    <td>5c</td>
+                    <td>18</td>
+                    <td>3</td>
+                </tr>
+            </table>
+        </div>
+
+        <div class="table-container">
+            <table>
+                <tr>
+                    <th>Vorname</th>
+                    <th>Nachname</th>
+                    <th>Fach</th>
+                </tr>
+                <tr>
+                    <td>David</td>
+                    <td>Hilbert</td>
+                    <td>Mathematik</td>
+                </tr>
+                <tr>
+                    <td>Marie</td>
+                    <td>Curie</td>
+                    <td>Physik</td>
+                </tr>
+                <tr>
+                    <td>Rosalind</td>
+                    <td>Franklin</td>
+                    <td>Biologie</td>
+                </tr>
+                <tr>
+                    <td>Benjamin</td>
+                    <td>Franklin</td>
+                    <td>Physik</td>
+                </tr>
+            </table>
+        </div>
+
+        <p>Die Aufgabe ist es, die Tabellen so anzupassen, dass sie in der Datenbank alle Anforderungen erfüllen. Dazu muss zunächst in beiden Tabellen ein Primärschlüssel festgelegt werden.</p>
+
+        <div class="table-container">
+            <table>
+                <tr>
+                    <th>Klasse</th>
+                    <th>AnzahlSchueler</th>
+                    <th>Klassenleiter</th>
+                </tr>
+                <tr>
+                    <td>7b</td>
+                    <td>23</td>
+                    <td>1</td>
+                </tr>
+                <tr>
+                    <td>8a</td>
+                    <td>21</td>
+                    <td>4</td>
+                </tr>
+                <tr>
+                    <td>10a</td>
+                    <td>17</td>
+                    <td>2</td>
+                </tr>
+                <tr>
+                    <td>5c</td>
+                    <td>18</td>
+                    <td>3</td>
+                </tr>
+            </table>
+        </div>
+
+        <div class="table-container">
+            <table>
+                <tr>
+                    <th>LehrID</th>
+                    <th>Vorname</th>
+                    <th>Nachname</th>
+                    <th>Fach</th>
+                </tr>
+                <tr>
+                    <td>1</td>
+                    <td>David</td>
+                    <td>Hilbert</td>
+                    <td>Mathematik</td>
+                </tr>
+                <tr>
+                    <td>2</td>
+                    <td>Marie</td>
+                    <td>Curie</td>
+                    <td>Physik</td>
+                </tr>
+                <tr>
+                    <td>3</td>
+                    <td>Rosalind</td>
+                    <td>Franklin</td>
+                    <td>Biologie</td>
+                </tr>
+                <tr>
+                    <td>4</td>
+                    <td>Benjamin</td>
+                    <td>Franklin</td>
+                    <td>Physik</td>
+                </tr>
+            </table>
+        </div>
+
+        <p>Jetzt haben beide Tabellen eindeutig definierte Primärschlüssel. Allerdings fällt auf, dass die Klassenleiter "Franklin" NICHT unterschieden werden können. Bei den Klassenleitern "Franklin" könnte es sich um "Rosalind Franklin" oder "Benjamin
+            Franklin" handeln. Um dies zu vermeiden, muss das Attribut Kassenleiter als Fremdschlüssel definiert werden. Dieser Fremdschlüssel verweist auf den eindeutigen Primärschlüssel der Tabelle "Lehrkräfte" und ermöglicht die Unterscheidung, da
+            der Primärschlüssel von Lehrkräfte wiederum eindeutig ist:</p>
+
+        <div class="table-container">
+            <table>
+                <tr>
+                    <th>Klasse</th>
+                    <th>AnzahlSchueler</th>
+                    <th>Klassenleiter</th>
+                </tr>
+                <tr>
+                    <td>7b</td>
+                    <td>23</td>
+                    <td>1</td>
+                </tr>
+                <tr>
+                    <td>8a</td>
+                    <td>21</td>
+                    <td>4</td>
+                </tr>
+                <tr>
+                    <td>10a</td>
+                    <td>17</td>
+                    <td>2</td>
+                </tr>
+                <tr>
+                    <td>5c</td>
+                    <td>18</td>
+                    <td>3</td>
+                </tr>
+            </table>
+        </div>
+
+        <div class="table-container">
+            <table>
+                <tr>
+                    <th>LehrID</th>
+                    <th>Vorname</th>
+                    <th>Nachname</th>
+                    <th>Fach</th>
+                </tr>
+                <tr>
+                    <td>1</td>
+                    <td>David</td>
+                    <td>Hilbert</td>
+                    <td>Mathematik</td>
+                </tr>
+                <tr>
+                    <td>2</td>
+                    <td>Marie</td>
+                    <td>Curie</td>
+                    <td>Physik</td>
+                </tr>
+                <tr>
+                    <td>3</td>
+                    <td>Rosalind</td>
+                    <td>Franklin</td>
+                    <td>Biologie</td>
+                </tr>
+                <tr>
+                    <td>4</td>
+                    <td>Benjamin</td>
+                    <td>Franklin</td>
+                    <td>Physik</td>
+                </tr>
+            </table>
+        </div>
+
+        <p>Jetzt sind beide Tabellen so angepasst, dass sie den Anforderungen entsprechen und in der Datenbank verwendet werden können.</p>
+
+        <h1>SQL und Datenbanken</h1>
+        <p>Bisher haben wir mit Python ohne SQL-Grundlagenwissen einfach Datenbankerstellung und Datenbankzugriffe durchgeführt. Dabei kamen wir bei verschiedenen Aktionen schnell an unsere Grenzen durch die fehlenden Grundlagenkenntnisse. Grundlagen haben
+            Vorteile und bringen Sicherheit in die Anwendung und Nutzung von Datenbanken bzw. SQL. Wenn wir von SQL sprechen, sprechen wir von einem relationalem Datenbankmanagementsystem (RDBMS: Relational Database Management System). Flapsig gesagt:
+            Daten stehen in einer Beziehung – einer Relation. Diese Beziehungen können ausgewertet und ausgegeben werden.</p>
+
+        <h2>SQL: DDL, DML, DQL und DCL</h2>
+        <p>SQL selber hat 4 große Bereiche:</p>
+
+        <ul>
+            <li>
+                <strong>DDL: Data Definition Language</strong>
+                <p>Bevor wir ein Datenbanksystem nutzen können, müssen wir erst unsere Datenbank mit deren Tabellen einrichten. Auf gut Deutsch: welche Felder gibt es und wie nennen wir diese, damit wir komfortable wieder darauf zugreifen können. Wir definieren
+                    also unsere Daten bzw. Datenfelder und können die gewünschte Struktur über eine SQL-Anweisung in der Datenbank erzeugen. Ohne eine Datenbank und Daten können wir auch nicht die folgenden Bereiche nutzen wie die Datenbank mit Daten
+                    zu füllen bzw. auszuwerten.</p>
+            </li>
+            <li>
+                <strong>DML: Data Manipulation Language</strong>
+                <p>Nachdem wir unsere gewünschte Struktur über die DDL erstellt haben, wollen wir Daten in unser Datenbanksystem hineinschreiben, ändern und löschen können. Genau das macht man mit der DML.</p>
+            </li>
+            <li>
+                <strong>DQL: Data Query Language</strong>
+                <p>Auslesen der Datenbank auch mit bestimmten Bedingungen (man will ja nicht immer alle Daten). Hier können auch mehrere Tabellen miteinander verknüpft werden und daraus das Ergebnis ausgegeben werden.</p>
+            </li>
+            <li>
+                <strong>DCL: Data Control Language</strong>
+                <p>Nicht jeder darf auf alle Daten zugreifen. Daher ergibt es Sinn, hier eine Kontrolle einzubauen. Zur DCL gehört auch die Transaktionssteuerung, damit es auch sichergestellt ist, dass alle Änderungen bzw. Aktionen in der Datenbank stattfinden.</p>
+            </li>
+        </ul>
+
+        <h2>ANSI-SQL</h2>
+        <p>Hier der Begriff ANSI-SQL, damit man es mal gelesen hat und verorten kann. Das American National Standards Institut (ANSI) hat festgelegte Standards. Diese gibt es auch für SQL. Allerdings gibt es da über die Jahre mehrere verschiedene, da es
+            bei SQL Verbesserungen und Erweiterungen gegeben hat.</p>
+
+        <h2>MySQL, MariaSQL, Microsoft SQL Server (MSSQL), Oracle – verschiedene Datenbanksysteme</h2>
+        <p>Es gibt verschiedene Datenbankserver, und am Anfang nutzt man eins, um in die Materie hineinzukommen.</p>
+
+        <p>Lustig am Rande: MySQL – die ersten 2 Buchstaben vom Namen der Datenbank kommen von dem Vornamen „My“. Diese ist die Tochter des MySQL-AB-Mitgründers Michael Widenius (Monty genannt). Die verschiedenen SQL-Server bieten im Kern die gleiche Funktion,
+            die aber in der Nutzung leicht unterschiedlich sein kann, was hier am Anfang über das von uns benötigte Wissen hinausgeht.</p>
+
+        <h2>Begriffe rund um SQL</h2>
+        <p>SQL ist eine Anweisungssprache, keine Programmiersprache. Einzelne SQL-Befehle sind nicht case-sensitiv, aber es gibt Empfehlungen, Schlüsselwörter immer in Großbuchstaben zu verwenden. Leerzeichen, Tabulatoren und Zeilenumbrüche dürfen nach Belieben
+            genutzt werden.</p>
     </main>
 
     <div id="speaker" class="play-button">&#128266;</div>
@@ -750,7 +1257,7 @@
             console.log("Vorlesen beendet");
         };
 
-        //für die suche
+        //Such Funktion bei Suchleiste
 
         document.addEventListener("DOMContentLoaded", function() {
             const searchInput = document.getElementById("searchInput");
@@ -783,6 +1290,34 @@
                     event.preventDefault();
                 }
             });
+        });
+
+        //Button automatisch nach oben
+
+        document.addEventListener("DOMContentLoaded", function() {
+            const scrollButton = document.getElementById("scrollButton");
+
+            function scrollToTop() {
+                window.scrollTo({
+                    top: 0,
+                    behavior: "smooth"
+                });
+            }
+
+            function toggleScrollButton() {
+                if (window.scrollY > 200) {
+                    scrollButton.style.display = "block";
+                } else {
+                    scrollButton.style.display = "none";
+                }
+            }
+            scrollButton.addEventListener("click", function() {
+                scrollToTop();
+            });
+            window.addEventListener("scroll", function() {
+                toggleScrollButton();
+            });
+            toggleScrollButton();
         });
     </script>
 

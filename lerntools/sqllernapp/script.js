@@ -1,0 +1,3 @@
+function showPopup() {
+    alert("Alle Informationen von dieser Seite sind aus verschiedenen Internetseiten diese einen Artikel über SQL Grundlagen haben zusammengesucht und auf dieser Website zu einer Informationsquelle zusammengefügt worden wir übernehmen keine Haftung auf Richtigkeit und es kann sein dass sich einzelne Informationen im Text wiederholen die erklärungsbilder wurden im Nachhinein von uns gestaltet falls Informationen fehlen falsch sind oder sich wiederholen melden Sie sich bitte bei uns.   Verwendet Internetseite: *https://sql-tutorial.de/home/lektionen.php?lektion=1*, *https://wiki.selfhtml.org/wiki/Datenbank/SQL-Grundlagen*, *https://simpleclub.com/lessons/informatik-sql-grundlagen*");
+}
