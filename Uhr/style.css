@@ -75,6 +75,7 @@ header p {
 }
 
 .button {
+    transition: 0.5s;
     background-color: #012f6b;
     color: #fff;
     text-decoration: none;
@@ -88,10 +89,12 @@ header p {
 }
 
 .button:hover {
+    transition: 0.5s;
     background-color: #006eff;
 }
 
 .button a {
+    transition: 0.5s;
     color: #fff;
     text-decoration: none;
 }

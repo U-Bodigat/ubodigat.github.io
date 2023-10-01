@@ -54,6 +54,7 @@ header p {
 }
 
 #headerinput {
+    transition: 0.5s;
     margin-top: -40px;
     display: flex;
     justify-content: end;
@@ -62,6 +63,7 @@ header p {
 }
 
 #headerinput a button {
+    transition: 0.5s;
     cursor: pointer;
 }
 
@@ -78,6 +80,7 @@ header p {
 }
 
 .button {
+    transition: 0.5s;
     background-color: #012f6b;
     color: #fff;
     text-decoration: none;
@@ -91,10 +94,12 @@ header p {
 }
 
 .button:hover {
+    transition: 0.5s;
     background-color: #006eff;
 }
 
 .button a {
+    transition: 0.5s;
     color: #fff;
     text-decoration: none;
 }
@@ -123,6 +128,7 @@ header p {
 }
 
 .action-button {
+    transition: 0.5s;
     display: block;
     width: 50%;
     margin-left: 25%;
@@ -135,6 +141,7 @@ header p {
 }
 
 .action-button:hover {
+    transition: 0.5s;
     display: block;
     width: 50%;
     margin-left: 25%;
@@ -152,6 +159,7 @@ header p {
 }
 
 input {
+    transition: 0.5s;
     margin-bottom: 30px;
     border: 0;
     outline: 0;
@@ -167,6 +175,7 @@ input {
 }
 
 input:hover {
+    transition: 0.5s;
     text-align: center;
     border: 0;
     outline: 0;
@@ -174,6 +183,7 @@ input:hover {
 }
 
 input:focus {
+    transition: 0.5s;
     border: 0;
     outline: 0;
     border-bottom: 3px solid #00ff6a;

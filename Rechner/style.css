@@ -63,6 +63,7 @@ header p {
 }
 
 .button {
+    transition: 0.5s;
     background-color: #012f6b;
     color: #fff;
     text-decoration: none;
@@ -76,15 +77,18 @@ header p {
 }
 
 .button:hover {
+    transition: 0.5s;
     background-color: #006eff;
 }
 
 .button a {
+    transition: 0.5s;
     color: #fff;
     text-decoration: none;
 }
 
 table {
+    transition: 0.5s;
     text-align: center;
     align-items: center;
     justify-content: center;
@@ -102,6 +106,7 @@ table {
 }
 
 td {
+    transition: 0.5s;
     width: 25%;
     text-align: center;
     font-size: 40px;
@@ -110,11 +115,13 @@ td {
 }
 
 td:hover {
+    transition: 0.5s;
     background-color: #000;
     cursor: pointer;
 }
 
 #Ergebnisfeld {
+    transition: 0.5s;
     height: 20vh;
     background-color: #303030;
     color: #fff;
@@ -133,85 +140,102 @@ td:hover {
 }
 
 #Ergebnisfeld:hover {
+    transition: 0.5s;
     cursor: crosshair;
     user-select: none;
 }
 
 #Zurück {
+    transition: 0.5s;
     background-color: #353535;
 }
 
 #Zurück:hover {
+    transition: 0.5s;
     background-color: red;
     color: #575757;
     font-weight: 800;
 }
 
 #geteilt {
+    transition: 0.5s;
     background-color: #353535;
 }
 
 #geteilt:hover {
+    transition: 0.5s;
     background-color: #006eff;
     color: #003a1e;
     font-weight: 800;
 }
 
 #mal {
+    transition: 0.5s;
     background-color: #353535;
 }
 
 #mal:hover {
+    transition: 0.5s;
     background-color: #006eff;
     color: #003a1e;
     font-weight: 800;
 }
 
 #istgleich {
+    transition: 0.5s;
     background-color: #259485;
 }
 
 #istgleich:hover {
+    transition: 0.5s;
     background-color: #21f0d4;
     color: #575757;
     font-weight: 800;
 }
 
 #plus {
+    transition: 0.5s;
     background-color: #353535;
 }
 
 #plus:hover {
+    transition: 0.5s;
     background-color: #006eff;
     color: #003a1e;
     font-weight: 800;
 }
 
 #komma {
+    transition: 0.5s;
     background-color: #353535;
 }
 
 #komma:hover {
+    transition: 0.5s;
     background-color: #006eff;
     color: #003a1e;
     font-weight: 800;
 }
 
 #minus {
+    transition: 0.5s;
     background-color: #353535;
 }
 
 #minus:hover {
+    transition: 0.5s;
     background-color: #006eff;
     color: #003a1e;
     font-weight: 800;
 }
 
 #löschen {
+    transition: 0.5s;
     background-color: #353535;
 }
 
 #löschen:hover {
+    transition: 0.5s;
     background-color: red;
     color: #575757;
     font-weight: 800;
@@ -223,11 +247,13 @@ td:hover {
 }
 
 .zahlen {
+    transition: 0.5s;
     background-color: #4CAF50;
     color: white;
 }
 
 .zahlen:hover {
+    transition: 0.5s;
     cursor: pointer;
     background-color: #00ff0d;
     color: #575757;
@@ -235,12 +261,14 @@ td:hover {
 }
 
 .leer {
+    transition: 0.5s;
     background-color: #353535;
     color: #353535;
     cursor: not-allowed;
 }
 
 .leer:hover {
+    transition: 0.5s;
     background-color: #353535;
     color: red;
     cursor: not-allowed;

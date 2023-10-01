@@ -82,6 +82,12 @@
 
     <main id="mainlernensql">
         <h1 id="überschriftlernen">SQL Grundlagen</h1>
+
+        <div class="search-bar">
+            <input type="text" id="searchInput" placeholder="Suche...">
+            <button id="searchButton">Suchen</button>
+        </div>
+
         <p>
             SQL (Structured Query Language) ist eine spezielle Programmiersprache, die für die Verwaltung von Daten in relationalen Datenbanken verwendet wird. Sie ermöglicht es, Daten abzurufen, einzufügen, zu aktualisieren und zu löschen. SQL ist eine unverzichtbare
             Fähigkeit für Datenbankadministratoren und Entwickler, um effizient auf Daten zuzugreifen und diese zu verwalten.
@@ -255,7 +261,530 @@
         <p>
             Mit DELETE FROM Tabelle löschst Du alle Datensätze einer Tabelle. Zum Löschen einer Tabelle nimmst Du den DROP TABLE-Befehl, z. B. DROP TABLE Kurs.
         </p>
+        <h2 id="sqlWhere">WHERE - Abfrage mit Filter</h2>
+        <p>
+            Man kann ein Abfrageergebnis auch auf bestimmte Zeilen eingrenzen. Dazu dient die WHERE-Klausel. Sie listet die Bedingungen auf, die die gewünschten Zeilen erfüllen sollen. Sie folgt auf die FROM-Klausel. Der Fachbegriff für diese Eingrenzung ist Selektion.
+        </p>
+        <p>
+            Die Bedingungen, die hinter WHERE angeführt werden können, bestehen wie in Programmiersprachen aus Operanden und Operatoren. Operanden können Spaltennamen sein oder konstante Werte. Einer der Operatoren ist =, der zu einem logischen WAHR ausgewertet wird,
+            wenn seine Operanden gleich sind:
+        </p>
+        <pre><code>
+                SELECT VorlNr, Titel
+                FROM Vorlesung
+                WHERE Titel = 'ET';
+            </code></pre>
+        <p>
+            listet VorlNr und Titel aller derjenigen Zeilen der Tabelle Vorlesung auf, deren Titel 'ET' ist.
+        </p>
+        <p>
+            Es hängt von den Einstellungen der Datenbank ab, ob der = Operator Groß- und Kleinschreibung beim Vergleich beachtet. Es ist aber auf jeden Fall so, dass Leerstellen am Ende einer Zeichenkette ignoriert werden.
+        </p>
+        <p>
+            Die solchermaßen strukturierte, häufig verwendete Anweisung wird nach den Anfangsbuchstaben auch als „SFW-Block“ bezeichnet.
+        </p>
+        <table>
+            <tr>
+                <th>VorlNr</th>
+                <th>Titel</th>
+            </tr>
+            <tr>
+                <td>5001</td>
+                <td>ET</td>
+            </tr>
+        </table>
+        <p>
+            Beachten Sie: SQL-Queries werden gerne einzeilig geschrieben. Damit aber die SQL-Fehlermeldung noch hilfreicher wird, kann man (zumindest beim Debugging) mehrere Zeilen benutzen. Dann steht am Ende nicht immer "at line 1", sondern die betreffende Zeile.
+        </p>
+        <pre><code>
+                // statt einer Zeile...
+                $query = 'SELECT foo,bar FROM table WHERE answer=42';
+    
+                // mehrere nutzen
+                $query = 'SELECT 
+                    foo,
+                    bar
+                    FROM 
+                    table 
+                    WHERE 
+                    answer=42';
+            </code></pre>
+
+        <h2 id="sqlLike">LIKE - Abfrage mit Filter nach Inhalt</h2>
+        <p>
+            Ein anderer Operator ist LIKE. Er führt einen Mustervergleich durch, ähnlich der Mustersuche nach Dateinamen mit * und ?.
+        </p>
+        <pre><code>
+                SELECT Name
+                FROM Student
+                WHERE Name LIKE 'F%';
+            </code></pre>
+        <p>
+            listet die Namen aller Studenten auf, deren Name mit F beginnt (im Beispiel: Fichte und Fauler).
+        </p>
+        <p>
+            LIKE kann mit verschiedenen Platzhaltern verwendet werden: _ steht für ein einzelnes beliebiges Zeichen, % steht für eine beliebige Zeichenfolge. Manche Datenbanksysteme bieten weitere solche Wildcard-Zeichen an, etwa für Zeichenmengen.
+        </p>
+        <table>
+            <tr>
+                <th>Name</th>
+            </tr>
+            <tr>
+                <td>Fichte</td>
+            </tr>
+            <tr>
+                <td>Fauler</td>
+            </tr>
+        </table>
+
+        <h2 id="sqlOrderBy">ORDER BY - Abfrage mit Filter und Sortierung</h2>
+        <p>
+            Wenn die Ergebnisse einer Abfrage in einer bestimmten Reihenfolge erwartet werden, kann man sie sortieren lassen. Dafür fügt man am Ende des SELECT Befehl die ORDER BY Klausel an. Sie benennt die Spalten, nach deren Inhalt zu sortieren ist. Ohne weitere
+            Angaben erfolgt die Sortierung aufsteigend, durch Hinzufügen des Schlüsselwortes DESC wird diese Spalte absteigend sortiert.
+        </p>
+        <pre><code>
+                SELECT Vorname, Name, StrasseNr, Plz, Ort
+                FROM Student
+                WHERE Plz = '20095'
+                ORDER BY Name, Vorname DESC
+            </code></pre>
+        <p>
+            listet Vorname, Name, StrasseNr, Plz und Ort aller Studenten aus dem angegebenen Postleitzahlbereich sortiert nach Name auf. Studenten mit gleichem Nachnamen werden absteigend nach Vorname sortiert.
+        </p>
+        <table>
+            <tr>
+                <th>Vorname</th>
+                <th>Name</th>
+                <th>StrasseNr</th>
+                <th>Plz</th>
+                <th>Ort</th>
+            </tr>
+            <tr>
+                <td>Max</td>
+                <td>Muster</td>
+                <td>123</td>
+                <td>20095</td>
+                <td>Hamburg</td>
+            </tr>
+            <tr>
+                <td>Maria</td>
+                <td>Müller</td>
+                <td>456</td>
+                <td>20095</td>
+                <td>Hamburg</td>
+            </tr>
+        </table>
+
+        <h2 id="sqlAbfrageMitVerknuepftenTabellen">Abfrage mit verknüpften Tabellen</h2>
+        <p>
+            Oft müssen Inhalte mehrerer Tabellen verknüpft werden. Der Fachbegriff hierfür ist Join. Dafür listet man alle benötigten Tabellen in der FROM-Klausel auf.
+        </p>
+        <pre><code>
+                SELECT Vorlesung.VorlNr, Vorlesung.Titel, Professor.PersNr, Professor.Name
+                FROM Professor, Vorlesung
+                WHERE Professor.PersNr = Vorlesung.PersNr;
+            </code></pre>
+        <p>
+            Sie können sich den Ablauf so vorstellen, dass die Datenbank nun alle möglichen Kombinationen von Professoren und Vorlesungen bildet, ein so genanntes kartesisches Produkt. Bei 10 Professoren und 20 Vorlesungen wären das 200 mögliche Kombinationen. In
+            den meisten Fällen ist das nicht gewünscht – man möchte z. B. nur die Kombinationen haben, wo die Vorlesung vom Professor gehalten wird. Dafür grenzt man die Kombinationen entsprechend ein. Dies kann in der WHERE-Klausel erfolgen, einen anderen
+            Weg ist der Tabellen-Operator JOIN mit der ON Bedingung.
+        </p>
+        <pre><code>
+                SELECT Vorlesung.VorlNr, Vorlesung.Titel, Professor.PersNr, Professor.Name
+                FROM Professor INNER JOIN Vorlesung
+                    ON Professor.PersNr = Vorlesung.PersNr;
+            </code></pre>
+        <p>
+            Vorsicht: Nicht alle Datenbankmanagementsysteme kennen den JOIN-Operator.
+        </p>
+        <p>
+            Das Schlüsselwort INNER gibt an, dass nur die Zeilen aus Professor- und Vorlesung-Tabelle Verwendung finden sollen, für die die Join-Bedingung erfüllbar ist. Ein Professor, der keine Vorlesung hält, oder eine Vorlesung mit einer in Professor unbekannten
+            PersId würden also nicht aufgelistet werden. So etwas wäre ein äußerer Verbund (outer join), auf den das Kapitel über JOINs eingeht.
+        </p>
+        <p>
+            Die im Beispiel verwendeten Tabellen Professor und Vorlesung haben ein gemeinsames Attribut: PersNr. Der JOIN liefert die Kombinationen, wo Professor-Zeile und Vorlesung-Zeile in diesem Attribut übereinstimmen. Das nennt man einen natürlichen inneren
+            Verbund (natural inner join). Manche DBMS, wie z. B. MySQL, unterstützen das durch das Schlüsselwort NATURAL
+        </p>
+        <p>
+            Was das Beispiel auch zeigt, ist der Umgang mit mehrdeutigen Namen. Die Professor- und Vorlesung-Tabelle enthalten beide eine Spalte mit dem Namen PersNr. Würde man ON PersNr = PersNr schreiben, wüsste das DBMS nicht, was gemeint ist. Um das aufzulösen,
+            kann man eine Spalte den Namen der Tabelle voranstellen, in der sie zu finden ist.
+        </p>
+        <p>
+            Tabellen können nicht nur über Schlüsselfelder, sondern über beliebige Felder miteinander verknüpft werden, wie das folgende, fachlich unsinnige Beispiel zeigt:
+        </p>
+        <pre><code>
+                SELECT Vorlesung.Titel, Professor.Name
+                FROM Professor, Vorlesung
+                WHERE Professor.Name <> Vorlesung.Titel
+            </code></pre>
+        <p>
+            Der Operator
+            <> bedeutet "ungleich". Die Abfrage findet Kombinationen von Professor und Vorlesung, bei denen der Name des Professors nicht mit dem Titel der Vorlesung übereinstimmt. Prof. Shangri La mit ihrer Vorlesung über Lineare Algebra (Titel: LA) würde
+                nicht ausgegeben.
+        </p>
+        <table>
+            <tr>
+                <th>Titel</th>
+                <th>Name</th>
+            </tr>
+            <tr>
+                <td>ET</td>
+                <td>Tesla</td>
+            </tr>
+            <tr>
+                <td>ET</td>
+                <td>Wirth</td>
+            </tr>
+            <tr>
+                <td>ET</td>
+                <td>Urlauber</td>
+            </tr>
+            <tr>
+                <td>IT</td>
+                <td>Tesla</td>
+            </tr>
+            <tr>
+                <td>IT</td>
+                <td>Wirth</td>
+            </tr>
+            <tr>
+                <td>IT</td>
+                <td>Urlauber</td>
+            </tr>
+            <tr>
+                <td>DB</td>
+                <td>Tesla</td>
+            </tr>
+            <tr>
+                <td>DB</td>
+                <td>Wirth</td>
+            </tr>
+            <tr>
+                <td>DB</td>
+                <td>Urlauber</td>
+            </tr>
+        </table>
+
+        <h2 id="sqlAggregatFunktionen">COUNT & Co - Aggregat-Funktionen</h2>
+        <p>
+            Eine häufige Aufgabe beim Abfragen umfangreicher Datenbestände ist ihre Verdichtung. Man möchte zählen, summieren, Durchschnitte bilden, oder Minima und Maxima finden. SQL unterstützt standardmäßig genau diese fünf Operationen durch die sogenannten Aggregatfunktionen
+            COUNT, SUM, AVG, MIN und MAX. Werden diese Funktionen in einer einfachen SFW-Abfrage eingesetzt, ist das Ergebnis genau eine einzige Zeile. Es ist sinnvoll, die Aggregatfunktionen mit AS zu kombinieren, um den Namen der Ergebnisspalte festzulegen.
+        </p>
+        <pre><code>
+                SELECT COUNT(*) AS Anzahl, MAX(Name) AS MaxName FROM Professor
+            </code></pre>
+        <table>
+            <tr>
+                <th>Anzahl</th>
+                <th>MaxName</th>
+            </tr>
+            <tr>
+                <td>3</td>
+                <td>Wirth</td>
+            </tr>
+        </table>
+
+        <h2 id="sqlGroupBy">GROUP BY - Bilden von Teilmengen</h2>
+        <p>
+            Nicht immer will man alle Sätze aggregieren. Man kann auch Teilmengen bilden. Betrachten wir ein etwas umfangreicheres Beispiel:
+        </p>
+        <pre><code>
+                SELECT StudGang AS Studiengang, COUNT(*) AS Anzahl
+                FROM Student
+                GROUP BY StudGang
+                ORDER BY StudGang
+            </code></pre>
+        <table>
+            <tr>
+                <th>Studiengang</th>
+                <th>Anzahl</th>
+            </tr>
+            <tr>
+                <td>E-Technik</td>
+                <td>2</td>
+            </tr>
+            <tr>
+                <td>Mathematik</td>
+                <td>1</td>
+            </tr>
+            <tr>
+                <td>Physik</td>
+                <td>2</td>
+            </tr>
+        </table>
+        <p>
+            Ohne Angabe einer ORDER BY Klausel ist die Reihenfolge der Sätze nicht definiert. Das Ergebnis kann aufsteigend nach den Gruppierspalten sortiert sein, aber das ist ohne ORDER BY nicht gewährleistet.
+        </p>
+        <p>
+            Beachten Sie: Werden Aggregatfunktionen verwendet, dann dürfen in der SELECT Klausel nur solche Spalten ohne Aggregatfunktion stehen, die unter GROUP BY angegeben sind. Viele Datenbanksysteme geben einen Fehler aus, wenn man sich nicht daran hält. MySQL
+            ist eine Ausnahme, es erlaubt auch die Angabe von Spalten ohne Aggregatfunktion, die nicht unter GROUP BY aufgeführt sind. Ausgegeben wird dann aber irgendein Wert dieser Spalte der für diese Gruppe ausgewählten Zeilen.
+        </p>
+
+        <h2 id="sqlDistinct">DISTINCT - Abfrage mit eindeutigen Werten</h2>
+        <p>
+            Eine Sonderform der Gruppierung ist das Reduzieren einer Ergebnismenge auf eindeutige Werte. Wenn man aus der im vorigen Abschnitt gezeigten, erweiterten Student-Tabelle eine Liste der belegten Studiengänge ermitteln möchte, dann ist
+        </p>
+        <pre><code>
+                SELECT DISTINCT StudGang FROM Student
+            </code></pre>
+        <p>
+            falsch – man möchte ja E-Technik und Physik nur einmal ausgeben. Man kann es mit GROUP BY lösen:
+        </p>
+        <pre><code>
+                SELECT StudGang
+                FROM Student
+                GROUP BY StudGang
+            </code></pre>
+        <p>
+            Aber weil das eine recht häufige Aufgabe ist, gibt es dafür das Schlüsselwort DISTINCT in der SELECT Klausel:
+        </p>
+        <pre><code>
+                SELECT DISTINCT StudGang FROM Student
+            </code></pre>
+        <p>
+            DISTINCT bezieht sich nicht auf eine Spalte, sondern auf die komplette Ergebniszeile. Listet man mehrere Spalten auf, werden nur die Zeilen zusammengefasst, bei denen alle Spaltenwerte gleich sind.
+        </p>
+        <pre><code>
+                SELECT COUNT(StudGang), COUNT(DISTINCT StudGang) FROM Student
+            </code></pre>
+        <p>
+            ermittelt zwei Werte: Die Anzahl der Studenten, für die StudGang nicht NULL ist (ohne DISTINCT) und die Anzahl von unterschiedlicher Studiengängen, die von den Studenten belegt wurden (mit DISTINCT).
+        </p>
+
+        <h2 id="sqlHaving">HAVING - Filtern von aggregierten Werten</h2>
+        <p>
+            Wenn man die GROUP BY Klausel einsetzt, kann die Aufgabe entstehen, dass man nur die Gruppen sehen möchte, für die ein aggregiertes Ergebnis bestimmte Bedingungen erfüllt. Beispielsweise möchte man alle Studiengänge finden, für die die Menge der eingeschriebenen
+            Studenten eine Mindestmenge unterschreitet. Eine Abfrage, die die Anzahl der Studenten pro Studiengang findet, wurde bereits weiter oben gezeigt. Eine Filterung des COUNT-Ergebnisses mittels WHERE ist aber nicht möglich, weil die WHERE-Filterung
+            vor der Gruppierung stattfindet. Dafür gibt es eine eigene Klausel: HAVING.
+        </p>
+        <pre><code>
+                SELECT StudGang AS Studiengang, COUNT(*) AS Anzahl
+                FROM Student
+                GROUP BY StudGang
+                HAVING COUNT(*) < 2
+                ORDER BY StudGang
+            </code></pre>
+        <table>
+            <tr>
+                <th>Studiengang</th>
+                <th>Anzahl</th>
+            </tr>
+            <tr>
+                <td>Mathematik</td>
+                <td>1</td>
+            </tr>
+        </table>
+        <p>
+            Für Mathe ist wohl etwas mehr Werbung nötig.
+        </p>
+
+        <h2 id="sqlMengenoperatoren">Mengenoperatoren: UNION, EXCEPT und INTERSECT</h2>
+        <p>
+            Mengenoperatoren können dazu genutzt werden, die Ergebnismengen mehrerer SELECT-Abfragen zusammenzufügen. Voraussetzung ist, dass diese SELECTs gleich viele Attribute auslesen und die Datentypen der Attribute übereinstimmen.
+        </p>
+        <p>
+            Mengenoperator UNION:
+        </p>
+        <pre><code>
+                SELECT userid, username, lastlogin, 'A-Forum' as Quelle
+                FROM   forum1.users 
+                WHERE  userlevel=9
+                UNION
+                SELECT userid, username, lastlogin, 'B-Forum'
+                FROM   forum2.users
+                WHERE  userlevel=9
+                ORDER BY lastlogin
+            </code></pre>
+        <!-- Ergebnistabelle für UNION -->
+
+        <p>
+            Mengenoperator EXCEPT:
+        </p>
+        <pre><code>
+                SELECT userid, username, lastlogin, 'A-Forum' as Quelle
+                FROM   forum1.users 
+                WHERE  userlevel=9
+                EXCEPT
+                SELECT userid, username, lastlogin, 'B-Forum'
+                FROM   forum2.users
+                WHERE  userlevel=9
+            </code></pre>
+        <!-- Ergebnistabelle für EXCEPT -->
+
+        <p>
+            Mengenoperator INTERSECT:
+        </p>
+        <pre><code>
+                SELECT userid, username, lastlogin, 'A-Forum' as Quelle
+                FROM   forum1.users 
+                WHERE  userlevel=9
+                INTERSECT
+                SELECT userid, username, lastlogin, 'B-Forum'
+                FROM   forum2.users
+                WHERE  userlevel=9
+            </code></pre>
+        <!-- Ergebnistabelle für INTERSECT -->
+
+        <p>
+            Zusammenfassung der SQL-SELECT-Abfrage-Elemente:
+        </p>
+        <pre><code>
+                SELECT [DISTINCT] Auswahlliste [AS Spaltenalias]
+                FROM Quelle [ [AS] Tabellenalias]
+                [WHERE Where-Klausel]
+                [GROUP BY (Group-by-Attribut)+]
+                [HAVING Having-Klausel]
+                [ORDER BY (Sortierungsattribut [ASC|DESC])+];
+            </code></pre>
+
+        <h2 id="sqlDatensaetzeHinzufuegenAendern">Datensätze hinzufügen und ändern</h2>
+        <h3 id="sqlInsertInto">INSERT INTO</h3>
+        <p>
+            Mit INSERT können Sie neue Datensätze hinzufügen:
+        </p>
+        <pre><code>
+                INSERT INTO <Tabellenname>(<Spaltenname> [, weitere Spaltennamen])
+                VALUES (<Wert für die erste Spalte> [, weitere Werte])
+            </code></pre>
+        <p>
+            Beispiel:
+        </p>
+        <pre><code>
+                INSERT INTO Professor (PersNr, Name) 
+                VALUES (21, 'Hastig')
+            </code></pre>
+        <p>
+            Einfügen mehrerer Zeilen:
+        </p>
+        <pre><code>
+                INSERT INTO <Tabellenname>(<Spaltenname> [, weitere Spaltennamen])
+                SELECT <Spalte-1> [, weitere Ausgaben]
+                [FROM ...]
+                [WHERE ...]
+                [GROUP BY ...]
+                [HAVING ...]
+            </code></pre>
+
+        <h3 id="sqlUpdate">UPDATE</h3>
+        <p>
+            Mit UPDATE können Sie Werte innerhalb eines vorhandenen Datensatzes aktualisieren:
+        </p>
+        <pre><code>
+                UPDATE tabellen_name 
+                SET tabellen_spalte = wert1 
+                WHERE tabellen_spalte = wert2
+            </code></pre>
+        <p>
+            Beachten Sie, dass ohne Angabe eines WHERE-Blocks alle Datensätze geändert werden.
+        </p>
+
+        <h3 id="sqlDelete">DELETE</h3>
+        <p>
+            Mit DELETE können Sie Werte innerhalb eines vorhandenen Datensatzes löschen:
+        </p>
+        <pre><code>
+                DELETE FROM tabellen_name 
+                WHERE spalten_name = wert
+            </code></pre>
+        <p>
+            Beachten Sie, dass ohne Angabe eines WHERE-Blocks alle Datensätze gelöscht werden.
+        </p>
+
+        <h2 id="sqlTabellenErzeugen">Tabellen erzeugen</h2>
+        <p>
+            In den vorhergehenden Kapiteln wurden bestehende Datenbanken ausgelesen und erweitert. Die Datenbanktabellen können mit Programmen wie phpMyAdmin oder auch mit SQL selbst angelegt werden.
+        </p>
+        <p>
+            Achtung! Das Löschen, aber auch das Anlegen von Tabellen kann (durch Überschreiben bestehender Tabellen) zu Datenverlust führen. Legen Sie regelmäßig Backups an!
+        </p>
+
+        <h3 id="sqlCreate">CREATE TABLE</h3>
+        <pre><code>
+                CREATE TABLE tabellennamen
+                (
+                   Spaltenname1 datentyp1 [feldeinschränkung],
+                   Spaltenname2 datentyp2 [feldeinschränkung],
+                   [...]
+                );
+            </code></pre>
     </main>
+
+    <div id="speaker" class="play-button">&#128266;</div>
+
+    <script>
+        const speaker = document.getElementById("speaker");
+        const synth = window.speechSynthesis;
+        let isReading = false;
+        let utterance = new SpeechSynthesisUtterance();
+        const voices = synth.getVoices();
+        utterance.voice = voices[0];
+
+        const sqlSection = document.getElementById("mainlernensql");
+        if (sqlSection) {
+            speaker.style.display = "block";
+        }
+
+        function toggleSpeakerButton() {
+            if (!isReading) {
+                const textToRead = sqlSection.innerText;
+                utterance.text = textToRead;
+                synth.speak(utterance);
+                isReading = true;
+                speaker.classList.remove("play-button");
+                speaker.classList.add("stop-button");
+            } else {
+                synth.cancel();
+                isReading = false;
+                speaker.classList.add("play-button");
+                speaker.classList.remove("stop-button");
+            }
+        }
+
+        speaker.addEventListener("click", toggleSpeakerButton);
+
+        utterance.onstart = () => {
+            console.log("Vorlesen gestartet");
+        };
+
+        utterance.onend = () => {
+            console.log("Vorlesen beendet");
+        };
+
+        //für die suche
+
+        document.addEventListener("DOMContentLoaded", function() {
+            const searchInput = document.getElementById("searchInput");
+            const searchButton = document.getElementById("searchButton");
+
+            function searchAndHighlight() {
+                const searchText = searchInput.value.toLowerCase();
+                const paragraphs = document.querySelectorAll("main p");
+
+                paragraphs.forEach(function(paragraph) {
+                    const paragraphText = paragraph.innerText.toLowerCase();
+
+                    if (paragraphText.includes(searchText)) {
+                        paragraph.classList.add("highlight");
+                        paragraph.scrollIntoView({
+                            behavior: "smooth",
+                            block: "center", // Das Wort wird in der Mitte des Bildschirms positioniert
+                        });
+                    } else {
+                        paragraph.classList.remove("highlight");
+                    }
+                });
+            }
+
+            searchButton.addEventListener("click", searchAndHighlight);
+
+            searchInput.addEventListener("keydown", function(event) {
+                if (event.key === "Enter") {
+                    searchAndHighlight();
+                    event.preventDefault();
+                }
+            });
+        });
+    </script>
 
 </body>
 

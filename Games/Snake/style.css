@@ -60,6 +60,7 @@ header:hover {
 }
 
 .button {
+    transition: 0.5s;
     background-color: #012f6b;
     color: #fff;
     text-decoration: none;
@@ -73,10 +74,12 @@ header:hover {
 }
 
 .button:hover {
+    transition: 0.5s;
     background-color: #006eff;
 }
 
 .button a {
+    transition: 0.5s;
     color: #fff;
     text-decoration: none;
 }
@@ -91,6 +94,7 @@ header:hover {
 }
 
 #tastenbelegungen {
+    transition: 0.5s;
     text-align: center;
     justify-content: center;
     background-color: #00461e;
@@ -107,6 +111,7 @@ header:hover {
 }
 
 #tastenbelegungen:hover {
+    transition: 0.5s;
     font-weight: 700;
     cursor: crosshair;
     color: #000000;

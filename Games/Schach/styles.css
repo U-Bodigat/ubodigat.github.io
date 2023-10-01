@@ -70,6 +70,7 @@ header p {
 }
 
 .button {
+    transition: 0.5s;
     background-color: #012f6b;
     color: #fff;
     text-decoration: none;
@@ -83,10 +84,12 @@ header p {
 }
 
 .button:hover {
+    transition: 0.5s;
     background-color: #006eff;
 }
 
 .button a {
+    transition: 0.5s;
     color: #fff;
     text-decoration: none;
 }
@@ -270,6 +273,7 @@ div.piece_container {
 }
 
 #startbutton {
+    transition: 0.5s;
     background-color: #012f6b;
     color: #fff;
     text-decoration: none;
@@ -293,6 +297,7 @@ div.piece_container {
 }
 
 #startbutton:hover {
+    transition: 0.5s;
     cursor: pointer;
     background-color: #0077ff;
     color: #333333;
@@ -300,6 +305,7 @@ div.piece_container {
 }
 
 #schwirigkeitenhintergrund {
+    transition: 0.5s;
     text-align: start;
     margin-left: 40px;
     background-color: #14291f;
@@ -311,16 +317,19 @@ div.piece_container {
 }
 
 #schwirigkeitenhintergrund label.radio-label {
+    transition: 0.5s;
     display: block;
     margin-bottom: 5px;
     cursor: pointer;
 }
 
 #schwirigkeitenhintergrund label.radio-label:hover {
+    transition: 0.5s;
     color: #00c3ff;
 }
 
 #schwirigkeitenhintergrund input[type="radio"] {
+    transition: 0.5s;
     appearance: none;
     -webkit-appearance: none;
     -moz-appearance: none;
@@ -335,12 +344,14 @@ div.piece_container {
 }
 
 #schwirigkeitenhintergrund input[type="radio"]:checked {
+    transition: 0.5s;
     cursor: pointer;
     background-color: #00c3ff;
     border-color: #00c3ff;
 }
 
 #schwirigkeitenhintergrund input:checked {
+    transition: 0.5s;
     cursor: pointer;
     color: #00c3ff;
     background-color: #00c3ff;

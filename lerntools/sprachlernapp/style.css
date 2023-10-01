@@ -70,6 +70,7 @@ header p {
 }
 
 .button {
+    transition: 0.5s;
     background-color: #012f6b;
     color: #fff;
     text-decoration: none;
@@ -83,10 +84,12 @@ header p {
 }
 
 .button:hover {
+    transition: 0.5s;
     background-color: #006eff;
 }
 
 .button a {
+    transition: 0.5s;
     color: #fff;
     text-decoration: none;
 }
@@ -229,6 +232,7 @@ body {
 }
 
 #record-button {
+    transition: 0.5s;
     background-color: #4caf50;
     color: white;
     border: none;
@@ -244,15 +248,18 @@ body {
 }
 
 #record-button i {
+    transition: 0.5s;
     margin-right: 10px;
 }
 
 #record-button:hover {
+    transition: 0.5s;
     background-color: #00ff0d;
     color: #575757;
 }
 
 #next-button {
+    transition: 0.5s;
     background-color: #3498db;
     color: white;
     border: none;
@@ -269,6 +276,7 @@ body {
 }
 
 #next-button:hover {
+    transition: 0.5s;
     background-color: #00c3ff;
     color: #575757;
 }
