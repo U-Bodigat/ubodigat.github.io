@@ -373,6 +373,9 @@ button:hover {
 }
 
 @media (max-width: 1060px) {
+    #Tutorialvideos {
+        margin-top: 150px;
+    }
     .tutorialvideos {
         width: 560;
         height: 315;
@@ -387,6 +390,9 @@ button:hover {
 }
 
 @media (max-width: 600px) {
+    #Tutorialvideos {
+        margin-top: 150px;
+    }
     .tutorialvideos {
         width: 530px;
         height: 285px;
@@ -398,6 +404,9 @@ button:hover {
 }
 
 @media (max-width: 540px) {
+    #Tutorialvideos {
+        margin-top: 150px;
+    }
     .tutorialvideos {
         width: 430px;
         height: 220px;
@@ -409,12 +418,12 @@ button:hover {
 }
 
 @media (max-width: 440px) {
+    #Tutorialvideos {
+        margin-top: 150px;
+    }
     .tutorialvideos {
         width: 360px;
         height: 190px;
-    }
-    #onevideo {
-        margin-top: 150px;
     }
     .überschriftenvideos {
         margin-top: 10%;
