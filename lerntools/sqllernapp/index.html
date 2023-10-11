@@ -70,187 +70,1257 @@
     <!-- End Google Tag Manager (noscript) -->
     <nav>
         <header>
-            <p><a id="überschriftlink" href="https://ubodigat.com">U:Bodigat.com</a> | SQL Lernapp |lernen </p>
+            <p><a id="überschriftlink" href="https://ubodigat.com">U:Bodigat.com</a> | SQL Lernapp</p>
             <div id="headerinput">
-                <a href="/lerntools/sqllernapp/lernen.html"><button class="button">SQL lernen</button></a>
+                <a href="https://ubodigat.com/lerntools/sqllernapp/lernen"><button class="button">SQL lernen</button></a>
                 <!-- <a href="https://ubodigat.com/lerntools/sqllernapp/lernen"><button class="button">SQL lernen</button></a> -->
-                <a href="https://ubodigat.com/datenschutz.html" target="_blank"> <button class="button">Datenschutz</button></a>
-                <a href="/lerntools/lernmenü.html"><button class="button">Zum Lernmenü</button></a>
+                <a href="https://ubodigat.com/datenschutz" target="_blank"> <button class="button">Datenschutz</button></a>
+                <a href="https://ubodigat.com/lerntools/lernmen%C3%BC"><button class="button">Zum Lernmenü</button></a>
             </div>
         </header>
     </nav>
 
     <main>
         <div id="quiz-container">
-            <div id="question">Frage 1: Was bedeutet SQL?</div>
-            <div id="options">
-                <div class="option">Structured Query Language</div>
-                <div class="option">Simple Query Language</div>
-                <div class="option">System Query Language</div>
-                <div class="option">Sequential Query Language</div>
+            <div id="quiz-header">
+                <div id="quiz-progress">Frage 1 von 0</div>
+                <div id="quiz-score">Richtig: 0 Falsch: 0</div>
             </div>
-            <div id="sql-input-container">
-                <input type="text" id="sql-answer" placeholder="Deine SQL-Anfrage">
-                <button id="submit-btn">Einreichen</button>
+            <div id="question-container">
+                <div id="question">Frage 1: Was bedeutet SQL?</div>
+                <div id="options"></div>
+                <div id="sql-input-container">
+                    <input type="text" id="sql-answer" placeholder="Deine SQL-Antwort">
+                    <button id="submit-btn" value="testvalue">Einreichen</button>
+                </div>
+                <div id="result"></div>
             </div>
-            <div id="result"></div>
+        </div>
+        <div id="quiz-popup">
+            <div id="popup-content">
+                <h2>Quiz abgeschlossen!</h2>
+                <p>Du hast <span id="popup-score"></span> von <span id="popup-total"></span> Fragen richtig beantwortet.</p>
+                <p>Ergebnis: <span id="popup-percentage"></span></p>
+                <span id="popup-close">Schließen</span>
+            </div>
         </div>
     </main>
 
     <script>
-        const questions = [{
-            question: "Frage 1: Was bedeutet SQL?",
-            answers: [
-                "Structured Query Language",
-                "Simple Query Language",
-                "System Query Language",
-                "Sequential Query Language"
-            ],
-            correctAnswer: "Structured Query Language",
-            type: "multipleChoice"
-        }, {
-            question: "Frage 2: Welcher SQL-Befehl wird verwendet, um Daten aus einer Datenbank abzurufen?",
-            answers: [
-                "SELECT",
-                "INSERT",
-                "UPDATE",
-                "DELETE"
-            ],
-            correctAnswer: "SELECT",
-            type: "multipleChoice"
-        }, {
-            question: "Frage 3: Welcher SQL-Befehl wird verwendet, um Daten in eine Datenbank einzufügen?",
-            answers: [
-                "SELECT",
-                "INSERT",
-                "UPDATE",
-                "DELETE"
-            ],
-            correctAnswer: "INSERT",
-            type: "multipleChoice"
-        }, {
-            question: "Frage 4: Schreibe einen SQL-Befehl, um alle Datensätze aus der Tabelle 'Kunden' auszuwählen.",
-            correctAnswer: "SELECT * FROM Kunden",
-            type: "sqlQuery"
-        }, {
-            question: "Frage 5: Schreibe einen SQL-Befehl, um den Preis für das Produkt 'Handy' in der Tabelle 'Produkte' zu aktualisieren.",
-            correctAnswer: "UPDATE Produkte SET Preis = 500 WHERE Produktname = 'Handy'",
-            type: "sqlQuery"
-        }];
+        function openPopup(score, totalQuestions) {
+            const popup = document.getElementById('quiz-popup');
+            const popupContent = document.getElementById('popup-content');
+            const popupClose = document.getElementById('popup-close');
 
-        const additionalQuestions = [{
-                question: "Frage 6: Welcher SQL-Befehl wird verwendet, um Daten aus einer Tabelle 'Bestellungen' abzurufen, bei denen der Gesamtbetrag größer als 1000 ist?",
+            const percentage = (score / totalQuestions) * 100;
+
+            popupContent.innerHTML = `
+            <h2>Quiz abgeschlossen!</h2>
+            <p>Du hast ${score} von ${totalQuestions} Fragen richtig beantwortet.</p>
+            <p>Ergebnis: ${percentage.toFixed(2)}%</p>
+        `;
+
+            popup.style.display = 'block';
+
+            popupClose.addEventListener('click', () => {
+                popup.style.display = 'none';
+            });
+        }
+
+        function startQuiz() {
+            const questions = [{
+                question: "Was bedeutet SQL?",
                 answers: [
-                    "SELECT * FROM Bestellungen WHERE Gesamtbetrag > 1000",
-                    "SELECT * FROM Bestellungen WHERE Gesamtbetrag < 1000",
-                    "SELECT * FROM Bestellungen WHERE Gesamtbetrag = 1000",
-                    "SELECT * FROM Bestellungen WHERE Gesamtbetrag >= 1000"
+                    "Structured Query Language",
+                    "Simple Query Language",
+                    "System Query Language",
+                    "Sequential Query Language"
                 ],
-                correctAnswer: "SELECT * FROM Bestellungen WHERE Gesamtbetrag > 1000",
+                correctAnswer: "Structured Query Language",
+                type: "multipleChoice"
+            }, {
+                question: "Welcher SQL-Befehl wird verwendet, um Daten aus einer Datenbank abzurufen?",
+                answers: [
+                    "SELECT",
+                    "INSERT",
+                    "UPDATE",
+                    "DELETE"
+                ],
+                correctAnswer: "SELECT",
+                type: "multipleChoice"
+            }, {
+                question: "Was ist eine Datenbank?",
+                answers: [
+                    "Eine Sammlung von Software-Anwendungen",
+                    "Ein physischer Ort zum Speichern von Dateien",
+                    "Eine strukturierte Sammlung von Daten",
+                    "Ein anderer Begriff für Webbrowser"
+                ],
+                correctAnswer: "Eine strukturierte Sammlung von Daten",
+                type: "multipleChoice"
+            }, {
+                question: "Welche SQL-Anweisung wird verwendet, um Daten in eine Tabelle einzufügen?",
+                answers: [
+                    "INSERT INTO",
+                    "UPDATE",
+                    "SELECT",
+                    "DELETE FROM"
+                ],
+                correctAnswer: "INSERT INTO",
+                type: "multipleChoice"
+            }, {
+                question: "Was bedeutet das Akronym 'DBMS'?",
+                answers: [
+                    "Database Management System",
+                    "Data Backup and Management System",
+                    "Digital Business Management System",
+                    "Dynamic Database Management System"
+                ],
+                correctAnswer: "Database Management System",
+                type: "multipleChoice"
+            }, {
+                question: "Schreibe eine SQL-Abfrage, um alle Einträge in der Tabelle 'Kunden' anzuzeigen.",
+                answers: [],
+                correctAnswer: "SELECT * FROM Kunden",
+                type: "sqlQuery",
+                inputPlaceholder: "Deine SQL-Anfrage eingeben",
+                buttonText: "Einreichen"
+            }, {
+                question: "Welche SQL-Anweisung wird verwendet, um Daten in einer Tabelle zu aktualisieren?",
+                answers: [
+                    "UPDATE",
+                    "INSERT INTO",
+                    "DELETE",
+                    "MODIFY"
+                ],
+                correctAnswer: "UPDATE",
+                type: "multipleChoice"
+            }, {
+                question: "Was ist ein SQL-Primärschlüssel?",
+                answers: [
+                    "Ein Schlüssel zum Haupteingang eines Rechenzentrums",
+                    "Ein eindeutiger Bezeichner für eine Zeile in einer Tabelle",
+                    "Ein Schlüssel, der zum Öffnen einer verschlossenen Datenbank verwendet wird",
+                    "Ein geheimes Passwort für den Datenbankzugriff"
+                ],
+                correctAnswer: "Ein eindeutiger Bezeichner für eine Zeile in einer Tabelle",
+                type: "multipleChoice"
+            }, {
+                question: "Welche SQL-Anweisung wird verwendet, um Datensätze aus einer Tabelle zu löschen?",
+                answers: [
+                    "DELETE FROM",
+                    "REMOVE",
+                    "CLEAR",
+                    "ERASE"
+                ],
+                correctAnswer: "DELETE FROM",
+                type: "multipleChoice"
+            }, {
+                question: "Schreibe eine SQL-Abfrage, um alle Mitarbeiter in der Abteilung 'Vertrieb' anzuzeigen.",
+                answers: [],
+                correctAnswer: "SELECT * FROM Mitarbeiter WHERE Abteilung = 'Vertrieb'",
                 type: "sqlQuery"
             }, {
-                question: "Frage 7: Schreibe einen SQL-Befehl, um alle Kundennamen aus der Tabelle 'Kunden' abzurufen, die in New York ansässig sind.",
-                correctAnswer: "SELECT Kundennamen FROM Kunden WHERE Stadt = 'New York'",
+                question: "Welche SQL-Anweisung wird verwendet, um Daten aus einer Tabelle abzurufen, die eine Bedingung erfüllen?",
+                answers: [
+                    "FILTER",
+                    "CONDITION",
+                    "WHERE",
+                    "SELECT IF"
+                ],
+                correctAnswer: "WHERE",
+                type: "multipleChoice"
+            }, {
+                question: "Welche Art von SQL-Anweisung wird verwendet, um eine neue Tabelle zu erstellen?",
+                answers: [
+                    "CREATE TABLE",
+                    "INSERT INTO",
+                    "UPDATE",
+                    "DELETE FROM"
+                ],
+                correctAnswer: "CREATE TABLE",
+                type: "multipleChoice"
+            }, {
+                question: "Schreibe eine SQL-Abfrage, um den Durchschnittsgehalt aller Mitarbeiter in der Tabelle 'Mitarbeiter' zu berechnen.",
+                answers: [],
+                correctAnswer: "SELECT AVG(Gehalt) FROM Mitarbeiter",
                 type: "sqlQuery"
             }, {
-                question: "Frage 8: Schreibe einen SQL-Befehl, um den Durchschnittspreis aller Produkte in der Tabelle 'Produkte' zu berechnen.",
+                question: "Was ist SQL-Injektion?",
+                answers: [
+                    "Ein SQL-Befehl, der sehr schnell ausgeführt wird",
+                    "Eine Technik zur Kompilierung von SQL-Code",
+                    "Eine Methode zur Datenverschlüsselung in SQL",
+                    "Eine Sicherheitslücke, bei der schädlicher SQL-Code in Eingabeformularen eingeschleust wird"
+                ],
+                correctAnswer: "Eine Sicherheitslücke, bei der schädlicher SQL-Code in Eingabeformularen eingeschleust wird",
+                type: "multipleChoice"
+            }, {
+                question: "Welche SQL-Anweisung wird verwendet, um eine Tabelle zu löschen?",
+                answers: [
+                    "DROP TABLE",
+                    "DELETE TABLE",
+                    "REMOVE TABLE",
+                    "CLEAR TABLE"
+                ],
+                correctAnswer: "DROP TABLE",
+                type: "multipleChoice"
+            }, {
+                question: "Was bedeutet das SQL-Akronym 'DDL'?",
+                answers: [
+                    "Data Description Language",
+                    "Database Design Language",
+                    "Data Display Language",
+                    "Data Definition Language"
+                ],
+                correctAnswer: "Data Definition Language",
+                type: "multipleChoice"
+            }, {
+                question: "Welche SQL-Anweisung wird verwendet, um eine Tabelle umzubenennen?",
+                answers: [
+                    "RENAME TABLE",
+                    "ALTER TABLE RENAME",
+                    "UPDATE TABLE NAME",
+                    "ALTER TABLE RENAME TO"
+                ],
+                correctAnswer: "ALTER TABLE RENAME TO",
+                type: "multipleChoice"
+            }, {
+                question: "Was ist ein SQL-Index?",
+                answers: [
+                    "Eine Art von Schlüssel, um Türen zu öffnen",
+                    "Ein spezieller Datenbankordner",
+                    "Eine Datenstruktur zur Beschleunigung des Zugriffs auf Daten",
+                    "Eine SQL-Sicherheitsvorrichtung"
+                ],
+                correctAnswer: "Eine Datenstruktur zur Beschleunigung des Zugriffs auf Daten",
+                type: "multipleChoice"
+            }, {
+                question: "Was ist ein SQL-Null-Wert?",
+                answers: [
+                    "Ein Wert, der gleich Null ist",
+                    "Ein leerer Zeichenkettenwert",
+                    "Ein Wert, der fehlt oder unbekannt ist",
+                    "Ein Fehlerwert in SQL"
+                ],
+                correctAnswer: "Ein Wert, der fehlt oder unbekannt ist",
+                type: "multipleChoice"
+            }, {
+                question: "Welche SQL-Anweisung wird verwendet, um Daten in einer Tabelle zu löschen und gleichzeitig eine Sicherungskopie zu erstellen?",
+                answers: [
+                    "DELETE BACKUP",
+                    "DELETE TABLE COPY",
+                    "DROP TABLE WITH BACKUP",
+                    "DELETE TABLE INTO BACKUP"
+                ],
+                correctAnswer: "DROP TABLE WITH BACKUP",
+                type: "multipleChoice"
+            }, {
+                question: "Was ist ein SQL-Clustered Index?",
+                answers: [
+                    "Ein Index, der Cluster-Computing verwendet",
+                    "Ein Index für geclusterte Datenbanken",
+                    "Ein Index, der eine physische Reihenfolge in der Tabelle festlegt",
+                    "Ein Index für sich wiederholende Werte"
+                ],
+                correctAnswer: "Ein Index, der eine physische Reihenfolge in der Tabelle festlegt",
+                type: "multipleChoice"
+            }, {
+                question: "Welche SQL-Anweisung wird verwendet, um eine Datenbank zu erstellen?",
+                answers: [
+                    "CREATE DATABASE",
+                    "NEW DATABASE",
+                    "MAKE DATABASE",
+                    "BUILD DATABASE"
+                ],
+                correctAnswer: "CREATE DATABASE",
+                type: "multipleChoice"
+            }, {
+                question: "Was bedeutet das SQL-Akronym 'ACID'?",
+                answers: [
+                    "Atomicity, Consistency, Isolation, Durability",
+                    "All Connections in Database",
+                    "Advanced Computing and Integrated Databases",
+                    "Automated Control of Information and Data"
+                ],
+                correctAnswer: "Atomicity, Consistency, Isolation, Durability",
+                type: "multipleChoice"
+            }, {
+                question: "Welche SQL-Anweisung wird verwendet, um einen neuen Benutzer in der Datenbank zu erstellen?",
+                answers: [
+                    "CREATE USER",
+                    "ADD USER",
+                    "NEW USER",
+                    "REGISTER USER"
+                ],
+                correctAnswer: "CREATE USER",
+                type: "multipleChoice"
+            }, {
+                question: "Was ist ein SQL-Subquery?",
+                answers: [
+                    "Eine Unterabfrage oder verschachtelte Abfrage innerhalb einer Hauptabfrage",
+                    "Eine sekundäre Datenbank",
+                    "Eine Tabelle für untergeordnete Daten",
+                    "Ein SQL-Bericht"
+                ],
+                correctAnswer: "Eine Unterabfrage oder verschachtelte Abfrage innerhalb einer Hauptabfrage",
+                type: "multipleChoice"
+            }, {
+                question: "Was ist ein SQL-Operator, der zum Vergleichen von Werten in einer Abfrage verwendet wird?",
+                answers: [
+                    "CONNECT",
+                    "OPERATE",
+                    "COMPARE",
+                    "WHERE"
+                ],
+                correctAnswer: "WHERE",
+                type: "multipleChoice"
+            }, {
+                question: "Welche SQL-Anweisung wird verwendet, um Daten in aufsteigender Reihenfolge zu sortieren?",
+                answers: [
+                    "SORT ASC",
+                    "ORDER BY ASC",
+                    "ASC SORT",
+                    "ASCENDING"
+                ],
+                correctAnswer: "ORDER BY ASC",
+                type: "multipleChoice"
+            }, {
+                question: "Was bedeutet das SQL-Akronym 'OLAP'?",
+                answers: [
+                    "Online Analytical Processing",
+                    "Online Application Programming",
+                    "Open Language for Application Processing",
+                    "Optimized Logical Application Programming"
+                ],
+                correctAnswer: "Online Analytical Processing",
+                type: "multipleChoice"
+            }, {
+                question: "Welche SQL-Anweisung wird verwendet, um Daten in absteigender Reihenfolge zu sortieren?",
+                answers: [
+                    "DESCENDING SORT",
+                    "ORDER BY DESC",
+                    "SORT DESC",
+                    "DESC ORDER"
+                ],
+                correctAnswer: "ORDER BY DESC",
+                type: "multipleChoice"
+            }, {
+                question: "Was ist ein SQL-Transaktionslog?",
+                answers: [
+                    "Eine Aufzeichnung von allen SQL-Transaktionen",
+                    "Ein Protokoll für Netzwerkkommunikation",
+                    "Ein Speicher für SQL-Abfragen",
+                    "Ein Sicherungslog für SQL-Datenbanken"
+                ],
+                correctAnswer: "Eine Aufzeichnung von allen SQL-Transaktionen",
+                type: "multipleChoice"
+            }, {
+                question: "Welche SQL-Anweisung wird verwendet, um Daten in einer Tabelle zu sperren, um gleichzeitige Zugriffe zu verhindern?",
+                answers: [
+                    "LOCK TABLE",
+                    "BLOCK TABLE",
+                    "RESTRICT TABLE",
+                    "PREVENT TABLE"
+                ],
+                correctAnswer: "LOCK TABLE",
+                type: "multipleChoice"
+            }, {
+                question: "Was bedeutet das SQL-Akronym 'DML'?",
+                answers: [
+                    "Data Management Language",
+                    "Database Manipulation Language",
+                    "Data Modification Language",
+                    "Database Markup Language"
+                ],
+                correctAnswer: "Data Manipulation Language",
+                type: "multipleChoice"
+            }, {
+                question: "Welche SQL-Anweisung wird verwendet, um eine Zeile in einer Tabelle zu löschen?",
+                answers: [
+                    "REMOVE ROW",
+                    "DELETE ROW",
+                    "ERASE ROW",
+                    "DROP ROW"
+                ],
+                correctAnswer: "DELETE ROW",
+                type: "multipleChoice"
+            }, {
+                question: "Was ist ein SQL-View?",
+                answers: [
+                    "Eine gespeicherte Abfrage, die als virtuelle Tabelle angezeigt wird",
+                    "Ein alternativer Datenbankzugriff",
+                    "Eine Methode zur Datenverschlüsselung",
+                    "Ein SQL-Datenbankdesign"
+                ],
+                correctAnswer: "Eine gespeicherte Abfrage, die als virtuelle Tabelle angezeigt wird",
+                type: "multipleChoice"
+            }, {
+                question: "Welche Art von SQL-Anweisung wird verwendet, um eine Tabelle zu ändern?",
+                answers: [
+                    "ALTER TABLE",
+                    "MODIFY TABLE",
+                    "CHANGE TABLE",
+                    "UPDATE TABLE"
+                ],
+                correctAnswer: "ALTER TABLE",
+                type: "multipleChoice"
+            }, {
+                question: "Was ist ein SQL-Subselect?",
+                answers: [
+                    "Eine Unterabfrage oder verschachtelte Abfrage innerhalb einer Hauptabfrage",
+                    "Eine separate SQL-Datenbank",
+                    "Eine spezielle Art von Index",
+                    "Ein SQL-Bericht"
+                ],
+                correctAnswer: "Eine Unterabfrage oder verschachtelte Abfrage innerhalb einer Hauptabfrage",
+                type: "multipleChoice"
+            }, {
+                question: "Welche SQL-Anweisung wird verwendet, um Daten in einer Tabelle zu kopieren?",
+                answers: [
+                    "COPY INTO",
+                    "DUPLICATE",
+                    "CLONE TABLE",
+                    "INSERT INTO"
+                ],
+                correctAnswer: "INSERT INTO",
+                type: "multipleChoice"
+            }, {
+                question: "Was ist ein SQL-Trigger?",
+                answers: [
+                    "Eine gespeicherte Prozedur, die automatisch ausgeführt wird, wenn bestimmte Ereignisse auftreten",
+                    "Ein Schlüssel zur Datenbankverschlüsselung",
+                    "Ein spezieller SQL-Index",
+                    "Eine Abfrage, die Daten in einer Tabelle sortiert"
+                ],
+                correctAnswer: "Eine gespeicherte Prozedur, die automatisch ausgeführt wird, wenn bestimmte Ereignisse auftreten",
+                type: "multipleChoice"
+            }, {
+                question: "Welche SQL-Anweisung wird verwendet, um Daten aus einer Tabelle zu aktualisieren und gleichzeitig eine Protokolldatei zu führen?",
+                answers: [
+                    "UPDATE mit LOG",
+                    "MODIFY",
+                    "ALTER",
+                    "LOG UPDATE"
+                ],
+                correctAnswer: "UPDATE mit LOG",
+                type: "multipleChoice"
+            }, {
+                question: "Was bedeutet das SQL-Akronym 'ACID'?",
+                answers: [
+                    "Atomicity, Consistency, Isolation, Durability",
+                    "All Connections in Database",
+                    "Advanced Computing and Integrated Databases",
+                    "Automated Control of Information and Data"
+                ],
+                correctAnswer: "Atomicity, Consistency, Isolation, Durability",
+                type: "multipleChoice"
+            }, {
+                question: "Was ist ein SQL-Non-Clustered Index?",
+                answers: [
+                    "Ein Index für nicht gruppierte Daten",
+                    "Ein Index, der eine physische Reihenfolge in der Tabelle festlegt",
+                    "Ein Index, der Cluster-Computing verwendet",
+                    "Ein Index für sich wiederholende Werte"
+                ],
+                correctAnswer: "Ein Index für nicht gruppierte Daten",
+                type: "multipleChoice"
+            }, {
+                question: "Welche SQL-Anweisung wird verwendet, um Daten aus mehreren Tabellen abzurufen und zu verknüpfen?",
+                answers: [
+                    "JOIN",
+                    "COMBINE",
+                    "ASSOCIATE",
+                    "CONNECT"
+                ],
+                correctAnswer: "JOIN",
+                type: "multipleChoice"
+            }, {
+                question: "Was bedeutet das SQL-Akronym 'SQLi'?",
+                answers: [
+                    "Structured Query Language Integration",
+                    "SQL Information",
+                    "SQL Index",
+                    "SQL Injection"
+                ],
+                correctAnswer: "SQL Injection",
+                type: "multipleChoice"
+            }, {
+                question: "Welche SQL-Anweisung wird verwendet, um Daten aus mehreren Tabellen abzurufen, wobei alle übereinstimmenden Zeilen zurückgegeben werden?",
+                answers: [
+                    "INNER JOIN",
+                    "OUTER JOIN",
+                    "FULL JOIN",
+                    "CROSS JOIN"
+                ],
+                correctAnswer: "INNER JOIN",
+                type: "multipleChoice"
+            }, {
+                question: "Was ist eine SQL-ANSI-Join-Klausel?",
+                answers: [
+                    "Eine Klausel, die SQL-Abfragen analysiert",
+                    "Eine SQL-Berechtigungsklausel",
+                    "Eine spezielle Art von Datenbanktabelle",
+                    "Eine SQL-Anweisung zur Verknüpfung von Tabellen"
+                ],
+                correctAnswer: "Eine SQL-Anweisung zur Verknüpfung von Tabellen",
+                type: "multipleChoice"
+            }, {
+                question: "Welche Art von SQL-Anweisung wird verwendet, um Daten aus einer Tabelle zu aggregieren?",
+                answers: [
+                    "GROUP BY",
+                    "SUM",
+                    "AVERAGE",
+                    "COUNT"
+                ],
+                correctAnswer: "GROUP BY",
+                type: "multipleChoice"
+            }, {
+                question: "Was ist SQL-Optimierung?",
+                answers: [
+                    "Ein Prozess zur Verbesserung der Datenbankleistung",
+                    "Die Umwandlung von SQL in eine andere Programmiersprache",
+                    "Eine Methode zur Datenverschlüsselung in SQL",
+                    "Die Umwandlung von Textdaten in numerische Werte"
+                ],
+                correctAnswer: "Ein Prozess zur Verbesserung der Datenbankleistung",
+                type: "multipleChoice"
+            }, {
+                question: "Welche SQL-Anweisung wird verwendet, um Daten aus einer Tabelle zu extrahieren, ohne Duplikate anzuzeigen?",
+                answers: [
+                    "DISTINCT",
+                    "UNIQUE",
+                    "NO DUPLICATES",
+                    "EXCLUDE DUPLICATES"
+                ],
+                correctAnswer: "DISTINCT",
+                type: "multipleChoice"
+            }, {
+                question: "Was bedeutet 'SQL-Performance-Tuning'?",
+                answers: [
+                    "Die Verbesserung der Datenbankleistung durch Optimierung von Abfragen und Indizes",
+                    "Die Aktualisierung der SQL-Software",
+                    "Die Verschlüsselung von SQL-Daten",
+                    "Die Umwandlung von SQL in eine andere Programmiersprache"
+                ],
+                correctAnswer: "Die Verbesserung der Datenbankleistung durch Optimierung von Abfragen und Indizes",
+                type: "multipleChoice"
+            }, {
+                question: "Welche SQL-Anweisung wird verwendet, um Daten aus einer Tabelle zu löschen und gleichzeitig eine Protokolldatei zu führen?",
+                answers: [
+                    "DELETE mit LOG",
+                    "ERASE",
+                    "LOG DELETE",
+                    "DELETE AND LOG"
+                ],
+                correctAnswer: "DELETE mit LOG",
+                type: "multipleChoice"
+            }, {
+                question: "Was ist eine SQL-View?",
+                answers: [
+                    "Eine gespeicherte Abfrage, die als virtuelle Tabelle angezeigt wird",
+                    "Ein SQL-Bericht",
+                    "Ein alternativer Datenbankzugriff",
+                    "Eine Methode zur Datenverschlüsselung"
+                ],
+                correctAnswer: "Eine gespeicherte Abfrage, die als virtuelle Tabelle angezeigt wird",
+                type: "multipleChoice"
+            }, {
+                question: "Welche Art von SQL-Anweisung wird verwendet, um eine Tabelle zu ändern?",
+                answers: [
+                    "ALTER TABLE",
+                    "MODIFY TABLE",
+                    "CHANGE TABLE",
+                    "UPDATE TABLE"
+                ],
+                correctAnswer: "ALTER TABLE",
+                type: "multipleChoice"
+            }, {
+                question: "Was ist ein SQL-Subselect?",
+                answers: [
+                    "Eine Unterabfrage oder verschachtelte Abfrage innerhalb einer Hauptabfrage",
+                    "Eine separate SQL-Datenbank",
+                    "Eine spezielle Art von Index",
+                    "Ein SQL-Datenbankdesign"
+                ],
+                correctAnswer: "Eine Unterabfrage oder verschachtelte Abfrage innerhalb einer Hauptabfrage",
+                type: "multipleChoice"
+            }, {
+                question: "Welche SQL-Anweisung wird verwendet, um Daten in einer Tabelle zu kopieren?",
+                answers: [
+                    "COPY INTO",
+                    "DUPLICATE",
+                    "CLONE TABLE",
+                    "INSERT INTO"
+                ],
+                correctAnswer: "INSERT INTO",
+                type: "multipleChoice"
+            }, {
+                question: "Was ist ein SQL-Trigger?",
+                answers: [
+                    "Eine gespeicherte Prozedur, die automatisch ausgeführt wird, wenn bestimmte Ereignisse auftreten",
+                    "Ein SQL-Index für beschleunigten Zugriff",
+                    "Ein Schlüssel für Datenbankverschlüsselung",
+                    "Eine spezielle Art von SQL-Tabelle"
+                ],
+                correctAnswer: "Eine gespeicherte Prozedur, die automatisch ausgeführt wird, wenn bestimmte Ereignisse auftreten",
+                type: "multipleChoice"
+            }, {
+                question: "Welche SQL-Anweisung wird verwendet, um Daten aus einer Tabelle zu aktualisieren und gleichzeitig eine Protokolldatei zu führen?",
+                answers: [
+                    "UPDATE mit LOG",
+                    "MODIFY",
+                    "ALTER",
+                    "LOG UPDATE"
+                ],
+                correctAnswer: "UPDATE mit LOG",
+                type: "multipleChoice"
+            }, {
+                question: "Was ist ein SQL-Non-Clustered Index?",
+                answers: [
+                    "Ein Index für nicht gruppierte Daten",
+                    "Ein Index für sich wiederholende Werte",
+                    "Ein Index, der eine physische Reihenfolge in der Tabelle festlegt",
+                    "Ein Index, der Cluster-Computing verwendet"
+                ],
+                correctAnswer: "Ein Index für nicht gruppierte Daten",
+                type: "multipleChoice"
+            }, {
+                question: "Welche SQL-Anweisung wird verwendet, um Daten aus mehreren Tabellen abzurufen und zu verknüpfen?",
+                answers: [
+                    "JOIN",
+                    "COMBINE",
+                    "ASSOCIATE",
+                    "CONNECT"
+                ],
+                correctAnswer: "JOIN",
+                type: "multipleChoice"
+            }, {
+                question: "Was bedeutet das SQL-Akronym 'SQLi'?",
+                answers: [
+                    "Structured Query Language Integration",
+                    "SQL Information",
+                    "SQL Index",
+                    "SQL Injection"
+                ],
+                correctAnswer: "SQL Injection",
+                type: "multipleChoice"
+            }, {
+                question: "Welche SQL-Anweisung wird verwendet, um Daten aus mehreren Tabellen abzurufen, wobei alle übereinstimmenden Zeilen zurückgegeben werden?",
+                answers: [
+                    "INNER JOIN",
+                    "OUTER JOIN",
+                    "FULL JOIN",
+                    "CROSS JOIN"
+                ],
+                correctAnswer: "INNER JOIN",
+                type: "multipleChoice"
+            }, {
+                question: "Was ist eine SQL-ANSI-Join-Klausel?",
+                answers: [
+                    "Eine Klausel, die SQL-Abfragen analysiert",
+                    "Eine SQL-Berechtigungsklausel",
+                    "Eine spezielle Art von Datenbanktabelle",
+                    "Eine SQL-Anweisung zur Verknüpfung von Tabellen"
+                ],
+                correctAnswer: "Eine SQL-Anweisung zur Verknüpfung von Tabellen",
+                type: "multipleChoice"
+            }, {
+                question: "Welche Art von SQL-Anweisung wird verwendet, um Daten aus einer Tabelle zu aggregieren?",
+                answers: [
+                    "GROUP BY",
+                    "SUM",
+                    "AVERAGE",
+                    "COUNT"
+                ],
+                correctAnswer: "GROUP BY",
+                type: "multipleChoice"
+            }, {
+                question: "Was ist SQL-Optimierung?",
+                answers: [
+                    "Ein Prozess zur Verbesserung der Datenbankleistung durch Optimierung von Abfragen und Indizes",
+                    "Die Aktualisierung der SQL-Software",
+                    "Die Verschlüsselung von SQL-Daten",
+                    "Die Umwandlung von Textdaten in numerische Werte"
+                ],
+                correctAnswer: "Ein Prozess zur Verbesserung der Datenbankleistung durch Optimierung von Abfragen und Indizes",
+                type: "multipleChoice"
+            }, {
+                question: "Welche SQL-Anweisung wird verwendet, um Daten aus einer Tabelle zu extrahieren, ohne Duplikate anzuzeigen?",
+                answers: [
+                    "DISTINCT",
+                    "UNIQUE",
+                    "NO DUPLICATES",
+                    "EXCLUDE DUPLICATES"
+                ],
+                correctAnswer: "DISTINCT",
+                type: "multipleChoice"
+            }, {
+                question: "Was bedeutet 'SQL-Performance-Tuning'?",
+                answers: [
+                    "Die Verbesserung der Datenbankleistung durch Optimierung von Abfragen und Indizes",
+                    "Die Aktualisierung der SQL-Software",
+                    "Die Verschlüsselung von SQL-Daten",
+                    "Die Umwandlung von SQL in eine andere Programmiersprache"
+                ],
+                correctAnswer: "Die Verbesserung der Datenbankleistung durch Optimierung von Abfragen und Indizes",
+                type: "multipleChoice"
+            }, {
+                question: "Welche SQL-Anweisung wird verwendet, um Daten aus einer Tabelle zu löschen und gleichzeitig eine Protokolldatei zu führen?",
+                answers: [
+                    "DELETE mit LOG",
+                    "ERASE",
+                    "LOG DELETE",
+                    "DELETE AND LOG"
+                ],
+                correctAnswer: "DELETE mit LOG",
+                type: "multipleChoice"
+            }, {
+                question: "Was ist ein SQL-View?",
+                answers: [
+                    "Eine gespeicherte Abfrage, die als virtuelle Tabelle angezeigt wird",
+                    "Ein SQL-Bericht",
+                    "Ein alternativer Datenbankzugriff",
+                    "Eine Methode zur Datenverschlüsselung"
+                ],
+                correctAnswer: "Eine gespeicherte Abfrage, die als virtuelle Tabelle angezeigt wird",
+                type: "multipleChoice"
+            }, {
+                question: "Welche Art von SQL-Anweisung wird verwendet, um eine Tabelle zu ändern?",
+                answers: [
+                    "ALTER TABLE",
+                    "MODIFY TABLE",
+                    "CHANGE TABLE",
+                    "UPDATE TABLE"
+                ],
+                correctAnswer: "ALTER TABLE",
+                type: "multipleChoice"
+            }, {
+                question: "Was ist ein SQL-Subselect?",
+                answers: [
+                    "Eine Unterabfrage oder verschachtelte Abfrage innerhalb einer Hauptabfrage",
+                    "Eine separate SQL-Datenbank",
+                    "Eine spezielle Art von Index",
+                    "Ein SQL-Datenbankdesign"
+                ],
+                correctAnswer: "Eine Unterabfrage oder verschachtelte Abfrage innerhalb einer Hauptabfrage",
+                type: "multipleChoice"
+            }, {
+                question: "Welche SQL-Anweisung wird verwendet, um Daten in einer Tabelle zu kopieren?",
+                answers: [
+                    "COPY INTO",
+                    "DUPLICATE",
+                    "CLONE TABLE",
+                    "INSERT INTO"
+                ],
+                correctAnswer: "INSERT INTO",
+                type: "multipleChoice"
+            }, {
+                question: "Was ist ein SQL-Trigger?",
+                answers: [
+                    "Eine gespeicherte Prozedur, die automatisch ausgeführt wird, wenn bestimmte Ereignisse auftreten",
+                    "Ein SQL-Index für beschleunigten Zugriff",
+                    "Ein Schlüssel für Datenbankverschlüsselung",
+                    "Eine spezielle Art von SQL-Tabelle"
+                ],
+                correctAnswer: "Eine gespeicherte Prozedur, die automatisch ausgeführt wird, wenn bestimmte Ereignisse auftreten",
+                type: "multipleChoice"
+            }, {
+                question: "Welche SQL-Anweisung wird verwendet, um Daten aus einer Tabelle zu aktualisieren und gleichzeitig eine Protokolldatei zu führen?",
+                answers: [
+                    "UPDATE mit LOG",
+                    "MODIFY",
+                    "ALTER",
+                    "LOG UPDATE"
+                ],
+                correctAnswer: "UPDATE mit LOG",
+                type: "multipleChoice"
+            }, {
+                question: "Was ist ein SQL-Non-Clustered Index?",
+                answers: [
+                    "Ein Index für nicht gruppierte Daten",
+                    "Ein Index für sich wiederholende Werte",
+                    "Ein Index, der eine physische Reihenfolge in der Tabelle festlegt",
+                    "Ein Index, der Cluster-Computing verwendet"
+                ],
+                correctAnswer: "Ein Index für nicht gruppierte Daten",
+                type: "multipleChoice"
+            }, {
+                question: "Welche SQL-Anweisung wird verwendet, um Daten aus mehreren Tabellen abzurufen und zu verknüpfen?",
+                answers: [
+                    "JOIN",
+                    "COMBINE",
+                    "ASSOCIATE",
+                    "CONNECT"
+                ],
+                correctAnswer: "JOIN",
+                type: "multipleChoice"
+            }, {
+                question: "Was bedeutet SQL-Aggregation?",
+                answers: [
+                    "Die Trennung von SQL-Datenbanken",
+                    "Die Zusammenführung von Daten zu einer einzigen Zeile",
+                    "Die Verwendung von SQL für die Datenanalyse",
+                    "Die Gruppierung von Daten zur Berechnung von Werten wie SUM oder AVG"
+                ],
+                correctAnswer: "Die Gruppierung von Daten zur Berechnung von Werten wie SUM oder AVG",
+                type: "multipleChoice"
+            }, {
+                question: "Welche SQL-Anweisung wird verwendet, um Daten in einer Tabelle zu verändern?",
+                answers: [
+                    "MODIFY TABLE",
+                    "ALTER TABLE",
+                    "CHANGE TABLE",
+                    "UPDATE TABLE"
+                ],
+                correctAnswer: "UPDATE TABLE",
+                type: "multipleChoice"
+            }, {
+                question: "Was ist ein SQL-Outer Join?",
+                answers: [
+                    "Eine SQL-Anweisung zur Verknüpfung von Tabellen",
+                    "Eine Verknüpfung, die nur übereinstimmende Zeilen zurückgibt",
+                    "Eine Verknüpfung, die alle Zeilen aus einer Tabelle und übereinstimmende Zeilen aus einer anderen Tabelle zurückgibt",
+                    "Eine Verknüpfung, die Duplikate in den Ergebnissen beseitigt"
+                ],
+                correctAnswer: "Eine Verknüpfung, die alle Zeilen aus einer Tabelle und übereinstimmende Zeilen aus einer anderen Tabelle zurückgibt",
+                type: "multipleChoice"
+            }, {
+                question: "Was ist ein SQL-NULL-Wert?",
+                answers: [
+                    "Ein Wert, der gleich Null ist",
+                    "Ein leerer Zeichenkettenwert",
+                    "Ein Wert, der fehlt oder unbekannt ist",
+                    "Ein Fehlerwert in SQL"
+                ],
+                correctAnswer: "Ein Wert, der fehlt oder unbekannt ist",
+                type: "multipleChoice"
+            }, {
+                question: "Was bedeutet das SQL-Akronym 'CRUD'?",
+                answers: [
+                    "Create, Read, Update, Delete",
+                    "Control, Retrieve, Unify, Display",
+                    "Change, Remove, Update, Display",
+                    "Customize, Repair, Undo, Delete"
+                ],
+                correctAnswer: "Create, Read, Update, Delete",
+                type: "multipleChoice"
+            }, {
+                question: "Welche SQL-Anweisung wird verwendet, um Daten aus einer Tabelle zu löschen, ohne sie dauerhaft zu entfernen?",
+                answers: [
+                    "DELETE",
+                    "REMOVE",
+                    "DROP",
+                    "TRUNCATE"
+                ],
+                correctAnswer: "DELETE",
+                type: "multipleChoice"
+            }, {
+                question: "Welche SQL-Anweisung wird verwendet, um Daten aus mehreren Tabellen zu verknüpfen, wobei alle Zeilen aus beiden Tabellen zurückgegeben werden, auch wenn keine Übereinstimmung vorhanden ist?",
+                answers: [
+                    "OUTER JOIN",
+                    "FULL JOIN",
+                    "CROSS JOIN",
+                    "INNER JOIN"
+                ],
+                correctAnswer: "OUTER JOIN",
+                type: "multipleChoice"
+            }, {
+                question: "Was ist ein SQL-Subquery?",
+                answers: [
+                    "Eine separate Datenbankabfrage",
+                    "Eine verschachtelte Abfrage innerhalb einer anderen Abfrage",
+                    "Eine Abfrage, die nur einen Teil der Daten zurückgibt",
+                    "Eine Abfrage ohne WHERE-Klausel"
+                ],
+                correctAnswer: "Eine verschachtelte Abfrage innerhalb einer anderen Abfrage",
+                type: "multipleChoice"
+            }, {
+                question: "Was bedeutet 'Normalization' in Bezug auf SQL-Datenbanken?",
+                answers: [
+                    "Die Vergrößerung der Datenbankgröße",
+                    "Die Reduzierung von Datenbankduplikaten",
+                    "Die Optimierung von SQL-Abfragen",
+                    "Die Organisation von Daten, um Redundanz zu minimieren"
+                ],
+                correctAnswer: "Die Organisation von Daten, um Redundanz zu minimieren",
+                type: "multipleChoice"
+            }, {
+                question: "Welche SQL-Anweisung wird verwendet, um Daten in aufsteigender Reihenfolge zu sortieren?",
+                answers: [
+                    "SORT ASC",
+                    "ORDER BY ASC",
+                    "ASC SORT",
+                    "ASCENDING"
+                ],
+                correctAnswer: "ORDER BY ASC",
+                type: "multipleChoice"
+            }, {
+                question: "Was bedeutet das SQL-Akronym 'OLAP'?",
+                answers: [
+                    "Online Analytical Processing",
+                    "Online Application Programming",
+                    "Open Language for Application Processing",
+                    "Optimized Logical Application Programming"
+                ],
+                correctAnswer: "Online Analytical Processing",
+                type: "multipleChoice"
+            }, {
+                question: "Welche SQL-Anweisung wird verwendet, um Daten in absteigender Reihenfolge zu sortieren?",
+                answers: [
+                    "DESCENDING SORT",
+                    "ORDER BY DESC",
+                    "SORT DESC",
+                    "DESC ORDER"
+                ],
+                correctAnswer: "ORDER BY DESC",
+                type: "multipleChoice"
+            }, {
+                question: "Was ist ein SQL-Transaktionslog?",
+                answers: [
+                    "Eine Aufzeichnung von allen SQL-Transaktionen",
+                    "Ein Protokoll für Netzwerkkommunikation",
+                    "Ein Speicher für SQL-Abfragen",
+                    "Ein Sicherungslog für SQL-Datenbanken"
+                ],
+                correctAnswer: "Eine Aufzeichnung von allen SQL-Transaktionen",
+                type: "multipleChoice"
+            }, {
+                question: "Welche SQL-Anweisung wird verwendet, um Daten in einer Tabelle zu sperren, um gleichzeitige Zugriffe zu verhindern?",
+                answers: [
+                    "LOCK TABLE",
+                    "BLOCK TABLE",
+                    "RESTRICT TABLE",
+                    "PREVENT TABLE"
+                ],
+                correctAnswer: "LOCK TABLE",
+                type: "multipleChoice"
+            }, {
+                question: "Was ist ein SQL-View?",
+                answers: [
+                    "Eine gespeicherte Abfrage, die als virtuelle Tabelle angezeigt wird",
+                    "Ein alternativer Datenbankzugriff",
+                    "Eine Methode zur Datenverschlüsselung",
+                    "Ein SQL-Datenbankdesign"
+                ],
+                correctAnswer: "Eine gespeicherte Abfrage, die als virtuelle Tabelle angezeigt wird",
+                type: "multipleChoice"
+            }, {
+                question: "Welche Art von SQL-Anweisung wird verwendet, um eine Tabelle zu ändern?",
+                answers: [
+                    "ALTER TABLE",
+                    "MODIFY TABLE",
+                    "CHANGE TABLE",
+                    "UPDATE TABLE"
+                ],
+                correctAnswer: "ALTER TABLE",
+                type: "multipleChoice"
+            }, {
+                question: "Was ist ein SQL-Subselect?",
+                answers: [
+                    "Eine Unterabfrage oder verschachtelte Abfrage innerhalb einer Hauptabfrage",
+                    "Eine separate SQL-Datenbank",
+                    "Eine spezielle Art von Index",
+                    "Ein SQL-Bericht"
+                ],
+                correctAnswer: "Eine Unterabfrage oder verschachtelte Abfrage innerhalb einer Hauptabfrage",
+                type: "multipleChoice"
+            }, {
+                question: "Welche SQL-Anweisung wird verwendet, um Daten in eine Tabelle zu kopieren?",
+                answers: [
+                    "COPY INTO",
+                    "DUPLICATE",
+                    "CLONE TABLE",
+                    "INSERT INTO"
+                ],
+                correctAnswer: "INSERT INTO",
+                type: "multipleChoice"
+            }, {
+                question: "Was ist ein SQL-Trigger?",
+                answers: [
+                    "Eine gespeicherte Prozedur, die automatisch ausgeführt wird, wenn bestimmte Ereignisse auftreten",
+                    "Ein Schlüssel zur Datenbankverschlüsselung",
+                    "Ein spezieller SQL-Index",
+                    "Eine Abfrage, die Daten in einer Tabelle sortiert"
+                ],
+                correctAnswer: "Eine gespeicherte Prozedur, die automatisch ausgeführt wird, wenn bestimmte Ereignisse auftreten",
+                type: "multipleChoice"
+            }, {
+                question: "Welche SQL-Anweisung wird verwendet, um Daten aus einer Tabelle zu aktualisieren und gleichzeitig eine Protokolldatei zu führen?",
+                answers: [
+                    "UPDATE mit LOG",
+                    "MODIFY",
+                    "ALTER",
+                    "LOG UPDATE"
+                ],
+                correctAnswer: "UPDATE mit LOG",
+                type: "multipleChoice"
+            }, {
+                question: "Was ist ein SQL-Non-Clustered Index?",
+                answers: [
+                    "Ein Index für nicht gruppierte Daten",
+                    "Ein Index für sich wiederholende Werte",
+                    "Ein Index, der eine physische Reihenfolge in der Tabelle festlegt",
+                    "Ein Index, der Cluster-Computing verwendet"
+                ],
+                correctAnswer: "Ein Index für nicht gruppierte Daten",
+                type: "multipleChoice"
+            }, {
+                question: "Welche SQL-Anweisung wird verwendet, um Daten aus mehreren Tabellen abzurufen und zu verknüpfen?",
+                answers: [
+                    "JOIN",
+                    "COMBINE",
+                    "ASSOCIATE",
+                    "CONNECT"
+                ],
+                correctAnswer: "JOIN",
+                type: "multipleChoice"
+            }, {
+                question: "Schreibe eine SQL-Abfrage, um den Durchschnittsgehalt aller Mitarbeiter in der Tabelle 'Mitarbeiter' zu berechnen.",
+                correctAnswer: "SELECT AVG(Gehalt) FROM Mitarbeiter",
+                type: "sqlQuery",
+                inputPlaceholder: "Deine SQL-Anfrage eingeben",
+                buttonText: "Einreichen"
+            }, {
+                question: "Schreibe eine SQL-Abfrage, um alle Mitarbeiter in der Abteilung 'Vertrieb' anzuzeigen.",
+                correctAnswer: "SELECT * FROM Mitarbeiter WHERE Abteilung = 'Vertrieb'",
+                type: "sqlQuery",
+                inputPlaceholder: "Deine SQL-Anfrage eingeben",
+                buttonText: "Einreichen"
+            }, {
+                question: "Schreibe eine SQL-Abfrage, um alle Einträge in der Tabelle 'Kunden' anzuzeigen.",
+                correctAnswer: "SELECT * FROM Kunden",
+                type: "sqlQuery",
+                inputPlaceholder: "Deine SQL-Anfrage eingeben",
+                buttonText: "Einreichen"
+            }, {
+                question: "Schreibe eine SQL-Abfrage, um den höchsten Gehalt in der Tabelle 'Mitarbeiter' zu finden.",
+                correctAnswer: "SELECT MAX(Gehalt) FROM Mitarbeiter",
+                type: "sqlQuery",
+                inputPlaceholder: "Deine SQL-Anfrage eingeben",
+                buttonText: "Einreichen"
+            }, {
+                question: "Schreibe eine SQL-Abfrage, um den Namen und das Gehalt aller Mitarbeiter in aufsteigender Reihenfolge nach Namen zu sortieren.",
+                correctAnswer: "SELECT Name, Gehalt FROM Mitarbeiter ORDER BY Name ASC",
+                type: "sqlQuery",
+                inputPlaceholder: "Deine SQL-Anfrage eingeben",
+                buttonText: "Einreichen"
+            }, {
+                question: "Schreibe eine SQL-Abfrage, um die Anzahl der Kunden in der Tabelle 'Kunden' zu ermitteln.",
+                correctAnswer: "SELECT COUNT(*) FROM Kunden",
+                type: "sqlQuery",
+                inputPlaceholder: "Deine SQL-Anfrage eingeben",
+                buttonText: "Einreichen"
+            }, {
+                question: "Schreibe eine SQL-Abfrage, um alle Produkte anzuzeigen, die teurer als 100 Euro sind.",
+                correctAnswer: "SELECT * FROM Produkte WHERE Preis > 100",
+                type: "sqlQuery",
+                inputPlaceholder: "Deine SQL-Anfrage eingeben",
+                buttonText: "Einreichen"
+            }, {
+                question: "Schreibe eine SQL-Abfrage, um den Durchschnittspreis aller Produkte in der Tabelle 'Produkte' zu berechnen.",
                 correctAnswer: "SELECT AVG(Preis) FROM Produkte",
-                type: "sqlQuery"
+                type: "sqlQuery",
+                inputPlaceholder: "Deine SQL-Anfrage eingeben",
+                buttonText: "Einreichen"
             }, {
-                question: "Frage 9: Welcher SQL-Befehl wird verwendet, um eine neue Tabelle 'Mitarbeiter' mit Spalten für 'Name', 'Alter' und 'Position' zu erstellen?",
-                answers: [
-                    "CREATE TABLE Mitarbeiter (Name VARCHAR(255), Alter INT, Position VARCHAR(255))",
-                    "CREATE TABLE 'Mitarbeiter' ('Name' VARCHAR(255), 'Alter' INT, 'Position' VARCHAR(255))",
-                    "INSERT INTO Mitarbeiter (Name, Alter, Position) VALUES ('Name', 'Alter', 'Position')",
-                    "SELECT * FROM Mitarbeiter"
-                ],
-                correctAnswer: "CREATE TABLE Mitarbeiter (Name VARCHAR(255), Alter INT, Position VARCHAR(255))",
-                type: "sqlQuery"
+                question: "Schreibe eine SQL-Abfrage, um alle Bestellungen anzuzeigen, die nach dem 1. Januar 2023 getätigt wurden.",
+                correctAnswer: "SELECT * FROM Bestellungen WHERE Bestelldatum > '2023-01-01'",
+                type: "sqlQuery",
+                inputPlaceholder: "Deine SQL-Anfrage eingeben",
+                buttonText: "Einreichen"
             }, {
-                question: "Frage 10: Schreibe einen SQL-Befehl, um alle Produkte aus der Tabelle 'Produkte' abzurufen, deren Preis zwischen 50 und 100 liegt.",
-                correctAnswer: "SELECT * FROM Produkte WHERE Preis BETWEEN 50 AND 100",
-                type: "sqlQuery"
+                question: "Schreibe eine SQL-Abfrage, um den Gesamtpreis aller Bestellungen in der Tabelle 'Bestellungen' zu berechnen.",
+                correctAnswer: "SELECT SUM(Preis) FROM Bestellungen",
+                type: "sqlQuery",
+                inputPlaceholder: "Deine SQL-Anfrage eingeben",
+                buttonText: "Einreichen"
             }, {
-                question: "Frage 11: Welcher SQL-Befehl wird verwendet, um alle Datensätze aus der Tabelle 'Kunden' zu löschen?",
-                correctAnswer: "DELETE FROM Kunden",
-                type: "sqlQuery"
+                question: "Schreibe eine SQL-Abfrage, um den Kunden mit der ID 123 in der Tabelle 'Kunden' zu finden.",
+                correctAnswer: "SELECT * FROM Kunden WHERE KundenID = 123",
+                type: "sqlQuery",
+                inputPlaceholder: "Deine SQL-Anfrage eingeben",
+                buttonText: "Einreichen"
             }, {
-                question: "Frage 12: Schreibe einen SQL-Befehl, um den höchsten Preis in der Tabelle 'Produkte' zu finden.",
-                correctAnswer: "SELECT MAX(Preis) FROM Produkte",
-                type: "sqlQuery"
-            },
-            // Weitere Fragen und Aufgaben...
-        ];
+                question: "Schreibe eine SQL-Abfrage, um alle Produkte mit dem Wort 'Smartphone' im Namen anzuzeigen.",
+                correctAnswer: "SELECT * FROM Produkte WHERE Name LIKE '%Smartphone%'",
+                type: "sqlQuery",
+                inputPlaceholder: "Deine SQL-Anfrage eingeben",
+                buttonText: "Einreichen"
+            }, {
+                question: "Schreibe eine SQL-Abfrage, um den Kunden mit dem Namen 'Anna Müller' in der Tabelle 'Kunden' zu finden.",
+                correctAnswer: "SELECT * FROM Kunden WHERE Name = 'Anna Müller'",
+                type: "sqlQuery",
+                inputPlaceholder: "Deine SQL-Anfrage eingeben",
+                buttonText: "Einreichen"
+            }, {
+                question: "Schreibe eine SQL-Abfrage, um die Anzahl der Produkte in der Kategorie 'Elektronik' zu ermitteln.",
+                correctAnswer: "SELECT COUNT(*) FROM Produkte WHERE Kategorie = 'Elektronik'",
+                type: "sqlQuery",
+                inputPlaceholder: "Deine SQL-Anfrage eingeben",
+                buttonText: "Einreichen"
+            }, {
+                question: "Schreibe eine SQL-Abfrage, um den Kunden mit der höchsten Bestellsumme zu finden.",
+                correctAnswer: "SELECT KundenID, SUM(Preis) AS Bestellsumme FROM Bestellungen GROUP BY KundenID ORDER BY Bestellsumme DESC LIMIT 1",
+                type: "sqlQuery",
+                inputPlaceholder: "Deine SQL-Anfrage eingeben",
+                buttonText: "Einreichen"
+            }];
 
-        // Füge die zusätzlichen Fragen zum bestehenden Fragenarray hinzu
-        questions.push(...additionalQuestions);
+            /**
+             * Array Shuffle
+             * @param {Array} a items an array containing the items
+             */
 
-        const questionElement = document.getElementById('question');
-        const optionsContainer = document.getElementById('options');
-        const sqlAnswerInput = document.getElementById('sql-answer');
-        const submitButton = document.getElementById('submit-btn');
-        const resultElement = document.getElementById('result');
-
-        let currentQuestionIndex = 0;
-
-        function displayQuestion() {
-            const currentQuestion = questions[currentQuestionIndex];
-            questionElement.textContent = currentQuestion.question;
-            if (currentQuestion.type === "multipleChoice") {
-                optionsContainer.innerHTML = '';
-                currentQuestion.answers.forEach(answer => {
-                    const option = document.createElement('div');
-                    option.textContent = answer;
-                    option.classList.add('option');
-                    option.addEventListener('click', () => checkAnswer(answer)); // Event-Listener hinzugefügt
-                    optionsContainer.appendChild(option);
-                });
-                sqlAnswerInput.style.display = "none";
-                submitButton.style.display = "none";
-            } else if (currentQuestion.type === "sqlQuery") {
-                optionsContainer.innerHTML = '';
-                sqlAnswerInput.value = '';
-                sqlAnswerInput.style.display = "block";
-                submitButton.style.display = "block";
-            }
-        }
-
-        function checkAnswer(selectedAnswer) {
-            const currentQuestion = questions[currentQuestionIndex];
-            if (selectedAnswer === currentQuestion.correctAnswer) {
-                resultElement.textContent = 'Richtig!';
-            } else {
-                resultElement.textContent = 'Falsch. Versuche es erneut.';
-            }
-            currentQuestionIndex++;
-            if (currentQuestionIndex < questions.length) {
-                setTimeout(displayQuestion, 1000);
-            } else {
-                resultElement.textContent = 'Quiz abgeschlossen!';
-            }
-        }
-
-        submitButton.addEventListener('click', () => {
-            const currentQuestion = questions[currentQuestionIndex];
-            if (currentQuestion.type === "sqlQuery") {
-                const userSqlAnswer = sqlAnswerInput.value.trim();
-                if (userSqlAnswer.toUpperCase() === currentQuestion.correctAnswer.toUpperCase()) {
-                    resultElement.textContent = 'Richtig!';
-                } else {
-                    resultElement.textContent = 'Falsch. Versuche es erneut.';
+            function shuffle(a) {
+                for (let i = a.length - 1; i > 0; i--) {
+                    const j = Math.floor(Math.random() * (i + 1));
+                    [a[i], a[j]] = [a[j], a[i]];
                 }
+                return a;
+            }
+
+            let questionsNew = shuffle(questions);
+
+            const quizTitle = document.getElementById('quiz-title');
+            const quizContainer = document.getElementById('quiz-container');
+            const questionElement = document.getElementById('question');
+            const optionsContainer = document.getElementById('options');
+            const sqlAnswerInput = document.getElementById('sql-answer');
+            const submitButton = document.getElementById('submit-btn');
+            const resultElement = document.getElementById('result');
+            const progressBar = document.querySelector('.progress-bar');
+            const progress = document.querySelector('.progress');
+            const quizProgress = document.getElementById('quiz-progress');
+            const quizScore = document.getElementById('quiz-score');
+            const totalQuestions = questionsNew.length;
+
+            let currentQuestionIndex = 0;
+            let score = 0;
+
+            function displayQuestion() {
+                const currentQuestion = questionsNew[currentQuestionIndex];
+                questionElement.textContent = currentQuestion.question;
+                resultElement.textContent = '';
+                optionsContainer.innerHTML = '';
+
+                if (currentQuestion.type === 'multipleChoice') {
+                    currentQuestion.answers.forEach((answer) => {
+
+                        const option = document.createElement('div');
+                        option.textContent = answer;
+                        document.getElementById("options").style.pointerEvents = "auto";
+                        option.classList.add('option');
+                        option.addEventListener('click', () => checkAnswer(answer));
+                        optionsContainer.appendChild(option);
+                    });
+                    sqlAnswerInput.style.display = 'none';
+                    document.getElementById('submit-btn').style.display = "none";
+                    submitButton.style.display = 'none';
+                } else if (currentQuestion.type === 'userInput') {
+                    sqlAnswerInput.value = '';
+                    sqlAnswerInput.style.display = 'block';
+                    submitButton.style.display = 'block';
+                    document.getElementById('submit-btn').style.display = "none";
+                } else if (currentQuestion.type === 'sqlQuery') {
+                    let btn = document.getElementById('submit-btn')
+                    document.getElementById('sql-input-container').style.display = "flex";
+                    btn.style.display = "block";
+                    document.getElementById('sql-answer').style.display = "block";
+                    btn.addEventListener("click", () => checkAnswer(document.getElementById('sql-answer').value))
+
+                }
+
+                quizProgress.textContent = `Frage ${currentQuestionIndex + 1} von ${totalQuestions}`;
+                quizScore.textContent = `Richtig: ${score} Falsch: ${currentQuestionIndex - score}`;
+                updateProgressBar();
+            }
+
+            function checkAnswer(selectedAnswer) {
+                const currentQuestion = questions[currentQuestionIndex];
+                if (currentQuestion.type === 'multipleChoice') {
+                    if (selectedAnswer === currentQuestion.correctAnswer) {
+                        resultElement.textContent = 'Richtig!';
+                        const option = document.getElementById("options").style.pointerEvents = "none";
+                        score++;
+                    } else {
+                        resultElement.textContent = 'Falsch. Versuche es erneut.';
+                        const option = document.getElementById("options").style.pointerEvents = "none";
+                    }
+                } else if (currentQuestion.type === 'userInput') {
+                    const userSqlAnswer = sqlAnswerInput.value.trim();
+                    if (userSqlAnswer.toLowerCase() === currentQuestion.correctAnswer.toLowerCase()) {
+                        resultElement.textContent = 'Richtig!';
+                        score++;
+                    } else {
+                        resultElement.textContent = 'Falsch. Versuche es erneut.';
+                    }
+                } else if (currentQuestion.type === "sqlQuery") {
+                    if (selectedAnswer === currentQuestion.correctAnswer) {
+                        resultElement.textContent = 'Richtig!';
+                        score++;
+                    } else {
+                        resultElement.textContent = 'Falsch. Versuche es erneut.';
+                    }
+                }
+
                 currentQuestionIndex++;
-                if (currentQuestionIndex < questions.length) {
-                    setTimeout(displayQuestion, 1000);
-                } else {
-                    resultElement.textContent = 'Quiz abgeschlossen!';
-                }
-                sqlAnswerInput.value = '';
-                submitButton.style.display = "none";
-            }
-        });
 
-        displayQuestion();
+                if (currentQuestionIndex < totalQuestions) {
+                    setTimeout(displayQuestion, 2000);
+                } else {
+                    openPopup(score, totalQuestions);
+                }
+
+                sqlAnswerInput.value = '';
+                submitButton.style.display = 'none';
+            }
+
+            function updateProgressBar() {
+                const progressWidth = (currentQuestionIndex / totalQuestions) * 100 + '%';
+                progress.style.width = progressWidth;
+            }
+
+            submitButton.addEventListener('click', () => {
+                const currentQuestion = questions[currentQuestionIndex];
+                if (currentQuestion.type === 'userInput') {
+                    const userSqlAnswer = sqlAnswerInput.value.trim();
+                    checkAnswer(userSqlAnswer);
+                }
+            });
+
+            displayQuestion();
+        }
+
+        function openPopup(score, totalQuestions) {
+            const popup = document.getElementById('quiz-popup');
+            const popupContent = document.getElementById('popup-content');
+            const popupClose = document.getElementById('popup-close');
+
+            const percentage = (score / totalQuestions) * 100;
+
+            popupContent.innerHTML = `
+        <h2>Quiz abgeschlossen!</h2>
+        <p>Du hast ${score} von ${totalQuestions} Fragen richtig beantwortet.</p>
+        <p>Ergebnis: ${percentage.toFixed(2)}%</p>`;
+
+            const restartButton = document.createElement('button');
+            restartButton.textContent = 'Neustarten';
+            restartButton.addEventListener('click', () => {
+                popup.style.display = 'none';
+                startQuiz();
+            });
+
+            popupContent.appendChild(restartButton);
+
+            popup.style.display = 'block';
+
+            popupClose.addEventListener('click', () => {
+                popup.style.display = 'none';
+            });
+        }
+
+        window.addEventListener('load', startQuiz);
     </script>
 
 </body>

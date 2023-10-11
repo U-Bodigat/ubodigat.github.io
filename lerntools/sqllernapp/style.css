@@ -216,30 +216,40 @@ pre::-webkit-scrollbar-thumb:hover {
     background-color: #66ff00a9;
 }
 
+
+/* CSS für dein SQL Quiz */
+
 body {
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
-}
-
-body {
-    background-color: black;
-    color: white;
+    background-color: #333333;
+    color: #333;
 }
 
 #quiz-container {
-    width: 80%;
+    max-width: 800px;
     margin: 0 auto;
     padding: 20px;
-    background-color: rgba(0, 0, 0, 0.8);
+    color: #fff;
+    background-color: #333333;
     border-radius: 10px;
-    box-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+    box-shadow: 0 0 10px #0000004d;
     text-align: center;
+    margin-top: 40px;
+}
+
+#question-container {
+    width: 600px;
+    margin: 0 auto;
+    text-align: left;
+    padding: 10px;
 }
 
 #question {
     font-size: 24px;
     margin-bottom: 20px;
+    color: #fff;
 }
 
 #options {
@@ -248,25 +258,32 @@ body {
 }
 
 .option {
+    text-align: center;
     transition: 0.5s;
+    transition: background-color 0.3s ease;
     margin: 5px 0;
     padding: 10px;
-    background-color: #333;
+    background-color: #4CAF50;
+    color: #fff;
     border-radius: 5px;
     cursor: pointer;
-    transition: background-color 0.3s ease;
 }
 
 .option:hover {
     transition: 0.5s;
-    background-color: #555;
+    background-color: #00ff0d;
+    color: #575757;
+    font-weight: 700;
 }
 
 #sql-input-container {
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    display: none;
     margin-top: 20px;
+    margin-left: 15%;
+}
+
+#sql-input-container [type="text"] {
+    background-color: #292929;
 }
 
 #sql-answer {
@@ -274,29 +291,137 @@ body {
     width: 60%;
     border: none;
     border-radius: 5px 0 0 5px;
+    outline: none;
 }
 
 #submit-btn {
     transition: 0.5s;
-    padding: 10px 20px;
-    background-color: #007BFF;
-    color: white;
+    display: none;
+    transition: background-color 0.3s ease;
+    padding: 12px 20px;
+    background-color: #4CAF50;
+    color: #fff;
     border: none;
     border-radius: 0 5px 5px 0;
     cursor: pointer;
-    transition: background-color 0.3s ease;
-    margin-left: -5px;
+    font-weight: 700;
+    font-size: 14px;
 }
 
 #submit-btn:hover {
     transition: 0.5s;
-    background-color: #0056b3;
+    background-color: #00ff0d;
+    color: #575757;
+    font-weight: 700;
+    font-size: 14px;
 }
 
 #result {
     font-size: 24px;
     text-align: center;
     margin-top: 20px;
+    color: #fff;
+}
+
+#quiz-title {
+    font-size: 36px;
+    text-align: center;
+    margin-top: 20px;
+    color: #fff;
+}
+
+#quiz-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+#quiz-progress {
+    font-size: 18px;
+    color: #fff;
+}
+
+#quiz-score {
+    font-size: 18px;
+    color: #fff;
+}
+
+#quiz-popup {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    z-index: 999;
+}
+
+#popup-content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #333333;
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+    box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.3);
+    color: #ffffff;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+#popup-content h2 {
+    margin: 0;
+}
+
+#popup-close {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    cursor: pointer;
+    color: #007BFF;
+}
+
+#popup-content button {
+    transition: 0.5s;
+    padding: 12px 20px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 20px;
+    transition: background-color 0.3s ease;
+}
+
+#popup-content button:hover {
+    font-size: 15px;
+    transition: 0.5s;
+    background-color: #00ff0d;
+    color: #575757;
+    font-weight: 700;
+}
+
+.progress-bar {
+    width: 100%;
+    background-color: #ccc;
+    border-radius: 5px;
+    overflow: hidden;
+}
+
+.progress {
+    width: 0;
+    height: 30px;
+    background-color: #007BFF;
+    text-align: center;
+    line-height: 30px;
+    color: #fff;
+    transition: width 0.5s;
 }
 
 
@@ -393,6 +518,12 @@ table {
     overflow: hidden;
     border-bottom-right-radius: 10px;
     border-bottom-left-radius: 10px;
+}
+
+table td:hover {
+    cursor: pointer;
+    color: #fff;
+    background-color: #26523cbe;
 }
 
 table th,
