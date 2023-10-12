@@ -91,10 +91,11 @@
                 <div id="options"></div>
                 <div id="sql-input-container">
                     <input type="text" id="sql-answer" placeholder="Deine SQL-Antwort">
-                    <button id="submit-btn" value="testvalue">Einreichen</button>
+                    <button id="submit-btn">Einreichen</button>
                 </div>
                 <div id="result"></div>
             </div>
+            <button id="submit-btn2">Ergebnis</button>
         </div>
         <div id="quiz-popup">
             <div id="popup-content">
@@ -1193,10 +1194,41 @@
             const progress = document.querySelector('.progress');
             const quizProgress = document.getElementById('quiz-progress');
             const quizScore = document.getElementById('quiz-score');
+            const fruehButton = document.getElementById('submit-btn2');
             const totalQuestions = questionsNew.length;
 
             let currentQuestionIndex = 0;
             let score = 0;
+
+            let fragenCount = 0;
+
+            function fruehzeitigBeenden(score, totalQuestions) {
+                const popup = document.getElementById('quiz-popup');
+                const popupContent = document.getElementById('popup-content');
+                const popupClose = document.getElementById('popup-close');
+
+                const percentage = (score / totalQuestions) * 100;
+
+                popupContent.innerHTML = `
+        <h2>Quiz abgeschlossen!</h2>
+        <p>Du hast ${score} von ${totalQuestions} Fragen richtig beantwortet.</p>
+        <p>Ergebnis: ${percentage.toFixed(2)}%</p>`;
+
+                const restartButton = document.createElement('button');
+                restartButton.textContent = 'Neustarten';
+                restartButton.addEventListener('click', () => {
+                    popup.style.display = 'none';
+                    startQuiz();
+                });
+
+                popupContent.appendChild(restartButton);
+
+                popup.style.display = 'block';
+
+                popupClose.addEventListener('click', () => {
+                    popup.style.display = 'none';
+                });
+            }
 
             function displayQuestion() {
                 const currentQuestion = questionsNew[currentQuestionIndex];
@@ -1265,6 +1297,7 @@
                 }
 
                 currentQuestionIndex++;
+                fragenCount++;
 
                 if (currentQuestionIndex < totalQuestions) {
                     setTimeout(displayQuestion, 2000);
@@ -1289,6 +1322,10 @@
                 }
             });
 
+            fruehButton.addEventListener('click', () => {
+                fruehzeitigBeenden(score, fragenCount);
+            })
+
             displayQuestion();
         }
 
@@ -1297,11 +1334,11 @@
             const popupContent = document.getElementById('popup-content');
             const popupClose = document.getElementById('popup-close');
 
-            const percentage = (score / totalQuestions) * 100;
+            const percentage = (score / fragenCount) * 100;
 
             popupContent.innerHTML = `
         <h2>Quiz abgeschlossen!</h2>
-        <p>Du hast ${score} von ${totalQuestions} Fragen richtig beantwortet.</p>
+        <p>Du hast ${score} von ${fragenCount} Fragen richtig beantwortet.</p>
         <p>Ergebnis: ${percentage.toFixed(2)}%</p>`;
 
             const restartButton = document.createElement('button');

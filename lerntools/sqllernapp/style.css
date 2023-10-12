@@ -316,6 +316,28 @@ body {
     font-size: 14px;
 }
 
+#submit-btn2 {
+    margin-right: -80%;
+    transition: 0.5s;
+    transition: background-color 0.3s ease;
+    padding: 12px 20px;
+    background-color: #4CAF50;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: 700;
+    font-size: 14px;
+}
+
+#submit-btn2:hover {
+    transition: 0.5s;
+    background-color: #00ff0d;
+    color: #575757;
+    font-weight: 700;
+    font-size: 14px;
+}
+
 #result {
     font-size: 24px;
     text-align: center;
