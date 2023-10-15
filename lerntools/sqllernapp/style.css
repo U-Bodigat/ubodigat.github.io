@@ -446,6 +446,11 @@ body {
     transition: width 0.5s;
 }
 
+#überprüfungstext {
+    color: #fff;
+    font-size: 20px;
+}
+
 
 /* Stile für die lernen.html */
 
@@ -669,4 +674,98 @@ button#searchButton:hover {
 
 .scroll-button.active {
     transform: scale(1.1);
+}
+
+
+/*Rsponsive Design*/
+
+@media (max-width: 1520px) {
+    #mainlernensql {
+        margin-top: 100px;
+        margin-bottom: 20px;
+    }
+}
+
+@media (max-width: 960px) {
+    #mainlernensql {
+        margin-top: 150px;
+        margin-bottom: 20px;
+    }
+}
+
+@media (max-width: 670px) {
+    .option {
+        margin-right: 50px;
+    }
+}
+
+@media (max-width: 640px) {
+    .option {
+        margin-right: 130px;
+    }
+    #question {
+        margin-right: 100px;
+    }
+    #quiz-container {
+        margin: auto;
+        padding: auto;
+    }
+}
+
+@media (max-width: 600px) {
+    #mainlernensql {
+        margin-top: 200px;
+        margin-bottom: 20px;
+    }
+}
+
+@media (max-width: 540px) {
+    .option {
+        margin-right: 200px;
+    }
+    #question {
+        margin-right: 150px;
+    }
+    #submit-btn2 {
+        margin-right: -200px;
+    }
+}
+
+@media (max-width: 480px) {
+    .option {
+        margin-right: 250px;
+    }
+    #question {
+        margin-right: 200px;
+    }
+    #submit-btn2 {
+        margin-right: -200px;
+    }
+    #quiz-container {
+        margin-top: 150px;
+    }
+}
+
+@media (max-width: 450px) {
+    .option {
+        margin-right: 250px;
+    }
+    #question {
+        margin-right: 250px;
+    }
+    #submit-btn2 {
+        margin-right: -200px;
+    }
+}
+
+@media (max-width: 320px) {
+    .option {
+        margin-right: 250px;
+    }
+    #question {
+        margin-right: 300px;
+    }
+    #submit-btn2 {
+        margin-right: -200px;
+    }
 }

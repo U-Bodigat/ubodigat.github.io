@@ -95,6 +95,7 @@
                 </div>
                 <div id="result"></div>
             </div>
+            <h3 id="richtigeantwort"></h3>
             <button id="submit-btn2">Ergebnis</button>
         </div>
         <div id="quiz-popup">
@@ -1195,6 +1196,7 @@
             const quizProgress = document.getElementById('quiz-progress');
             const quizScore = document.getElementById('quiz-score');
             const fruehButton = document.getElementById('submit-btn2');
+            const showAnswer = document.getElementById('richtigeantwort');
             const totalQuestions = questionsNew.length;
 
             let currentQuestionIndex = 0;
@@ -1247,17 +1249,20 @@
                         optionsContainer.appendChild(option);
                     });
                     sqlAnswerInput.style.display = 'none';
+                    showAnswer.style.display = 'none';
                     document.getElementById('submit-btn').style.display = "none";
                     submitButton.style.display = 'none';
                 } else if (currentQuestion.type === 'userInput') {
                     sqlAnswerInput.value = '';
                     sqlAnswerInput.style.display = 'block';
+                    showAnswer.style.display = 'none';
                     submitButton.style.display = 'block';
                     document.getElementById('submit-btn').style.display = "none";
                 } else if (currentQuestion.type === 'sqlQuery') {
                     let btn = document.getElementById('submit-btn')
                     document.getElementById('sql-input-container').style.display = "flex";
                     btn.style.display = "block";
+                    showAnswer.style.display = 'none';
                     document.getElementById('sql-answer').style.display = "block";
                     btn.addEventListener("click", () => checkAnswer(document.getElementById('sql-answer').value))
 
@@ -1271,13 +1276,15 @@
             function checkAnswer(selectedAnswer) {
                 const currentQuestion = questions[currentQuestionIndex];
                 if (currentQuestion.type === 'multipleChoice') {
-                    if (selectedAnswer === currentQuestion.correctAnswer) {
+                    if (selectedAnswer.toLowerCase() === currentQuestion.correctAnswer.toLowerCase()) {
                         resultElement.textContent = 'Richtig!';
                         const option = document.getElementById("options").style.pointerEvents = "none";
                         score++;
                     } else {
                         resultElement.textContent = 'Falsch. Versuche es erneut.';
                         const option = document.getElementById("options").style.pointerEvents = "none";
+                        showAnswer.style.display = 'block';
+                        showAnswer.textContent = currentQuestion.correctAnswer;
                     }
                 } else if (currentQuestion.type === 'userInput') {
                     const userSqlAnswer = sqlAnswerInput.value.trim();
@@ -1286,13 +1293,18 @@
                         score++;
                     } else {
                         resultElement.textContent = 'Falsch. Versuche es erneut.';
+                        showAnswer.style.display = 'block';
+                        showAnswer.textContent = currentQuestion.correctAnswer;
                     }
                 } else if (currentQuestion.type === "sqlQuery") {
-                    if (selectedAnswer === currentQuestion.correctAnswer) {
+                    if (selectedAnswer.toLowerCase() === currentQuestion.correctAnswer.toLowerCase()) {
                         resultElement.textContent = 'Richtig!';
                         score++;
                     } else {
                         resultElement.textContent = 'Falsch. Versuche es erneut.';
+                        showAnswer.style.display = 'block';
+                        showAnswer.textContent = currentQuestion.correctAnswer;
+
                     }
                 }
 
@@ -1300,7 +1312,7 @@
                 fragenCount++;
 
                 if (currentQuestionIndex < totalQuestions) {
-                    setTimeout(displayQuestion, 2000);
+                    setTimeout(displayQuestion, 5000);
                 } else {
                     openPopup(score, totalQuestions);
                 }
