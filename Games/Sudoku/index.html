@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="de">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="verify-v1" content="unique-string">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="keywords" content="website, lernapp, rechner, uhr, snake, description, beschreibung, u, bodigat, u:bodigat, ubodigat">
+    <meta name="author" content="U:Bodigat">
+    <meta name="publisher" content="U:Bodigat">
+    <meta name="copyright" content="U:Bodigat">
+    <meta name="description" content="Dieser Text befindet sich noch in arbeit.">
+    <meta property="og:site_name" content="U:Bodigat.com">
+    <meta property="og:url" content="https://ubodigat.com">
+    <meta property="og:title" content="Sudoku | U:Bodigat.com">
+    <meta property="og:type" content="website">
+    <meta property="og:description" content="Dieser Text befindet sich noch in arbeit.">
+    <meta property="og:image" content="https://cdn.discordapp.com/attachments/1068905447848943697/1161784440004022363/ubodigat_logo_breit_transparent_neutral.png?ex=65398f13&is=65271a13&hm=8bd1f6d65ee3d677dc79e1b8e6d58d7a292f9f88fa9816c01d0535a6d482cd9a&">
+    <meta property="og:image:secure_url" content="https://cdn.discordapp.com/attachments/1068905447848943697/1161784440004022363/ubodigat_logo_breit_transparent_neutral.png?ex=65398f13&is=65271a13&hm=8bd1f6d65ee3d677dc79e1b8e6d58d7a292f9f88fa9816c01d0535a6d482cd9a&">
+    <meta property="og:image:width" content="1000">
+    <meta property="og:image:height" content="500">
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://ubodigat.com">
+    <meta property="twitter:title" content="Sudoku | U:Bodigat.com">
+    <meta property="twitter:description" content="Dieser Text befindet sich noch in arbeit.">
+    <meta property="twitter:image" content="https://cdn.discordapp.com/attachments/1068905447848943697/1161784440004022363/ubodigat_logo_breit_transparent_neutral.png?ex=65398f13&is=65271a13&hm=8bd1f6d65ee3d677dc79e1b8e6d58d7a292f9f88fa9816c01d0535a6d482cd9a&">
+    <title>Sudoku | U:Bodigat.com</title>
+    <link rel="icon" href="/Bilder/Wartungsarbeitenprofilbild.png" type="image/x-icon">
+    <link rel="apple-touch-icon" href="https://ubodigat.com/Bilder/Wartungsarbeitenprofilbild.png" />
+    <link rel="stylesheet" href="/Games/Sudoku/style.css">
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700,600' rel='stylesheet' type='text/css'>
+    <script src="/Games/Sudoku/script.js"></script>
+    <script src="/script.js"></script>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-BE1B5EZY35"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+        gtag('js', new Date());
+
+        gtag('config', 'G-BE1B5EZY35');
+    </script>
+    <!-- Google Tag Manager -->
+    <script>
+        (function(w, d, s, l, i) {
+            w[l] = w[l] || [];
+            w[l].push({
+                'gtm.start': new Date().getTime(),
+                event: 'gtm.js'
+            });
+            var f = d.getElementsByTagName(s)[0],
+                j = d.createElement(s),
+                dl = l != 'dataLayer' ? '&l=' + l : '';
+            j.async = true;
+            j.src =
+                'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
+            f.parentNode.insertBefore(j, f);
+        })(window, document, 'script', 'dataLayer', 'GTM-WTDQC48');
+    </script>
+    <!-- End Google Tag Manager -->
+</head>
+
+<body id="Sudokuhintergrund">
+    <!-- Google Tag Manager (noscript) -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-WTDQC48"
+    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
+    <nav>
+        <header>
+            <p> <a id="überschriftlink" href="https://ubodigat.com">U:Bodigat.com</a> | Sudoku</p>
+            <div id="headerinput">
+                <a href="https://ubodigat.com/datenschutz" target="_blank"> <button class="button">Datenschutz</button></a>
+                <a href="/Games/gamemenü.html"> <button class="button">Zum Gamemenü</button></a>
+            </div>
+        </header>
+    </nav>
+
+    <main>
+        <div class="sudoku-container">
+            <h1>Sudoku</h1>
+            <div class="sudoku-board" id="sudoku-board">
+            </div>
+            <button id="check-button">Überprüfen</button>
+            <button id="reset-button">Zurücksetzen</button>
+        </div>
+        <div class="popup-overlay" id="popup-overlay">
+            <div class="popup">
+                <p>Geben Sie eine Zahl (1-9) ein:</p>
+                <input type="number" id="input-field" min="1" max="9">
+                <button id="confirm-button">Bestätigen</button>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        const board = document.getElementById("sudoku-board");
+        const checkButton = document.getElementById("check-button");
+        const resetButton = document.getElementById("reset-button");
+        const popupOverlay = document.getElementById("popup-overlay");
+        const inputField = document.getElementById("input-field");
+        const confirmButton = document.getElementById("confirm-button");
+
+        const initialBoard = [
+            [5, 3, 0, 0, 7, 0, 0, 0, 0],
+            [6, 0, 0, 1, 9, 5, 0, 0, 0],
+            [0, 9, 8, 0, 0, 0, 0, 6, 0],
+            [8, 0, 0, 0, 6, 0, 0, 0, 3],
+            [4, 0, 0, 8, 0, 3, 0, 0, 1],
+            [7, 0, 0, 0, 2, 0, 0, 0, 6],
+            [0, 6, 0, 0, 0, 0, 2, 8, 0],
+            [0, 0, 0, 4, 1, 9, 0, 0, 5],
+            [0, 0, 0, 0, 8, 0, 0, 7, 9]
+        ];
+
+        let currentBoard = [...initialBoard];
+
+        function generateSudokuBoard() {
+            for (let i = 0; i < 9; i++) {
+                for (let j = 0; j < 9; j++) {
+                    const cell = document.createElement("div");
+                    cell.classList.add("sudoku-cell");
+                    const cellValue = currentBoard[i][j];
+                    if (cellValue !== 0) {
+                        cell.textContent = cellValue;
+                    }
+                    cell.style.width = "40px";
+                    cell.style.height = "40px";
+                    board.appendChild(cell);
+                }
+            }
+        }
+
+        function showPopup() {
+            popupOverlay.style.display = "block";
+        }
+
+        function hidePopup() {
+            popupOverlay.style.display = "none";
+            inputField.value = "";
+        }
+
+        board.addEventListener("mouseover", function(event) {
+            const hoveredCell = event.target;
+            if (hoveredCell.classList.contains("sudoku-cell")) {
+                const rowIndex = Array.from(hoveredCell.parentNode.children).indexOf(hoveredCell) / 9;
+                const columnIndex = Array.from(hoveredCell.parentNode.children).indexOf(hoveredCell) % 9;
+                if (currentBoard[rowIndex][columnIndex] !== 0) {
+                    hoveredCell.classList.add("hover-filled");
+                } else {
+                    hoveredCell.classList.add("hover-empty");
+                    showPopup();
+                }
+            }
+        });
+
+        board.addEventListener("mouseout", function(event) {
+            const hoveredCell = event.target;
+            hoveredCell.classList.remove("hover-filled");
+            hoveredCell.classList.remove("hover-empty");
+            hidePopup();
+        });
+
+        confirmButton.addEventListener("click", function() {
+            const inputValue = inputField.value;
+            if (!isNaN(inputValue) && inputValue >= 1 && inputValue <= 9) {
+                const rowIndex = Math.floor(Array.from(popupOverlay.parentNode.parentNode.children).indexOf(popupOverlay.parentNode) / 9);
+                const columnIndex = Array.from(popupOverlay.parentNode.children).indexOf(popupOverlay.parentNode) % 9;
+                currentBoard[rowIndex][columnIndex] = parseInt(inputValue);
+                hidePopup();
+                const cell = Array.from(board.children)[rowIndex * 9 + columnIndex];
+                cell.textContent = inputValue;
+            } else {
+                alert("Ungültige Eingabe. Geben Sie bitte eine Zahl zwischen 1 und 9 ein.");
+            }
+        });
+
+        // Funktion zum Überprüfen, ob das Sudoku gelöst wurde
+        function checkSudoku() {
+            let isValid = true;
+            for (let i = 0; i < 9; i++) {
+                if (!isValidRow(i) || !isValidColumn(i) || !isValidBlock(i)) {
+                    isValid = false;
+                    break;
+                }
+            }
+            if (isValid) {
+                alert("Sudoku ist korrekt!");
+            } else {
+                alert("Sudoku ist nicht korrekt!");
+            }
+        }
+
+        function isValidRow(row) {
+            const rowValues = currentBoard[row].filter(value => value !== 0);
+            return new Set(rowValues).size === rowValues.length;
+        }
+
+        function isValidColumn(column) {
+            const columnValues = currentBoard.map(row => row[column]).filter(value => value !== 0);
+            return new Set(columnValues).size === columnValues.length;
+        }
+
+        function isValidBlock(block) {
+            const blockValues = [];
+            const startRow = Math.floor(block / 3) * 3;
+            const startColumn = (block % 3) * 3;
+            for (let i = startRow; i < startRow + 3; i++) {
+                for (let j = startColumn; j < startColumn + 3; j++) {
+                    const value = currentBoard[i][j];
+                    if (value !== 0) {
+                        blockValues.push(value);
+                    }
+                }
+            }
+            return new Set(blockValues).size === blockValues.length;
+        }
+
+        function resetSudoku() {
+            board.innerHTML = '';
+            currentBoard = [...initialBoard];
+            generateSudokuBoard();
+        }
+
+        document.addEventListener("DOMContentLoaded", function() {
+            generateSudokuBoard();
+        });
+
+        checkButton.addEventListener("click", checkSudoku);
+        resetButton.addEventListener("click", resetSudoku);
+    </script>
+
+</body>
+
+</html>
