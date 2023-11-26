@@ -139,7 +139,7 @@
 
                     document.getElementById('temperature').textContent = `Temperatur: ${temperature}°C`;
                     document.getElementById('description').textContent = `Beschreibung: ${description}`;
-                    document.getElementById('weather-icon').src = `http://openweathermap.org/img/wn/${icon}.png`;
+                    document.getElementById('weather-icon').src = `https://openweathermap.org/img/wn/${icon}.png`;
                 })
                 .catch(error => {
                     console.log('Fehler beim Abrufen des Wetters:', error);
