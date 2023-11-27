@@ -206,7 +206,7 @@
                 modal.appendChild(closeButton);
 
                 const logo = document.createElement('img');
-                logo.src = 'https://ubodigat.com/Bilder/Wartungsarbeitenprofilbild.png';
+                logo.src = 'https://ubodigat.com/Bilder/ubodigatwarnung.svg';
                 logo.alt = 'Logo';
                 logo.className = 'overlay-logo';
 
@@ -217,7 +217,6 @@
                 overlay.appendChild(modal);
                 document.body.appendChild(overlay);
 
-                // Schließen Sie das Overlay, wenn darauf geklickt wird
                 overlay.addEventListener('click', function(e) {
                     if (e.target === overlay) {
                         document.body.removeChild(overlay);
