@@ -1,6 +1,6 @@
 let docTitel = document.title;
 window, addEventListener("blur", () => {
-    document.title = "ubodigat.com | Inaktiv 💤";
+    document.title = "💤 Inaktiv | ubodigat.com";
 })
 window, addEventListener("focus", () => {
     document.title = docTitel;

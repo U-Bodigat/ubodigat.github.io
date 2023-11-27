@@ -188,6 +188,43 @@
                 textArray.push(...newText.split(''));
             }
 
+            function showErrorOverlay(message) {
+                const overlay = document.createElement('div');
+                overlay.className = 'overlay';
+
+                const modal = document.createElement('div');
+                modal.className = 'modal';
+
+                const closeButton = document.createElement('span');
+                closeButton.className = 'close-button';
+                closeButton.innerHTML = '&times;';
+
+                closeButton.addEventListener('click', function() {
+                    document.body.removeChild(overlay);
+                });
+
+                modal.appendChild(closeButton);
+
+                const logo = document.createElement('img');
+                logo.src = 'https://ubodigat.com/Bilder/Wartungsarbeitenprofilbild.png';
+                logo.alt = 'Logo';
+                logo.className = 'overlay-logo';
+
+                modal.appendChild(logo);
+
+                modal.innerHTML += `<p>${message}</p>`;
+
+                overlay.appendChild(modal);
+                document.body.appendChild(overlay);
+
+                // Schließen Sie das Overlay, wenn darauf geklickt wird
+                overlay.addEventListener('click', function(e) {
+                    if (e.target === overlay) {
+                        document.body.removeChild(overlay);
+                    }
+                });
+            }
+
             function loadTextFile(file) {
                 const reader = new FileReader();
 
@@ -208,7 +245,12 @@
             fileInput.addEventListener('change', function() {
                 const selectedFile = fileInput.files[0];
                 if (selectedFile) {
-                    loadTextFile(selectedFile);
+                    const fileType = selectedFile.type;
+                    if (fileType === 'text/plain') {
+                        loadTextFile(selectedFile);
+                    } else {
+                        showErrorOverlay('Falscher Dateityp! Bitte wählen Sie eine .txt-Datei.');
+                    }
                 }
             });
 
@@ -223,14 +265,21 @@
 
             userInput.addEventListener('input', function() {
                 const inputArray = userInput.value.split('');
+                let errorCount = 0;
+
                 textArray.forEach((char, index) => {
                     const span = textContainer.querySelector(`.char${index}`);
 
-                    if (inputArray[index] === char) {
-                        span.classList.remove('incorrect');
-                        span.classList.remove('fade-text');
+                    if (inputArray[index] !== undefined) {
+                        if (inputArray[index] === char) {
+                            span.classList.remove('incorrect');
+                            span.classList.remove('fade-text');
+                        } else {
+                            span.classList.add('incorrect');
+                            errorCount += 1;
+                        }
                     } else {
-                        span.classList.add('incorrect');
+                        span.classList.remove('incorrect');
                     }
 
                     if (index === userInput.value.length) {
@@ -252,15 +301,17 @@
                     }
                 });
 
-                errorCount = textArray.reduce((acc, char, index) => {
-                    if (inputArray[index] !== char) {
-                        return acc + 1;
-                    }
-                    return acc;
-                }, 0);
-
                 errorDisplay.textContent = `Fehler: ${errorCount}`;
             });
+
+            errorCount = textArray.reduce((acc, char, index) => {
+                if (inputArray[index] !== char) {
+                    return acc + 1;
+                }
+                return acc;
+            }, 0);
+
+            errorDisplay.textContent = `Fehler: ${errorCount}`;
         });
 
         // Tastatur
