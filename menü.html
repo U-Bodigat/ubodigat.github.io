@@ -119,21 +119,18 @@
         </table>
     </div>
     <script>
-        // Stelle eine Verbindung zur OpenWeather API her
         const apiKey = '516ad7cf647d0ef14dc8563616e85ec4';
         const weatherUrl = `https://api.openweathermap.org/data/2.5/weather?q=Munich&units=metric&lang=de&appid=${apiKey}`;
 
-        // Runde eine Zahl auf die gewünschte Anzahl von Dezimalstellen
         function roundNumber(number, decimals) {
             return Math.round(number * 10 ** decimals) / 10 ** decimals;
         }
 
-        // Hole das Wetter von der API und aktualisiere die Anzeige
         function fetchWeather() {
             fetch(weatherUrl)
                 .then(response => response.json())
                 .then(data => {
-                    const temperature = roundNumber(data.main.temp, 0); // Auf 0 Dezimalstellen runden
+                    const temperature = roundNumber(data.main.temp, 0);
                     const description = data.weather[0].description;
                     const icon = data.weather[0].icon;
 
@@ -146,10 +143,8 @@
                 });
         }
 
-        // Aktualisiere das Wetter alle 5 Minuten
         setInterval(fetchWeather, 300000);
 
-        // Rufe das Wetter beim Laden der Seite auf
         fetchWeather();
     </script>
 
