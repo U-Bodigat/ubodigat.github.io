@@ -152,7 +152,8 @@
         <div class="app-container">
             <div id="menu">
                 <button id="load-file">Text laden</button>
-                <button id="exam-mode">Prüfungsmodus</button>
+                <button id="mode-toggle">Prüfungsmodus</button>
+                <button id="evaluate-button" style="display: none;" onclick="printEvaluation()">Auswertung</button>
                 <p id="error-display">Fehler: 0</p>
             </div>
             <div id="text-container"></div>
@@ -169,7 +170,8 @@
             const userInput = document.getElementById('user-input');
             const errorDisplay = document.getElementById('error-display');
             const loadFileButton = document.getElementById('load-file');
-            const examModeButton = document.getElementById('exam-mode');
+            const modeToggleButton = document.getElementById('mode-toggle');
+            const evaluateButton = document.getElementById('evaluate-button');
             const fileInput = document.getElementById('file-input');
 
             let currentTextIndex = 0;
@@ -177,6 +179,28 @@
             const textArray = [];
 
             let examMode = false;
+
+            const ergebnisse = {
+                genauigkeit: 75,
+                fehler: 10,
+            };
+
+            function ergebnisseDrucken() {
+                const druckfenster = window.open('print.html');
+
+                druckfenster.onload = function() {
+                    druckfenster.postMessage(ergebnisse, '*');
+                };
+            }
+
+            window.addEventListener('message', function(event) {
+                const ergebnisse = event.data;
+                document.querySelector('.content').innerHTML = `<p>Genauigkeit: ${ergebnisse.genauigkeit}%</p><p>Fehler: ${ergebnisse.fehler}</p>`;
+            });
+
+            window.onload = function() {
+                window.print();
+            };
 
             function updateText(newText) {
                 textContainer.innerHTML = newText
@@ -186,6 +210,19 @@
                 currentText = newText;
                 textArray.length = 0;
                 textArray.push(...newText.split(''));
+            }
+
+            function loadTextFile(file) {
+                const reader = new FileReader();
+
+                reader.onload = function(e) {
+                    const content = e.target.result;
+                    const lines = content.split('\n');
+                    currentText = lines.join(' ');
+                    updateText(currentText);
+                };
+
+                reader.readAsText(file);
             }
 
             function showErrorOverlay(message) {
@@ -224,17 +261,41 @@
                 });
             }
 
-            function loadTextFile(file) {
-                const reader = new FileReader();
+            function showEvaluationPopup(accuracy) {
+                const popup = document.createElement('div');
+                popup.className = 'evaluation-popup';
 
-                reader.onload = function(e) {
-                    const content = e.target.result;
-                    const lines = content.split('\n');
-                    currentText = lines.join(' ');
-                    updateText(currentText);
-                };
+                const closeButton = document.createElement('span');
+                closeButton.className = 'close-button';
+                closeButton.innerHTML = '&times;';
 
-                reader.readAsText(file);
+                closeButton.addEventListener('click', function() {
+                    document.body.removeChild(popup);
+                });
+
+                popup.appendChild(closeButton);
+
+                const evaluationMessage = document.createElement('p');
+                evaluationMessage.textContent = `Genauigkeit: ${accuracy.toFixed(2)}%`;
+                popup.appendChild(evaluationMessage);
+
+                const printButton = document.createElement('button');
+                printButton.textContent = 'Drucken';
+                printButton.addEventListener('click', function() {
+                    printEvaluation();
+                });
+                popup.appendChild(printButton);
+
+                document.body.appendChild(popup);
+            }
+
+            function printEvaluation() {
+                ergebnisseDrucken();
+            }
+
+            function evaluateText() {
+                const accuracy = ((textArray.length - errorCount) / textArray.length) * 100;
+                showEvaluationPopup(accuracy);
             }
 
             loadFileButton.addEventListener('click', function() {
@@ -253,9 +314,16 @@
                 }
             });
 
-            examModeButton.addEventListener('click', function() {
+            modeToggleButton.addEventListener('click', function() {
+                console.log('Button clicked');
                 examMode = !examMode;
-                document.body.style.backgroundColor = examMode ? '#1a1aff' : '#1a1a1a';
+                document.body.classList.toggle('exam-mode', examMode);
+                modeToggleButton.innerHTML = examMode ? 'Normalmodus' : 'Prüfungsmodus';
+                evaluateButton.style.display = examMode ? 'inline-block' : 'none';
+            });
+
+            evaluateButton.addEventListener('click', function() {
+                evaluateText();
             });
 
             updateText("Fingersatz ist die Belegung der Tasten eines Musikinstruments, Computerprogramms oder einer Schreibmaschine mit den Fingern.");
@@ -264,7 +332,7 @@
 
             userInput.addEventListener('input', function() {
                 const inputArray = userInput.value.split('');
-                let errorCount = 0;
+                errorCount = 0;
 
                 textArray.forEach((char, index) => {
                     const span = textContainer.querySelector(`.char${index}`);
@@ -302,15 +370,6 @@
 
                 errorDisplay.textContent = `Fehler: ${errorCount}`;
             });
-
-            errorCount = textArray.reduce((acc, char, index) => {
-                if (inputArray[index] !== char) {
-                    return acc + 1;
-                }
-                return acc;
-            }, 0);
-
-            errorDisplay.textContent = `Fehler: ${errorCount}`;
         });
 
         // Tastatur

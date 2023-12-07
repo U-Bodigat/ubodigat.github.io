@@ -12,7 +12,6 @@ body {
     align-items: center;
     text-align: center;
     min-height: 100vh;
-    user-select: none;
     background-color: #26282b;
 }
 
@@ -368,12 +367,13 @@ body {
     padding: 8px 30px;
     cursor: pointer;
     border-radius: 5px;
+    font-weight: 500;
 }
 
 #menu button:hover {
     transition: 0.5s;
-    color: #000000;
-    font-weight: 600;
+    color: #2a2a2a;
+    font-weight: 800;
     background-color: #d8d8d8;
 }
 
@@ -475,7 +475,7 @@ body {
     margin-left: 10px;
     font-size: 20px;
     font-weight: 600;
-    color: #ff0000;
+    color: #c90000;
 }
 
 .incorrect {
@@ -529,6 +529,107 @@ body {
     color: #333;
     position: absolute;
     top: 5px;
+    right: 10px;
+    cursor: pointer;
+}
+
+.exam-mode #menu {
+    transition: 0.5s;
+    background-color: #5390a3;
+    color: #ff0000;
+}
+
+.exam-mode #error-display {
+    transition: 0.5s;
+    color: #ff0000;
+}
+
+.exam-mode #menu button {
+    transition: 0.5s;
+    background-color: #61b3cc;
+}
+
+.exam-mode #menu button:hover {
+    transition: 0.5s;
+    color: #1e1e1e;
+    font-weight: 800;
+    background-color: #48d4ff;
+}
+
+.exam-mode #user-input {
+    transition: 0.5s;
+    border-bottom: 2px solid #2a768d;
+}
+
+.exam-mode #user-input:hover {
+    transition: 0.5s;
+    border-bottom: 2px solid #48d4ff;
+}
+
+.exam-mode #user-input:focus {
+    transition: 0.5s;
+    border-bottom: 2px solid #48d4ff;
+}
+
+.exam-mode .current-char {
+    transition: 0.5s;
+    background-color: #7bfbff63;
+    color: #dfdfdf;
+}
+
+.exam-mode .tastatur {
+    display: none;
+}
+
+.overlay-logo {
+    max-width: 300px;
+    margin-left: -120px;
+    margin-top: -15px;
+    margin-bottom: 20px;
+}
+
+.evaluation-popup {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: #2a2a2a;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.733);
+    text-align: center;
+    max-width: 80%;
+    border-radius: 10px;
+    z-index: 1000;
+}
+
+.evaluation-popup p {
+    color: #fff;
+    font-weight: 700;
+    font-size: 24px;
+}
+
+.evaluation-popup button {
+    background-color: #333;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 5px;
+    font-weight: 500;
+    margin-top: 20px;
+}
+
+.evaluation-popup button:hover {
+    background-color: #d8d8d8;
+    color: #2a2a2a;
+    font-weight: 800;
+}
+
+.close-button {
+    font-size: 24px;
+    color: #fff;
+    position: absolute;
+    top: 0px;
     right: 10px;
     cursor: pointer;
 }
