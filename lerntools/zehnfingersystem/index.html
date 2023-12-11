@@ -13,7 +13,7 @@
     <meta name="description" content="Dieser Text befindet sich noch in Arbeit">
     <meta property="og:site_name" content="U:Bodigat.com">
     <meta property="og:url" content="https://ubodigat.com">
-    <meta property="og:title" content="Zehnfingersystem | U:Bodigat.com">
+    <meta property="og:title" content="Zehnfingersystem | ubodigat.com">
     <meta property="og:type" content="website">
     <meta property="og:description" content="Dieser Text befindet sich noch in Arbeit">
     <meta property="og:image" content="https://cdn.discordapp.com/attachments/1068905447848943697/1161784440004022363/ubodigat_logo_breit_transparent_neutral.png?ex=65398f13&is=65271a13&hm=8bd1f6d65ee3d677dc79e1b8e6d58d7a292f9f88fa9816c01d0535a6d482cd9a&">
@@ -22,10 +22,10 @@
     <meta property="og:image:height" content="500">
     <meta property="twitter:card" content="summary_large_image">
     <meta property="twitter:url" content="https://ubodigat.com">
-    <meta property="twitter:title" content="Zehnfingersystem | U:Bodigat.com">
+    <meta property="twitter:title" content="Zehnfingersystem | ubodigat.com">
     <meta property="twitter:description" content="Dieser Text befindet sich noch in Arbeit">
     <meta property="twitter:image" content="https://cdn.discordapp.com/attachments/1068905447848943697/1161784440004022363/ubodigat_logo_breit_transparent_neutral.png?ex=65398f13&is=65271a13&hm=8bd1f6d65ee3d677dc79e1b8e6d58d7a292f9f88fa9816c01d0535a6d482cd9a&">
-    <title>Zehnfingersystem | U:Bodigat.com</title>
+    <title>Zehnfingersystem | ubodigat.com</title>
     <link rel="icon" href="/Bilder/Wartungsarbeitenprofilbild.png" type="image/x-icon">
     <link rel="apple-touch-icon" href="https://ubodigat.com/Bilder/Wartungsarbeitenprofilbild.png" />
     <script src="/script.js"></script>
@@ -153,12 +153,12 @@
             <div id="menu">
                 <button id="load-file">Text laden</button>
                 <button id="mode-toggle">Prüfungsmodus</button>
-                <button id="evaluate-button" style="display: none;" onclick="printEvaluation()">Auswertung</button>
+                <button id="evaluate-button" style="display: none;" onclick="evaluateText()">Auswertung</button>
                 <p id="error-display">Fehler: 0</p>
             </div>
             <div id="text-container"></div>
             <div id="user-input-container">
-                <input id="user-input" type="text" placeholder="Hier tippen..." autocomplete="off">
+                <input id="user-input" type="text" placeholder="Hier tippen  . . ." autocomplete="off">
             </div>
         </div>
         <input type="file" id="file-input" style="display:none" accept=".txt">
@@ -181,9 +181,44 @@
             let examMode = false;
 
             const ergebnisse = {
-                genauigkeit: 75,
-                fehler: 10,
+                genauigkeit: 0,
+                fehler: 0,
+                zeit: {
+                    hours: 0,
+                    minutes: 0,
+                    seconds: 0
+                },
+                tastenanschlaege: 0,
+                gesamtTastenanschlaege: 0,
+                textLaenge: 0,
+                textSchwierigkeit: ''
             };
+
+            let startTime;
+            let keyStrokes = 0;
+            let totalKeyStrokes = 0;
+
+            function formatTime(milliseconds) {
+                const seconds = Math.floor(milliseconds / 1000);
+                const minutes = Math.floor(seconds / 60);
+                const hours = Math.floor(minutes / 60);
+
+                return {
+                    hours: hours,
+                    minutes: minutes % 60,
+                    seconds: seconds % 60
+                };
+            }
+
+            function determineTextDifficulty(textLength, specialChars) {
+                if (textLength < 50 && specialChars < 5) {
+                    return 'leicht';
+                } else if (textLength < 100 && specialChars < 10) {
+                    return 'mittel';
+                } else {
+                    return 'schwer';
+                }
+            }
 
             function ergebnisseDrucken() {
                 const druckfenster = window.open('print.html');
@@ -197,10 +232,6 @@
                 const ergebnisse = event.data;
                 document.querySelector('.content').innerHTML = `<p>Genauigkeit: ${ergebnisse.genauigkeit}%</p><p>Fehler: ${ergebnisse.fehler}</p>`;
             });
-
-            window.onload = function() {
-                window.print();
-            };
 
             function updateText(newText) {
                 textContainer.innerHTML = newText
@@ -290,11 +321,37 @@
             }
 
             function printEvaluation() {
-                ergebnisseDrucken();
+                const druckfenster = window.open('print.html');
+
+                druckfenster.onload = function() {
+                    const endTime = performance.now();
+                    const timeElapsed = (endTime - startTime) / 1000;
+                    const formattedTime = formatTime(timeElapsed);
+
+                    ergebnisse.zeit = formattedTime;
+
+                    druckfenster.postMessage(ergebnisse, '*');
+                    setTimeout(function() {
+                        druckfenster.print();
+                        druckfenster.postMessage(ergebnisse, '*');
+                        druckfenster.close();
+                    }, 100);
+                };
             }
 
             function evaluateText() {
                 const accuracy = ((textArray.length - errorCount) / textArray.length) * 100;
+                const timeElapsed = (endTime - startTime) / 1000;
+                const formattedTime = formatTime(timeElapsed);
+
+                ergebnisse.genauigkeit = accuracy.toFixed(1);
+                ergebnisse.fehler = errorCount;
+                ergebnisse.zeit = formattedTime;
+                ergebnisse.tastenanschlaege = keyStrokes;
+                ergebnisse.gesamtTastenanschlaege = totalKeyStrokes;
+                ergebnisse.textLaenge = currentText.length;
+                ergebnisse.textSchwierigkeit = determineTextDifficulty(currentText.length, currentText.replace(/[a-zA-Z0-9]/g, '').length);
+
                 showEvaluationPopup(accuracy);
             }
 
@@ -320,6 +377,10 @@
                 document.body.classList.toggle('exam-mode', examMode);
                 modeToggleButton.innerHTML = examMode ? 'Normalmodus' : 'Prüfungsmodus';
                 evaluateButton.style.display = examMode ? 'inline-block' : 'none';
+
+                if (examMode) {
+                    startTime = performance.now(); // Starte die Zeit, wenn der Prüfungsmodus aktiviert wird
+                }
             });
 
             evaluateButton.addEventListener('click', function() {
@@ -369,6 +430,9 @@
                 });
 
                 errorDisplay.textContent = `Fehler: ${errorCount}`;
+
+                keyStrokes += 1;
+                totalKeyStrokes += 1;
             });
         });
 

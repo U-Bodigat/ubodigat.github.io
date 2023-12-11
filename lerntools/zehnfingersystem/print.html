@@ -13,7 +13,7 @@
     <meta name="description" content="Dies ist nur eine Seite diese gebracht wird zum drucken der Ergebnisse aus dem Prüfungsmodus der 10 Finger System Lernapp (;">
     <meta property="og:site_name" content="U:Bodigat.com">
     <meta property="og:url" content="https://ubodigat.com">
-    <meta property="og:title" content="Drucklayout | U:Bodigat.com">
+    <meta property="og:title" content="Drucklayout | ubodigat.com">
     <meta property="og:type" content="website">
     <meta property="og:description" content="Dies ist nur eine Seite diese gebracht wird zum drucken der Ergebnisse aus dem Prüfungsmodus der 10 Finger System Lernapp (;">
     <meta property="og:image" content="https://cdn.discordapp.com/attachments/1068905447848943697/1161784440004022363/ubodigat_logo_breit_transparent_neutral.png?ex=65398f13&is=65271a13&hm=8bd1f6d65ee3d677dc79e1b8e6d58d7a292f9f88fa9816c01d0535a6d482cd9a&">
@@ -22,10 +22,10 @@
     <meta property="og:image:height" content="500">
     <meta property="twitter:card" content="summary_large_image">
     <meta property="twitter:url" content="https://ubodigat.com">
-    <meta property="twitter:title" content="Drucklayout | U:Bodigat.com">
+    <meta property="twitter:title" content="Drucklayout | ubodigat.com">
     <meta property="twitter:description" content="Dies ist nur eine Seite diese gebracht wird zum drucken der Ergebnisse aus dem Prüfungsmodus der 10 Finger System Lernapp (;">
     <meta property="twitter:image" content="https://cdn.discordapp.com/attachments/1068905447848943697/1161784440004022363/ubodigat_logo_breit_transparent_neutral.png?ex=65398f13&is=65271a13&hm=8bd1f6d65ee3d677dc79e1b8e6d58d7a292f9f88fa9816c01d0535a6d482cd9a&">
-    <title>Drucklayout | U:Bodigat.com</title>
+    <title>Drucklayout | ubodigat.com</title>
     <link rel="icon" href="/Bilder/Wartungsarbeitenprofilbild.png" type="image/x-icon">
     <link rel="apple-touch-icon" href="https://ubodigat.com/Bilder/Wartungsarbeitenprofilbild.png" />
     <script src="/script.js"></script>
@@ -67,22 +67,26 @@
             font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
-            color: #fff;
+            color: #000000;
+            background-color: #ffffff;
         }
         
         .print-page {
-            color: #fff;
+            color: #000000;
+            background-color: #ffffff;
+            border-radius: 15px;
             width: 210mm;
             height: 297mm;
             margin: 20mm;
-            box-shadow: 0 0 10px rgba(131, 131, 131, 0.1);
+            box-shadow: 0 0 10px #6363637a;
         }
         
         .header {
+            border-radius: 15px;
             padding: 20px;
-            color: #fff;
-            background-color: #292929;
-            text-align: centerrgb(153, 152, 152)
+            color: #5c5c5c;
+            background-color: #d8d8d8;
+            text-align: center;
         }
         
         .logo {
@@ -94,7 +98,7 @@
         }
         
         .content {
-            color: #fff;
+            color: #000000;
             padding: 20px;
         }
         
@@ -111,16 +115,43 @@
     height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <!-- End Google Tag Manager (noscript) -->
 
-
     <div class="print-page">
         <div class="header">
             <img src="/Bilder/Wartungsarbeitenprofilbild.png" alt="Logo" class="logo">
             <h1 id="überschriftone">10 Finger System | Prüfungsmodus</h1>
         </div>
-        <div class="content">
+        <div class="content" id="print-content">
             <p>Hier sind deine Ergebnisse:</p>
             <!-- Hier fügst du die Ergebnisse ein, die gedruckt werden sollen -->
+            <p>Genauigkeit: <span id="accuracy">0</span>%</p>
+            <p>Fehler: <span id="errors">0</span></p>
+            <p>Zeit: <span id="time">0</span> Sekunden</p>
+            <p>Tastenanschläge: <span id="key-strokes">0</span></p>
+            <p>Gesamt-Tastenanschläge: <span id="total-key-strokes">0</span></p>
+            <p>Textlänge: <span id="text-length">0</span> Zeichen</p>
+            <p>Textschwierigkeit: <span id="text-difficulty">leicht</span></p>
         </div>
+        <script>
+            window.addEventListener('message', function(event) {
+                const ergebnisse = event.data;
+                const contentContainer = document.getElementById('print-content');
+
+                const seconds = Math.floor(ergebnisse.zeit / 1000);
+                const minutes = Math.floor(seconds / 60);
+                const hours = Math.floor(minutes / 60);
+
+                const formattedTime = `${hours} Stunden, ${minutes % 60} Minuten, ${seconds % 60} Sekunden`;
+
+                contentContainer.innerHTML = `
+                    <p>Genauigkeit: <span id="accuracy">${ergebnisse.genauigkeit}%</span></p>
+                    <p>Fehler: <span id="errors">${ergebnisse.fehler}</span></p>
+                    <p>Zeit: ${formattedTime}</p>
+                    <p>Tastenanschläge: <span id="key-strokes">${ergebnisse.tastenanschlaege}</span></p>
+                    <p>Textlänge: <span id="text-length">${ergebnisse.textLaenge}</span> Zeichen</p>
+                    <p>Textschwierigkeit: <span id="text-difficulty">${ergebnisse.textSchwierigkeit}</span></p>
+                `;
+            });
+        </script>
     </div>
 </body>
 

@@ -76,6 +76,8 @@ header:hover {
 .button:hover {
     transition: 0.5s;
     background-color: #006eff;
+    color: #003a1e;
+    font-weight: 800;
 }
 
 .button a {
