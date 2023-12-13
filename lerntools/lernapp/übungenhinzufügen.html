@@ -10,12 +10,12 @@
     <meta name="author" content="U:Bodigat">
     <meta name="publisher" content="U:Bodigat">
     <meta name="copyright" content="U:Bodigat">
-    <meta name="description" content="Das ist unsere Lernapp, mit dieser kann man ganz einfach alles Lernen. Füge hier einfach eine Frage und die richtige Antwort dazu hinzu und übe dann. Die Fragen werden dir zufällig gestellt und du must nur die richtige Lösung hinschreieben. Wenn du mal was falsch hast wird die das was richtig gewesen wäre natürlich angezeigt. Wir wünschen euch viel Spaß beim lernen.">
+    <meta name="description" content="Das ist unsere Lernapp, mit dieser kann man ganz einfach alles Lernen. Füge einfach eine Frage und die richtige Antwort hinzu gehe dann auf Übung und es werden dir die Fragen gestellt und du must die Richtige Antwort hienschreiben. Wenn du mal was falsch hast wird die das was richtig gewesen wäre natürlich angezeigt. Wir wünschen euch viel Spaß beim lernen mit unserer Lernapp.">
     <meta property="og:site_name" content="U:Bodigat.com">
     <meta property="og:url" content="https://ubodigat.com">
     <meta property="og:title" content="Lernapp | ubodigat.com">
     <meta property="og:type" content="website">
-    <meta property="og:description" content="Das ist unsere Lernapp, mit dieser kann man ganz einfach alles Lernen. Füge hier einfach eine Frage und die richtige Antwort dazu hinzu und übe dann. Die Fragen werden dir zufällig gestellt und du must nur die richtige Lösung hinschreieben. Wenn du mal was falsch hast wird die das was richtig gewesen wäre natürlich angezeigt. Wir wünschen euch viel Spaß beim lernen.">
+    <meta property="og:description" content="Das ist unsere Lernapp, mit dieser kann man ganz einfach alles Lernen. Füge einfach eine Frage und die richtige Antwort hinzu gehe dann auf Übung und es werden dir die Fragen gestellt und du must die Richtige Antwort hienschreiben. Wenn du mal was falsch hast wird die das was richtig gewesen wäre natürlich angezeigt. Wir wünschen euch viel Spaß beim lernen mit unserer Lernapp.">
     <meta property="og:image" content="https://cdn.discordapp.com/attachments/1068905447848943697/1161784440004022363/ubodigat_logo_breit_transparent_neutral.png?ex=65398f13&is=65271a13&hm=8bd1f6d65ee3d677dc79e1b8e6d58d7a292f9f88fa9816c01d0535a6d482cd9a&">
     <meta property="og:image:secure_url" content="https://cdn.discordapp.com/attachments/1068905447848943697/1161784440004022363/ubodigat_logo_breit_transparent_neutral.png?ex=65398f13&is=65271a13&hm=8bd1f6d65ee3d677dc79e1b8e6d58d7a292f9f88fa9816c01d0535a6d482cd9a&">
     <meta property="og:image:width" content="1000">
@@ -23,12 +23,14 @@
     <meta property="twitter:card" content="summary_large_image">
     <meta property="twitter:url" content="https://ubodigat.com">
     <meta property="twitter:title" content="Lernapp | ubodigat.com">
-    <meta property="twitter:description" content="Das ist unsere Lernapp, mit dieser kann man ganz einfach alles Lernen. Füge hier einfach eine Frage und die richtige Antwort dazu hinzu und übe dann. Die Fragen werden dir zufällig gestellt und du must nur die richtige Lösung hinschreieben. Wenn du mal was falsch hast wird die das was richtig gewesen wäre natürlich angezeigt. Wir wünschen euch viel Spaß beim lernen.">
+    <meta property="twitter:description" content="Das ist unsere Lernapp, mit dieser kann man ganz einfach alles Lernen. Füge einfach eine Frage und die richtige Antwort hinzu gehe dann auf Übung und es werden dir die Fragen gestellt und du must die Richtige Antwort hienschreiben. Wenn du mal was falsch hast wird die das was richtig gewesen wäre natürlich angezeigt. Wir wünschen euch viel Spaß beim lernen mit unserer Lernapp.">
+    <meta property="twitter:image" content="https://cdn.discordapp.com/attachments/1068905447848943697/1161784440004022363/ubodigat_logo_breit_transparent_neutral.png?ex=65398f13&is=65271a13&hm=8bd1f6d65ee3d677dc79e1b8e6d58d7a292f9f88fa9816c01d0535a6d482cd9a&">
     <title>Lernapp | ubodigat.com</title>
-    <link rel="stylesheet" href="style.css">
-    <script src="script.js"></script>
     <link rel="icon" href="/Bilder/Wartungsarbeitenprofilbild.png" type="image/x-icon">
+    <link rel="apple-touch-icon" href="https://ubodigat.com/Bilder/Wartungsarbeitenprofilbild.png" />
     <script src="/script.js"></script>
+    <link rel="stylesheet" href="/lerntools/lernapp/style.css">
+    <script src="/lerntools/lernapp/script.js"></script>
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-BE1B5EZY35"></script>
     <script>
@@ -61,7 +63,7 @@
     <!-- End Google Tag Manager -->
 </head>
 
-<body onload="render()">
+<body onload="render()" id="lernapphintergrund">
     <!-- Google Tag Manager (noscript) -->
     <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-WTDQC48"
     height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
@@ -84,19 +86,17 @@
 
         <h1 id="fragenliste"></h1>
 
-        <button id="Hinzufügebutton"><h3>Hinzufügen</h3></button>
+        <button id="Hinzufügebutton">Hinzufügen</button>
     </form>
-
 
     <ul id="Übungsliste">
     </ul>
 
     <footer>
         <div>
-            <button onclick="löschen(), window.location.reload()" id="löschen"><h3>Alle Übungen Löschen</h3></button>
+            <button onclick="löschen(), window.location.reload()" id="löschen">Alle Übungen Löschen</button>
         </div>
     </footer>
-
 
 
     <!-- Ab hier Schneeflocken !-->

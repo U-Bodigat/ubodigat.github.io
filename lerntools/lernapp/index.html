@@ -24,11 +24,13 @@
     <meta property="twitter:url" content="https://ubodigat.com">
     <meta property="twitter:title" content="Lernapp | ubodigat.com">
     <meta property="twitter:description" content="Das ist unsere Lernapp, mit dieser kann man ganz einfach alles Lernen. Füge einfach eine Frage und die richtige Antwort hinzu gehe dann auf Übung und es werden dir die Fragen gestellt und du must die Richtige Antwort hienschreiben. Wenn du mal was falsch hast wird die das was richtig gewesen wäre natürlich angezeigt. Wir wünschen euch viel Spaß beim lernen mit unserer Lernapp.">
+    <meta property="twitter:image" content="https://cdn.discordapp.com/attachments/1068905447848943697/1161784440004022363/ubodigat_logo_breit_transparent_neutral.png?ex=65398f13&is=65271a13&hm=8bd1f6d65ee3d677dc79e1b8e6d58d7a292f9f88fa9816c01d0535a6d482cd9a&">
     <title>Lernapp | ubodigat.com</title>
-    <link rel="stylesheet" href="style.css">
-    <script src="script.js"></script>
     <link rel="icon" href="/Bilder/Wartungsarbeitenprofilbild.png" type="image/x-icon">
+    <link rel="apple-touch-icon" href="https://ubodigat.com/Bilder/Wartungsarbeitenprofilbild.png" />
     <script src="/script.js"></script>
+    <link rel="stylesheet" href="/lerntools/lernapp/style.css">
+    <script src="/lerntools/lernapp/script.js"></script>
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-BE1B5EZY35"></script>
     <script>
@@ -61,7 +63,7 @@
     <!-- End Google Tag Manager -->
 </head>
 
-<body>
+<body id="lernapphintergrund">
     <!-- Google Tag Manager (noscript) -->
     <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-WTDQC48"
     height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
@@ -71,7 +73,7 @@
             <p><a id="überschriftlink" href="https://ubodigat.com">U:Bodigat.com</a> | Lernapp</p>
             <div id="headerinput">
                 <a href="https://ubodigat.com/datenschutz" target="_blank"> <button class="button">Datenschutz</button></a>
-                <a href="/lerntools/lernapp/Übungenhinzu..html"> <button class="button">Übungenhinzufügen</button></a>
+                <a href="/lerntools/lernapp/übungenhinzufügen.html"> <button class="button">Übungenhinzufügen</button></a>
                 <a href="/lerntools/lernmenü.html"> <button class="button">Zum Lernmenü</button></a>
             </div>
         </header>
@@ -82,28 +84,25 @@
             <p id="nächste-übung"><b>übungszeit:</b></p>
             <div id="dauer">00:00:00</div>
         </div>
-        <div id="mainstaff">
+        <div id="fragenstellung">
             <h1>Frage:</h1>
             <h3 id="diefrage"></h3>
 
             <form onsubmit="richtigfalsch(); return false;">
                 <input id="Antwort" type="text" placeholder="A n t w o r t"></input>
                 <h1></h1>
-                <button id="Prüfen"><h3>Prüfen</h3></button>
+                <button id="Prüfen">Prüfen</button>
             </form>
         </div>
 
         <h3 id="überprüfungstext"></h3>
 
+        <footer>
+            <div>
+                <button onclick="nächstübung()" id="löschen" id="startButton">Übung Starten</button>
+            </div>
+        </footer>
     </main>
-
-    <footer>
-        <div>
-            <button onclick="nächstübung()" id="löschen" id="startButton"><h3>Übung Starten</h3></button>
-        </div>
-    </footer>
-
-
 
     <!-- Ab hier Schneeflocken !-->
     <style>

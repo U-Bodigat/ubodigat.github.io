@@ -1,17 +1,20 @@
-@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300;1,400;1,500;1,600;1,700;1,800&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,500,600,700,800,900');
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
 html,
 body {
     height: 100%;
     margin: 0;
     font-family: 'Open Sans', sans-serif;
-    background-image: url(/Bilder/ubodigat.com\ Lernapp\ Hintergrund.gif);
-    background-size: cover;
-    background-attachment: fixed;
-    background-position: center;
     color: #ffffff;
     padding-top: 32px;
     scrollbar-width: thin;
-    scrollbar-color: #000000 rgb(255, 255, 255);
+    background-color: #26282b;
     user-select: none;
 }
 
@@ -27,13 +30,6 @@ body::-webkit-scrollbar-thumb {
     background-color: #ffffff;
     border-radius: 20px;
     border: 4px solid #26282b;
-}
-
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: 'Poppins', sans-serif;
 }
 
 header {
@@ -68,6 +64,73 @@ header p {
 
 #headerinput a button {
     cursor: pointer;
+}
+
+#überschriftlink {
+    text-decoration: none;
+    color: #fff;
+}
+
+.button {
+    transition: 0.5s;
+    background-color: #012f6b;
+    color: #fff;
+    text-decoration: none;
+    border: unset;
+    padding: 12px;
+    border-radius: 7px;
+    min-width: 160px;
+    font-weight: 600;
+    margin-left: 10px;
+    box-shadow: 0px 3px 1px -2px rgb(0 0 0 / 20%), 0px 2px 2px 0px rgb(0 0 0 / 14%), 0px 1px 5px 0px rgb(0 0 0 / 12%);
+}
+
+.button:hover {
+    transition: 0.5s;
+    background-color: #006eff;
+    color: #003a1e;
+    font-weight: 900;
+}
+
+.button a {
+    transition: 0.5s;
+    color: #fff;
+    text-decoration: none;
+}
+
+button {
+    transition: 0.5s;
+    background-color: #4CAF50;
+    color: #fff;
+    text-decoration: none;
+    border: unset;
+    padding: 12px;
+    border-radius: 7px;
+    min-width: 160px;
+    cursor: pointer;
+    font-weight: 500;
+    margin-left: 10px;
+    box-shadow: 0px 3px 1px -2px rgb(0 0 0 / 20%), 0px 2px 2px 0px rgb(0 0 0 / 14%), 0px 1px 5px 0px rgb(0 0 0 / 12%);
+}
+
+button:hover {
+    transition: 0.5s;
+    background-color: #00ff0d;
+    color: #003a1e;
+    font-weight: 900;
+}
+
+button a {
+    transition: 0.5s;
+    color: #fff;
+    text-decoration: none;
+}
+
+#lernapphintergrund {
+    background-image: linear-gradient(rgba(0, 0, 0, 0.0), rgba(0, 0, 0, 0.0)), url(/Bilder/ubodigat.com\ Lernapp\ Hintergrund.gif);
+    background-size: cover;
+    background-attachment: fixed;
+    background-position: center;
 }
 
 h1,
@@ -330,31 +393,13 @@ footer {
 }
 
 #Prüfen {
-    transition: 0.5s;
-    text-align: center;
     margin-top: 15px;
     margin-left: 30%;
     margin-right: 20px;
 }
 
-#Prüfen:hover {
-    transition: 0.5s;
-    background-color: #00ff0d;
-    color: #575757;
-    font-weight: 800;
-}
-
 #löschen {
-    transition: 0.5s;
     margin-right: 70%;
-}
-
-#löschen:hover {
-    transition: 0.5s;
-    margin-right: 70%;
-    background-color: #00ff0d;
-    color: #575757;
-    font-weight: 800;
 }
 
 #Übungsliste {
@@ -379,67 +424,9 @@ footer {
 }
 
 #Hinzufügebutton {
-    transition: 0.5s;
-    margin-left: 60%;
+    margin-left: 55%;
     margin-right: 20px;
     margin-top: 10px;
-}
-
-#Hinzufügebutton h4 {
-    transition: 0.5s;
-    font-weight: 700;
-}
-
-#Hinzufügebutton:hover {
-    transition: 0.5s;
-    background-color: #00ff0d;
-    color: #575757;
-    font-weight: 800;
-}
-
-.button {
-    transition: 0.5s;
-    background-color: #012f6b;
-    color: #fff;
-    text-decoration: none;
-    border: unset;
-    padding: 12px;
-    border-radius: 7px;
-    min-width: 160px;
-    font-weight: 600;
-    margin-top: 8px;
-    margin-left: 10px;
-    box-shadow: 0px 3px 1px -2px rgb(0 0 0 / 20%), 0px 2px 2px 0px rgb(0 0 0 / 14%), 0px 1px 5px 0px rgb(0 0 0 / 12%);
-}
-
-.button:hover {
-    transition: 0.5s;
-    background-color: #006eff;
-}
-
-.button a {
-    transition: 0.5s;
-    color: #fff;
-    text-decoration: none;
-}
-
-button {
-    transition: 0.5s;
-    margin-left: 40px;
-    background-color: #00461e;
-    color: white;
-    border: unset;
-    padding: 12px;
-    border-radius: 4px;
-    min-width: 160px;
-    font-weight: 600;
-    cursor: pointer;
-    box-shadow: 0px 3px 1px -2px rgb(0 0 0 / 20%), 0px 2px 2px 0px rgb(0 0 0 / 14%), 0px 1px 5px 0px rgb(0 0 0 / 12%);
-}
-
-button:hover {
-    transition: 0.5s;
-    background-color: #00a849;
 }
 
 #diefrage {
@@ -474,11 +461,6 @@ button:hover {
 
 #mainstaff {
     margin-top: 9%;
-}
-
-#überschriftlink {
-    text-decoration: none;
-    color: #fff;
 }
 
 #übungszeit {
