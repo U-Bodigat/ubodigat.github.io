@@ -195,8 +195,10 @@
             };
 
             let startTime;
+            let endTime;
             let keyStrokes = 0;
             let totalKeyStrokes = 0;
+            let textDifficulty;
 
             function formatTime(milliseconds) {
                 const seconds = Math.floor(milliseconds / 1000);
@@ -324,12 +326,6 @@
                 const druckfenster = window.open('print.html');
 
                 druckfenster.onload = function() {
-                    const endTime = performance.now();
-                    const timeElapsed = (endTime - startTime) / 1000;
-                    const formattedTime = formatTime(timeElapsed);
-
-                    ergebnisse.zeit = formattedTime;
-
                     druckfenster.postMessage(ergebnisse, '*');
                     setTimeout(function() {
                         druckfenster.print();
@@ -377,14 +373,23 @@
                 document.body.classList.toggle('exam-mode', examMode);
                 modeToggleButton.innerHTML = examMode ? 'Normalmodus' : 'Prüfungsmodus';
                 evaluateButton.style.display = examMode ? 'inline-block' : 'none';
-
                 if (examMode) {
-                    startTime = performance.now(); // Starte die Zeit, wenn der Prüfungsmodus aktiviert wird
+                    startTime = performance.now();
+                } else {
+                    endTime = performance.now();
                 }
             });
 
             evaluateButton.addEventListener('click', function() {
                 evaluateText();
+            });
+
+            userInput.addEventListener('focus', function() {
+                startTime = performance.now();
+            });
+
+            userInput.addEventListener('blur', function() {
+                endTime = performance.now();
             });
 
             updateText("Fingersatz ist die Belegung der Tasten eines Musikinstruments, Computerprogramms oder einer Schreibmaschine mit den Fingern.");

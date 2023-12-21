@@ -125,7 +125,6 @@
             <!-- Hier fügst du die Ergebnisse ein, die gedruckt werden sollen -->
             <p>Genauigkeit: <span id="accuracy">0</span>%</p>
             <p>Fehler: <span id="errors">0</span></p>
-            <p>Zeit: <span id="time">0</span> Sekunden</p>
             <p>Tastenanschläge: <span id="key-strokes">0</span></p>
             <p>Gesamt-Tastenanschläge: <span id="total-key-strokes">0</span></p>
             <p>Textlänge: <span id="text-length">0</span> Zeichen</p>
@@ -145,7 +144,6 @@
                 contentContainer.innerHTML = `
                     <p>Genauigkeit: <span id="accuracy">${ergebnisse.genauigkeit}%</span></p>
                     <p>Fehler: <span id="errors">${ergebnisse.fehler}</span></p>
-                    <p>Zeit: ${formattedTime}</p>
                     <p>Tastenanschläge: <span id="key-strokes">${ergebnisse.tastenanschlaege}</span></p>
                     <p>Textlänge: <span id="text-length">${ergebnisse.textLaenge}</span> Zeichen</p>
                     <p>Textschwierigkeit: <span id="text-difficulty">${ergebnisse.textSchwierigkeit}</span></p>
