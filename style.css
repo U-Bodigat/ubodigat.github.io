@@ -621,24 +621,28 @@ button:hover {
 #zurückbuttonkon {
     color: #fff;
     margin-top: 10%;
+    font-weight: 500;
 }
 
 #zurückbuttonkon:hover {
     cursor: pointer;
     background-color: #00ff0d;
-    color: #575757;
-    font-weight: 700;
+    color: #383838;
+    transition: 0.5s;
+    font-weight: 800;
 }
 
 #senden {
     color: #fff;
     margin-left: 10px;
+    font-weight: 500;
 }
 
 #senden:hover {
     background-color: #00ff0d;
-    color: #575757;
-    font-weight: 700;
+    color: #383838;
+    transition: 0.5s;
+    font-weight: 800;
 }
 
 #grundkontaktformular {
@@ -685,6 +689,7 @@ button:hover {
 }
 
 #grundkontaktformular:hover {
+    transition: 0.5s;
     width: 100%;
     padding: 10px;
     margin-bottom: 10px;
@@ -696,6 +701,7 @@ button:hover {
 }
 
 #grundkontaktformular:focus {
+    transition: 0.5s;
     font-size: 15px;
     padding-top: 15px;
     width: 100%;
@@ -739,6 +745,7 @@ input[type="checkbox"]:hover {
     width: 100%;
     padding: 10px;
     margin-bottom: 10px;
+    transition: 0.5s;
     border-radius: 3px;
     border: 0;
     outline: 0;
@@ -751,6 +758,7 @@ input[type="email"]:focus,
 input[type="checkbox"]:focus {
     width: 100%;
     padding: 10px;
+    transition: 0.5s;
     margin-bottom: 10px;
     border-radius: 3px;
     border: 0;
@@ -773,6 +781,7 @@ input[type="submit"] {
 }
 
 input[type="submit"]:hover {
+    transition: 0.5s;
     background-color: #0056b3;
 }
 

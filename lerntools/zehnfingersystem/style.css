@@ -393,6 +393,7 @@ body {
     white-space: pre-line;
     position: relative;
     max-width: 1500px;
+    user-select: none;
 }
 
 #text-container::before {

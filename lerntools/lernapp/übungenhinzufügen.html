@@ -79,25 +79,30 @@
         </header>
     </nav>
 
-    <form onsubmit="übunghinuzfügen(); return false;">
-        <input id="input2" type="text" placeholder="F r a g e  ?"></input>
-
-        <input id="Frage" type="text" placeholder="L ö s u n g 💡"></input>
-
-        <h1 id="fragenliste"></h1>
-
+    <div id="editAnchor"></div>
+    <form onsubmit="übunghinzufügen(); return false;">
+        <input id="frageInput" type="text" placeholder="Frage?" required></input>
+        <input id="antwortInput" type="text" placeholder="Antwort 💡" required></input>
         <button id="Hinzufügebutton">Hinzufügen</button>
     </form>
 
     <ul id="Übungsliste">
     </ul>
-
+    <div id="popupContainer">
+        <div id="popupContent">
+            <label for="editFrage">Frage:</label>
+            <input type="text" id="editFrage" />
+            <label id="antworttextinbearbeitung" for="editAntwort">Antwort:</label>
+            <input type="text" id="editAntwort" />
+            <button onclick="saveEdit()">Speichern</button>
+            <button onclick="closePopup()">Abbrechen</button>
+        </div>
+    </div>
     <footer>
         <div>
             <button onclick="löschen(), window.location.reload()" id="löschen">Alle Übungen Löschen</button>
         </div>
     </footer>
-
 
     <!-- Ab hier Schneeflocken !-->
     <style>

@@ -213,9 +213,9 @@
             }
 
             function determineTextDifficulty(textLength, specialChars) {
-                if (textLength < 50 && specialChars < 5) {
+                if (textLength < 150 && specialChars < 5) {
                     return 'leicht';
-                } else if (textLength < 100 && specialChars < 10) {
+                } else if (textLength < 700 && specialChars < 10) {
                     return 'mittel';
                 } else {
                     return 'schwer';
