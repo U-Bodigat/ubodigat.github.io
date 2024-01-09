@@ -1,26 +1,13 @@
-function showPopup(message) {
-    document.getElementById("popupText").textContent = message;
-    document.getElementById("customPopup").style.display = "block";
-}
+// Infotext Funktion
 
-function closePopup() {
-    document.getElementById("customPopup").style.display = "none";
+function showPopup() {
+    alert("Das NATO - Alphabet wird in der Luftfahrt und anderen Kommunikationsbereichen verwendet, um Buchstaben klar und eindeutig zu übermitteln.Es besteht aus speziellen Wörtern, die jedem Buchstaben zugeordnet sind und Verwechslungen minimieren.Es ermöglicht eine präzise Kommunikation und trägt zur Sicherheit und Effizienz bei.");
 }
-
 window.onload = function() {
-    showPopup("Um ein besseres Lernen zu ermöglichen, schalten Sie den Ton ein. Jedes Wort wird Ihnen danach richtig vorgesprochen.");
+    alert("Um ein besseres Lernen zu ermöglichen schalten Sie den Ton ein. Jedes Wort wird Ihnen danach richtig vorgesprochen.");
 };
 
-function showPopup(message) {
-    document.getElementById("popupText").textContent = message;
-    document.getElementById("customPopup").style.display = "block";
-    playAnnouncementSound();
-}
-
-function playAnnouncementSound() {
-    var audio = new Audio('/Bilder/ankündigung.mp3');
-    audio.play();
-}
+// NATO_Alphabet Funktionen
 
 const natoAlphabet = [
     { letter: "A", word: "Alpha" },
@@ -79,9 +66,9 @@ function checkAnswer() {
     const correctAnswer = shuffledAlphabet[currentQuestion].word.toLowerCase();
 
     if (userAnswer === correctAnswer) {
-        showPopup("Richtig!");
+        alert("Richtig!");
     } else {
-        showPopup("Falsch! Die richtige Antwort ist: " + shuffledAlphabet[currentQuestion].word);
+        alert("Falsch! Die richtige Antwort ist: " + shuffledAlphabet[currentQuestion].word);
     }
 
     const speech = new SpeechSynthesisUtterance();
@@ -94,7 +81,7 @@ function checkAnswer() {
     if (currentQuestion < shuffledAlphabet.length) {
         showQuestion();
     } else {
-        showPopup("Das war die letzte Frage!");
+        alert("Das war die letzte Frage!");
     }
 }
 
