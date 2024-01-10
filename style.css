@@ -124,6 +124,7 @@ a {
 }
 
 #menütabelle {
+    margin-top: 10%;
     border-spacing: 20px 45px;
     transition: 0.5s;
 }
@@ -1061,10 +1062,10 @@ iframe {
 }
 
 #Hintergrundmenü {
-    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.8)), url(Bilder/ubodigat.com\ Menü\ Hintergrund.jpg);
-    background-size: cover;
+    background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url(Bilder/ubodigat.com\ Menü\ Hintergrund.jpg);
+    background-size: 140%;
     background-attachment: fixed;
-    background-position: center;
+    background-position: center top -365px;
 }
 
 #Hintergrundbeschreibung {
@@ -1112,7 +1113,7 @@ iframe {
     align-items: end;
     margin-top: -100px;
     margin-right: 20px;
-    margin-bottom: 50px;
+    margin-bottom: -5%;
 }
 
 @media (max-width: 1230px) {

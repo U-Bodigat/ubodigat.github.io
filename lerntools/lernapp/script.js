@@ -28,7 +28,8 @@ function übunghinzufügen() {
 
 function render() {
     Übungsliste.innerHTML = '';
-    for (let key in dictionary) {
+    const keys = Object.keys(dictionary).reverse();
+    for (let key of keys) {
         const { question, answer } = dictionary[key];
         const listItem = document.createElement('li');
         listItem.setAttribute('data-key', key);
