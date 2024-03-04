@@ -1,0 +1,319 @@
+@import url('https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,500,600,700,800,900');
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    min-height: 100vh;
+    user-select: none;
+    background-color: #26282b;
+}
+
+body::-webkit-scrollbar {
+    width: 12px;
+}
+
+body::-webkit-scrollbar-track {
+    background: #26282b;
+}
+
+body::-webkit-scrollbar-thumb {
+    background-color: #ffffff;
+    border-radius: 20px;
+    border: 4px solid #26282b;
+}
+
+header {
+    background-color: #003a1e;
+    color: #fff;
+    text-align: start;
+    padding: 16px 100px;
+    font-size: 24px;
+    position: fixed;
+    left: 0;
+    right: 0;
+    top: 0;
+    opacity: 0.8;
+}
+
+header:hover {
+    opacity: 1;
+}
+
+header p {
+    position: start;
+    text-align: start;
+}
+
+#headerinput {
+    margin-top: -40px;
+    display: flex;
+    justify-content: end;
+    align-items: flex-end;
+    text-align: end;
+}
+
+#headerinput a button {
+    cursor: pointer;
+}
+
+#überschriftlink {
+    text-decoration: none;
+    color: #fff;
+}
+
+.button {
+    transition: 0.5s;
+    background-color: #012f6b;
+    color: #fff;
+    text-decoration: none;
+    border: unset;
+    padding: 12px;
+    border-radius: 7px;
+    min-width: 160px;
+    font-weight: 600;
+    margin-left: 10px;
+    box-shadow: 0px 3px 1px -2px rgb(0 0 0 / 20%), 0px 2px 2px 0px rgb(0 0 0 / 14%), 0px 1px 5px 0px rgb(0 0 0 / 12%);
+}
+
+.button:hover {
+    transition: 0.5s;
+    background-color: #006eff;
+    color: #003a1e;
+    font-weight: 800;
+}
+
+.button a {
+    transition: 0.5s;
+    color: #fff;
+    text-decoration: none;
+}
+
+#tictactoehintergrund {
+    background-image: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)), url(/bilder/ubodigat.com\ tictactoe\ Hintergrund.png);
+    background-size: cover;
+    background-attachment: fixed;
+    background-position: center;
+}
+
+
+/*Responsive header*/
+
+@media (max-width: 960px) {
+    #headerinput a {
+        margin-top: 50px;
+    }
+}
+
+@media (max-width: 680px) {
+    #headerinput a {
+        margin-top: 50px;
+    }
+}
+
+@media (max-width: 600px) {
+    #headerinput a {
+        margin-left: 40px;
+        margin-right: -40px;
+    }
+}
+
+@media (max-width: 560px) {
+    #headerinput a {
+        margin-left: 65px;
+        margin-right: -65px;
+    }
+}
+
+@media (max-width: 540px) {
+    header p a {
+        margin-left: -70px;
+    }
+    #headerinput {
+        display: flex;
+        margin-top: -85px;
+        margin-bottom: 0px;
+    }
+    #headerinput a button {
+        font-size: 10px;
+        margin-top: 40px;
+        margin-left: 900px;
+        padding: 10px;
+        min-width: 100px;
+        font-weight: 600;
+        margin-left: 5px;
+    }
+}
+
+@media (max-width: 400px) {
+    nav header div {
+        margin-bottom: 10px;
+    }
+    header p a {
+        margin-left: -70px;
+    }
+    #headerinput {
+        display: flex;
+        margin-top: -80px;
+        margin-bottom: 0px;
+    }
+    #headerinput a button {
+        font-size: 10px;
+        margin-top: 40px;
+        margin-left: 900px;
+        padding: 10px;
+        min-width: 100px;
+        font-weight: 600;
+        margin-left: 5px;
+    }
+}
+
+@media (max-width: 350px) {
+    nav header div {
+        margin-bottom: 10px;
+    }
+    header p a {
+        margin-left: -70px;
+    }
+    #headerinput {
+        display: flex;
+        margin-top: -80px;
+        margin-bottom: 0px;
+    }
+    #headerinput a {
+        margin-left: 80px;
+        margin-right: -80px;
+    }
+    #headerinput a button {
+        font-size: 10px;
+        margin-top: 40px;
+        margin-left: 900px;
+        padding: 10px;
+        min-width: 100px;
+        font-weight: 600;
+        margin-left: 5px;
+    }
+}
+
+
+/* Ab hier kein Grundcss code mehr*/
+
+body {
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    background-color: #333333;
+}
+
+#board {
+    display: grid;
+    grid-template-columns: repeat(3, 100px);
+    grid-template-rows: repeat(3, 100px);
+    gap: 5px;
+}
+
+.cell {
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 2rem;
+    background-color: #383838;
+    border: 2px solid #131313;
+    cursor: pointer;
+    border-radius: 15px;
+    transition: background-color 0.3s ease-in-out;
+}
+
+.cell:hover {
+    background-color: #7e7e7e;
+}
+
+.cell.x {
+    color: #ff6b6b;
+}
+
+.cell.o {
+    color: #66cc66;
+}
+
+#status {
+    background-color: #f7f7f7;
+    padding: 10px;
+    font-size: 18px;
+    text-align: center;
+    border-radius: 15px;
+    margin-bottom: 20px;
+    position: relative;
+}
+
+#status.tie {
+    position: absolute;
+    left: 50%;
+    top: 25%;
+    transform: translate(-50%, -50%);
+}
+
+.cell.x::before {
+    content: "\2716";
+    color: #ff6b6b;
+    font-size: 2rem;
+}
+
+.cell.o::before {
+    content: "\25CF";
+    margin-top: -5%;
+    color: #66cc66;
+    font-size: 3.5rem;
+    font-weight: bold;
+}
+
+.cell {
+    transition: background-color 0.3s ease-in-out;
+    cursor: pointer;
+}
+
+.cell:hover {
+    background-color: #7e7e7e;
+}
+
+button#restart-button {
+    transition: 0.5s;
+    display: none;
+    margin-top: 20px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    float: right;
+    padding: 10px 20px;
+    border-radius: 10px;
+    font-size: 16px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: background-color 0.3s ease-in-out;
+}
+
+button#restart-button:hover {
+    transition: 0.5s;
+    cursor: pointer;
+    background-color: #00ff0d;
+    color: #575757;
+    font-weight: 700;
+}
+
+.hidden {
+    display: none;
+}

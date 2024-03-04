@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="de">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="verify-v1" content="unique-string">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="keywords" content="website, lernapp, rechner, uhr, snake, description, beschreibung, u, bodigat, u:bodigat, ubodigat">
+    <meta name="author" content="U:Bodigat">
+    <meta name="publisher" content="U:Bodigat">
+    <meta name="copyright" content="U:Bodigat">
+    <meta name="description" content="Dieser Text befindet sich noch in arbeit.">
+    <meta property="og:site_name" content="U:Bodigat.com">
+    <meta property="og:url" content="https://ubodigat.com">
+    <meta property="og:title" content="Tic Tac Toe | ubodigat.com">
+    <meta property="og:type" content="website">
+    <meta property="og:description" content="Dieser Text befindet sich noch in arbeit.">
+    <meta property="og:image" content="https://cdn.discordapp.com/attachments/1068905447848943697/1161784440004022363/ubodigat_logo_breit_transparent_neutral.png?ex=65398f13&is=65271a13&hm=8bd1f6d65ee3d677dc79e1b8e6d58d7a292f9f88fa9816c01d0535a6d482cd9a&">
+    <meta property="og:image:secure_url" content="https://cdn.discordapp.com/attachments/1068905447848943697/1161784440004022363/ubodigat_logo_breit_transparent_neutral.png?ex=65398f13&is=65271a13&hm=8bd1f6d65ee3d677dc79e1b8e6d58d7a292f9f88fa9816c01d0535a6d482cd9a&">
+    <meta property="og:image:width" content="1000">
+    <meta property="og:image:height" content="500">
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://ubodigat.com">
+    <meta property="twitter:title" content="Tic Tac Toe | ubodigat.com">
+    <meta property="twitter:description" content="Dieser Text befindet sich noch in arbeit.">
+    <meta property="twitter:image" content="https://cdn.discordapp.com/attachments/1068905447848943697/1161784440004022363/ubodigat_logo_breit_transparent_neutral.png?ex=65398f13&is=65271a13&hm=8bd1f6d65ee3d677dc79e1b8e6d58d7a292f9f88fa9816c01d0535a6d482cd9a&">
+    <title>Tic Tac Toe | ubodigat.com</title>
+    <link rel="icon" href="/bilder/Wartungsarbeitenprofilbild.png" type="image/x-icon">
+    <link rel="apple-touch-icon" href="https://ubodigat.com/bilder/Wartungsarbeitenprofilbild.png" />
+    <link rel="stylesheet" href="/games/tictactoe/style.css">
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700,600' rel='stylesheet' type='text/css'>
+    <script src="/games/tictactoe/script.js"></script>
+    <script src="/script.js"></script>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-BE1B5EZY35"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+        gtag('js', new Date());
+
+        gtag('config', 'G-BE1B5EZY35');
+    </script>
+    <!-- Google Tag Manager -->
+    <script>
+        (function(w, d, s, l, i) {
+            w[l] = w[l] || [];
+            w[l].push({
+                'gtm.start': new Date().getTime(),
+                event: 'gtm.js'
+            });
+            var f = d.getElementsByTagName(s)[0],
+                j = d.createElement(s),
+                dl = l != 'dataLayer' ? '&l=' + l : '';
+            j.async = true;
+            j.src =
+                'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
+            f.parentNode.insertBefore(j, f);
+        })(window, document, 'script', 'dataLayer', 'GTM-WTDQC48');
+    </script>
+    <!-- End Google Tag Manager -->
+</head>
+
+<body id="tictactoehintergrund">
+    <!-- Google Tag Manager (noscript) -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-WTDQC48"
+    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
+    <nav>
+        <header>
+            <p> <a id="überschriftlink" href="https://ubodigat.com">U:Bodigat.com</a> | Tic Tac Toe</p>
+            <div id="headerinput">
+                <a href="https://ubodigat.com/datenschutz" target="_blank"> <button class="button">Datenschutz</button></a>
+                <a href="/games/gamemenü"> <button class="button">Zum Gamemenü</button></a>
+            </div>
+        </header>
+    </nav>
+
+    <main>
+        <div id="status">Klicke auf ein Feld, um zu starten.</div>
+        <div id="board">
+            <div class="cell" data-cell></div>
+            <div class="cell" data-cell></div>
+            <div class="cell" data-cell></div>
+            <div class="cell" data-cell></div>
+            <div class="cell" data-cell></div>
+            <div class="cell" data-cell></div>
+            <div class="cell" data-cell></div>
+            <div class="cell" data-cell></div>
+            <div class="cell" data-cell></div>
+        </div>
+        <button id="restart-button" class="hidden">Neustart</button>
+    </main>
+
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const cells = document.querySelectorAll('[data-cell]');
+            const status = document.getElementById('status');
+            const restartButton = document.getElementById('restart-button');
+            let currentPlayer = 'x';
+            let isBotTurn = false;
+            let gameFinished = false;
+
+            const winningCombination = [
+                [0, 1, 2],
+                [3, 4, 5],
+                [6, 7, 8], // Horizontale
+                [0, 3, 6],
+                [1, 4, 7],
+                [2, 5, 8], // Vertikale
+                [0, 4, 8],
+                [2, 4, 6] // Diagonal
+            ];
+
+            cells.forEach(cell => {
+                cell.addEventListener('click', handleCellClick);
+            });
+
+            restartButton.addEventListener('click', restartGame);
+
+            function handleCellClick(event) {
+                if (gameFinished) return;
+
+                const cell = event.target;
+                if (!cell.classList.contains('x') && !cell.classList.contains('o') && !isBotTurn) {
+                    cell.classList.add('x');
+                    if (checkWin('x')) {
+                        handleLose('Du hast gewonnen!');
+                    } else if (checkTie()) {
+                        handleTie();
+                    } else {
+                        status.textContent = 'Der Bot denkt nach...';
+                        isBotTurn = true;
+                        setTimeout(makeBotMove, 1000);
+                    }
+                }
+            }
+
+            function makeBotMove() {
+                if (gameFinished) return;
+
+                const emptyCells = Array.from(cells).filter(cell => !cell.classList.contains('x') && !cell.classList.contains('o'));
+
+                for (let i = 0; i < emptyCells.length; i++) {
+                    const cell = emptyCells[i];
+                    cell.classList.add('o');
+                    if (checkWin('o')) {
+                        handleWin('Der Bot hat gewonnen!');
+                        return;
+                    }
+                    cell.classList.remove('o');
+                }
+
+                for (let i = 0; i < emptyCells.length; i++) {
+                    const cell = emptyCells[i];
+                    cell.classList.add('x');
+                    if (checkWin('x')) {
+                        cell.classList.remove('x');
+                        cell.classList.add('o');
+                        if (checkWin('o')) {
+                            handleWin('Der Bot hat gewonnen!');
+                        } else {
+                            isBotTurn = false;
+                            status.textContent = 'Du bist dran. Klicke auf ein Feld.';
+                        }
+                        return;
+                    }
+                    cell.classList.remove('x');
+                }
+
+                const randomCell = emptyCells[Math.floor(Math.random() * emptyCells.length)];
+                randomCell.classList.add('o');
+                if (checkWin('o')) {
+                    handleWin('Der Bot hat gewonnen!');
+                } else if (checkTie()) {
+                    handleTie();
+                } else {
+                    isBotTurn = false;
+                    status.textContent = 'Du bist dran. Klicke auf ein Feld.';
+                }
+            }
+
+            function checkWin(player) {
+                return winningCombination.some(combination => {
+                    return combination.every(index => cells[index].classList.contains(player));
+                });
+            }
+
+            function checkTie() {
+                return Array.from(cells).every(cell => cell.classList.contains('x') || cell.classList.contains('o'));
+            }
+
+            function handleWin(message) {
+                gameFinished = true;
+                status.textContent = message;
+                status.style.backgroundColor = '#f78c6b';
+                status.style.color = '#fff';
+                restartButton.style.display = 'block';
+            }
+
+            function handleLose(message) {
+                gameFinished = true;
+                status.textContent = message;
+                status.style.backgroundColor = '#249736';
+                status.style.color = '#fff';
+                restartButton.style.display = 'block';
+            }
+
+            function handleTie() {
+                gameFinished = true;
+                status.textContent = 'Unentschieden!';
+                status.style.backgroundColor = '#f78c6b';
+                status.style.color = '#fff';
+                status.classList.add('tie');
+                restartButton.style.display = 'block';
+            }
+
+            function restartGame() {
+                cells.forEach(cell => {
+                    cell.classList.remove('x', 'o');
+                });
+                currentPlayer = 'x';
+                isBotTurn = false;
+                gameFinished = false;
+                status.textContent = 'Klicke auf ein Feld, um zu starten.';
+                status.style.backgroundColor = '#f7f7f7';
+                status.style.color = '#000';
+                status.classList.remove('tie');
+                restartButton.style.display = 'none';
+            }
+        });
+    </script>
+
+</body>
+
+</html>
