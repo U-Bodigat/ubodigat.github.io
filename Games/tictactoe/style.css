@@ -97,7 +97,7 @@ header p {
 }
 
 #tictactoehintergrund {
-    background-image: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)), url(/Bilder/ubodigat.com\ tictactoe\ Hintergrund.png);
+    background-image: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)), url(/bilder/ubodigat.com\ tictactoe\ Hintergrund.png);
     background-size: cover;
     background-attachment: fixed;
     background-position: center;

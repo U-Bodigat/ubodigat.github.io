@@ -462,7 +462,7 @@ td:hover {
 }
 
 #taschenrechnerhintergrund {
-    background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url(/Bilder/ubodigat.com\ Taschenrechner\ Hintergrund.png);
+    background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url(/bilder/ubodigat.com\ Taschenrechner\ Hintergrund.png);
     background-size: cover;
     background-attachment: fixed;
     background-position: center;

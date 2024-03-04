@@ -96,7 +96,7 @@ header p {
 }
 
 #sqllernapphintergrund {
-    background-image: linear-gradient(rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.9)), url(/Bilder/ubodigat.com\ sqllernapp\ Hintergrund.png);
+    background-image: linear-gradient(rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.9)), url(/bilder/ubodigat.com\ sqllernapp\ Hintergrund.png);
     background-size: cover;
     background-attachment: fixed;
     background-position: center;

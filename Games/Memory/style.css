@@ -97,7 +97,7 @@ header p {
 }
 
 #memoryhintergrund {
-    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.9)), url(/Bilder/ubodigat.com\ Memory\ Hintergrund.png);
+    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.9)), url(/bilder/ubodigat.com\ Memory\ Hintergrund.png);
     background-size: cover;
     background-attachment: fixed;
     background-position: center;
@@ -237,7 +237,7 @@ body {
     align-items: center;
     cursor: pointer;
     font-size: 24px;
-    background-image: url(/Bilder/ubodigat\ logo.png);
+    background-image: url(/bilder/ubodigat\ logo.png);
     background-size: cover;
     background-position: center;
 }

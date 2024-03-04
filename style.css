@@ -1055,49 +1055,49 @@ iframe {
 /*Hintergründe*/
 
 #Hintergrundstart {
-    background-image: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), url(Bilder/ubodigat.com\ Hintergrund.gif);
+    background-image: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), url(bilder/ubodigat.com\ Hintergrund.gif);
     background-size: cover;
     background-attachment: fixed;
     background-position: center;
 }
 
 #Hintergrundmenü {
-    background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url(Bilder/ubodigat.com\ Menü\ Hintergrund.jpg);
+    background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url(bilder/ubodigat.com\ Menü\ Hintergrund.jpg);
     background-size: 140%;
     background-attachment: fixed;
     background-position: center top -365px;
 }
 
 #Hintergrundbeschreibung {
-    background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.6)), url(Bilder/ubodigat.com\ Beschreibung\ Hintergrund.png);
+    background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.6)), url(bilder/ubodigat.com\ Beschreibung\ Hintergrund.png);
     background-size: cover;
     background-attachment: fixed;
     background-position: center;
 }
 
 #downloadpage {
-    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(Bilder/ubodigat.com\ download\ Hintergrund.jpg);
+    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(bilder/ubodigat.com\ download\ Hintergrund.jpg);
     background-size: cover;
     background-attachment: fixed;
     background-position: center;
 }
 
 #tutorialshintergrund {
-    background-image: linear-gradient(rgba(0, 0, 0, 0.0), rgba(0, 0, 0, 0.9)), url(/Bilder/ubodigat.com\ Tutorial\ Hintergrund.png);
+    background-image: linear-gradient(rgba(0, 0, 0, 0.0), rgba(0, 0, 0, 0.9)), url(/bilder/ubodigat.com\ Tutorial\ Hintergrund.png);
     background-size: cover;
     background-attachment: fixed;
     background-position: center;
 }
 
 #kontakthintergrund {
-    background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.4)), url(/Bilder/ubodigat.com\ Kontakt\ Hintergrund.png);
+    background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.4)), url(/bilder/ubodigat.com\ Kontakt\ Hintergrund.png);
     background-size: cover;
     background-attachment: fixed;
     background-position: center;
 }
 
 #Hintergrunddatenschutzerklärung {
-    background-image: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)), url(/Bilder/ubodigatlogobreit.png);
+    background-image: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)), url(/bilder/ubodigatlogobreit.png);
     background-size: cover;
     background-attachment: fixed;
     background-position: center;
