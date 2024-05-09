@@ -1,7 +1,7 @@
 BEGIN:VCALENDAR
 VERSION:2.0
 METHOD:PUBLISH
-PRODID:-//schulferien.org//iCal Generator//DE
+PRODID:ubodigat.com
 BEGIN:VEVENT
 CREATED:20240313T032001Z
 LAST-MODIFIED:20240313T032001Z
@@ -9,10 +9,10 @@ DTSTAMP:20240313T032001Z
 SUMMARY:Winterferien 2025 Bayern
 DTSTART;VALUE=DATE:20250303
 DTEND;VALUE=DATE:20250308
-URL:http://www.schulferien.org
-DESCRIPTION:Alle Termine auf www.schulferien.org
+URL:https://ubodigat.com/
+DESCRIPTION: Schulferien für DE Bayern 24/25 alle Termine auf https://ubodigat.com/download
 TRANSP:TRANSPARENT
-UID:F_2025_termin65f10d5479d7a@schulferien.org
+UID:Termin_Ferien_Bayern_2025_101_F_2025_termin@ubodigat.com
 END:VEVENT
 BEGIN:VEVENT
 CREATED:20240313T032001Z
@@ -21,10 +21,10 @@ DTSTAMP:20240313T032001Z
 SUMMARY:Osterferien 2025 Bayern
 DTSTART;VALUE=DATE:20250414
 DTEND;VALUE=DATE:20250426
-URL:http://www.schulferien.org
-DESCRIPTION:Alle Termine auf www.schulferien.org
+URL:https://ubodigat.com/
+DESCRIPTION: Schulferien für DE Bayern 24/25 alle Termine auf https://ubodigat.com/download
 TRANSP:TRANSPARENT
-UID:F_2025_termin65f10d547a07d@schulferien.org
+UID:Termin_Ferien_Bayern_2025_102 F_2025_termin@ubodigat.com
 END:VEVENT
 BEGIN:VEVENT
 CREATED:20240313T032001Z
@@ -33,10 +33,10 @@ DTSTAMP:20240313T032001Z
 SUMMARY:Pfingstferien 2025 Bayern
 DTSTART;VALUE=DATE:20250610
 DTEND;VALUE=DATE:20250621
-URL:http://www.schulferien.org
-DESCRIPTION:Alle Termine auf www.schulferien.org
+URL:https://ubodigat.com/
+DESCRIPTION: Schulferien für DE Bayern 24/25 alle Termine auf https://ubodigat.com/download
 TRANSP:TRANSPARENT
-UID:F_2025_termin65f10d547a0ca@schulferien.org
+UID:Termin_Ferien_Bayern_2025_103_F_2025_termin@ubodigat.com
 END:VEVENT
 BEGIN:VEVENT
 CREATED:20240313T032001Z
@@ -45,10 +45,10 @@ DTSTAMP:20240313T032001Z
 SUMMARY:Sommerferien 2025 Bayern
 DTSTART;VALUE=DATE:20250801
 DTEND;VALUE=DATE:20250916
-URL:http://www.schulferien.org
-DESCRIPTION:Alle Termine auf www.schulferien.org
+URL:https://ubodigat.com/
+DESCRIPTION: Schulferien für DE Bayern 24/25 alle Termine auf https://ubodigat.com/download
 TRANSP:TRANSPARENT
-UID:F_2025_termin65f10d547a0f8@schulferien.org
+UID:Termin_Ferien_Bayern_2025_104_F_2025_termin@ubodigat.com
 END:VEVENT
 BEGIN:VEVENT
 CREATED:20240313T032001Z
@@ -57,10 +57,10 @@ DTSTAMP:20240313T032001Z
 SUMMARY:Herbstferien 2025 Bayern
 DTSTART;VALUE=DATE:20251103
 DTEND;VALUE=DATE:20251108
-URL:http://www.schulferien.org
-DESCRIPTION:Alle Termine auf www.schulferien.org
+URL:https://ubodigat.com/
+DESCRIPTION: Schulferien für DE Bayern 24/25 alle Termine auf https://ubodigat.com/download
 TRANSP:TRANSPARENT
-UID:F_2025_termin65f10d547a12e@schulferien.org
+UID:Termin_Ferien_Bayern_2025_105_F_2025_termin@ubodigat.com
 END:VEVENT
 BEGIN:VEVENT
 CREATED:20240313T032001Z
@@ -69,10 +69,10 @@ DTSTAMP:20240313T032001Z
 SUMMARY:Herbstferien 2025 Bayern
 DTSTART;VALUE=DATE:20251119
 DTEND;VALUE=DATE:20251120
-URL:http://www.schulferien.org
-DESCRIPTION:Alle Termine auf www.schulferien.org
+URL:https://ubodigat.com/
+DESCRIPTION: Schulferien für DE Bayern 24/25 alle Termine auf https://ubodigat.com/download
 TRANSP:TRANSPARENT
-UID:F_2025_termin65f10d547a155@schulferien.org
+UID:Termin_Ferien_Bayern_2025_106_F_2025_termin@ubodigat.com
 END:VEVENT
 BEGIN:VEVENT
 CREATED:20240313T032001Z
@@ -81,9 +81,9 @@ DTSTAMP:20240313T032001Z
 SUMMARY:Weihnachtsferien 2025 Bayern
 DTSTART;VALUE=DATE:20251222
 DTEND;VALUE=DATE:20260106
-URL:http://www.schulferien.org
-DESCRIPTION:Alle Termine auf www.schulferien.org
+URL:https://ubodigat.com/
+DESCRIPTION: Schulferien für DE Bayern 24/25 alle Termine auf https://ubodigat.com/download
 TRANSP:TRANSPARENT
-UID:F_2025_termin65f10d547a179@schulferien.org
+UID:Termin_Ferien_Bayern_2025_107_F_2025_termin@ubodigat.com
 END:VEVENT
 END:VCALENDAR
