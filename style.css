@@ -1062,10 +1062,10 @@ iframe {
 }
 
 #Hintergrundmenü {
-    background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url(bilder/ubodigat.com\ Menü\ Hintergrund.jpg);
-    background-size: 140%;
+    background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url(/bilder/ubodigat.com\ Menü\ Hintergrund.jpg);
+    background-size: cover;
     background-attachment: fixed;
-    background-position: center top -365px;
+    background-position: center;
 }
 
 #Hintergrundbeschreibung {

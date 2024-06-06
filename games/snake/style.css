@@ -89,7 +89,6 @@ header:hover {
 #canvas {
     padding: 25px;
     margin-top: 60px;
-    cursor: none;
     -webkit-border-radius: 40px;
     -moz-border-radius: 40px;
     border-radius: 40px;
