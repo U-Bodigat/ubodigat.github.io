@@ -67,7 +67,7 @@
     <!-- End Google Tag Manager (noscript) -->
     <main>
         <header>
-            <p><a id="überschriftlink" href="https://ubodigat.com">U:Bodigat.com</a> | Snake Spiel</p>
+            <p><a id="überschriftlink" href="https://ubodigat.com">U:Bodigat.com</a> | <span id="highScoresLink" style="cursor: pointer; color: #00ff6e;">High Scores</span></p>
             <div id="headerinput">
                 <a href="https://ubodigat.com/datenschutz" target="_blank"> <button class="button">Datenschutz</button></a>
                 <a href="/games/gamemenü"> <button class="button">Zum Gamemenü</button></a>
@@ -91,6 +91,13 @@
             </div>
         </div>
 
+        <div id="highScoresModal">
+            <div id="highScoresContent">
+                <span class="close">&times;</span>
+                <h2>All High Scores</h2>
+                <h4 id="allHighScores"></h4>
+            </div>
+        </div>
     </main>
 
     <script src="scripts.js"></script>
