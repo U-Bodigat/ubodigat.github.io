@@ -166,8 +166,8 @@
                         setTimeout(() => {
                             const [card1, card2] = flippedCards;
                             if (card1.emoji === card2.emoji) {
-                                card1.element.style.display = 'none';
-                                card2.element.style.display = 'none';
+                                card1.element.style.visibility = 'hidden';
+                                card2.element.style.visibility = 'hidden';
                                 foundPairs++;
                                 if (foundPairs === emojis.length) {
                                     alert('Glückwunsch! Du hast alle Paare gefunden.');
@@ -193,13 +193,14 @@
                     }
                 });
             });
+
             document.getElementById('reset-button').addEventListener('click', () => {
                 cards.forEach(card => {
                     card.style.transition = 'transform 0.75s ease-in-out';
                     card.style.transform = 'rotateY(0deg)';
                     card.classList.remove('face-up');
                     card.textContent = '';
-                    card.style.display = 'flex';
+                    card.style.visibility = 'visible';
                 });
 
                 flippedCards = [];
