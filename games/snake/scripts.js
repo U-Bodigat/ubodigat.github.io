@@ -10,13 +10,23 @@ let direction = 'LEFT';
 let foodCollected = false;
 let score = 0;
 let highScores = JSON.parse(localStorage.getItem('highScores')) || [];
+let gameInterval;
+let isPaused = false;
 
 placeFood();
 
-setInterval(gameLoop, 300);
+startGame();
 document.addEventListener('keydown', keyDown);
 
 draw();
+
+function startGame() {
+    gameInterval = setInterval(gameLoop, 300);
+}
+
+function pauseGame() {
+    clearInterval(gameInterval);
+}
 
 function draw() {
     ctx.fillStyle = '#066e46';
@@ -76,34 +86,36 @@ function shiftSnake() {
 }
 
 function gameLoop() {
-    testGameOver();
-    if (foodCollected) {
-        snake = [{ x: snake[0].x, y: snake[0].y }, ...snake];
-        foodCollected = false;
-        score++;
-    }
+    if (!isPaused) {
+        testGameOver();
+        if (foodCollected) {
+            snake = [{ x: snake[0].x, y: snake[0].y }, ...snake];
+            foodCollected = false;
+            score++;
+        }
 
-    shiftSnake();
+        shiftSnake();
 
-    if (direction == 'LEFT') {
-        snake[0].x--;
-    }
+        if (direction == 'LEFT') {
+            snake[0].x--;
+        }
 
-    if (direction == 'RIGHT') {
-        snake[0].x++;
-    }
+        if (direction == 'RIGHT') {
+            snake[0].x++;
+        }
 
-    if (direction == 'UP') {
-        snake[0].y--;
-    }
+        if (direction == 'UP') {
+            snake[0].y--;
+        }
 
-    if (direction == 'DOWN') {
-        snake[0].y++;
-    }
+        if (direction == 'DOWN') {
+            snake[0].y++;
+        }
 
-    if (snake[0].x == food.x && snake[0].y == food.y) {
-        foodCollected = true;
-        placeFood();
+        if (snake[0].x == food.x && snake[0].y == food.y) {
+            foodCollected = true;
+            placeFood();
+        }
     }
 }
 
@@ -123,6 +135,8 @@ function keyDown(e) {
 }
 
 document.getElementById('highScoresLink').onclick = function() {
+    isPaused = true;
+    pauseGame();
     let modal = document.getElementById('highScoresModal');
     let allHighScores = document.getElementById('allHighScores');
     allHighScores.innerHTML = '';
@@ -135,12 +149,16 @@ document.getElementById('highScoresLink').onclick = function() {
 }
 
 document.getElementsByClassName('close')[0].onclick = function() {
+    isPaused = false;
+    startGame();
     document.getElementById('highScoresModal').style.display = 'none';
 }
 
 window.onclick = function(event) {
     let modal = document.getElementById('highScoresModal');
     if (event.target == modal) {
+        isPaused = false;
+        startGame();
         modal.style.display = 'none';
     }
 }
