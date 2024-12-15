@@ -80,9 +80,14 @@
     </nav>
 
     <main>
-        <div id="game-board">
-            <!-- Erste Zeile -->
+        <div id="player-setup">
+            <h5>Wähle die Anzahl der Spieler:</h5>
+            <input type="number" id="player-count" min="1" max="10" value="1">
+            <button id="start-button">Start</button>
+        </div>
+        <div id="game-board" style="display: none;">
             <div class="card-row">
+                <!-- Erste Zeile -->
                 <div class="card"><span class="emoji"></span></div>
                 <div class="card"><span class="emoji"></span></div>
                 <div class="card"><span class="emoji"></span></div>
@@ -94,8 +99,8 @@
                 <div class="card"><span class="emoji"></span></div>
                 <div class="card"><span class="emoji"></span></div>
             </div>
-            <!-- Zweite Zeile -->
             <div class="card-row">
+                <!-- Zweite Zeile -->
                 <div class="card"><span class="emoji"></span></div>
                 <div class="card"><span class="emoji"></span></div>
                 <div class="card"><span class="emoji"></span></div>
@@ -107,8 +112,8 @@
                 <div class="card"><span class="emoji"></span></div>
                 <div class="card"><span class="emoji"></span></div>
             </div>
-            <!-- Dritte Zeile -->
             <div class="card-row">
+                <!-- Dritte Zeile -->
                 <div class="card"><span class="emoji"></span></div>
                 <div class="card"><span class="emoji"></span></div>
                 <div class="card"><span class="emoji"></span></div>
@@ -121,21 +126,42 @@
                 <div class="card"><span class="emoji"></span></div>
             </div>
         </div>
-        <div id="score">
-            <h5>Score:</h5>
-            <span>0</span>
+        <div id="scores" style="display: none;">
+            <h5>Scores:</h5>
+            <div id="player-scores"></div>
         </div>
-        <button id="reset-button">Zurücksetzen</button>
+        <div id="current-player" style="display: none;">
+            <h5>Aktueller Spieler:</h5>
+            <span id="current-player-name"></span>
+        </div>
+        <button id="reset-button" style="display: none;">Zurücksetzen</button>
         <script>
             const emojis = ['😻', '🙂', '🫡', '🤑', '🐶', '🐱', '🍎', '🍌', '🍒', '☀️', '🫂', '✨', '🗺️', '💤', '🚁']; // Weitere Emojis hinzufügen
 
             const shuffledEmojis = emojis.concat(emojis).sort(() => Math.random() - 0.5);
-
             const cards = Array.from(document.querySelectorAll('.card'));
-
             let flippedCards = [];
             let foundPairs = 0;
             let isProcessing = false;
+            let currentPlayer = 0;
+            let playerScores = [];
+            let totalPlayers = 1;
+
+            document.getElementById('start-button').addEventListener('click', () => {
+                totalPlayers = parseInt(document.getElementById('player-count').value, 10);
+                for (let i = 0; i < totalPlayers; i++) {
+                    playerScores.push(0);
+                }
+
+                document.getElementById('player-setup').style.display = 'none';
+                document.getElementById('game-board').style.display = 'block';
+                document.getElementById('scores').style.display = 'block';
+                document.getElementById('current-player').style.display = 'block';
+                document.getElementById('reset-button').style.display = 'block';
+
+                updateScores();
+                updateCurrentPlayer();
+            });
 
             cards.forEach((card, i) => {
                 card.addEventListener('click', () => {
@@ -168,15 +194,14 @@
                             if (card1.emoji === card2.emoji) {
                                 card1.element.style.visibility = 'hidden';
                                 card2.element.style.visibility = 'hidden';
-                                foundPairs++;
-                                if (foundPairs === emojis.length) {
-                                    alert('Glückwunsch! Du hast alle Paare gefunden.');
-                                }
+                                playerScores[currentPlayer]++;
                             } else {
                                 card1.element.style.transition = 'transform 0.00s ease-in-out';
                                 card1.element.style.transform = 'rotateY(0deg)';
                                 card2.element.style.transition = 'transform 0.00s ease-in-out';
                                 card2.element.style.transform = 'rotateY(0deg)';
+
+                                currentPlayer = (currentPlayer + 1) % totalPlayers; // Spieler wechseln nur, wenn sie kein Paar gefunden haben
                             }
 
                             flippedCards.forEach(card => {
@@ -187,8 +212,8 @@
                             flippedCards = [];
                             isProcessing = false;
 
-                            const scoreElement = document.getElementById('score').querySelector('span');
-                            scoreElement.textContent = foundPairs;
+                            updateScores();
+                            updateCurrentPlayer();
                         }, 2000);
                     }
                 });
@@ -206,10 +231,36 @@
                 flippedCards = [];
                 foundPairs = 0;
                 isProcessing = false;
+                currentPlayer = 0;
+                playerScores = [];
+                totalPlayers = 1;
 
-                const scoreElement = document.getElementById('score').querySelector('span');
-                scoreElement.textContent = foundPairs;
+                const playerCountInput = document.getElementById('player-count');
+                playerCountInput.value = 1;
+
+                updateScores();
+                updateCurrentPlayer();
+
+                document.getElementById('player-setup').style.display = 'block';
+                document.getElementById('game-board').style.display = 'none';
+                document.getElementById('scores').style.display = 'none';
+                document.getElementById('current-player').style.display = 'none';
+                document.getElementById('reset-button').style.display = 'none';
             });
+
+            function updateScores() {
+                const scoreElement = document.getElementById('player-scores');
+                scoreElement.innerHTML = '';
+                playerScores.forEach((score, index) => {
+                    const scoreDiv = document.createElement('div');
+                    scoreDiv.textContent = `Spieler ${index + 1}: ${score}`;
+                    scoreElement.appendChild(scoreDiv);
+                });
+            }
+
+            function updateCurrentPlayer() {
+                document.getElementById('current-player-name').textContent = `Spieler ${currentPlayer + 1}`;
+            }
         </script>
     </main>
 
