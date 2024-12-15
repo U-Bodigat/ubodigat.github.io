@@ -40,8 +40,8 @@ document.addEventListener("keyup", function(event) {
     }
 });
 
-var initialBallSpeedX = 2; // Ursprünglicher Wert für die Geschwindigkeit des Balls in der X-Richtung
-var initialBallSpeedY = 2; // Ursprünglicher Wert für die Geschwindigkeit des Balls in der Y-Richtung
+var initialBallSpeedX = 7; // Ursprünglicher Wert für die Geschwindigkeit des Balls in der X-Richtung
+var initialBallSpeedY = 7; // Ursprünglicher Wert für die Geschwindigkeit des Balls in der Y-Richtung
 
 var ballSpeedX = initialBallSpeedX; // Aktueller Wert für die Geschwindigkeit des Balls in der X-Richtung
 var ballSpeedY = initialBallSpeedY; // Aktueller Wert für die Geschwindigkeit des Balls in der Y-Richtung
