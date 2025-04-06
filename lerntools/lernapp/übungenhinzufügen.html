@@ -80,30 +80,56 @@
     </nav>
 
     <div id="editAnchor"></div>
-    <form onsubmit="übunghinzufügen(); return false;">
-        <input id="frageInput" type="text" placeholder="Frage?" required></input>
-        <input id="antwortInput" type="text" placeholder="Antwort 💡" required></input>
-        <button id="Hinzufügebutton">Hinzufügen</button>
-    </form>
 
-    <ul id="Übungsliste">
-    </ul>
+    <div id="form-container">
+        <div class="input-row">
+            <input id="frageInput" type="text" placeholder="Frage?" required>
+            <input id="antwortInput" type="text" placeholder="Antwort 💡" required>
+        </div>
+
+        <div class="checkbox-section">
+            <p class="checkbox-title">Groß- / Kleinschreibung beachten</p>
+            <div class="checkbox-line">
+                <input type="checkbox" id="caseSensitiveCheckbox" checked>
+            </div>
+        </div>
+
+        <div class="button-row">
+            <button id="Hinzufügebutton" onclick="übunghinzufügen()">Hinzufügen</button>
+        </div>
+    </div>
+
     <div id="popupContainer">
         <div id="popupContent">
             <label for="editFrage">Frage:</label>
-            <input type="text" id="editFrage" />
-            <label id="antworttextinbearbeitung" for="editAntwort">Antwort:</label>
-            <input type="text" id="editAntwort" />
-            <button onclick="saveEdit()">Speichern</button>
-            <button onclick="closePopup()">Abbrechen</button>
+            <input type="text" id="editFrage"><br>
+
+            <label for="editAntwort">Antwort:</label>
+            <input type="text" id="editAntwort"><br>
+
+            <div style="margin-top: 15px; margin-bottom: 15px;">
+                <input type="checkbox" id="editCaseSensitive">
+                <label for="editCaseSensitive" style="color: white; font-size: 16px;">Groß-/Kleinschreibung beachten</label>
+            </div>
+
+            <div class="popup-buttons">
+                <button onclick="saveEdit()">Speichern</button>
+                <button onclick="closePopup()">Abbrechen</button>
+            </div>
         </div>
     </div>
+
+    <ul id="Übungsliste"></ul>
+
     <footer>
         <div>
-            <button onclick="löschen(), window.location.reload()" id="löschen">Alle Übungen Löschen</button>
+            <button id="alle-löschen-button" onclick="löschen()">Alle Übungen Löschen</button>
+            <div class="export-import-buttons" id="abstand">
+                <button type="button" onclick="exportDictionary()">📤 Exportieren</button>
+                <button type="button" onclick="importDictionary()">📥 Importieren</button>
+            </div>
         </div>
     </footer>
-
 </body>
 
 </html>

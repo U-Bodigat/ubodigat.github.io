@@ -16,7 +16,6 @@ body {
     scrollbar-width: thin;
     background-color: #26282b;
     user-select: none;
-    /*ab hier hintergrund*/
     background-image: linear-gradient(rgba(0, 0, 0, 0.0), rgba(0, 0, 0, 0.0)), url(/bilder/ubodigat.com\ Lernapp\ Hintergrund.gif);
     background-size: cover;
     background-attachment: fixed;
@@ -307,15 +306,14 @@ input {
     padding: 15px;
     text-align: center;
     color: #ffff;
-    margin-top: 30px;
-    margin-left: 40%;
-    background: transparent;
+    background: rgba(255, 255, 255, 0.1);
     cursor: text;
     font-size: 23px;
-    border-top-right-radius: 5px 5px;
-    border-top-left-radius: 5px 5px;
-    border-bottom-right-radius: 5px 5px;
-    border-bottom-left-radius: 5px 5px;
+    border-radius: 10px;
+    width: 100%;
+    max-width: 400px;
+    margin: 10px auto;
+    display: block;
 }
 
 input:hover {
@@ -323,7 +321,7 @@ input:hover {
     background-color: #28376352;
     text-align: center;
     color: beige;
-    cursor: help;
+    cursor: auto;
     border: 0;
     outline: 0;
     border-bottom: 4px solid #00ff6a;
@@ -337,17 +335,8 @@ input:focus {
 }
 
 footer {
-    background: #1f2e1d;
-    font-size: 20px;
-    text-align: end;
-    clear: both;
-    height: 6.5%;
-    padding: 9px;
-    position: fixed;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    z-index: 2;
+    text-align: center;
+    margin-top: 60px;
 }
 
 #main {
@@ -370,17 +359,38 @@ footer {
 }
 
 #löschen {
-    margin-right: 70%;
+    background-color: #1f2e1d;
+    color: white;
+    padding: 10px 20px;
+    font-size: 14px;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+#löschen:hover {
+    background-color: #00ff0d;
+    color: #003a1e;
+    font-weight: 700;
 }
 
 #Übungsliste {
-    border: 2px;
-    color: #fff;
-    font-size: 25px;
-    margin-left: 35%;
-    margin: 40px 40% 10;
-    margin-top: 40px;
-    padding-bottom: 100px;
+    margin: 40px auto;
+    width: 90%;
+    list-style-type: none;
+    padding: 0;
+}
+
+#Übungsliste li {
+    background: rgba(40, 40, 40, 0.95);
+    margin-bottom: 12px;
+    padding: 15px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: white;
+    font-size: 16px;
+    box-shadow: 0 0 8px rgba(0, 0, 0, 0.5);
 }
 
 #Abtrennung {
@@ -390,9 +400,20 @@ footer {
 }
 
 #Hinzufügebutton {
-    margin-left: 55%;
-    margin-right: 20px;
-    margin-top: 10px;
+    background-color: #4CAF50;
+    color: white;
+    padding: 12px 24px;
+    font-size: 15px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+#Hinzufügebutton:hover {
+    background-color: #00ff0d;
+    color: #003a1e;
+    font-weight: 700;
 }
 
 #diefrage {
@@ -481,6 +502,12 @@ footer {
     display: block;
 }
 
+.delete-icon,
+.edit-icon {
+    margin-right: 10px;
+    cursor: pointer;
+}
+
 .delete-icon {
     cursor: pointer;
     position: relative;
@@ -527,28 +554,33 @@ footer {
 }
 
 #popupContainer {
-    z-index: 2;
     display: none;
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    border-radius: 20px;
-    background: #1a1a1ad7;
+    background: rgba(0, 0, 0, 0.8);
     justify-content: center;
     align-items: center;
 }
 
 #popupContent {
-    margin-right: 20%;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    background: #292929;
-    padding: 16px;
+    background: #26282b;
+    padding: 30px;
     border-radius: 20px;
+    text-align: center;
+    width: 400px;
+}
+
+#popupContent input {
+    width: 80%;
+    padding: 10px;
+    margin: 10px 0;
+    background: #333;
+    color: white;
+    border: none;
+    border-radius: 8px;
 }
 
 form {
@@ -634,21 +666,59 @@ label {
 }
 
 @media (max-width: 600px) {
-    #headerinput a {
-        margin-left: 40px;
-        margin-right: -40px;
+    #form-container {
+        width: 90%;
+        padding: 20px;
     }
-    #übungszeit {
-        margin-top: -20%;
+    .input-row {
+        flex-direction: column;
+        align-items: center;
     }
-    #nächste-übung b {
-        margin-right: 40px;
+    .input-row input {
+        width: 100%;
+        max-width: 300px;
+        margin-left: 0;
+        font-size: 18px;
     }
-    form input {
-        margin-left: 20%;
+    .checkbox-section {
+        margin-top: 10px;
+        margin-bottom: 20px;
     }
-    #input2 {
-        margin-left: 20%;
+    .checkbox-title {
+        font-size: 16px;
+        text-align: center;
+    }
+    .button-row {
+        display: flex;
+        justify-content: center;
+    }
+    .button-row button {
+        width: 100%;
+        max-width: 300px;
+        font-size: 18px;
+    }
+    #Übungsliste li {
+        font-size: 14px;
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 15px;
+    }
+    #Übungsliste li span {
+        display: inline-block;
+        margin-bottom: 5px;
+    }
+    input {
+        font-size: 18px;
+        max-width: 90%;
+        padding: 12px;
+    }
+    .input-row {
+        flex-direction: column;
+        gap: 15px;
+    }
+    #form-container {
+        width: 90%;
+        padding: 20px;
     }
 }
 
@@ -727,4 +797,290 @@ label {
         font-weight: 600;
         margin-left: 5px;
     }
+}
+
+.small-button {
+    background-color: #4CAF50;
+    color: white;
+    padding: 6px 10px;
+    font-size: 12px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.small-button:hover {
+    transition: 0.5s;
+    background-color: #00ff0d;
+    color: #003a1e;
+    font-weight: 700;
+}
+
+#form-container {
+    background: #1a1a1a;
+    padding: 38px;
+    border-radius: 20px;
+    text-align: center;
+    width: 100%;
+    max-width: 450px;
+    margin: 50px auto 30px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.7);
+}
+
+.row {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 10px;
+    flex-wrap: wrap;
+}
+
+.checkbox-row {
+    margin-bottom: 20px;
+}
+
+.controls {
+    margin-top: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.checkbox-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.checkbox-container input[type="checkbox"] {
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+}
+
+.export-import-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-top: 10px;
+}
+
+.export-import-buttons button {
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-size: 14px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.export-import-buttons button:hover {
+    transition: 0.5s;
+    background-color: #00ff0d;
+    color: #003a1e;
+    font-weight: 700;
+}
+
+.row {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 10px;
+    flex-wrap: wrap;
+}
+
+.form-area {
+    background: rgba(0, 0, 0, 0.4);
+    padding: 30px;
+    border-radius: 20px;
+    backdrop-filter: blur(8px);
+    box-shadow: 0px 4px 30px rgba(0, 0, 0, 0.3);
+}
+
+input[type="text"] {
+    width: 300px;
+    margin: 10px 0;
+    padding: 12px;
+    font-size: 18px;
+    border-radius: 8px;
+    border: none;
+    outline: none;
+    background: rgba(255, 255, 255, 0.1);
+    color: white;
+}
+
+input[type="text"]:focus {
+    border: 2px solid #00ff0d;
+}
+
+.checkbox-line {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 0px;
+    gap: 10px;
+}
+
+.checkbox-line input[type="checkbox"] {
+    width: 24px;
+    height: 24px;
+    accent-color: #00ff0d;
+    cursor: pointer;
+}
+
+#caseSensitiveCheckbox {
+    margin-top: -50%;
+    cursor: pointer;
+}
+
+.label {
+    color: red;
+    font-weight: bold;
+}
+
+.input-row {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.input-row input {
+    flex: 1;
+    max-width: 100%;
+    padding: 12px;
+    border: none;
+    background: #333;
+    color: white;
+    border-radius: 10px;
+    font-size: 16px;
+    box-sizing: border-box;
+}
+
+.button-row {
+    margin-bottom: 5px;
+}
+
+.button-row button {
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    padding: 12px 25px;
+    font-size: 16px;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.button-row button:hover {
+    transition: 0.5s;
+    background-color: #00ff0d;
+    color: #003a1e;
+    font-weight: 700;
+}
+
+.popup-buttons {
+    margin-top: 20px;
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+}
+
+.popup-buttons button {
+    background-color: #4CAF50;
+    padding: 10px 20px;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+.popup-buttons button:hover {
+    transition: 0.5s;
+    background-color: #00ff0d;
+    color: #003a1e;
+}
+
+.checkbox-section {
+    margin-bottom: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.checkbox-title {
+    font-size: 17px;
+    font-weight: bold;
+    margin-bottom: 20px;
+    color: white;
+}
+
+#alle-löschen-button {
+    background-color: #163d1d;
+    color: white;
+    padding: 12px 20px;
+    font-size: 16px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
+
+footer>div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 30px;
+}
+
+#alle-löschen-button:hover {
+    transition: 0.5s;
+    background-color: #00ff0d;
+    color: #003a1e;
+    font-weight: 700;
+}
+
+#streak-counter {
+    margin-top: 8px;
+    margin-left: 13%;
+    font-size: 16px;
+    color: orange;
+    text-align: center;
+    font-weight: bold;
+}
+
+.popup-button {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    font-size: 14px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.popup-button:hover {
+    background-color: #00ff0d;
+    color: #003a1e;
+    font-weight: 700;
+}
+
+.popup-button.cancel {
+    background-color: #aa0000;
+}
+
+.popup-button.cancel:hover {
+    background-color: #ff0000;
+}
+
+#abstand {
+    margin-bottom: 2% !important;
 }
