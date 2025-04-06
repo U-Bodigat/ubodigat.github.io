@@ -3,6 +3,7 @@ let ran_key;
 let timer_gestartet = false;
 let startzeit;
 let timerInterval;
+let streak = 0;
 
 function übunghinzufügen() {
     const frage = document.getElementById('frageInput').value.trim();
@@ -158,32 +159,36 @@ function nächstübung() {
     }
 
     document.getElementById('überblendung').innerText = "";
-    document.getElementById('überprüfungstext').innerText = "";
 
     document.getElementById('streak-counter').innerHTML = `🔥 Streak: ${streak}`;
 }
 
 function richtigfalsch() {
-    const userAntwort = document.getElementById('Antwort').value.trim();
+    const userAntwort = Antwort.value.trim();
     const correctAnswer = dictionary[ran_key].answer.trim();
     const caseSensitive = dictionary[ran_key].caseSensitive;
 
     let korrekt = caseSensitive ? (userAntwort === correctAnswer) : (userAntwort.toLowerCase() === correctAnswer.toLowerCase());
 
     if (korrekt) {
-        document.getElementById('überprüfungstext').innerText = "✅ Richtig!";
+        überprüfungstext.innerHTML = `Richtig (;`;
         dictionary[ran_key].incorrectAttempts = 0;
         streak++;
     } else {
-        document.getElementById('überprüfungstext').innerHTML = `
-            ❌ Falsch! Richtige Antwort: ${correctAnswer}
-        `;
+        überprüfungstext.innerHTML =
+            `Das ist leider falsch ;(` +
+            `<div id="lösungstext"> <br> 
+                <h4>Deine Antwort:</h4> 
+                <h4 id="falscheantwort">${userAntwort}</h4> 
+                <br> 
+                <h4>Korrekte Antwort:</h4> 
+                <h4 id="richtigelösung">${correctAnswer}</h4> 
+            </div>`;
         dictionary[ran_key].incorrectAttempts = (dictionary[ran_key].incorrectAttempts || 0) + 1;
         streak = 0;
     }
 
     localStorage.setItem('dictionary', JSON.stringify(dictionary));
-
     document.getElementById('streak-counter').innerHTML = `🔥 Streak: ${streak}`;
 
     setTimeout(() => {
