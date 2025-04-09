@@ -4,6 +4,8 @@ let timer_gestartet = false;
 let startzeit;
 let timerInterval;
 let streak = 0;
+let abgefragteVokabeln = [];
+let frageZaehler = 0;
 
 function übunghinzufügen() {
     const frage = document.getElementById('frageInput').value.trim();
@@ -15,7 +17,8 @@ function übunghinzufügen() {
             question: frage,
             answer: antwort,
             caseSensitive: caseSensitive,
-            incorrectAttempts: 0
+            incorrectAttempts: 0,
+            recoveredAttempts: 0
         };
         localStorage.setItem('dictionary', JSON.stringify(dictionary));
         render();
@@ -125,20 +128,29 @@ function mischFragen() {
 }
 
 function chooseFrage() {
-    const weightedList = [];
+    frageZaehler++;
 
-    for (const key of Object.keys(dictionary)) {
-        const attempts = dictionary[key].incorrectAttempts || 0;
-        weightedList.push(key);
-        if (attempts > 0) {
-            for (let i = 0; i < Math.min(attempts, 2); i++) {
-                weightedList.push(key);
-            }
-        }
+    const keys = Object.keys(dictionary);
+    const falscheKeys = keys.filter(key => dictionary[key].incorrectAttempts > 0 && dictionary[key].recoveredAttempts < 2);
+    const normaleKeys = keys.filter(key => !abgefragteVokabeln.includes(key));
+
+
+    if (normaleKeys.length === 0) {
+        abgefragteVokabeln = [];
     }
 
-    return weightedList[Math.floor(Math.random() * weightedList.length)];
+
+    if (frageZaehler % 4 === 0 && falscheKeys.length > 0) {
+        const randomKey = falscheKeys[Math.floor(Math.random() * falscheKeys.length)];
+        return randomKey;
+    } else {
+        const nochNichtAbgefragt = keys.filter(key => !abgefragteVokabeln.includes(key));
+        const randomKey = nochNichtAbgefragt[Math.floor(Math.random() * nochNichtAbgefragt.length)];
+        abgefragteVokabeln.push(randomKey);
+        return randomKey;
+    }
 }
+
 
 function nächstübung() {
     if (!timer_gestartet) {
@@ -172,6 +184,9 @@ function richtigfalsch() {
 
     if (korrekt) {
         überprüfungstext.innerHTML = `Richtig (;`;
+        if (dictionary[ran_key].incorrectAttempts > 0) {
+            dictionary[ran_key].recoveredAttempts = (dictionary[ran_key].recoveredAttempts || 0) + 1;
+        }
         dictionary[ran_key].incorrectAttempts = 0;
         streak++;
     } else {
@@ -351,7 +366,6 @@ function showImportOptions(importedData) {
     buttonContainer.style.gap = '15px';
     buttonContainer.style.flexWrap = 'wrap';
 
-    // Nur anzeigen, wenn aktuell Vokabeln existieren
     if (window.canOverwrite) {
         const überschreibenButton = document.createElement('button');
         überschreibenButton.innerText = 'Überschreiben';
@@ -393,3 +407,10 @@ function showImportOptions(importedData) {
     overlay.appendChild(modal);
     document.body.appendChild(overlay);
 }
+
+document.getElementById('antwortInput').addEventListener('keydown', function(event) {
+    if (event.key === 'Enter') {
+        event.preventDefault();
+        übunghinzufügen();
+    }
+});
