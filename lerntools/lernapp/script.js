@@ -51,6 +51,12 @@ function render() {
     }
 
     window.canOverwrite = overwriteOptionVisible;
+    const scrollDownButton = document.getElementById('scrollDownButton');
+    if (Object.keys(dictionary).length > 7) {
+        scrollDownButton.style.display = 'block';
+    } else {
+        scrollDownButton.style.display = 'none';
+    }
 }
 
 function deleteÜbung(key) {
@@ -412,5 +418,38 @@ document.getElementById('antwortInput').addEventListener('keydown', function(eve
     if (event.key === 'Enter') {
         event.preventDefault();
         übunghinzufügen();
+    }
+});
+
+window.addEventListener('DOMContentLoaded', () => {
+    const scrollDownButton = document.getElementById('scrollDownButton');
+
+    if (scrollDownButton) {
+        function updateButtonDirection() {
+            const scrollTop = window.scrollY;
+            const scrollPosition = scrollTop + window.innerHeight;
+            const pageHeight = document.documentElement.scrollHeight;
+
+            if (pageHeight - scrollPosition <= 2) {
+                scrollDownButton.innerHTML = "↑";
+                scrollDownButton.onclick = () => {
+                    window.scrollTo({
+                        top: 0,
+                        behavior: 'smooth'
+                    });
+                };
+            } else {
+                scrollDownButton.innerHTML = "↓";
+                scrollDownButton.onclick = () => {
+                    window.scrollTo({
+                        top: document.body.scrollHeight,
+                        behavior: 'smooth'
+                    });
+                };
+            }
+        }
+
+        updateButtonDirection();
+        window.addEventListener('scroll', updateButtonDirection);
     }
 });

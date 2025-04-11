@@ -103,7 +103,7 @@ header p {
     text-decoration: none;
 }
 
-button {
+.mainbutton {
     transition: 0.5s;
     background-color: #4CAF50;
     color: #fff;
@@ -118,14 +118,14 @@ button {
     box-shadow: 0px 3px 1px -2px rgb(0 0 0 / 20%), 0px 2px 2px 0px rgb(0 0 0 / 14%), 0px 1px 5px 0px rgb(0 0 0 / 12%);
 }
 
-button:hover {
+.mainbutton:hover {
     transition: 0.5s;
     background-color: #00ff0d;
     color: #003a1e;
     font-weight: 900;
 }
 
-button a {
+.mainbutton a {
     transition: 0.5s;
     color: #fff;
     text-decoration: none;
@@ -1120,4 +1120,32 @@ footer>div {
     background-color: #555;
     outline: none;
     border-bottom: 3px solid #00ffd5;
+}
+
+#scrollDownButton {
+    position: fixed;
+    right: 20px;
+    bottom: 20px;
+    width: 35px;
+    height: 35px;
+    font-size: 15px;
+    font-weight: 900;
+    border-radius: 100cm;
+    background: rgba(255, 255, 255, 0.06);
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    box-shadow: 0 10px 20px rgba(175, 175, 175, 0.25);
+    transition: all 0.5s ease;
+    overflow: hidden;
+}
+
+#scrollDownButton:hover {
+    background: rgba(255, 255, 255, 0.15);
+    transform: scale(1.1);
+    box-shadow: 0 6px 18px rgba(255, 255, 255, 0.35);
 }
