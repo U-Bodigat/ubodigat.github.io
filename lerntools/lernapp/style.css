@@ -597,17 +597,25 @@ footer {
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(0, 0, 0, 0.8);
+    background: rgba(0, 0, 0, 0.7);
     justify-content: center;
     align-items: center;
+    z-index: 9999;
 }
 
 #popupContent {
-    background: #26282b;
-    padding: 30px;
+    background: rgba(38, 40, 43, 0.95);
+    padding: 30px 25px;
     border-radius: 20px;
     text-align: center;
-    width: 400px;
+    width: 100%;
+    max-width: 400px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.8);
+    backdrop-filter: blur(10px);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
 }
 
 #popupContent input {
@@ -951,25 +959,28 @@ input[type="text"]:focus {
 .popup-buttons {
     display: flex;
     justify-content: center;
-    align-items: center;
-    gap: 15px;
     width: 100%;
+    gap: 15px;
+    margin-top: 10px;
 }
 
 .popup-buttons button {
-    margin: 0;
-    padding: 10px 20px;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
     flex: 1;
     max-width: 150px;
+    padding: 12px 20px;
+    font-size: 16px;
+    border-radius: 10px;
+    border: none;
+    background-color: #4CAF50;
+    color: white;
+    cursor: pointer;
+    transition: 0.3s;
 }
 
 .popup-buttons button:hover {
-    transition: 0.5s;
     background-color: #00ff0d;
     color: #003a1e;
+    font-weight: 700;
 }
 
 .checkbox-section {
@@ -1076,35 +1087,39 @@ footer>div {
 }
 
 #caseSensitiveContainer {
-    cursor: pointer;
+    margin-top: 0px;
     display: flex;
-    flex-direction: column;
     align-items: center;
-    margin: 20px 0;
+    gap: 8px;
+    flex-direction: row;
 }
 
 #caseSensitiveContainer input[type="checkbox"] {
-    margin-top: -30px;
-    margin-bottom: -15px;
-    width: 20px;
-    height: 20px;
+    width: 22px;
+    height: 22px;
+    accent-color: #00ff6a;
+    cursor: pointer;
 }
 
 #caseSensitiveContainer label {
+    font-size: 15px;
+    font-weight: 500;
     color: white;
-    font-size: 16px;
 }
 
 #popupContent {
-    background: #26282b;
-    padding: 20px 30px;
+    background: rgba(38, 40, 43, 0.95);
+    padding: 25px 20px;
     border-radius: 20px;
     text-align: center;
-    width: 400px;
+    width: 100%;
+    max-width: 400px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.8);
+    backdrop-filter: blur(10px);
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 10px;
+    gap: 15px;
 }
 
 #popupContent input {
@@ -1129,6 +1144,37 @@ footer>div {
     background-color: #555;
     outline: none;
     border-bottom: 3px solid #00ffd5;
+}
+
+#popupContent label {
+    font-size: 17px;
+    font-weight: 500;
+    color: white;
+    margin-bottom: 5px;
+    margin-top: -5px;
+}
+
+#popupContent input[type="text"] {
+    width: 100%;
+    padding: 10px;
+    background: rgba(255, 255, 255, 0.08);
+    border: none;
+    border-radius: 10px;
+    color: white;
+    text-align: center;
+    font-size: 16px;
+    transition: background 0.3s, border-bottom 0.3s;
+    margin-top: -5px;
+}
+
+#popupContent input[type="text"]:hover {
+    background: rgba(255, 255, 255, 0.15);
+}
+
+#popupContent input[type="text"]:focus {
+    outline: none;
+    background: rgba(255, 255, 255, 0.2);
+    border-bottom: 3px solid #00ff6a;
 }
 
 #scrollDownButton {
