@@ -414,12 +414,15 @@ function showImportOptions(importedData) {
     document.body.appendChild(overlay);
 }
 
-document.getElementById('antwortInput').addEventListener('keydown', function(event) {
-    if (event.key === 'Enter') {
-        event.preventDefault();
-        übunghinzufügen();
-    }
-});
+const antwortInput = document.getElementById('antwortInput');
+if (antwortInput) {
+    antwortInput.addEventListener('keydown', function(event) {
+        if (event.key === 'Enter') {
+            event.preventDefault();
+            übunghinzufügen();
+        }
+    });
+}
 
 window.addEventListener('DOMContentLoaded', () => {
     const scrollDownButton = document.getElementById('scrollDownButton');

@@ -339,19 +339,22 @@ form {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    margin-top: 8%;
+    margin-top: 10px;
 }
 
 input#Antwort {
     width: 100%;
     max-width: 400px;
-    margin: 10px 0;
-    text-align: center;
+    padding: 12px;
+    font-size: 18px;
+    border-radius: 8px;
+    border: none;
+    background: #333;
+    color: white;
 }
 
 footer {
     text-align: center;
-    margin-top: 60px;
 }
 
 #main {
@@ -359,7 +362,7 @@ footer {
     justify-content: center;
     align-items: center;
     color: #fff;
-    margin-top: 230px;
+    margin-top: 120px;
 }
 
 #Antwort {
@@ -368,22 +371,20 @@ footer {
 }
 
 #Prüfen {
-    margin-top: 15px;
-    margin-left: 30%;
-    margin-right: 20px;
+    margin: 0;
+    padding: 12px 24px;
+    font-size: 18px;
 }
 
 #löschen {
-    background-color: #1f2e1d;
-    color: white;
-    padding: 10px 20px;
-    font-size: 14px;
-    border-radius: 8px;
-    cursor: pointer;
     position: fixed;
     bottom: 20px;
     left: 20px;
-    z-index: 1000;
+    padding: 10px 20px;
+    font-size: 14px;
+    border-radius: 8px;
+    background-color: #1f2e1d;
+    color: white;
 }
 
 #löschen:hover {
@@ -444,24 +445,25 @@ footer {
 }
 
 #übungszeit {
-    margin-top: -10%;
-    padding-left: 55%;
-    margin-right: 10px;
-    font-size: 35px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 30px;
+    font-size: 20px;
+    font-weight: bold;
+    color: white;
+}
+
+#übungszeit p {
+    margin-bottom: 10px;
+    font-size: 24px;
+    color: white;
 }
 
 #dauer {
-    padding-top: 1%;
-    padding-left: 7%;
-}
-
-#überprüfungstext {
-    color: #fff;
-    font-size: 20px;
-    padding: 5%;
-    margin-top: -80px;
+    font-size: 22px;
     margin-bottom: 10px;
-    z-index: 2;
+    font-family: 'Courier New', Courier, monospace;
 }
 
 #lösungstext {
@@ -469,14 +471,13 @@ footer {
     line-height: 2%;
     color: #303030;
     background: #303030;
-    padding: 15px 1px 15px 1px;
+    padding: 10px 20px;
     border-radius: 10px;
-    margin-left: 35%;
-    margin-right: 35%;
-    margin-top: 20px;
-    padding-bottom: 5%;
+    margin: 20px auto 40px auto;
+    max-width: 450px;
     word-wrap: break-word;
     z-index: 2;
+    text-align: center;
 }
 
 #lösungstext:hover {
@@ -486,12 +487,8 @@ footer {
     color: #fff;
     cursor: help;
     background: #303030;
-    padding: 15px 1px 15px 1px;
+    padding: 10px 5px;
     border-radius: 10px;
-    margin-left: 35%;
-    margin-right: 35%;
-    margin-top: 20px;
-    margin-bottom: -5%;
     padding-bottom: 4%;
     z-index: 1;
     #falscheantwort {
@@ -500,6 +497,26 @@ footer {
     #richtigelösung {
         display: block;
     }
+}
+
+#überblendung,
+#überprüfungstext {
+    margin-top: 20px;
+    font-size: 18px;
+    color: #ffffff;
+    text-align: center;
+    word-wrap: break-word;
+    max-width: 90%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#überblendung {
+    display: none;
+}
+
+#überprüfungstext {
+    margin-top: 30px;
 }
 
 #falscheantwort {
@@ -604,7 +621,10 @@ footer {
 }
 
 form {
-    margin-top: 8%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
 }
 
 .question-label,
@@ -626,6 +646,10 @@ label {
     color: white;
 }
 
+#fragenstellung {
+    margin-bottom: 30px;
+}
+
 
 /*Responsive header*/
 
@@ -645,59 +669,19 @@ label {
 }
 
 @media (max-width: 600px) {
-    #form-container {
-        width: 90%;
-        padding: 20px;
+    #main {
+        margin-top: 120px;
+        padding: 10px;
     }
-    .input-row {
-        flex-direction: column;
-        align-items: center;
-    }
-    .input-row input {
-        width: 100%;
-        max-width: 300px;
-        margin-left: 0;
-        font-size: 18px;
-    }
-    .checkbox-section {
-        margin-top: 10px;
-        margin-bottom: 20px;
-    }
-    .checkbox-title {
+    input#Antwort {
         font-size: 16px;
-        text-align: center;
     }
-    .button-row {
-        display: flex;
-        justify-content: center;
+    #Prüfen {
+        font-size: 16px;
     }
-    .button-row button {
-        width: 100%;
-        max-width: 300px;
-        font-size: 18px;
-    }
-    #Übungsliste li {
-        font-size: 14px;
-        flex-direction: column;
-        align-items: flex-start;
-        padding: 15px;
-    }
-    #Übungsliste li span {
-        display: inline-block;
-        margin-bottom: 5px;
-    }
-    input {
-        font-size: 18px;
-        max-width: 90%;
-        padding: 12px;
-    }
-    .input-row {
-        flex-direction: column;
-        gap: 15px;
-    }
-    #form-container {
-        width: 90%;
-        padding: 20px;
+    #löschen {
+        font-size: 12px;
+        padding: 8px 16px;
     }
 }
 
@@ -1029,12 +1013,37 @@ footer>div {
 }
 
 #streak-counter {
-    margin-top: 8px;
-    margin-left: 13%;
-    font-size: 16px;
+    font-size: 20px;
     color: orange;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+#streak-counter::before {
+    font-size: 24px;
+}
+
+#status-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 40px;
+}
+
+#uebungszeit h3,
+#dauer {
+    margin: 5px 0;
+}
+
+#streak-counter {
+    margin-top: 10px;
+    margin-bottom: 50px;
+}
+
+#fragen-container {
     text-align: center;
-    font-weight: bold;
+    margin-top: 0px;
 }
 
 .popup-button {

@@ -80,28 +80,30 @@
     </nav>
 
     <main id="main">
-        <div id="übungszeit">
-            <p id="nächste-übung"><b>übungszeit:</b></p>
-            <div id="dauer">00:00:00</div>
-            <h2 id="streak-counter">🔥 Streak: 0</h2>
+        <div id="status-container">
+            <div id="uebungszeit">
+                <h3>Übungszeit:</h3>
+                <div id="dauer">00:00:00</div>
+            </div>
+            <div id="streak-counter">🔥 Streak: 0</div>
         </div>
-        <div id="fragenstellung">
+
+        <div id="fragen-container">
             <h1>Frage:</h1>
             <h3 id="diefrage"></h3>
-
-            <form style="margin-top: 0%;" onsubmit="richtigfalsch(); return false;">
-                <input id="Antwort" type="text" placeholder="A n t w o r t"></input>
-                <h1></h1>
-                <button class="mainbutton" id="Prüfen">Prüfen</button>
-            </form>
         </div>
+
+        <form onsubmit="richtigfalsch(); return false;">
+            <input id="Antwort" type="text" placeholder="Antwort">
+            <button class="mainbutton" id="Prüfen">Prüfen</button>
+        </form>
 
         <h3 id="überblendung"></h3>
         <h3 id="überprüfungstext"></h3>
 
         <footer>
             <div>
-                <button onclick="nächstübung()" class="mainbutton" id="löschen" id="startButton">Übung Starten</button>
+                <button onclick="nächstübung()" class="mainbutton" id="löschen">Übung Starten</button>
             </div>
         </footer>
     </main>
