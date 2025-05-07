@@ -6,6 +6,7 @@ let timerInterval;
 let streak = 0;
 let abgefragteVokabeln = [];
 let frageZaehler = 0;
+let frageWirdVertauscht = false;
 
 function übunghinzufügen() {
     const frage = document.getElementById('frageInput').value.trim();
@@ -166,55 +167,68 @@ function nächstübung() {
     }
 
     ran_key = chooseFrage();
+    const vokabelmodusAktiv = document.getElementById('vokabelmodusCheckbox')?.checked;
+
+    frageWirdVertauscht = vokabelmodusAktiv && Math.random() < 0.5;
+
     const diefrage = document.getElementById('diefrage');
     if (diefrage) {
-        diefrage.innerHTML = `${ran_key} &nbsp?`;
+        diefrage.innerHTML = frageWirdVertauscht ?
+            `${dictionary[ran_key].answer} &nbsp?` :
+            `${ran_key} &nbsp?`;
     }
 
-    const antwortInput = document.getElementById('Antwort');
-    if (antwortInput) {
-        antwortInput.value = "";
-    }
-
+    document.getElementById('Antwort').value = "";
     document.getElementById('überblendung').innerText = "";
-
     document.getElementById('streak-counter').innerHTML = `🔥 Streak: ${streak}`;
 }
 
 function richtigfalsch() {
     const userAntwort = Antwort.value.trim();
-    const correctAnswer = dictionary[ran_key].answer.trim();
-    const caseSensitive = dictionary[ran_key].caseSensitive;
+    const eintrag = dictionary[ran_key];
+    const caseSensitive = eintrag.caseSensitive;
 
-    let korrekt = caseSensitive ? (userAntwort === correctAnswer) : (userAntwort.toLowerCase() === correctAnswer.toLowerCase());
+    const correctAnswer = frageWirdVertauscht ? eintrag.question : eintrag.answer;
+    const antwortVergleich = caseSensitive ? correctAnswer : correctAnswer.toLowerCase();
+    const nutzerVergleich = caseSensitive ? userAntwort : userAntwort.toLowerCase();
 
-    if (korrekt) {
+    const istRichtig = nutzerVergleich === antwortVergleich;
+    const abweichung = levenshtein(nutzerVergleich, antwortVergleich);
+    const vokabelmodusAktiv = document.getElementById('vokabelmodusCheckbox')?.checked;
+    const fastRichtig = vokabelmodusAktiv && !istRichtig && abweichung <= 2;
+
+    if (istRichtig) {
         überprüfungstext.innerHTML = `Richtig (;`;
-        if (dictionary[ran_key].incorrectAttempts > 0) {
-            dictionary[ran_key].recoveredAttempts = (dictionary[ran_key].recoveredAttempts || 0) + 1;
-        }
-        dictionary[ran_key].incorrectAttempts = 0;
         streak++;
+        eintrag.incorrectAttempts = 0;
+    } else if (fastRichtig) {
+        überprüfungstext.innerHTML =
+            `Fast richtig 😅<br><br>
+            <div id="lösungstext">
+                <h4>Deine Antwort:</h4>
+                <h4 id="falscheantwort">${userAntwort}</h4>
+                <br>
+                <h4>Korrekte Antwort:</h4>
+                <h4 id="richtigelösung">${correctAnswer}</h4>
+            </div>`;
+        streak = 0;
     } else {
         überprüfungstext.innerHTML =
-            `Das ist leider falsch ;(` +
-            `<div id="lösungstext"> <br> 
-                <h4>Deine Antwort:</h4> 
-                <h4 id="falscheantwort">${userAntwort}</h4> 
-                <br> 
-                <h4>Korrekte Antwort:</h4> 
-                <h4 id="richtigelösung">${correctAnswer}</h4> 
+            `Das ist leider falsch ;(<br><br>
+            <div id="lösungstext">
+                <h4>Deine Antwort:</h4>
+                <h4 id="falscheantwort">${userAntwort}</h4>
+                <br>
+                <h4>Korrekte Antwort:</h4>
+                <h4 id="richtigelösung">${correctAnswer}</h4>
             </div>`;
-        dictionary[ran_key].incorrectAttempts = (dictionary[ran_key].incorrectAttempts || 0) + 1;
         streak = 0;
+        eintrag.incorrectAttempts = (eintrag.incorrectAttempts || 0) + 1;
     }
 
     localStorage.setItem('dictionary', JSON.stringify(dictionary));
     document.getElementById('streak-counter').innerHTML = `🔥 Streak: ${streak}`;
-
-    setTimeout(() => {
-        nächstübung();
-    }, 1000);
+    setTimeout(() => nächstübung(), 1000);
 }
 
 const reader = new FileReader();
@@ -456,3 +470,21 @@ window.addEventListener('DOMContentLoaded', () => {
         window.addEventListener('scroll', updateButtonDirection);
     }
 });
+
+function levenshtein(a, b) {
+    const matrix = Array.from({ length: b.length + 1 }, (_, i) => [i]);
+    for (let j = 0; j <= a.length; j++) matrix[0][j] = j;
+
+    for (let i = 1; i <= b.length; i++) {
+        for (let j = 1; j <= a.length; j++) {
+            const cost = b[i - 1] === a[j - 1] ? 0 : 1;
+            matrix[i][j] = Math.min(
+                matrix[i - 1][j] + 1,
+                matrix[i][j - 1] + 1,
+                matrix[i - 1][j - 1] + cost
+            );
+        }
+    }
+
+    return matrix[b.length][a.length];
+}
