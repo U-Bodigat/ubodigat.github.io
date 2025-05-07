@@ -1210,3 +1210,93 @@ footer>div {
     transform: scale(1.1);
     box-shadow: 0 6px 18px rgba(255, 255, 255, 0.35);
 }
+
+#modusContainer {
+    margin: 20px auto 30px;
+    text-align: center;
+    font-size: 14px;
+    font-weight: 500;
+    color: #ffffff;
+    background-color: rgba(255, 255, 255, 0.05);
+    padding: 10px 18px;
+    border-radius: 14px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+    backdrop-filter: blur(5px);
+    max-width: 450px;
+}
+
+#modusContainer label {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    font-size: 15px;
+    font-weight: 600;
+    color: white;
+    flex-wrap: wrap;
+}
+
+#modusContainer input[type="checkbox"] {
+    width: 22px;
+    height: 22px;
+    accent-color: #00ff0d;
+    cursor: pointer;
+}
+
+.vokabel-toggle-container {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-right: 20px;
+}
+
+.toggle-label {
+    color: white;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.toggle-switch {
+    position: relative;
+    display: inline-block;
+    width: 44px;
+    height: 24px;
+}
+
+.toggle-switch input {
+    opacity: 0;
+    width: 200px;
+    height: 0;
+}
+
+.slider {
+    position: absolute;
+    cursor: pointer;
+    background-color: #33ff0030;
+    border-radius: 34px;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    transition: 0.4s;
+}
+
+.slider::before {
+    position: absolute;
+    content: "";
+    height: 18px;
+    width: 18px;
+    left: 3px;
+    bottom: 2.8px;
+    background-color: rgb(0, 0, 0);
+    border-radius: 50%;
+    transition: 0.4s;
+}
+
+.toggle-switch input:checked+.slider {
+    background-color: #33ff00;
+}
+
+.toggle-switch input:checked+.slider::before {
+    transform: translateX(20px);
+}
