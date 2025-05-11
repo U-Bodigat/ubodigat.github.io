@@ -102,9 +102,100 @@ function closePopup() {
 }
 
 function löschen() {
-    localStorage.clear();
-    dictionary = {};
-    render();
+    const overlay = document.createElement('div');
+    overlay.style.position = 'fixed';
+    overlay.style.top = '0';
+    overlay.style.left = '0';
+    overlay.style.width = '100%';
+    overlay.style.height = '100%';
+    overlay.style.backgroundColor = 'rgba(0, 0, 0, 0.8)';
+    overlay.style.display = 'flex';
+    overlay.style.justifyContent = 'center';
+    overlay.style.alignItems = 'center';
+    overlay.style.zIndex = '9999';
+
+    const modal = document.createElement('div');
+    modal.style.background = '#1f1f1f';
+    modal.style.padding = '30px 25px';
+    modal.style.borderRadius = '20px';
+    modal.style.textAlign = 'center';
+    modal.style.width = '90%';
+    modal.style.maxWidth = '400px';
+    modal.style.color = 'white';
+    modal.style.boxShadow = '0 0 20px rgba(0, 0, 0, 0.7)';
+    modal.style.backdropFilter = 'blur(10px)';
+
+    const title = document.createElement('h2');
+    title.innerHTML = '⚠️ <b>Alle Vokabeln löschen?</b>';
+    title.style.marginBottom = '15px';
+    modal.appendChild(title);
+
+    const message = document.createElement('p');
+    message.innerHTML = 'Bist du sicher, dass du <b>ALLE</b> gespeicherten<br>Vokabeln unwiderruflich löschen willst?';
+    message.style.marginBottom = '25px';
+    modal.appendChild(message);
+
+    const buttonContainer = document.createElement('div');
+    buttonContainer.style.display = 'flex';
+    buttonContainer.style.justifyContent = 'center';
+    buttonContainer.style.gap = '15px';
+
+    const confirmButton = document.createElement('button');
+    confirmButton.textContent = 'Ja, löschen';
+    Object.assign(confirmButton.style, {
+        padding: '10px 20px',
+        backgroundColor: '#cc0000',
+        color: '#ffffff',
+        border: 'none',
+        borderRadius: '8px',
+        cursor: 'pointer',
+        fontWeight: 'bold',
+        transition: 'all 0.3s ease',
+    });
+    confirmButton.addEventListener('mouseenter', () => {
+        confirmButton.style.backgroundColor = '#ff0000';
+        confirmButton.style.color = '#000000';
+    });
+    confirmButton.addEventListener('mouseleave', () => {
+        confirmButton.style.backgroundColor = '#cc0000';
+        confirmButton.style.color = '#ffffff';
+    });
+    confirmButton.onclick = () => {
+        localStorage.clear();
+        dictionary = {};
+        render();
+        document.body.removeChild(overlay);
+    };
+
+    const cancelButton = document.createElement('button');
+    cancelButton.textContent = 'Abbrechen';
+    Object.assign(cancelButton.style, {
+        padding: '10px 20px',
+        backgroundColor: '#00cc00',
+        color: '#ffffff',
+        border: 'none',
+        borderRadius: '8px',
+        cursor: 'pointer',
+        fontWeight: 'bold',
+        transition: 'all 0.3s ease',
+    });
+    cancelButton.addEventListener('mouseenter', () => {
+        cancelButton.style.backgroundColor = '#00ff00';
+        cancelButton.style.color = '#000000';
+    });
+    cancelButton.addEventListener('mouseleave', () => {
+        cancelButton.style.backgroundColor = '#00cc00';
+        cancelButton.style.color = '#ffffff';
+    });
+    cancelButton.onclick = () => {
+        document.body.removeChild(overlay);
+    };
+
+    buttonContainer.appendChild(confirmButton);
+    buttonContainer.appendChild(cancelButton);
+    modal.appendChild(buttonContainer);
+    overlay.appendChild(modal);
+    document.body.appendChild(overlay);
 }
 
 function exportDictionary() {
@@ -166,16 +257,24 @@ function nächstübung() {
         timerInterval = setInterval(updateTimer, 1000);
     }
 
+    const keys = Object.keys(dictionary);
+    if (keys.length === 0) {
+        showCustomNoVocabModal();
+        return;
+    }
+
     ran_key = chooseFrage();
     const vokabelmodusAktiv = document.getElementById('vokabelmodusCheckbox')?.checked;
-
     frageWirdVertauscht = vokabelmodusAktiv && Math.random() < 0.5;
 
     const diefrage = document.getElementById('diefrage');
-    if (diefrage) {
+    if (diefrage && ran_key && dictionary[ran_key]) {
         diefrage.innerHTML = frageWirdVertauscht ?
             `${dictionary[ran_key].answer} &nbsp?` :
             `${ran_key} &nbsp?`;
+    } else {
+        showCustomNoVocabModal();
+        return;
     }
 
     document.getElementById('Antwort').value = "";
@@ -487,4 +586,56 @@ function levenshtein(a, b) {
     }
 
     return matrix[b.length][a.length];
+}
+
+function showCustomNoVocabModal() {
+    const overlay = document.createElement('div');
+    overlay.style.position = 'fixed';
+    overlay.style.top = '0';
+    overlay.style.left = '0';
+    overlay.style.width = '100%';
+    overlay.style.height = '100%';
+    overlay.style.backgroundColor = 'rgba(0, 0, 0, 0.8)';
+    overlay.style.display = 'flex';
+    overlay.style.justifyContent = 'center';
+    overlay.style.alignItems = 'center';
+    overlay.style.zIndex = '9999';
+
+    const modal = document.createElement('div');
+    modal.style.background = '#1f1f1f';
+    modal.style.padding = '30px 25px';
+    modal.style.borderRadius = '20px';
+    modal.style.textAlign = 'center';
+    modal.style.width = '90%';
+    modal.style.maxWidth = '400px';
+    modal.style.color = 'white';
+    modal.style.boxShadow = '0 0 20px rgba(0, 0, 0, 0.7)';
+    modal.style.backdropFilter = 'blur(10px)';
+
+    const title = document.createElement('h2');
+    title.textContent = '⚠️ Keine Aufgaben gefunden';
+    title.style.marginBottom = '15px';
+    modal.appendChild(title);
+
+    const message = document.createElement('p');
+    message.textContent = 'Du hast aktuell keine Übungen oder Vokabeln hinterlegt.';
+    message.style.marginBottom = '25px';
+    modal.appendChild(message);
+
+    const button = document.createElement('button');
+    button.textContent = 'Füge jetzt Übungen hinzu';
+    button.style.padding = '12px 24px';
+    button.style.backgroundColor = '#00ff0d';
+    button.style.color = '#003a1e';
+    button.style.border = 'none';
+    button.style.borderRadius = '8px';
+    button.style.cursor = 'pointer';
+    button.style.fontWeight = 'bold';
+    button.onclick = () => {
+        window.location.href = '/lerntools/lernapp/übungenhinzufügen';
+    };
+    modal.appendChild(button);
+
+    overlay.appendChild(modal);
+    document.body.appendChild(overlay);
 }
