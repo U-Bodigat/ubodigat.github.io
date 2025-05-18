@@ -79,28 +79,21 @@
     </nav>
 
     <main>
-        <div class="game-wrapper">
-            <div class="game-info">
-                <h2>Anleitung</h2>
-                <p>Steuerung:</p>
-                <ul>
-                    <li><strong>Pfeil nach links</strong> - Bewege das Teil nach links</li>
-                    <li><strong>Pfeil nach rechts</strong> - Bewege das Teil nach rechts</li>
-                    <li><strong>Pfeil nach unten</strong> - Bewege das Teil schneller nach unten</li>
-                    <li><strong>Q</strong> - Drehe das Teil gegen den Uhrzeigersinn</li>
-                    <li><strong>W</strong> - Drehe das Teil im Uhrzeigersinn</li>
-                </ul>
-                <p>Viel Spaß!</p>
-            </div>
-            <div class="game-container">
-                <div class="header">
-                    <button id="startButton" class="start-button">Spiel starten</button>
-                </div>
-                <div class="game">
-                    <canvas id="tetris" width="240" height="400" class="hidden"></canvas>
-                </div>
-            </div>
-        </div>
+        <aside class="instructions">
+            <h2>Anleitung</h2>
+            <ul>
+                <li><strong>⬅️ Links:</strong> Bewege das Teil nach links</li>
+                <li><strong>➡️ Rechts:</strong> Bewege das Teil nach rechts</li>
+                <li><strong>⬇️ Unten:</strong> Schnell fallen lassen</li>
+                <li><strong>Q:</strong> Drehen gegen Uhrzeigersinn</li>
+                <li><strong>W:</strong> Drehen im Uhrzeigersinn</li>
+            </ul>
+            <button id="startButton">🎮 Spiel starten</button>
+        </aside>
+        <section class="game-area" id="gameArea">
+            <button id="fullscreenToggle">🔳 Vollbild</button>
+            <canvas id="tetris" width="600" height="800"></canvas>
+        </section>
     </main>
 
     <script src="/games/tetris/script.js"></script>
