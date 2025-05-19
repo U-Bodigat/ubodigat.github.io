@@ -358,3 +358,10 @@ canvas {
 .fullscreen #fullscreenToggle {
     opacity: 1;
 }
+
+#next {
+    background-color: #111;
+    border: 2px solid #444;
+    border-radius: 8px;
+    box-shadow: 0 0 15px rgba(0, 255, 0, 0.2);
+}

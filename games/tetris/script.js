@@ -6,8 +6,13 @@ document.addEventListener('DOMContentLoaded', () => {
     const gameArea = document.getElementById('gameArea');
     const instructions = document.querySelector('.instructions');
 
+    // Neue Canvas für Vorschau
+    const nextCanvas = document.getElementById('next');
+    const nextCtx = nextCanvas.getContext('2d');
+
     let cols = 15;
     let rows = 25;
+    let isPaused = false;
     const blockSize = 20;
 
     function resizeCanvas(w, h) {
@@ -19,16 +24,13 @@ document.addEventListener('DOMContentLoaded', () => {
 
     resizeCanvas(cols, rows);
 
-    const colors = [
-        null,
-        '#00bcd4', '#ff4081', '#ffeb3b', '#8bc34a', '#ff5722', '#3f51b5', '#e91e63'
-    ];
+    const colors = [null, '#00bcd4', '#ff4081', '#ffeb3b', '#8bc34a', '#ff5722', '#3f51b5', '#e91e63'];
 
     let arena = createMatrix(cols, rows);
-    let player = {
-        pos: { x: 0, y: 0 },
-        matrix: null
-    };
+    let nextPiece = createRandomPiece();
+    let player = { pos: { x: 0, y: 0 }, matrix: nextPiece };
+    nextPiece = createRandomPiece();
+    drawNext();
 
     let dropCounter = 0;
     let dropInterval = 500;
@@ -38,6 +40,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function createMatrix(w, h) {
         return Array.from({ length: h }, () => new Array(w).fill(0));
+    }
+
+    function createRandomPiece() {
+        const pieces = 'TJLOSZI';
+        return createPiece(pieces[Math.floor(Math.random() * pieces.length)]);
     }
 
     function createPiece(type) {
@@ -87,25 +94,39 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    function drawMatrix(matrix, offset) {
+    function drawMatrix(matrix, offset, ctxTarget) {
         matrix.forEach((row, y) => {
             row.forEach((value, x) => {
                 if (value !== 0) {
-                    ctx.fillStyle = colors[value];
-                    ctx.fillRect(x + offset.x, y + offset.y, 1, 1);
-                    ctx.strokeStyle = '#000';
-                    ctx.lineWidth = 0.05;
-                    ctx.strokeRect(x + offset.x, y + offset.y, 1, 1);
+                    ctxTarget.fillStyle = colors[value];
+                    ctxTarget.fillRect(x + offset.x, y + offset.y, 1, 1);
+                    ctxTarget.strokeStyle = '#000';
+                    ctxTarget.lineWidth = 0.05;
+                    ctxTarget.strokeRect(x + offset.x, y + offset.y, 1, 1);
                 }
             });
         });
     }
 
+    function drawNext() {
+        nextCtx.setTransform(1, 0, 0, 1, 0, 0);
+        nextCtx.clearRect(0, 0, nextCanvas.width, nextCanvas.height);
+        nextCtx.scale(20, 20);
+
+        const matrix = nextPiece;
+        const offsetX = Math.floor((nextCanvas.width / 20 - matrix[0].length) / 2);
+        const offsetY = Math.floor((nextCanvas.height / 20 - matrix.length) / 2);
+
+        drawMatrix(matrix, { x: offsetX, y: offsetY }, nextCtx);
+    }
+
     function draw() {
         ctx.fillStyle = '#111';
         ctx.fillRect(0, 0, canvas.width, canvas.height);
-        drawMatrix(arena, { x: 0, y: 0 });
-        drawMatrix(player.matrix, player.pos);
+        drawMatrix(arena, { x: 0, y: 0 }, ctx);
+        if (player.matrix) {
+            drawMatrix(player.matrix, player.pos, ctx);
+        }
     }
 
     function merge(arena, player) {
@@ -186,8 +207,9 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function playerReset() {
-        const pieces = 'TJLOSZI';
-        player.matrix = createPiece(pieces[Math.random() * pieces.length | 0]);
+        player.matrix = nextPiece;
+        nextPiece = createRandomPiece();
+        drawNext();
         player.pos.y = 0;
         player.pos.x = Math.floor((arena[0].length - player.matrix[0].length) / 2);
         if (collide(arena, player)) {
@@ -198,7 +220,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function update(time = 0) {
-        if (gameOver) return;
+        if (gameOver || isPaused) return;
         const deltaTime = time - lastTime;
         lastTime = time;
         dropCounter += deltaTime;
@@ -211,31 +233,47 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function showGameOver() {
         draw();
-
-        ctx.fillStyle = 'rgba(0, 0, 0, 0.2)';
+        ctx.fillStyle = 'rgba(0, 0, 0, 0.7)';
         ctx.fillRect(0, rows / 2 - 2, cols, 4);
-
-        ctx.fillStyle = '#ffffff';
+        ctx.fillStyle = '#fff';
         ctx.textAlign = 'center';
         ctx.textBaseline = 'middle';
         ctx.font = `${Math.max(1.2, cols / 10)}px Arial`;
-
         ctx.fillText('🟥 GAME OVER 🟥', cols / 2, rows / 2);
-
         startButton.disabled = false;
         startButton.textContent = '🔁 Neustarten';
     }
 
-
     startButton.addEventListener('click', () => {
-        arena = createMatrix(cols, rows);
-        playerReset();
-        dropCounter = 0;
-        lastTime = 0;
-        gameOver = false;
-        startButton.disabled = true;
-        startButton.textContent = '🟢 Läuft...';
-        update();
+        if (gameOver) {
+            arena = createMatrix(cols, rows);
+            playerReset();
+            dropCounter = 0;
+            lastTime = 0;
+            gameOver = false;
+            isPaused = false;
+            startButton.textContent = '⏸ Pause';
+            startButton.disabled = false;
+            update();
+            return;
+        }
+
+        if (!animationId) {
+            isPaused = false;
+            startButton.textContent = '⏸ Pause';
+            update();
+        } else {
+            if (isPaused) {
+                isPaused = false;
+                startButton.textContent = '⏸ Pause';
+                update();
+            } else {
+                isPaused = true;
+                startButton.textContent = '▶️ Weiter';
+                cancelAnimationFrame(animationId);
+                animationId = null;
+            }
+        }
     });
 
     document.addEventListener('keydown', e => {
