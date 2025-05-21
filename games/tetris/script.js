@@ -8,8 +8,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const gameArea = document.getElementById('gameArea');
     const instructions = document.querySelector('.instructions');
 
-    let cols = 10;
-    let rows = 20;
+    const cols = 10;
+    const rows = 20;
     const blockSize = 30;
 
     canvas.width = cols * blockSize;
@@ -25,7 +25,6 @@ document.addEventListener('DOMContentLoaded', () => {
     let arena = createMatrix(cols, rows);
     let player = { pos: { x: 0, y: 0 }, matrix: null };
     let nextPiece = createRandomPiece();
-
     let dropCounter = 0;
     let dropInterval = 500;
     let lastTime = 0;
@@ -61,10 +60,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 ];
             case 'I':
                 return [
-                    [0, 0, 0, 0],
-                    [5, 5, 5, 5],
-                    [0, 0, 0, 0],
-                    [0, 0, 0, 0]
+                    [5, 5, 5, 5]
                 ];
             case 'S':
                 return [
@@ -102,18 +98,16 @@ document.addEventListener('DOMContentLoaded', () => {
         ctx.fillStyle = '#111';
         ctx.fillRect(0, 0, canvas.width / blockSize, canvas.height / blockSize);
         drawMatrix(arena, { x: 0, y: 0 }, ctx);
-        drawMatrix(player.matrix, player.pos, ctx);
+        if (player.matrix) drawMatrix(player.matrix, player.pos, ctx);
     }
 
     function drawNext() {
         nextCtx.setTransform(1, 0, 0, 1, 0, 0);
         nextCtx.clearRect(0, 0, nextCanvas.width, nextCanvas.height);
         nextCtx.scale(blockSize, blockSize);
-
         const matrix = nextPiece;
         const offsetX = Math.floor((nextCanvas.width / blockSize - matrix[0].length) / 2);
         const offsetY = Math.floor((nextCanvas.height / blockSize - matrix.length) / 2);
-
         drawMatrix(matrix, { x: offsetX, y: offsetY }, nextCtx);
     }
 
@@ -130,10 +124,9 @@ document.addEventListener('DOMContentLoaded', () => {
     function collide(arena, player) {
         const m = player.matrix;
         const o = player.pos;
-        for (let y = 0; y < m.length; ++y) {
-            for (let x = 0; x < m[y].length; ++x) {
-                if (m[y][x] !== 0 &&
-                    (arena[y + o.y] && arena[y + o.y][x + o.x]) !== 0) {
+        for (let y = 0; y < m.length; y++) {
+            for (let x = 0; x < m[y].length; x++) {
+                if (m[y][x] !== 0 && (arena[y + o.y] && arena[y + o.y][x + o.x]) !== 0) {
                     return true;
                 }
             }
@@ -160,28 +153,23 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function playerRotate(dir) {
-        const pos = player.pos.x;
-        let offset = 1;
+        const original = player.matrix.map(row => row.slice());
         rotate(player.matrix, dir);
+        let offset = 1;
         while (collide(arena, player)) {
             player.pos.x += offset;
             offset = -(offset + (offset > 0 ? 1 : -1));
             if (offset > player.matrix[0].length) {
-                rotate(player.matrix, -dir);
-                player.pos.x = pos;
+                player.matrix = original;
                 return;
             }
         }
     }
 
     function rotate(matrix, dir) {
-        for (let y = 0; y < matrix.length; ++y) {
-            for (let x = 0; x < y; ++x) {
-                [matrix[x][y], matrix[y][x]] = [matrix[y][x], matrix[x][y]];
-            }
-        }
-        if (dir > 0) matrix.forEach(row => row.reverse());
-        else matrix.reverse();
+        const transposed = matrix[0].map((_, i) => matrix.map(row => row[i]));
+        if (dir > 0) matrix.splice(0, matrix.length, ...transposed.map(row => row.reverse()));
+        else matrix.splice(0, matrix.length, ...transposed.reverse());
     }
 
     function arenaSweep() {
@@ -263,6 +251,7 @@ document.addEventListener('DOMContentLoaded', () => {
     fullscreenToggle.addEventListener('click', () => {
         if (!document.fullscreenElement) {
             gameArea.requestFullscreen().then(() => {
+                document.body.classList.add('fullscreen');
                 instructions.style.display = 'none';
                 fullscreenToggle.textContent = '🔙 Verlassen';
             });
@@ -273,11 +262,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
     document.addEventListener('fullscreenchange', () => {
         if (!document.fullscreenElement) {
+            document.body.classList.remove('fullscreen');
             instructions.style.display = 'block';
             fullscreenToggle.textContent = '🔳 Vollbild';
         }
     });
 
-    // Initial anzeigen
     drawNext();
+    playerReset();
 });
