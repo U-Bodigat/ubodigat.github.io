@@ -1,5 +1,110 @@
-//INFO Text über 1x1 Lernapp
-
 function showPopup() {
-    alert("Spielstart: Wenn man die Webseite öffnet sieht man eine Frage diese man beantworten muss. Die Frage wird zufällig aus dem 1x1 ausgewählt. Der Spieler muss die richtige Antwort in das vorgesehene Feld eingeben und dann auf den Button Antwort überprüfen klicken. Antwort überprüfen: Nachdem der Spieler die Antwort eingegeben hat, klickt er auf den Button Antwort überprüfen. Wenn die Antwort richtig ist, wird eine Nachricht Richtig! angezeigt und der Punktestand wird um 1 erhöht. Wenn die Antwort falsch ist, wird eine Nachricht Falsch! angezeigt und der Punktestand wird um 1 verringert. Zeitlimit: Der Spieler hat 25 Sekunden Zeit, um jede Frage zu beantworten. Ein Countdown-Timer zeigt die verbleibende Zeit an. Wenn die Zeit abgelaufen ist, wird eine Nachricht Zeit ist abgelaufen! angezeigt und der Punktestand wird auf 0 zurückgesetzt. Fortsetzung des Spiels: Nach der Beantwortung jeder Frage wird automatisch eine neue Frage generiert. Der Spieler kann so lange weiterspielen, bis er bereit ist, das Spiel zu beenden.");
+    document.getElementById("info-popup").style.display = "flex";
 }
+
+function readPopupText() {
+    const text = document.getElementById("popup-text").innerText;
+    const utterance = new SpeechSynthesisUtterance(text);
+    utterance.lang = "de-DE";
+    utterance.rate = 1;
+    speechSynthesis.speak(utterance);
+}
+
+function closePopup() {
+    speechSynthesis.cancel();
+    document.getElementById("info-popup").style.display = "none";
+}
+
+
+var score = 0;
+var questionNum = 1;
+var correctAnswer;
+var timeLeft = 25;
+var intervalId;
+
+function generateQuestion() {
+    var operator = Math.floor(Math.random() * 3);
+    var num1, num2, question;
+
+    switch (operator) {
+        case 0: // multiplication
+            num1 = Math.floor(Math.random() * 49) + 1;
+            num2 = Math.floor(Math.random() * 49) + 1;
+            question = num1 + " x " + num2 + " = ";
+            correctAnswer = num1 * num2;
+            break;
+        case 1: // division
+            var divisor = Math.floor(Math.random() * 49) + 1;
+            correctAnswer = Math.floor(Math.random() * 9) + 1;
+            num2 = correctAnswer * divisor;
+            num1 = num2 / divisor;
+            question = num2 + " ÷ " + divisor + " = ";
+            break;
+        case 2: // square root
+            correctAnswer = Math.floor(Math.random() * 9) + 1;
+            num1 = correctAnswer * correctAnswer;
+            question = "√" + num1 + " = ";
+            num2 = "?";
+            break;
+    }
+
+    document.getElementById("question").textContent = question;
+    document.getElementById("num1").textContent = num1;
+    document.getElementById("num2").textContent = num2;
+}
+
+function checkAnswer() {
+    var userAnswer = parseInt(document.getElementById("answer").value);
+    if (isNaN(userAnswer)) {
+        document.getElementById("result").textContent = "Bitte geben Sie eine Zahl ein.";
+    } else if (userAnswer === correctAnswer) {
+        document.getElementById("result").textContent = "Richtig!";
+        score += 1;
+        document.getElementById("score").textContent = "Punktestand: " + score;
+        clearInterval(intervalId);
+        timeLeft = 25;
+        startTimer();
+    } else {
+        document.getElementById("result").textContent = "Falsch! Die richtige Antwort ist: " + correctAnswer;
+        score -= 1;
+        document.getElementById("score").textContent = "Punktestand: " + score;
+        timeLeft = 25;
+        startTimer();
+    }
+    document.getElementById("answer").value = "";
+    generateQuestion();
+}
+
+function startTimer() {
+    clearInterval(intervalId);
+    document.getElementById("check-answer-btn").textContent = "Antwort überprüfen";
+    intervalId = setInterval(function() {
+        timeLeft -= 1;
+        document.getElementById("time-left").textContent = timeLeft;
+        if (timeLeft === 0) {
+            clearInterval(intervalId);
+            timeLeft = 0;
+            score = 0;
+            document.getElementById("score").textContent = "Punktestand: " + score;
+            document.getElementById("result").textContent = "Zeit ist abgelaufen!";
+            document.getElementById("check-answer-btn").textContent = "Start";
+        }
+    }, 1000);
+}
+
+document.getElementById("check-answer-btn").addEventListener("click", function() {
+    if (document.getElementById("check-answer-btn").textContent === "Start") {
+        timeLeft = 25;
+    }
+    startTimer();
+    checkAnswer();
+});
+
+document.getElementById("answer").addEventListener("keydown", function(event) {
+    if (event.key === "Enter") {
+        event.preventDefault();
+        document.getElementById("check-answer-btn").click();
+    }
+});
+
+generateQuestion();

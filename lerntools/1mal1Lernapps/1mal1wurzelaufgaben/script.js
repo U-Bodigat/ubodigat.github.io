@@ -1,41 +1,79 @@
-const tableSize = 10; // Tabelle bis zu 10x10
-const tableElement = document.getElementById("table");
+var score = 0;
+var questionNum = 1;
+var correctAnswer;
+var timeLeft = 25;
+var intervalId;
 
-// Funktion zum Erstellen einer Tabellenzeile
-function createRow(rowNum) {
-    const row = document.createElement("div");
-    row.classList.add("row");
-    for (let i = 1; i <= tableSize; i++) {
-        const cell = document.createElement("button");
-        cell.innerText = `${rowNum} x ${i}`;
-        cell.addEventListener("click", () => checkAnswer(rowNum * i));
-        row.appendChild(cell);
+function generateQuestion() {
+    var operator = Math.floor(Math.random() * 1);
+    var num1, num2, question;
+
+    switch (operator) {
+        case 0: // square root
+            correctAnswer = Math.floor(Math.random() * 9) + 9;
+            num1 = correctAnswer * correctAnswer;
+            question = "√" + num1 + " = ";
+            num2 = "?";
+            break;
     }
-    return row;
+
+    document.getElementById("question").textContent = question;
+    document.getElementById("num1").textContent = num1;
+    document.getElementById("num2").textContent = num2;
 }
 
-// Funktion zum Erstellen der gesamten Tabelle
-function createTable() {
-    for (let i = 1; i <= tableSize; i++) {
-        const row = createRow(i);
-        tableElement.appendChild(row);
-    }
-}
-
-// Funktion zum Überprüfen der Antwort
-function checkAnswer(answer) {
-    const input = prompt("Was ist das Ergebnis?");
-    if (input == answer) {
-        alert("Richtig! (;");
+function checkAnswer() {
+    var userAnswer = parseInt(document.getElementById("answer").value);
+    if (isNaN(userAnswer)) {
+        document.getElementById("result").textContent = "Bitte geben Sie eine Zahl ein.";
+    } else if (userAnswer === correctAnswer) {
+        document.getElementById("result").textContent = "Richtig!";
+        score += 1;
+        document.getElementById("score").textContent = "Punktestand: " + score;
+        clearInterval(intervalId);
+        timeLeft = 25;
+        startTimer();
     } else {
-        alert(`Falsch. Die richtige Antwort ist ${answer}.`);
+        document.getElementById("result").textContent = "Falsch! Die richtige Antwort ist: " + correctAnswer;
+        score -= 1;
+        document.getElementById("score").textContent = "Punktestand: " + score;
+        timeLeft = 25;
+        startTimer();
     }
+    document.getElementById("answer").value = "";
+    generateQuestion();
 }
 
-createTable();
-
-//INFO Text über 1x1 Lernapp
-
-function showPopup() {
-    alert("Spielstart: Wenn man die Webseite öffnet sieht man eine Frage diese man beantworten muss. Die Frage wird zufällig aus dem 1x1 ausgewählt. Der Spieler muss die richtige Antwort in das vorgesehene Feld eingeben und dann auf den Button Antwort überprüfen klicken. Antwort überprüfen: Nachdem der Spieler die Antwort eingegeben hat, klickt er auf den Button Antwort überprüfen. Wenn die Antwort richtig ist, wird eine Nachricht Richtig! angezeigt und der Punktestand wird um 1 erhöht. Wenn die Antwort falsch ist, wird eine Nachricht Falsch! angezeigt und der Punktestand wird um 1 verringert. Zeitlimit: Der Spieler hat 25 Sekunden Zeit, um jede Frage zu beantworten. Ein Countdown-Timer zeigt die verbleibende Zeit an. Wenn die Zeit abgelaufen ist, wird eine Nachricht Zeit ist abgelaufen! angezeigt und der Punktestand wird auf 0 zurückgesetzt. Fortsetzung des Spiels: Nach der Beantwortung jeder Frage wird automatisch eine neue Frage generiert. Der Spieler kann so lange weiterspielen, bis er bereit ist, das Spiel zu beenden.");
+function startTimer() {
+    clearInterval(intervalId);
+    document.getElementById("check-answer-btn").textContent = "Antwort überprüfen";
+    intervalId = setInterval(function() {
+        timeLeft -= 1;
+        document.getElementById("time-left").textContent = timeLeft;
+        if (timeLeft === 0) {
+            clearInterval(intervalId);
+            timeLeft = 0;
+            score = 0;
+            document.getElementById("score").textContent = "Punktestand: " + score;
+            document.getElementById("result").textContent = "Zeit ist abgelaufen!";
+            document.getElementById("check-answer-btn").textContent = "Start";
+        }
+    }, 1000);
 }
+
+document.getElementById("check-answer-btn").addEventListener("click", function() {
+    if (document.getElementById("check-answer-btn").textContent === "Start") {
+        timeLeft = 25;
+    }
+    startTimer();
+    checkAnswer();
+});
+
+document.getElementById("answer").addEventListener("keydown", function(event) {
+    if (event.key === "Enter") {
+        event.preventDefault();
+        document.getElementById("check-answer-btn").click();
+    }
+});
+
+generateQuestion();
