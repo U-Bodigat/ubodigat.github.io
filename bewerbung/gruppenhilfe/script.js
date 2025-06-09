@@ -28,7 +28,7 @@ document.getElementById("bewerbungsForm").addEventListener("submit", function(e)
         body: new URLSearchParams(data)
     }).then(response => response.text()).then(console.log);
 
-    fetch("https://ptb.discord.com/api/webhooks/1378507760211067041/vTwlmSZa0za56e8s6ENtQpcOFHHNSO7pG39OxUrL5ELJO6RU1Ydym62kwdlD1Sq96Xpw", {
+    fetch("DISCORD WEB HOOK", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
