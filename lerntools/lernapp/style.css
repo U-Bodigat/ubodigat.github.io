@@ -1247,7 +1247,9 @@ footer>div {
     display: flex;
     align-items: center;
     gap: 10px;
-    margin-right: 20px;
+    justify-content: center;
+    margin-bottom: 10px;
+    margin-top: 5px;
 }
 
 .toggle-label {
@@ -1265,7 +1267,7 @@ footer>div {
 
 .toggle-switch input {
     opacity: 0;
-    width: 200px;
+    width: 0;
     height: 0;
 }
 
@@ -1299,4 +1301,117 @@ footer>div {
 
 .toggle-switch input:checked+.slider::before {
     transform: translateX(20px);
+}
+
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.85);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+}
+
+.modus-fenster {
+    background: #1e1e1e;
+    padding: 30px;
+    border-radius: 15px;
+    max-width: 90%;
+    width: 350px;
+    color: white;
+    text-align: center;
+    box-shadow: 0 0 15px #000;
+}
+
+.popup-button {
+    background: #00ff7b;
+    color: #003a1e;
+    border: none;
+    padding: 12px 20px;
+    margin: 10px 0;
+    width: 100%;
+    border-radius: 8px;
+    font-weight: bold;
+    font-size: 16px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.popup-button:hover {
+    background: #00cc66;
+    color: white;
+}
+
+.popup-button.cancel {
+    background: #ff4646;
+    color: #2c0000;
+}
+
+.popup-button.cancel:hover {
+    background: #cc3333;
+    color: white;
+}
+
+.modus-fenster,
+#popupContent {
+    position: relative;
+}
+
+.no-vocab-modal {
+    background: #1f1f1f;
+    padding: 30px 25px;
+    border-radius: 20px;
+    text-align: center;
+    width: 90%;
+    max-width: 400px;
+    color: white;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.7);
+    backdrop-filter: blur(10px);
+    position: relative;
+}
+
+.close-icon {
+    position: absolute;
+    top: 12px;
+    right: 16px;
+    font-size: 22px;
+    font-weight: bold;
+    color: #ff5c5c;
+    cursor: pointer;
+    transition: 0.3s;
+    z-index: 10;
+}
+
+.close-icon:hover {
+    color: #ff0000;
+    transform: scale(1.2);
+}
+
+.close-button {
+    position: absolute;
+    top: 10px;
+    right: 14px;
+    font-size: 24px;
+    cursor: pointer;
+    color: #ff4c4c;
+    font-weight: bold;
+}
+
+.close-button:hover {
+    color: white;
+    transform: scale(1.2);
+}
+
+header.vokabelmodus-aktiv {
+    background-color: rgba(0, 255, 0, 0.2) !important;
+    transition: background-color 0.5s ease;
+}
+
+.vokabel-toggle-container {
+    margin-bottom: 5px;
+    margin-top: 5px;
 }

@@ -30,7 +30,6 @@
     <link rel="apple-touch-icon" href="https://ubodigat.com/bilder/Wartungsarbeitenprofilbild.png" />
     <script src="/script.js"></script>
     <link rel="stylesheet" href="/lerntools/lernapp/style.css">
-    <script src="/lerntools/lernapp/script.js"></script>
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-BE1B5EZY35"></script>
     <script>
@@ -72,13 +71,7 @@
         <header>
             <p><a id="überschriftlink" href="https://ubodigat.com">U:Bodigat.com</a> | Lernapp</p>
             <div id="headerinput">
-                <div class="vokabel-toggle-container">
-                    <label class="toggle-switch">
-                        <input type="checkbox" id="vokabelmodusCheckbox">
-                        <span class="slider"></span>
-                    </label>
-                    <span class="toggle-label">Vokabelmodus</span>
-                </div>
+                <button class="button" onclick="zeigeModusFenster()">📚 Lernmodus</button>
                 <a href="https://ubodigat.com/datenschutz" target="_blank"> <button class="button">Datenschutz</button></a>
                 <a href="/lerntools/lernapp/übungenhinzufügen"> <button class="button">Übungenhinzufügen</button></a>
                 <a href="/lerntools/lernmenü"> <button class="button">Zum Lernmenü</button></a>
@@ -113,8 +106,21 @@
                 <button onclick="nächstübung()" class="mainbutton" id="löschen">Übung Starten</button>
             </div>
         </footer>
+        <div id="modusFensterOverlay" class="overlay" style="display: none;">
+            <div class="modus-fenster" id="modusFenster">
+                <span class="close-button" onclick="schließeModusFenster()">❌</span>
+                <h2>Lernmodus wählen</h2>
+                <div class="vokabel-toggle-container">
+                    <label class="toggle-switch">
+                        <input type="checkbox" id="vokabelmodusToggle">
+                        <span class="slider"></span>
+                    </label>
+                    <span class="toggle-label">Vokabelmodus</span>
+                </div>
+            </div>
+        </div>
     </main>
-
+    <script src="/lerntools/lernapp/script.js"></script>
 </body>
 
 </html>

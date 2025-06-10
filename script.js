@@ -1,10 +1,10 @@
-let docTitel = document.title;
-window, addEventListener("blur", () => {
-    document.title = "💤 Inaktiv | ubodigat.com";
-})
-window, addEventListener("focus", () => {
-    document.title = docTitel;
-})
+// let docTitel = document.title;
+// window, addEventListener("blur", () => {
+//     document.title = "💤 Inaktiv | ubodigat.com";
+// })
+// window, addEventListener("focus", () => {
+//     document.title = docTitel;
+// })
 
 // Dies sorgt dafür dass wenn man den tab ändern sich der titel ändert.
 

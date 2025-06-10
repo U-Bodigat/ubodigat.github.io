@@ -264,7 +264,7 @@ function nächstübung() {
     }
 
     ran_key = chooseFrage();
-    const vokabelmodusAktiv = document.getElementById('vokabelmodusCheckbox')?.checked;
+    const vokabelmodusAktiv = localStorage.getItem("vokabelmodus") === "true";
     frageWirdVertauscht = vokabelmodusAktiv && Math.random() < 0.5;
 
     const diefrage = document.getElementById('diefrage');
@@ -293,7 +293,7 @@ function richtigfalsch() {
 
     const istRichtig = nutzerVergleich === antwortVergleich;
     const abweichung = levenshtein(nutzerVergleich, antwortVergleich);
-    const vokabelmodusAktiv = document.getElementById('vokabelmodusCheckbox')?.checked;
+    const vokabelmodusAktiv = localStorage.getItem("vokabelmodus") === "true";
     const fastRichtig = vokabelmodusAktiv && !istRichtig && abweichung <= 2;
 
     if (istRichtig) {
@@ -590,27 +590,16 @@ function levenshtein(a, b) {
 
 function showCustomNoVocabModal() {
     const overlay = document.createElement('div');
-    overlay.style.position = 'fixed';
-    overlay.style.top = '0';
-    overlay.style.left = '0';
-    overlay.style.width = '100%';
-    overlay.style.height = '100%';
-    overlay.style.backgroundColor = 'rgba(0, 0, 0, 0.8)';
-    overlay.style.display = 'flex';
-    overlay.style.justifyContent = 'center';
-    overlay.style.alignItems = 'center';
-    overlay.style.zIndex = '9999';
+    overlay.className = 'overlay';
 
     const modal = document.createElement('div');
-    modal.style.background = '#1f1f1f';
-    modal.style.padding = '30px 25px';
-    modal.style.borderRadius = '20px';
-    modal.style.textAlign = 'center';
-    modal.style.width = '90%';
-    modal.style.maxWidth = '400px';
-    modal.style.color = 'white';
-    modal.style.boxShadow = '0 0 20px rgba(0, 0, 0, 0.7)';
-    modal.style.backdropFilter = 'blur(10px)';
+    modal.className = 'no-vocab-modal';
+
+    const closeIcon = document.createElement('div');
+    closeIcon.className = 'close-icon';
+    closeIcon.innerHTML = '✖';
+    closeIcon.onclick = () => document.body.removeChild(overlay);
+    modal.appendChild(closeIcon);
 
     const title = document.createElement('h2');
     title.textContent = '⚠️ Keine Aufgaben gefunden';
@@ -624,13 +613,7 @@ function showCustomNoVocabModal() {
 
     const button = document.createElement('button');
     button.textContent = 'Füge jetzt Übungen hinzu';
-    button.style.padding = '12px 24px';
-    button.style.backgroundColor = '#00ff0d';
-    button.style.color = '#003a1e';
-    button.style.border = 'none';
-    button.style.borderRadius = '8px';
-    button.style.cursor = 'pointer';
-    button.style.fontWeight = 'bold';
+    button.className = 'popup-button';
     button.onclick = () => {
         window.location.href = '/lerntools/lernapp/übungenhinzufügen';
     };
@@ -639,3 +622,84 @@ function showCustomNoVocabModal() {
     overlay.appendChild(modal);
     document.body.appendChild(overlay);
 }
+
+function zeigeModusFenster() {
+    document.getElementById('modusFensterOverlay').style.display = 'flex';
+}
+
+function schließeModusFenster() {
+    document.getElementById('modusFensterOverlay').style.display = 'none';
+}
+
+function toggleVokabelmodus() {
+    let vokabelmodusAktiv = localStorage.getItem("vokabelmodus") === "true";
+    vokabelmodusAktiv = !vokabelmodusAktiv;
+    localStorage.setItem("vokabelmodus", vokabelmodusAktiv);
+
+    const header = document.querySelector('header');
+    if (vokabelmodusAktiv) {
+        header.classList.add("vokabelmodus-aktiv");
+    } else {
+        header.classList.remove("vokabelmodus-aktiv");
+    }
+
+    schließeModusFenster();
+
+}
+
+const fenster = document.getElementById("modusFenster");
+let offsetX, offsetY, isDragging = false;
+
+fenster.addEventListener("mousedown", (e) => {
+    isDragging = true;
+    offsetX = e.clientX - fenster.getBoundingClientRect().left;
+    offsetY = e.clientY - fenster.getBoundingClientRect().top;
+    fenster.style.position = "absolute";
+    fenster.style.zIndex = "10001";
+});
+
+document.addEventListener("mousemove", (e) => {
+    if (isDragging) {
+        fenster.style.left = `${e.clientX - offsetX}px`;
+        fenster.style.top = `${e.clientY - offsetY}px`;
+    }
+});
+
+document.addEventListener("mouseup", () => {
+    isDragging = false;
+});
+
+function toggleVokabelmodusVonSwitch(checked) {
+    localStorage.setItem("vokabelmodus", checked);
+    const header = document.querySelector('header');
+    if (checked) {
+        header.classList.add("vokabelmodus-aktiv");
+    } else {
+        header.classList.remove("vokabelmodus-aktiv");
+    }
+}
+window.addEventListener("DOMContentLoaded", () => {
+    const switchElement = document.getElementById("vokabelmodusToggle");
+    const header = document.querySelector("header");
+
+    const vokabelmodus = localStorage.getItem("vokabelmodus") === "true";
+
+    if (switchElement) {
+        switchElement.checked = vokabelmodus;
+
+        if (vokabelmodus) {
+            header.classList.add("vokabelmodus-aktiv");
+        }
+
+        switchElement.addEventListener("change", () => {
+            const isChecked = switchElement.checked;
+            localStorage.setItem("vokabelmodus", isChecked);
+
+            if (isChecked) {
+                header.classList.add("vokabelmodus-aktiv");
+            } else {
+                header.classList.remove("vokabelmodus-aktiv");
+            }
+        });
+    }
+});
