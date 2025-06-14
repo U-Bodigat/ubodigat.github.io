@@ -103,34 +103,6 @@ header p {
     text-decoration: none;
 }
 
-.mainbutton {
-    transition: 0.5s;
-    background-color: #4CAF50;
-    color: #fff;
-    text-decoration: none;
-    border: unset;
-    padding: 12px;
-    border-radius: 7px;
-    min-width: 160px;
-    cursor: pointer;
-    font-weight: 500;
-    margin-left: 10px;
-    box-shadow: 0px 3px 1px -2px rgb(0 0 0 / 20%), 0px 2px 2px 0px rgb(0 0 0 / 14%), 0px 1px 5px 0px rgb(0 0 0 / 12%);
-}
-
-.mainbutton:hover {
-    transition: 0.5s;
-    background-color: #00ff0d;
-    color: #003a1e;
-    font-weight: 900;
-}
-
-.mainbutton a {
-    transition: 0.5s;
-    color: #fff;
-    text-decoration: none;
-}
-
 h1,
 h2 {
     font-weight: 400;
@@ -382,14 +354,6 @@ footer {
     padding: 10px 20px;
     font-size: 14px;
     border-radius: 8px;
-    background-color: #1f2e1d;
-    color: white;
-}
-
-#löschen:hover {
-    background-color: #00ff0d;
-    color: #003a1e;
-    font-weight: 700;
 }
 
 #Übungsliste {
@@ -416,23 +380,6 @@ footer {
     color: red;
     font-size: 25px;
     white-space: nowrap;
-}
-
-#Hinzufügebutton {
-    background-color: #4CAF50;
-    color: white;
-    padding: 12px 24px;
-    font-size: 15px;
-    border: none;
-    border-radius: 8px;
-    cursor: pointer;
-    transition: 0.3s;
-}
-
-#Hinzufügebutton:hover {
-    background-color: #00ff0d;
-    color: #003a1e;
-    font-weight: 700;
 }
 
 #diefrage {
@@ -776,24 +723,6 @@ label {
     }
 }
 
-.small-button {
-    background-color: #4CAF50;
-    color: white;
-    padding: 6px 10px;
-    font-size: 12px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: 0.3s;
-}
-
-.small-button:hover {
-    transition: 0.5s;
-    background-color: #00ff0d;
-    color: #003a1e;
-    font-weight: 700;
-}
-
 #form-container {
     background: #1a1a1a;
     padding: 38px;
@@ -836,31 +765,6 @@ label {
     width: 20px;
     height: 20px;
     cursor: pointer;
-}
-
-.export-import-buttons {
-    display: flex;
-    justify-content: center;
-    gap: 15px;
-    margin-top: 10px;
-}
-
-.export-import-buttons button {
-    background-color: #4CAF50;
-    color: white;
-    border: none;
-    padding: 10px 20px;
-    font-size: 14px;
-    border-radius: 8px;
-    cursor: pointer;
-    transition: 0.3s;
-}
-
-.export-import-buttons button:hover {
-    transition: 0.5s;
-    background-color: #00ff0d;
-    color: #003a1e;
-    font-weight: 700;
 }
 
 .row {
@@ -962,33 +866,6 @@ input[type="text"]:focus {
     font-weight: 700;
 }
 
-.popup-buttons {
-    display: flex;
-    justify-content: center;
-    width: 100%;
-    gap: 15px;
-    margin-top: 10px;
-}
-
-.popup-buttons button {
-    flex: 1;
-    max-width: 150px;
-    padding: 12px 20px;
-    font-size: 16px;
-    border-radius: 10px;
-    border: none;
-    background-color: #4CAF50;
-    color: white;
-    cursor: pointer;
-    transition: 0.3s;
-}
-
-.popup-buttons button:hover {
-    background-color: #00ff0d;
-    color: #003a1e;
-    font-weight: 700;
-}
-
 .checkbox-section {
     margin-bottom: 20px;
     display: flex;
@@ -1003,30 +880,11 @@ input[type="text"]:focus {
     color: white;
 }
 
-#alle-löschen-button {
-    background-color: #163d1d;
-    color: white;
-    padding: 12px 20px;
-    font-size: 16px;
-    border: none;
-    border-radius: 8px;
-    cursor: pointer;
-    margin-top: 30px;
-    margin-bottom: 30px;
-}
-
 footer>div {
     display: flex;
     flex-direction: column;
     align-items: center;
     gap: 30px;
-}
-
-#alle-löschen-button:hover {
-    transition: 0.5s;
-    background-color: #00ff0d;
-    color: #003a1e;
-    font-weight: 700;
 }
 
 #streak-counter {
@@ -1061,31 +919,6 @@ footer>div {
 #fragen-container {
     text-align: center;
     margin-top: 0px;
-}
-
-.popup-button {
-    background-color: #4CAF50;
-    color: white;
-    padding: 10px 20px;
-    border: none;
-    font-size: 14px;
-    border-radius: 8px;
-    cursor: pointer;
-    transition: 0.3s;
-}
-
-.popup-button:hover {
-    background-color: #00ff0d;
-    color: #003a1e;
-    font-weight: 700;
-}
-
-.popup-button.cancel {
-    background-color: #aa0000;
-}
-
-.popup-button.cancel:hover {
-    background-color: #ff0000;
 }
 
 #abstand {
@@ -1211,6 +1044,98 @@ footer>div {
     box-shadow: 0 6px 18px rgba(255, 255, 255, 0.35);
 }
 
+.green-button {
+    justify-content: center;
+    gap: 15px;
+    transition: 0.5s;
+    background-color: #4CAF50;
+    color: #ffffff;
+    cursor: pointer;
+    border: none;
+    padding: 12px 20px;
+    font-size: 15px;
+    border-radius: 8px;
+    font-weight: 700;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+.green-button a {
+    transition: 0.5s;
+    color: #fff;
+    text-decoration: none;
+}
+
+.green-button:hover {
+    transition: 0.5s;
+    background-color: #00ff0d;
+    color: #003a1e;
+    font-weight: 900;
+}
+
+.reed-button {
+    justify-content: center;
+    gap: 15px;
+    transition: 0.5s;
+    background: #cc3333;
+    color: #ffffff;
+    cursor: pointer;
+    border: none;
+    padding: 12px 20px;
+    font-size: 15px;
+    border-radius: 8px;
+    font-weight: 700;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+.reed-button:hover {
+    transition: 0.5s;
+    background: #ff4646;
+    color: #003a1e;
+    font-weight: 900;
+}
+
+.red-button {
+    display: flex;
+    color: #cc3333;
+    transition: 0.5s;
+    justify-content: center;
+    gap: 20px;
+    position: absolute;
+    top: 10px;
+    right: 14px;
+    font-size: 24px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.red-button:hover {
+    transition: 0.5s;
+    color: white;
+    transform: scale(1.2);
+}
+
+.red-button.cancel {
+    transition: 0.5s;
+    background: #ff4646;
+    color: white;
+}
+
+.red-button.cancel.cancel:hover {
+    transition: 0.5s;
+    background: #ff4646;
+    color: white;
+    transform: scale(1.2);
+}
+
+#mittig {
+    align-items: center;
+}
+
+#hoverred:hover {
+    background: #cc3333 !important;
+    color: rgb(75, 0, 0);
+}
+
 #modusContainer {
     margin: 20px auto 30px;
     text-align: center;
@@ -1327,35 +1252,6 @@ footer>div {
     box-shadow: 0 0 15px #000;
 }
 
-.popup-button {
-    background: #00ff7b;
-    color: #003a1e;
-    border: none;
-    padding: 12px 20px;
-    margin: 10px 0;
-    width: 100%;
-    border-radius: 8px;
-    font-weight: bold;
-    font-size: 16px;
-    cursor: pointer;
-    transition: 0.3s;
-}
-
-.popup-button:hover {
-    background: #00cc66;
-    color: white;
-}
-
-.popup-button.cancel {
-    background: #ff4646;
-    color: #2c0000;
-}
-
-.popup-button.cancel:hover {
-    background: #cc3333;
-    color: white;
-}
-
 .modus-fenster,
 #popupContent {
     position: relative;
@@ -1391,27 +1287,90 @@ footer>div {
     transform: scale(1.2);
 }
 
-.close-button {
-    position: absolute;
-    top: 10px;
-    right: 14px;
-    font-size: 24px;
-    cursor: pointer;
-    color: #ff4c4c;
-    font-weight: bold;
-}
-
-.close-button:hover {
-    color: white;
-    transform: scale(1.2);
-}
-
 header.vokabelmodus-aktiv {
-    background-color: rgba(0, 255, 0, 0.2) !important;
-    transition: background-color 0.5s ease;
+    background-color: #00a1487c !important;
+    transition: background-color 0.3s ease;
 }
 
 .vokabel-toggle-container {
     margin-bottom: 5px;
     margin-top: 5px;
+}
+
+#mouspointer {
+    cursor: pointer;
+}
+
+
+/*Ab hier karteikarten.html*/
+
+.karteikarte {
+    margin: 100px auto 40px auto;
+    padding: 40px;
+    background: rgba(255, 255, 255, 0.06);
+    border-radius: 16px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+    text-align: center;
+    max-width: 500px;
+    backdrop-filter: blur(10px);
+    cursor: pointer;
+    transition: transform 0.5s ease, box-shadow 0.5s ease;
+}
+
+.karteikarte:hover {
+    transform: scale(1.02);
+    box-shadow: 0 12px 28px rgba(0, 255, 0, 0.25);
+}
+
+.vorderseite,
+.rueckseite {
+    font-size: 24px;
+    font-weight: bold;
+    display: none;
+}
+
+.vorderseite.aktiv,
+.rueckseite.aktiv {
+    display: block;
+}
+
+@media (max-width: 600px) {
+    .karteikarte {
+        padding: 25px;
+        font-size: 20px;
+    }
+    .buttons button {
+        font-size: 16px;
+        padding: 10px 20px;
+    }
+}
+
+#fortschrittContainer {
+    position: fixed;
+    top: 71px;
+    left: 0;
+    right: 0;
+    background: #003a1e;
+    opacity: 0.8;
+}
+
+#fortschrittText {
+    color: white;
+    font-weight: bold;
+    margin-bottom: 4px;
+}
+
+#fortschrittBalken {
+    width: 100%;
+    height: 8px;
+    background: #33333391;
+    border-radius: 4px;
+    overflow: hidden;
+}
+
+#fortschrittFuellung {
+    height: 100%;
+    width: 0%;
+    background: linear-gradient(to right, #00ff77, #00d2ff);
+    transition: width 0.3s ease;
 }

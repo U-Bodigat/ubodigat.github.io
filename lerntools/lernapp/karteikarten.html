@@ -30,7 +30,6 @@
     <link rel="apple-touch-icon" href="https://ubodigat.com/bilder/Wartungsarbeitenprofilbild.png" />
     <script src="/script.js"></script>
     <link rel="stylesheet" href="/lerntools/lernapp/style.css">
-    <script src="/lerntools/lernapp/script.js" defer></script>
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-BE1B5EZY35"></script>
     <script>
@@ -63,7 +62,7 @@
     <!-- End Google Tag Manager -->
 </head>
 
-<body onload="render()" id="lernapphintergrund">
+<body id="lernapphintergrund">
     <!-- Google Tag Manager (noscript) -->
     <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-WTDQC48"
     height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
@@ -73,75 +72,41 @@
             <p><a id="überschriftlink" href="https://ubodigat.com">U:Bodigat.com</a> | Lernapp</p>
             <div id="headerinput">
                 <a href="https://ubodigat.com/datenschutz" target="_blank"> <button class="button">Datenschutz</button></a>
+                <a href="/lerntools/lernapp/übungenhinzufügen"> <button class="button">Übungenhinzufügen</button></a>
                 <a href="/lerntools/lernapp/"> <button class="button">Zur Übung</button></a>
-                <a href="/lerntools/lernmenü"> <button class="button">Zum Lernmenü</button></a>
             </div>
         </header>
     </nav>
 
-    <div id="editAnchor"></div>
-
-    <div id="form-container">
-        <div class="input-row">
-            <input id="frageInput" type="text" placeholder="Frage?" required>
-            <input id="antwortInput" type="text" placeholder="Antwort 💡" required>
-        </div>
-
-        <div class="checkbox-section">
-            <p class="checkbox-title">Groß- / Kleinschreibung beachten</p>
-            <div class="checkbox-line">
-                <input type="checkbox" id="caseSensitiveCheckbox" checked>
+    <main id="main">
+        <div id="fortschrittContainer">
+            <div id="fortschrittText">Karte 1 von X</div>
+            <div id="fortschrittBalken">
+                <div id="fortschrittFuellung"></div>
             </div>
         </div>
-
-        <div class="button-row">
-            <button class="green-button" onclick="übunghinzufügen()">Hinzufügen</button>
+        <div class="karteikarte" id="karteikarte">
+            <div class="vorderseite aktiv" id="vorderseite">Frage</div>
+            <div class="rueckseite" id="rueckseite">Antwort</div>
         </div>
-    </div>
 
-    <div id="popupContainer">
-        <div id="popupContent">
-            <label for="editFrage">Frage:</label>
-            <input type="text" id="editFrage"><br>
-
-            <label for="editAntwort">Antwort:</label>
-            <input type="text" id="editAntwort"><br>
-
-            <div id="caseSensitiveContainer">
-                <input type="checkbox" id="editCaseSensitive">
-                <label for="editCaseSensitive">Groß-/Kleinschreibung beachten</label>
-            </div>
-
+        <div class="buttons" id="lernbuttons">
             <div>
-                <button class="green-button" onclick="saveEdit()">Speichern</button>
-                <button class="reed-button cancel" onclick="closePopup()">Abbrechen</button>
+                <button class="reed-button" onclick="antwort(false)">❌ Nicht gewusst</button>
+                <button class="green-button" onclick="antwort(true)">✅ Gewusst</button>
             </div>
         </div>
-    </div>
 
-    <ul id="Übungsliste"></ul>
-    <button id="scrollDownButton" style="display: none;">
-        ↓
-    </button>
-
-    <footer>
-        <div>
-            <button class="green-button" id="hoverred" onclick="löschen()">Alle Übungen Löschen</button>
-            <div id="abstand">
-                <button class="green-button" type="button" onclick="importDictionary()">📥 Importieren</button>
-                <button class="green-button" type="button" onclick="exportDictionary()">📤 Exportieren</button>
-                <input type="file" id="importFile" accept=".json" style="display: none;" onchange="handleFileImport(event)">
+        <div class="overlay" id="rundeBeendetOverlay" style="display: none;">
+            <div class="modus-fenster">
+                <h2>📚 Runde beendet</h2>
+                <p>Möchtest du...</p>
+                <button class="green-button" onclick="neuStarten(true)">❌ Nur falsche wiederholen</button>
+                <button class="green-button" onclick="neuStarten(false)">🔁 Alles nochmal</button>
             </div>
         </div>
-    </footer>
-    <div id="modusFensterOverlay" class="overlay" style="display: none;">
-        <div class="modus-fenster" id="modusFenster">
-            <span class="red-button" onclick="schließeModusFenster()">❌</span>
-            <h2>Lernmodus wählen</h2>
-            <a href="/lerntools/lernapp/karteikarten"><button class="green-button" id="abstand">🧠 Karteikarten</button></a>
-            <button onclick="generiereArbeitsblatt()" class="green-button">🖨️ Arbeitsblatt generieren</button>
-        </div>
-    </div>
+    </main>
+    <script src="/lerntools/lernapp/script.js"></script>
 </body>
 
 </html>

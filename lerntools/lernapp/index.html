@@ -71,7 +71,7 @@
         <header>
             <p><a id="überschriftlink" href="https://ubodigat.com">U:Bodigat.com</a> | Lernapp</p>
             <div id="headerinput">
-                <button class="button" onclick="zeigeModusFenster()">📚 Lernmodus</button>
+                <button class="button" id="mouspointer" onclick="zeigeModusFenster()">📚 Lernmodus</button>
                 <a href="https://ubodigat.com/datenschutz" target="_blank"> <button class="button">Datenschutz</button></a>
                 <a href="/lerntools/lernapp/übungenhinzufügen"> <button class="button">Übungenhinzufügen</button></a>
                 <a href="/lerntools/lernmenü"> <button class="button">Zum Lernmenü</button></a>
@@ -95,7 +95,7 @@
 
         <form onsubmit="richtigfalsch(); return false;">
             <input id="Antwort" type="text" placeholder="Antwort">
-            <button class="mainbutton" id="Prüfen">Prüfen</button>
+            <button class="green-button" id="Prüfen">Prüfen</button>
         </form>
 
         <h3 id="überblendung"></h3>
@@ -103,16 +103,16 @@
 
         <footer>
             <div>
-                <button onclick="nächstübung()" class="mainbutton" id="löschen">Übung Starten</button>
+                <button onclick="nächstübung()" class="green-button" id="löschen">Übung Starten</button>
             </div>
         </footer>
         <div id="modusFensterOverlay" class="overlay" style="display: none;">
             <div class="modus-fenster" id="modusFenster">
-                <span class="close-button" onclick="schließeModusFenster()">❌</span>
+                <span class="red-button" onclick="schließeModusFenster()">❌</span>
                 <h2>Lernmodus wählen</h2>
                 <div class="vokabel-toggle-container">
                     <label class="toggle-switch">
-                        <input type="checkbox" id="vokabelmodusToggle">
+                        <input type="checkbox" id="vokabelmodusCheckbox">
                         <span class="slider"></span>
                     </label>
                     <span class="toggle-label">Vokabelmodus</span>
