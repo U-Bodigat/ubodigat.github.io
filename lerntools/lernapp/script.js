@@ -879,4 +879,22 @@ window.addEventListener("DOMContentLoaded", () => {
 
     eintraege = Object.values(dictionary);
     if (document.getElementById("karteikarte")) {}
+    const vorder = document.getElementById("vorderseite");
+    const rueck = document.getElementById("rueckseite");
+    const lernbuttons = document.getElementById("lernbuttons");
+
+    if (karteikarte) {
+        karteikarte.addEventListener("click", () => {
+            const istErsteKarte = vorder.innerText.trim().toLowerCase() === "frage" && rueck.innerText.trim().toLowerCase() === "antwort";
+
+            if (istErsteKarte && !karteikarte.classList.contains("aktiviert")) {
+                karteikarte.classList.add("aktiviert");
+                ladeKartenrunde(false);
+                lernbuttons.style.display = "flex";
+            } else {
+                vorder.classList.toggle("aktiv");
+                rueck.classList.toggle("aktiv");
+            }
+        });
+    }
 });
