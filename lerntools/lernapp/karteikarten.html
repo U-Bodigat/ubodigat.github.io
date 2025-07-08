@@ -77,7 +77,6 @@
             </div>
         </header>
     </nav>
-
     <main id="main">
         <div id="fortschrittContainer">
             <div id="fortschrittText">Karte 1 von X</div>
@@ -85,28 +84,26 @@
                 <div id="fortschrittFuellung"></div>
             </div>
         </div>
+
         <div class="karteikarte" id="karteikarte">
             <div class="vorderseite aktiv" id="vorderseite">Frage</div>
             <div class="rueckseite" id="rueckseite">Antwort</div>
         </div>
 
-        <div class="buttons" id="lernbuttons">
-            <div>
-                <button class="reed-button" onclick="antwort(false)">❌ Nicht gewusst</button>
-                <button class="green-button" onclick="antwort(true)">✅ Gewusst</button>
-            </div>
-        </div>
-
-        <div class="overlay" id="rundeBeendetOverlay" style="display: none;">
-            <div class="modus-fenster">
-                <h2>📚 Runde beendet</h2>
-                <p>Möchtest du...</p>
-                <button class="green-button" onclick="neuStarten(true)">❌ Nur falsche wiederholen</button>
-                <button class="green-button" onclick="neuStarten(false)">🔁 Alles nochmal</button>
-            </div>
+        <div class="buttons" id="lernbuttons" style="display: none;">
+            <button class="popup-button cancel" onclick="antwort(false)">❌ Nicht gewusst</button>
+            <button class="popup-button" onclick="antwort(true)">✅ Gewusst</button>
         </div>
     </main>
-    <script src="/lerntools/lernapp/script.js"></script>
+    <div class="overlay" id="rundeBeendetOverlay" style="display: none;">
+        <div class="modus-fenster">
+            <h2>📚 Runde beendet</h2>
+            <p>Möchtest du...</p>
+            <button class="green-button" onclick="neuStarten(true)">❌ Nur falsche wiederholen</button>
+            <button class="green-button" onclick="neuStarten(false)">🔁 Alles nochmal</button>
+        </div>
+    </div>
+    <script src="/lerntools/lernapp/script.js" defer></script>
 </body>
 
 </html>
