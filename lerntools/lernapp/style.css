@@ -1374,3 +1374,39 @@ header.vokabelmodus-aktiv {
     background: linear-gradient(to right, #00ff77, #00d2ff);
     transition: width 0.3s ease;
 }
+
+.buttons {
+    display: flex;
+    gap: 16px;
+    justify-content: center;
+    margin-top: 28px;
+}
+
+.popup-button {
+    padding: 12px 28px;
+    font-size: 1.1rem;
+    border-radius: 10px;
+    border: none;
+    background: linear-gradient(90deg, #232c33 50%, #175a1f 100%);
+    color: #fff;
+    font-weight: 600;
+    cursor: pointer;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.17);
+    transition: all 0.16s;
+    outline: none;
+    position: relative;
+}
+
+.popup-button.cancel {
+    background: linear-gradient(90deg, #232c33 60%, #a63b2c 100%);
+}
+
+.popup-button:not(:last-child) {
+    margin-right: 10px;
+}
+
+.popup-button:hover {
+    transform: scale(1.04) translateY(-2px);
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.23);
+    filter: brightness(1.09);
+}
