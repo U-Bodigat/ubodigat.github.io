@@ -263,13 +263,14 @@ function generiereArbeitsblatt() {
                 .arbeitsblatt-container { max-width: 900px; margin: 40px auto 32px auto; background: #fff; border-radius: 18px; box-shadow: 0 8px 32px rgba(24,56,115,0.15); padding: 48px 40px 40px 40px;}
                 .logo { display: block; margin: 0 auto 14px auto; width: 160px; }
                 h1 { text-align: center; margin-bottom: 18px; font-weight: 800; letter-spacing: 0.5px; color: #0a3161; font-size: 2.2rem; }
+                .arbeitsblatt-btns { text-align:center; margin-bottom: 28px;}
+                .druck-btn { display: inline-block; margin: 0 10px 0 0; background: linear-gradient(90deg, #16c57b 60%, #31b9c8 100%); color: #fff; font-size: 1.1rem; font-weight: bold; border: none; border-radius: 8px; padding: 14px 34px; box-shadow: 0 3px 12px rgba(24,56,115,0.12); cursor: pointer; transition: background 0.2s; }
+                .druck-btn:hover { background: linear-gradient(90deg, #12915e 60%, #0d7e8d 100%); }
                 .aufgaben-card { display: flex; align-items: center; background: #f9fafe; border-radius: 16px; margin: 14px 0; padding: 18px 22px; box-shadow: 0 3px 8px rgba(60,80,130,0.06); font-size: 1.1rem; }
                 .aufgaben-card .nr { font-weight: bold; color: #3467c7; margin-right: 20px; font-size: 1.3rem; flex-shrink: 0; line-height: 1.7; }
                 .frage-feld-wrap { display: flex; align-items: center; flex: 1; min-width: 0; gap: 24px; }
                 .frage { flex: 1 1 0%; min-width: 0; word-break: break-word; line-height: 1.6; }
                 .feld { border-bottom: 2px solid #b6b8c3; width: 220px; min-width: 120px; margin-left: 0; flex-shrink: 0; height: 26px; vertical-align: middle; display: inline-block; position: relative; top: 0;}
-                .druck-btn { display: inline-block; margin: 40px 10px 0 0; background: linear-gradient(90deg, #16c57b 60%, #31b9c8 100%); color: #fff; font-size: 1.1rem; font-weight: bold; border: none; border-radius: 8px; padding: 14px 34px; box-shadow: 0 3px 12px rgba(24,56,115,0.12); cursor: pointer; transition: background 0.2s; }
-                .druck-btn:hover { background: linear-gradient(90deg, #12915e 60%, #0d7e8d 100%); }
                 @media print { .druck-btn { display: none !important; } body { background: #fff !important; } .arbeitsblatt-container { box-shadow: none; border-radius: 0; } }
             </style>
         </head>
@@ -277,9 +278,11 @@ function generiereArbeitsblatt() {
             <div class="arbeitsblatt-container">
                 <img class="logo" src="/bilder/ubodigatlogobreit.png" alt="Logo">
                 <h1>Arbeitsblatt: Vokabeln</h1>
+                <div class="arbeitsblatt-btns">
+                    <button class="druck-btn" onclick="window.print()">🖨️ Drucken</button>
+                    <button class="druck-btn" onclick="zeigeLoesungsblatt()">🔑 Lösungsblatt anzeigen</button>
+                </div>
                 ${aufgaben.join("")}
-                <button class="druck-btn" onclick="window.print()">🖨️ Drucken</button>
-                <button class="druck-btn" onclick="zeigeLoesungsblatt()">🔑 Lösungsblatt anzeigen</button>
             </div>
             <script>
                 function zeigeLoesungsblatt() {
@@ -297,12 +300,14 @@ function generiereArbeitsblatt() {
                     const loesungsblattHTML = '<html><head>' +
                         '<title>Lösungsblatt - Vokabeln</title>' +
                         '<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">' +
-                        '<style>html,body{height:100%;}body{min-height:100vh;font-family:Inter,Arial,sans-serif;background:#fff;color:#212738;margin:0;padding:0;}.arbeitsblatt-container{max-width:900px;margin:40px auto 32px auto;background:#fff;border-radius:18px;box-shadow:0 8px 32px rgba(24,56,115,0.15);padding:48px 40px 40px 40px;}.logo{display:block;margin:0 auto 14px auto;width:160px;}h1{text-align:center;margin-bottom:18px;font-weight:800;letter-spacing:0.5px;color:#18b57d;font-size:2.2rem;}.aufgaben-card{display:flex;align-items:center;background:#f9fafe;border-radius:16px;margin:14px 0;padding:18px 22px;box-shadow:0 3px 8px rgba(60,80,130,0.06);font-size:1.1rem;}.aufgaben-card .nr{font-weight:bold;color:#18b57d;margin-right:20px;font-size:1.3rem;flex-shrink:0;line-height:1.7;}.frage-feld-wrap{display:flex;align-items:center;flex:1;min-width:0;gap:24px;}.frage{flex:1 1 0%;min-width:0;word-break:break-word;line-height:1.6;}.feld{border-bottom:2px solid #b6b8c3;width:220px;min-width:120px;margin-left:0;flex-shrink:0;height:26px;vertical-align:middle;display:inline-block;position:relative;top:0;}.druck-btn{display:inline-block;margin:40px 10px 0 0;background:linear-gradient(90deg,#18b57d 60%,#43d2c8 100%);color:#fff;font-size:1.1rem;font-weight:bold;border:none;border-radius:8px;padding:14px 34px;box-shadow:0 3px 12px rgba(24,56,115,0.12);cursor:pointer;transition:background 0.2s;}.druck-btn:hover{background:linear-gradient(90deg,#089158 60%,#1e8380 100%);}@media print{.druck-btn{display:none!important;}body{background:#fff!important;}.arbeitsblatt-container{box-shadow:none;border-radius:0;}}</style></head>' +
+                        '<style>html,body{height:100%;}body{min-height:100vh;font-family:Inter,Arial,sans-serif;background:#fff;color:#212738;margin:0;padding:0;}.arbeitsblatt-container{max-width:900px;margin:40px auto 32px auto;background:#fff;border-radius:18px;box-shadow:0 8px 32px rgba(24,56,115,0.15);padding:48px 40px 40px 40px;}.logo{display:block;margin:0 auto 14px auto;width:160px;}h1{text-align:center;margin-bottom:18px;font-weight:800;letter-spacing:0.5px;color:#18b57d;font-size:2.2rem;}.arbeitsblatt-btns{text-align:center;margin-bottom:28px;}.druck-btn{display:inline-block;margin:0 10px 0 0;background:linear-gradient(90deg,#18b57d 60%,#43d2c8 100%);color:#fff;font-size:1.1rem;font-weight:bold;border:none;border-radius:8px;padding:14px 34px;box-shadow:0 3px 12px rgba(24,56,115,0.12);cursor:pointer;transition:background 0.2s;}.druck-btn:hover{background:linear-gradient(90deg,#089158 60%,#1e8380 100%);}.aufgaben-card{display:flex;align-items:center;background:#f9fafe;border-radius:16px;margin:14px 0;padding:18px 22px;box-shadow:0 3px 8px rgba(60,80,130,0.06);font-size:1.1rem;}.aufgaben-card .nr{font-weight:bold;color:#18b57d;margin-right:20px;font-size:1.3rem;flex-shrink:0;line-height:1.7;}.frage-feld-wrap{display:flex;align-items:center;flex:1;min-width:0;gap:24px;}.frage{flex:1 1 0%;min-width:0;word-break:break-word;line-height:1.6;}.feld{border-bottom:2px solid #b6b8c3;width:220px;min-width:120px;margin-left:0;flex-shrink:0;height:26px;vertical-align:middle;display:inline-block;position:relative;top:0;}@media print{.druck-btn{display:none!important;}body{background:#fff!important;}.arbeitsblatt-container{box-shadow:none;border-radius:0;}}</style></head>' +
                         '<body><div class="arbeitsblatt-container">' +
                         '<img class="logo" src="/bilder/ubodigatlogobreit.png" alt="Logo">' +
                         '<h1>Lösungsblatt</h1>' +
+                        '<div class="arbeitsblatt-btns">'+
+                        '<button class="druck-btn" onclick="window.print()">🖨️ Drucken</button>'+
+                        '</div>'+
                         lösungen.join('') +
-                        '<button class="druck-btn" onclick="window.print()">🖨️ Drucken</button>' +
                         '</div></body></html>';
                     const w = window.open('', '_blank');
                     w.document.write(loesungsblattHTML);
