@@ -272,6 +272,7 @@ function generiereArbeitsblatt() {
                 .frage { flex: 1 1 0%; min-width: 0; word-break: break-word; line-height: 1.6; }
                 .feld { border-bottom: 2px solid #b6b8c3; width: 220px; min-width: 120px; margin-left: 0; flex-shrink: 0; height: 26px; vertical-align: middle; display: inline-block; position: relative; top: 0;}
                 @media print { .druck-btn { display: none !important; } body { background: #fff !important; } .arbeitsblatt-container { box-shadow: none; border-radius: 0; } }
+                .print-footer { display: none; } @media print { .print-footer { display: block; text-align: center; margin-top: 42px; font-size: 15px; color: #888; } .arbeitsblatt-btns { display: none !important; } body { background: #fff !important; } .arbeitsblatt-container { box-shadow: none; border-radius: 0; margin-bottom: 0 !important; padding-bottom: 0 !important; } }
             </style>
         </head>
         <body>
@@ -283,6 +284,7 @@ function generiereArbeitsblatt() {
                     <button class="druck-btn" onclick="zeigeLoesungsblatt()">🔑 Lösungsblatt anzeigen</button>
                 </div>
                 ${aufgaben.join("")}
+                <div class="print-footer">ubodigat.com/lerntools/lernapp/</div>
             </div>
             <script>
                 function zeigeLoesungsblatt() {
