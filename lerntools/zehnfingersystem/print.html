@@ -30,7 +30,6 @@
     <link rel="apple-touch-icon" href="https://ubodigat.com/bilder/Wartungsarbeitenprofilbild.png" />
     <script src="/script.js"></script>
     <link rel="stylesheet" href="/lerntools/zehnfingersystem/style.css">
-    <script src="/lerntools/zehnfingersystem/script.js"></script>
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-BE1B5EZY35"></script>
     <script>
@@ -61,54 +60,7 @@
         })(window, document, 'script', 'dataLayer', 'GTM-WTDQC48');
     </script>
     <!-- End Google Tag Manager -->
-
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            color: #000000;
-            background-color: #ffffff;
-        }
-        
-        .print-page {
-            color: #000000;
-            background-color: #ffffff;
-            border-radius: 15px;
-            width: 210mm;
-            height: 297mm;
-            margin: 20mm;
-            box-shadow: 0 0 10px #6363637a;
-        }
-        
-        .header {
-            border-radius: 15px;
-            padding: 20px;
-            color: #5c5c5c;
-            background-color: #d8d8d8;
-            text-align: center;
-        }
-        
-        .logo {
-            color: #fff;
-            margin-top: -3%;
-            margin-left: -85%;
-            max-width: 100px;
-            max-height: 100px;
-        }
-        
-        .content {
-            color: #000000;
-            padding: 20px;
-        }
-        
-        #überschriftone {
-            margin-left: 15%;
-            margin-top: -10%;
-        }
-    </style>
 </head>
-
 <body>
     <!-- Google Tag Manager (noscript) -->
     <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-WTDQC48"
@@ -118,39 +70,76 @@
     <div class="print-page">
         <div class="header">
             <img src="/bilder/Wartungsarbeitenprofilbild.png" alt="Logo" class="logo">
-            <h1 id="überschriftone">10 Finger System | Prüfungsmodus</h1>
+            <h1>10-Fingersystem | Prüfungsmodus</h1>
         </div>
-        <div class="content" id="print-content">
-            <p>Hier sind deine Ergebnisse:</p>
-            <!-- Hier fügst du die Ergebnisse ein, die gedruckt werden sollen -->
-            <p>Genauigkeit: <span id="accuracy">0</span>%</p>
-            <p>Fehler: <span id="errors">0</span></p>
-            <p>Tastenanschläge: <span id="key-strokes">0</span></p>
-            <p>Gesamt-Tastenanschläge: <span id="total-key-strokes">0</span></p>
-            <p>Textlänge: <span id="text-length">0</span> Zeichen</p>
-            <p>Textschwierigkeit: <span id="text-difficulty">leicht</span></p>
+        <div class="results-card">
+            <div class="result-row">
+                <span class="result-label">Datum:</span>
+                <span class="result-value blue" id="print-date"></span>
+            </div>
+            <div class="result-row">
+                <span class="result-label">Uhrzeit:</span>
+                <span class="result-value blue" id="print-time"></span>
+            </div>
+            <div class="result-row" id="print-row-name" style="display:none;">
+                <span class="result-label">Name:</span>
+                <span class="result-value" id="print-name"></span>
+            </div>
+            <div class="result-row">
+                <span class="result-label">Genauigkeit:</span>
+                <span class="result-value green" id="accuracy"></span>
+            </div>
+            <div class="result-row">
+                <span class="result-label">Fehler:</span>
+                <span class="result-value red" id="errors"></span>
+                <span style="margin:0 7px;">/</span>
+                <span class="result-value" id="max-errors"></span>
+            </div>
+            <div class="result-row">
+                <span class="result-label">Zeit:</span>
+                <span class="result-value blue" id="time"></span>
+                <span style="margin:0 7px;">/</span>
+                <span class="result-value" id="exam-time"></span>
+            </div>
+            <div class="result-row">
+                <span class="result-label">Tastenanschläge:</span>
+                <span class="result-value" id="key-strokes"></span>
+            </div>
+            <div class="result-row">
+                <span class="result-label">Textlänge:</span>
+                <span class="result-value" id="text-length"></span>
+            </div>
+            <div class="result-row">
+                <span class="result-label">Schwierigkeit:</span>
+                <span class="result-value" id="text-difficulty"></span>
+            </div>
         </div>
-        <script>
-            window.addEventListener('message', function(event) {
-                const ergebnisse = event.data;
-                const contentContainer = document.getElementById('print-content');
-
-                const seconds = Math.floor(ergebnisse.zeit / 1000);
-                const minutes = Math.floor(seconds / 60);
-                const hours = Math.floor(minutes / 60);
-
-                const formattedTime = `${hours} Stunden, ${minutes % 60} Minuten, ${seconds % 60} Sekunden`;
-
-                contentContainer.innerHTML = `
-                    <p>Genauigkeit: <span id="accuracy">${ergebnisse.genauigkeit}%</span></p>
-                    <p>Fehler: <span id="errors">${ergebnisse.fehler}</span></p>
-                    <p>Tastenanschläge: <span id="key-strokes">${ergebnisse.tastenanschlaege}</span></p>
-                    <p>Textlänge: <span id="text-length">${ergebnisse.textLaenge}</span> Zeichen</p>
-                    <p>Textschwierigkeit: <span id="text-difficulty">${ergebnisse.textSchwierigkeit}</span></p>
-                `;
-            });
-        </script>
     </div>
+    <script>
+        function fmt(ms) {
+            const sec = Math.floor(ms / 1000);
+            const min = Math.floor(sec / 60);
+            const h = Math.floor(min / 60);
+            return `${h}h ${min % 60}m ${sec % 60}s`;
+        }
+        window.addEventListener('message', function(event) {
+            const erg = event.data || {};
+            document.getElementById('print-date').textContent = erg.datum || "-";
+            document.getElementById('print-time').textContent = erg.uhrzeit || "-";
+            if(erg.name && erg.name.length > 0){
+                document.getElementById('print-row-name').style.display = '';
+                document.getElementById('print-name').textContent = erg.name;
+            }
+            document.getElementById('accuracy').textContent = erg.genauigkeit ? erg.genauigkeit + " %" : "-";
+            document.getElementById('errors').textContent = (typeof erg.fehler !== "undefined") ? erg.fehler : "-";
+            document.getElementById('max-errors').textContent = (typeof erg.maxFehler !== "undefined") ? erg.maxFehler : "-";
+            document.getElementById('time').textContent = erg.zeit ? fmt(erg.zeit) : "-";
+            document.getElementById('exam-time').textContent = (typeof erg.examTimeLimit !== "undefined") ? fmt(erg.examTimeLimit * 1000) : "-";
+            document.getElementById('key-strokes').textContent = (typeof erg.tastenanschlaege !== "undefined") ? erg.tastenanschlaege : "-";
+            document.getElementById('text-length').textContent = (typeof erg.textLaenge !== "undefined") ? erg.textLaenge : "-";
+            document.getElementById('text-difficulty').textContent = erg.textSchwierigkeit || "-";
+        });
+    </script>
 </body>
 
 </html>
