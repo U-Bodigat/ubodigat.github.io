@@ -119,8 +119,8 @@ document.addEventListener('DOMContentLoaded', function() {
                         <input id="exam-username" type="text" placeholder="Dein Name...">
                         <label for="exam-text-select">Textauswahl</label>
                         <select id="exam-text-select">
-                            <option value="0">Luftfahrt (Standard)</option>
-                            <option value="1">Zehnfinger-Übung (Beispiel)</option>
+                            <option value="0">Luftfahrt</option>
+                            <option value="1">Informatik</option>
                             <option value="2">Umweltverschmutzung</option>
                             <option value="custom">Eigener Text (.txt)</option>
                         </select>
@@ -366,8 +366,8 @@ document.addEventListener('DOMContentLoaded', function() {
                 <h2>Text auswählen</h2>
                 <label for="normal-text-select">Textauswahl</label>
                 <select id="normal-text-select" style="margin-bottom:12px;">
-                    <option value="0">Luftfahrt (Standard)</option>
-                    <option value="1">Zehnfinger-Übung (Beispiel)</option>
+                    <option value="0">Luftfahrt</option>
+                    <option value="1">Informatik</option>
                     <option value="2">Umweltverschmutzung</option>
                     <option value="custom">Eigener Text (.txt)</option>
                 </select>
@@ -685,7 +685,7 @@ document.addEventListener('DOMContentLoaded', function() {
             let timer = setInterval(() => {
                 if (tries++ > 5) { clearInterval(timer); return; }
                 try { druckfenster.postMessage(ergebnisse, window.location.origin); } catch(e) {}
-            }, 350);
+            }, 400);
             setTimeout(() => {
                 clearInterval(timer);
                 druckfenster.print();
@@ -722,8 +722,8 @@ document.addEventListener('DOMContentLoaded', function() {
                 ` : ""}
                 <label for="exam-text-select">Textauswahl</label>
                 <select id="exam-text-select" style="margin-bottom:10px;">
-                    <option value="0">Luftfahrt (Standard)</option>
-                    <option value="1">Zehnfinger-Übung (Beispiel)</option>
+                    <option value="0">Luftfahrt</option>
+                    <option value="1">Informatik</option>
                     <option value="2">Umweltverschmutzung</option>
                     <option value="custom">Eigener Text (.txt)</option>
                 </select>

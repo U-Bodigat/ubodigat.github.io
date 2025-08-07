@@ -123,6 +123,9 @@
                  transition:transform 0.15s ease, box-shadow 0.15s ease;">
             <i class="fa-solid fa-print" id="printbnt" style="margin-right:8px;"></i>Drucken
         </button>
+        <button id="backbtn" type="button">
+        <i class="fa-solid fa-arrow-left"></i>&nbsp; Zurück zur Startseite
+        </button>
     </main>
     <a href="https://ubodigat.com/lerntools/zehnfingersystem/" class="print-footer" target="_blank">
         ubodigat.com/lerntools/zehnfingersystem/
@@ -147,6 +150,21 @@
             <div class="row"><span class="label"><i class="fa-solid fa-gauge-simple"></i>Schwierigkeit:</span><span class="value diff">${d.textSchwierigkeit}</span></div>
         `;
         });
+
+    document.getElementById("backbtn")?.addEventListener("click", () => {
+        const target = "/lerntools/zehnfingersystem/index.html";
+        try {
+        if (window.opener && !window.opener.closed) {
+            window.opener.location.href = target;
+        }
+        } catch(_) {}
+
+        if (window.opener) {
+        window.close();
+        } else {
+        window.location.href = target;
+        }
+    });
     </script>
 </body>
 
