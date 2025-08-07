@@ -13,7 +13,7 @@
     <meta name="description" content="Dies ist nur eine Seite diese gebracht wird zum drucken der Ergebnisse aus dem Prüfungsmodus der 10 Finger System Lernapp (;">
     <meta property="og:site_name" content="U:Bodigat.com">
     <meta property="og:url" content="https://ubodigat.com">
-    <meta property="og:title" content="Drucklayout | ubodigat.com">
+    <meta property="og:title" content="Ergebnisdruck | ubodigat.com">
     <meta property="og:type" content="website">
     <meta property="og:description" content="Dies ist nur eine Seite diese gebracht wird zum drucken der Ergebnisse aus dem Prüfungsmodus der 10 Finger System Lernapp (;">
     <meta property="og:image" content="https://cdn.discordapp.com/attachments/1068905447848943697/1161784440004022363/ubodigat_logo_breit_transparent_neutral.png?ex=65398f13&is=65271a13&hm=8bd1f6d65ee3d677dc79e1b8e6d58d7a292f9f88fa9816c01d0535a6d482cd9a&">
@@ -22,14 +22,16 @@
     <meta property="og:image:height" content="500">
     <meta property="twitter:card" content="summary_large_image">
     <meta property="twitter:url" content="https://ubodigat.com">
-    <meta property="twitter:title" content="Drucklayout | ubodigat.com">
+    <meta property="twitter:title" content="Ergebnisdruck | ubodigat.com">
     <meta property="twitter:description" content="Dies ist nur eine Seite diese gebracht wird zum drucken der Ergebnisse aus dem Prüfungsmodus der 10 Finger System Lernapp (;">
     <meta property="twitter:image" content="https://cdn.discordapp.com/attachments/1068905447848943697/1161784440004022363/ubodigat_logo_breit_transparent_neutral.png?ex=65398f13&is=65271a13&hm=8bd1f6d65ee3d677dc79e1b8e6d58d7a292f9f88fa9816c01d0535a6d482cd9a&">
-    <title>Drucklayout | ubodigat.com</title>
+    <title>Ergebnisdruck | ubodigat.com</title>
     <link rel="icon" href="/bilder/Wartungsarbeitenprofilbild.png" type="image/x-icon">
     <link rel="apple-touch-icon" href="https://ubodigat.com/bilder/Wartungsarbeitenprofilbild.png" />
     <script src="/script.js"></script>
     <link rel="stylesheet" href="/lerntools/zehnfingersystem/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" rel="stylesheet" crossorigin="anonymous" referrerpolicy="no-referrer">
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-BE1B5EZY35"></script>
     <script>
@@ -60,84 +62,90 @@
         })(window, document, 'script', 'dataLayer', 'GTM-WTDQC48');
     </script>
     <!-- End Google Tag Manager -->
+    <style>
+         :root {
+            --bg: #202020;
+            --card: #0f2033;
+            --row: #163049;
+            --text: #e8f4ff;
+            --muted: #a6c4da;
+            --acc: #1dd1a1;
+            --err: #ff3b3b;
+            --pri: #3aa8ff;
+        }
+        
+        * {
+            box-sizing: border-box
+        }
+        
+        html,
+        body {
+            height: 100%
+        }
+        
+        body {
+            margin: 0;
+            font-family: Poppins, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+            color: var(--text);
+            background: radial-gradient(1200px 900px at -10% -20%, #707070 0%, transparent 50%), radial-gradient(900px 700px at 120% -10%, #424242 0%, transparent 50%), var(--bg);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+    </style>
 </head>
+
 <body>
     <!-- Google Tag Manager (noscript) -->
     <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-WTDQC48"
     height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <!-- End Google Tag Manager (noscript) -->
 
-    <div class="print-page">
+    <main class="print-card">
         <div class="header">
-            <img src="/bilder/Wartungsarbeitenprofilbild.png" alt="Logo" class="logo">
-            <h1>10-Fingersystem | Prüfungsmodus</h1>
+            <div class="logo">
+                <img src="/bilder/ubodigatlogo.png" alt="U:Bodigat">
+            </div>
+            <div class="title">Pr&uuml;fungsauswertung</div>
         </div>
-        <div class="results-card">
-            <div class="result-row">
-                <span class="result-label">Datum:</span>
-                <span class="result-value blue" id="print-date"></span>
-            </div>
-            <div class="result-row">
-                <span class="result-label">Uhrzeit:</span>
-                <span class="result-value blue" id="print-time"></span>
-            </div>
-            <div class="result-row" id="print-row-name" style="display:none;">
-                <span class="result-label">Name:</span>
-                <span class="result-value" id="print-name"></span>
-            </div>
-            <div class="result-row">
-                <span class="result-label">Genauigkeit:</span>
-                <span class="result-value green" id="accuracy"></span>
-            </div>
-            <div class="result-row">
-                <span class="result-label">Fehler:</span>
-                <span class="result-value red" id="errors"></span>
-                <span style="margin:0 7px;">/</span>
-                <span class="result-value" id="max-errors"></span>
-            </div>
-            <div class="result-row">
-                <span class="result-label">Zeit:</span>
-                <span class="result-value blue" id="time"></span>
-                <span style="margin:0 7px;">/</span>
-                <span class="result-value" id="exam-time"></span>
-            </div>
-            <div class="result-row">
-                <span class="result-label">Tastenanschläge:</span>
-                <span class="result-value" id="key-strokes"></span>
-            </div>
-            <div class="result-row">
-                <span class="result-label">Textlänge:</span>
-                <span class="result-value" id="text-length"></span>
-            </div>
-            <div class="result-row">
-                <span class="result-label">Schwierigkeit:</span>
-                <span class="result-value" id="text-difficulty"></span>
-            </div>
-        </div>
-    </div>
+
+        <div class="rows" id="results"></div>
+        <button id="printbnt" onclick="window.print()" style="background:linear-gradient(90deg,#119776,#23679b);
+                 border:none;
+                 color:#fff;
+                 font-weight:700;
+                 padding:10px 20px;
+                 border-radius:10px;
+                 cursor:pointer;
+                 margin-top: 2%;
+                 font-size:1rem;
+                 box-shadow:0 4px 12px rgba(0,0,0,0.2);
+                 transition:transform 0.15s ease, box-shadow 0.15s ease;">
+            <i class="fa-solid fa-print" id="printbnt" style="margin-right:8px;"></i>Drucken
+        </button>
+    </main>
+    <a href="https://ubodigat.com/lerntools/zehnfingersystem/" class="print-footer" target="_blank">
+        ubodigat.com/lerntools/zehnfingersystem/
+    </a>
+
     <script>
-        function fmt(ms) {
-            const sec = Math.floor(ms / 1000);
-            const min = Math.floor(sec / 60);
-            const h = Math.floor(min / 60);
-            return `${h}h ${min % 60}m ${sec % 60}s`;
-        }
-        window.addEventListener('message', function(event) {
-            const erg = event.data || {};
-            document.getElementById('print-date').textContent = erg.datum || "-";
-            document.getElementById('print-time').textContent = erg.uhrzeit || "-";
-            if(erg.name && erg.name.length > 0){
-                document.getElementById('print-row-name').style.display = '';
-                document.getElementById('print-name').textContent = erg.name;
-            }
-            document.getElementById('accuracy').textContent = erg.genauigkeit ? erg.genauigkeit + " %" : "-";
-            document.getElementById('errors').textContent = (typeof erg.fehler !== "undefined") ? erg.fehler : "-";
-            document.getElementById('max-errors').textContent = (typeof erg.maxFehler !== "undefined") ? erg.maxFehler : "-";
-            document.getElementById('time').textContent = erg.zeit ? fmt(erg.zeit) : "-";
-            document.getElementById('exam-time').textContent = (typeof erg.examTimeLimit !== "undefined") ? fmt(erg.examTimeLimit * 1000) : "-";
-            document.getElementById('key-strokes').textContent = (typeof erg.tastenanschlaege !== "undefined") ? erg.tastenanschlaege : "-";
-            document.getElementById('text-length').textContent = (typeof erg.textLaenge !== "undefined") ? erg.textLaenge : "-";
-            document.getElementById('text-difficulty').textContent = erg.textSchwierigkeit || "-";
+        window.addEventListener("message", (ev) => {
+                    if (ev.origin !== window.location.origin) return;
+                    const d = ev.data;
+                    if (!d) return;
+
+                    const el = document.getElementById("results");
+                    el.innerHTML = `
+            <div class="row"><span class="label"><i class="fa-regular fa-calendar"></i>Datum:</span><span class="value">${d.datum}</span></div>
+            <div class="row"><span class="label"><i class="fa-regular fa-clock"></i>Uhrzeit:</span><span class="value">${d.uhrzeit}</span></div>
+            ${d.name ? `<div class="row"><span class="label"><i class="fa-solid fa-user"></i>Name:</span><span class="value">${d.name}</span></div>` : ""}
+            <div class="row"><span class="label"><i class="fa-solid fa-bullseye"></i>Genauigkeit:</span><span class="value acc">${d.genauigkeit} %</span></div>
+            <div class="row"><span class="label"><i class="fa-solid fa-bug"></i>Fehler:</span><span class="value"><span class="value err">${d.fehler}</span> / ${d.maxFehler}</span></div>
+            <div class="row"><span class="label"><i class="fa-regular fa-hourglass-half"></i>Zeit:</span><span class="value acc">${Math.floor(d.zeit/60000)}m ${Math.floor((d.zeit/1000)%60)}s</span></div>
+            <div class="row"><span class="label"><i class="fa-solid fa-keyboard"></i>Tastenanschläge:</span><span class="value">${d.tastenanschlaege}</span></div>
+            <div class="row"><span class="label"><i class="fa-solid fa-rectangle-list"></i>Textlänge:</span><span class="value">${d.textLaenge}</span></div>
+            <div class="row"><span class="label"><i class="fa-solid fa-gauge-simple"></i>Schwierigkeit:</span><span class="value diff">${d.textSchwierigkeit}</span></div>
+        `;
         });
     </script>
 </body>

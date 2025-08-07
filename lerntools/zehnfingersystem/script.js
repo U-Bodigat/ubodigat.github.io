@@ -629,35 +629,85 @@ document.addEventListener('DOMContentLoaded', function() {
 
     function showEvaluationPopup(accuracy, duration, ergebnisse) {
         const popup = document.createElement('div');
-        popup.className = 'evaluation-popup';
         popup.innerHTML = `
-            <span class="close-button" style="font-size:2.1rem;top:13px;right:20px;z-index:1;position:absolute;cursor:pointer;">&times;</span>
-            <h2 style="margin-bottom:12px;font-size:2.1rem;font-weight:900;letter-spacing:1px;">Auswertung</h2>
-            <div style="margin-bottom:8px;"><b>Datum:</b> ${ergebnisse.datum} &nbsp; <b>Uhrzeit:</b> ${ergebnisse.uhrzeit}</div>
-            ${ergebnisse.name ? `<div style="margin-bottom:8px;"><b>Name:</b> ${escapeHtml(ergebnisse.name)}</div>` : ""}
-            <div style="margin:12px 0;text-align:left;"><b>Genauigkeit:</b> <span style="color:#23d0ae;font-weight:700">${accuracy.toFixed(2)}%</span></div>
-            <div style="margin:12px 0;text-align:left;"><b>Zeit:</b> <span style="color:#23d0ae;font-weight:700">${duration.hours}h ${duration.minutes}m ${duration.seconds}s</span></div>
-            <div style="margin:12px 0;text-align:left;"><b>Fehler:</b> <span style="color:#23d0ae;font-weight:700">${ergebnisse.fehler}</span></div>
-            <div style="margin:12px 0;text-align:left;"><b>Tastenanschläge:</b> <span style="color:#23d0ae;font-weight:700">${ergebnisse.tastenanschlaege}</span></div>
-            <div style="margin:12px 0;text-align:left;"><b>Gesamt-Tastenanschläge:</b> <span style="color:#23d0ae;font-weight:700">${ergebnisse.gesamtTastenanschlaege}</span></div>
-            <div style="margin:12px 0;text-align:left;"><b>Textlänge:</b> <span style="color:#23d0ae;font-weight:700">${ergebnisse.textLaenge}</span></div>
-            <div style="margin:12px 0;text-align:left;"><b>Schwierigkeit:</b> <span style="color:#23d0ae;font-weight:700">${ergebnisse.textSchwierigkeit}</span></div>
-            <button style="background:linear-gradient(90deg,#23d0ae,#3aa8ff);color:#fff;padding:10px 30px;border-radius:7px;font-weight:700;font-size:1.1rem;margin-top:15px;border:none;box-shadow:0 4px 18px #2221;cursor:pointer;">Drucken</button>
+        <div class="modern-eval-overlay">
+            <div class="modern-eval-popup">
+            <button class="modern-eval-close" title="Schließen">×</button>
+            <div class="modern-eval-header">
+                <span class="modern-eval-icon"><i class="fa-solid fa-clipboard-check"></i></span>
+                <span class="modern-eval-title">Auswertung</span>
+            </div>
+            <div class="modern-eval-table">
+                <div class="modern-eval-row">
+                <span><i class="fa-regular fa-calendar"></i> Datum:</span>
+                <span>${ergebnisse.datum}</span>
+                </div>
+                ${ergebnisse.name ? `<div class="modern-eval-row"><span><i class="fa-solid fa-user"></i> Name:</span><span>${escapeHtml(ergebnisse.name)}</span></div>` : ""}
+                <div class="modern-eval-row">
+                <span><i class="fa-solid fa-bullseye"></i> Genauigkeit:</span>
+                <span class="eval-green">${accuracy.toFixed(1)}%</span>
+                </div>
+                <div class="modern-eval-row">
+                <span><i class="fa-regular fa-clock"></i> Zeit:</span>
+                <span>${duration.minutes}m ${duration.seconds}s</span>
+                </div>
+                <div class="modern-eval-row">
+                <span><i class="fa-solid fa-bug"></i> Fehler:</span>
+                <span class="eval-red">${ergebnisse.fehler}</span>
+                </div>
+                <div class="modern-eval-row">
+                <span><i class="fa-solid fa-keyboard"></i> Tastenanschläge:</span>
+                <span>${ergebnisse.tastenanschlaege}</span>
+                </div>
+                <div class="modern-eval-row">
+                <span><i class="fa-solid fa-rectangle-list"></i> Textlänge:</span>
+                <span>${ergebnisse.textLaenge}</span>
+                </div>
+                <div class="modern-eval-row">
+                <span><i class="fa-solid fa-gauge-simple"></i> Schwierigkeit:</span>
+                <span>${ergebnisse.textSchwierigkeit}</span>
+                </div>
+            </div>
+            <div class="modern-eval-actions">
+                <button class="modern-eval-btn" id="modern-eval-print"><i class="fa-solid fa-print"></i> Drucken</button>
+            </div>
+            </div>
+        </div>
         `;
-        popup.querySelector('.close-button').onclick = () => document.body.removeChild(popup);
-
-        const printBtn = popup.querySelector('button');
-        printBtn.onclick = function() {
-            const druckfenster = window.open('print.html');
-            druckfenster.onload = function() {
-                druckfenster.postMessage(ergebnisse, "*");
-                setTimeout(() => druckfenster.print(), 350);
-            };
-        };
-
         document.body.appendChild(popup);
+        popup.querySelector('.modern-eval-close').onclick = () => popup.remove();
+        popup.querySelector('.modern-eval-overlay').onclick = e => {
+            if (e.target === popup.querySelector('.modern-eval-overlay')) popup.remove();
+        };
+        popup.querySelector('#modern-eval-print').onclick = function () {
+            const druckfenster = window.open('print.html');
+            let tries = 0;
+            let timer = setInterval(() => {
+                if (tries++ > 5) { clearInterval(timer); return; }
+                try { druckfenster.postMessage(ergebnisse, window.location.origin); } catch(e) {}
+            }, 350);
+            setTimeout(() => {
+                clearInterval(timer);
+                druckfenster.print();
+            }, 1000);
+        };
     }
 
+    function showErrorOverlayModern(message) {
+        const overlay = document.createElement('div');
+        overlay.className = 'modern-info-overlay';
+        overlay.innerHTML = `
+        <div class="modern-info-popup">
+            <button class="modern-info-close" title="Schließen">×</button>
+            <div class="modern-info-icon"><i class="fa-solid fa-triangle-exclamation"></i></div>
+            <div>${message}</div>
+        </div>
+        `;
+        document.body.appendChild(overlay);
+        overlay.querySelector('.modern-info-close').onclick = () => overlay.remove();
+        overlay.onclick = e => { if (e.target === overlay) overlay.remove(); };
+    }
+    
     function showTextSelectionModal({ mode = "normal", callback }) {
         removeAllModals();
         const overlay = document.createElement('div');
