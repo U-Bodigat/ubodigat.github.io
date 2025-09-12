@@ -278,18 +278,28 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
 
+    modeToggleButton.addEventListener('click', () => {
+    if (examMode) {
+        toggleExamMode(false);
+        updateMenuForMode();
+    } else {
+        showExamStartModal();
+    }
+    });
+
     function toggleExamMode(on) {
         examMode = !!on;
         document.body.classList.toggle('exam-mode', examMode);
         modeToggleButton.innerHTML = examMode ? 'Normalmodus' : 'Prüfungsmodus';
         evaluateButton.style.display = examMode ? 'inline-block' : 'none';
+
         if (examMode) {
             remainingSeconds = examTimeLimit;
             startExamTimer();
             startTime = performance.now();
             endTime = null;
             keyStrokes = 0;
-            userInput.value = "";
+            userInput.value = '';
             userInput.focus();
             updateExamInfo();
         } else {
@@ -389,10 +399,6 @@ document.addEventListener('DOMContentLoaded', function() {
         const fileRow = overlay.querySelector("#normal-file-row");
         const fileInput = overlay.querySelector("#normal-custom-file");
         const fileUploadBtn = overlay.querySelector(".file-upload-btn");
-        fileUploadBtn.onclick = () => {
-            fileInput.value = "";
-            fileInput.click();
-        };
         select.onchange = function () {
             if (this.value === "custom") {
                 fileRow.style.display = "flex";
@@ -833,29 +839,24 @@ document.addEventListener('DOMContentLoaded', function() {
         modal.querySelector('.close-button').onclick = () => overlay.remove();
         overlay.onclick = e => { if (e.target === overlay) overlay.remove(); };
     }
-
-    function updateMenuForMode() {
-        document.getElementById('settings-btn').style.display = "";
-        document.getElementById('exam-info').style.display = "";
-    }
     
     function updateMenuForMode() {
-    if (!examMode) {
-        document.getElementById('settings-btn').style.display = "none";
-        document.getElementById('exam-info').style.display = "none";
-    } else {
-        document.getElementById('settings-btn').style.display = "";
-        document.getElementById('exam-info').style.display = "";
-    }
+        if (!examMode) {
+            document.getElementById('settings-btn').style.display = "none";
+            document.getElementById('exam-info').style.display = "none";
+        } else {
+            document.getElementById('settings-btn').style.display = "";
+            document.getElementById('exam-info').style.display = "";
+        }
     }
     updateMenuForMode();
-    modeToggleButton.addEventListener('click', function () {
-        if (!examMode) {
-            showExamStartModal();
-        } else {
+    modeToggleButton.addEventListener('click', () => {
+        if (examMode) {
             toggleExamMode(false);
-            updateMenuForMode();
+        } else {
+            showExamStartModal();
         }
+        updateMenuForMode();
     });
 
     const tasten = document.querySelectorAll(".taste");
