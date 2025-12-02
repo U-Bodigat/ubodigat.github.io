@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,500,600,700,800,900');
+
 * {
     margin: 0;
     padding: 0;
@@ -442,9 +443,11 @@ footer {
     border-radius: 10px;
     padding-bottom: 4%;
     z-index: 1;
+
     #falscheantwort {
         display: block;
     }
+
     #richtigelösung {
         display: block;
     }
@@ -618,6 +621,7 @@ label {
     #headerinput a {
         margin-top: 50px;
     }
+
     #fragenliste {
         margin-right: 20%;
     }
@@ -634,12 +638,15 @@ label {
         margin-top: 120px;
         padding: 10px;
     }
+
     input#Antwort {
         font-size: 16px;
     }
+
     #Prüfen {
         font-size: 16px;
     }
+
     #löschen {
         font-size: 12px;
         padding: 8px 16px;
@@ -657,11 +664,13 @@ label {
     header p a {
         margin-left: -70px;
     }
+
     #headerinput {
         display: flex;
         margin-top: -85px;
         margin-bottom: 0px;
     }
+
     #headerinput a button {
         font-size: 10px;
         margin-top: 40px;
@@ -677,14 +686,17 @@ label {
     nav header div {
         margin-bottom: 10px;
     }
+
     header p a {
         margin-left: -70px;
     }
+
     #headerinput {
         display: flex;
         margin-top: -80px;
         margin-bottom: 0px;
     }
+
     #headerinput a button {
         font-size: 10px;
         margin-top: 40px;
@@ -700,18 +712,22 @@ label {
     nav header div {
         margin-bottom: 10px;
     }
+
     header p a {
         margin-left: -70px;
     }
+
     #headerinput {
         display: flex;
         margin-top: -80px;
         margin-bottom: 0px;
     }
+
     #headerinput a {
         margin-left: 80px;
         margin-right: -80px;
     }
+
     #headerinput a button {
         font-size: 10px;
         margin-top: 40px;
@@ -1339,6 +1355,7 @@ header.vokabelmodus-aktiv {
         padding: 25px;
         font-size: 20px;
     }
+
     .buttons button {
         font-size: 16px;
         padding: 10px 20px;

@@ -22,9 +22,12 @@ function onClickIfExists(id, callback) {
 }
 
 function übunghinzufügen() {
-    const frage = document.getElementById('frageInput').value.trim();
-    const antwort = document.getElementById('antwortInput').value.trim();
+    const frageInput = document.getElementById('frageInput');
+    const antwortInput = document.getElementById('antwortInput');
     const caseSensitive = document.getElementById('caseSensitiveCheckbox').checked;
+
+    const frage = frageInput.value.trim();
+    const antwort = antwortInput.value.trim();
 
     if (frage !== '' && antwort !== '') {
         dictionary[frage] = {
@@ -36,8 +39,11 @@ function übunghinzufügen() {
         };
         localStorage.setItem('dictionary', JSON.stringify(dictionary));
         render();
-        document.getElementById('frageInput').value = '';
-        document.getElementById('antwortInput').value = '';
+
+        frageInput.value = '';
+        antwortInput.value = '';
+
+        frageInput.focus();
     }
 }
 
@@ -559,7 +565,9 @@ if (antwortInput) {
 }
 
 function levenshtein(a, b) {
-    const matrix = Array.from({ length: b.length + 1 }, (_, i) => [i]);
+    const matrix = Array.from({
+        length: b.length + 1
+    }, (_, i) => [i]);
     for (let j = 0; j <= a.length; j++) matrix[0][j] = j;
 
     for (let i = 1; i <= b.length; i++) {
@@ -681,13 +689,19 @@ document.addEventListener('DOMContentLoaded', function() {
             scrollDownButton.innerHTML = "↑";
             scrollDownButton.title = "Nach oben scrollen";
             scrollDownButton.onclick = () => {
-                window.scrollTo({ top: 0, behavior: 'smooth' });
+                window.scrollTo({
+                    top: 0,
+                    behavior: 'smooth'
+                });
             };
         } else {
             scrollDownButton.innerHTML = "↓";
             scrollDownButton.title = "Nach unten scrollen";
             scrollDownButton.onclick = () => {
-                window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
+                window.scrollTo({
+                    top: document.body.scrollHeight,
+                    behavior: 'smooth'
+                });
             };
         }
     }
@@ -706,7 +720,10 @@ document.addEventListener('DOMContentLoaded', function() {
     window.addEventListener('resize', updateButtonVisibility);
     window.addEventListener('DOMContentLoaded', updateButtonVisibility);
     const observer = new MutationObserver(updateButtonVisibility);
-    observer.observe(document.body, { childList: true, subtree: true });
+    observer.observe(document.body, {
+        childList: true,
+        subtree: true
+    });
 });
 
 
@@ -795,10 +812,16 @@ window.addEventListener("DOMContentLoaded", () => {
 
             if (pageHeight - scrollPosition <= 2) {
                 scrollDownButton.innerHTML = "↑";
-                scrollDownButton.onclick = () => window.scrollTo({ top: 0, behavior: 'smooth' });
+                scrollDownButton.onclick = () => window.scrollTo({
+                    top: 0,
+                    behavior: 'smooth'
+                });
             } else {
                 scrollDownButton.innerHTML = "↓";
-                scrollDownButton.onclick = () => window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
+                scrollDownButton.onclick = () => window.scrollTo({
+                    top: document.body.scrollHeight,
+                    behavior: 'smooth'
+                });
             }
         }
 
@@ -910,7 +933,10 @@ function generiereSatzBausteineMitLoesung(vokabel, sprache) {
         [gemischt[i], gemischt[j]] = [gemischt[j], gemischt[i]];
     }
     let loesung = bausteine.join(" ") + (sprache === "Deutsch" ? "." : ".");
-    return { aufgabeWorte: gemischt, loesung };
+    return {
+        aufgabeWorte: gemischt,
+        loesung
+    };
 }
 
 function generiereArbeitsblatt() {
@@ -942,7 +968,7 @@ function generiereArbeitsblatt() {
                 <span class="nr">${nummer}.</span>
                 <div class="frage-feld-wrap">
                     <span class="frage">${frageText}</span>
-                    <span class="feld"></span>
+                    <input type="text" class="feld-input" />
                 </div>
             </div>
         `);
@@ -955,7 +981,10 @@ function generiereArbeitsblatt() {
 
         let sprache = isGerman(vok.question) ? "Deutsch" : "Englisch";
         let vokabelImSatz = sprache === "Deutsch" ? vok.question : vok.answer;
-        let { aufgabeWorte, loesung } = generiereSatzBausteineMitLoesung(vokabelImSatz, sprache);
+        let {
+            aufgabeWorte,
+            loesung
+        } = generiereSatzBausteineMitLoesung(vokabelImSatz, sprache);
         aufgaben.push(`
             <div class="aufgaben-card">
                 <span class="nr">${nummer}.</span>
@@ -964,7 +993,7 @@ function generiereArbeitsblatt() {
                         Bilde einen sinnvollen Satz aus diesen Wörtern (${sprache}): 
                         <b>${aufgabeWorte.join('</b>, <b>')}</b>
                     </span>
-                    <span class="feld"></span>
+                    <input type="text" class="feld-input" />
                 </div>
             </div>
         `);
@@ -993,10 +1022,11 @@ function generiereArbeitsblatt() {
                 .druck-btn:hover { background: linear-gradient(90deg, #12915e 60%, #0d7e8d 100%); }
                 .aufgaben-card { display: flex; align-items: center; background: #f9fafe; border-radius: 16px; margin: 14px 0; padding: 18px 22px; box-shadow: 0 3px 8px rgba(60,80,130,0.06); font-size: 1.1rem; }
                 .aufgaben-card .nr { font-weight: bold; color: #3467c7; margin-right: 20px; font-size: 1.3rem; flex-shrink: 0; line-height: 1.7; }
-                .frage-feld-wrap { display: flex; align-items: center; flex: 1; min-width: 0; gap: 24px; }
-                .frage { flex: 1 1 0%; min-width: 0; word-break: break-word; line-height: 1.6; }
+                .frage-feld-wrap {display: flex;align-items: center;flex: 1;min-width: 0;gap: 24px;}
+                .frage {flex: 1 1 0%;min-width: 0;word-break: break-word;line-height: 1.6;}
                 .feld { border-bottom: 2px solid #b6b8c3; width: 220px; min-width: 120px; margin-left: 0; flex-shrink: 0; height: 26px; vertical-align: middle; display: inline-block; position: relative; top: 0;}
-                @media print { .druck-btn { display: none !important; } body { background: #fff !important; } .arbeitsblatt-container { box-shadow: none; border-radius: 0; } }
+                .feld-input {border: none;border-bottom: 2px solid #b6b8c3;width: 220px;min-width: 120px;padding: 4px 2px;font: inherit;color: #212738;background: transparent;outline: none;flex-shrink: 0;}
+                @media print {.druck-btn { display: none !important; }body { background: #fff !important; }.arbeitsblatt-container { box-shadow: none; border-radius: 0; margin-bottom: 0 !important; padding-bottom: 0 !important; }.print-footer { display: block; text-align: center; margin-top: 42px; font-size: 15px; color: #888; }.feld-input {border-bottom: 2px solid #000;background: transparent;color: #000;}}
                 .print-footer { display: none; } @media print { .print-footer { display: block; text-align: center; margin-top: 42px; font-size: 15px; color: #888; } .arbeitsblatt-btns { display: none !important; } body { background: #fff !important; } .arbeitsblatt-container { box-shadow: none; border-radius: 0; margin-bottom: 0 !important; padding-bottom: 0 !important; } }
             </style>
         </head>
