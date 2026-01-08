@@ -529,10 +529,12 @@ const Board = function(conf) {
             const x = positions[i][0],
                 y = positions[i][1];
             const pieceType = get(x, y).type;
-            if (pieceType != Piece.Empty) {
+            if (pieceType != Piece.Empty &&
+                Object.prototype.hasOwnProperty.call(pieceMoves, pieceType) &&
+                typeof pieceMoves[pieceType] === 'function') {
                 const possibleMoves = pieceMoves[pieceType](x, y);
                 result = result.concat(possibleMoves);
-            };
+            }
         }
         return result;
     }
