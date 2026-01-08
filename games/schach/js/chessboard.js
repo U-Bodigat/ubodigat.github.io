@@ -658,7 +658,11 @@ const Board = function(conf) {
     this.getPossibleMovesFrom = function(x, y) {
         const container = get(x, y);
         if (container.type == Piece.Empty) return [];
-        return pieceMoves[container.type](x, y);
+        const moveGenerator = pieceMoves[container.type];
+        if (!Object.prototype.hasOwnProperty.call(pieceMoves, container.type) || typeof moveGenerator !== 'function') {
+            return [];
+        }
+        return moveGenerator(x, y);
     }
 
     this.isHumanPiece = function(x, y) {
