@@ -529,7 +529,16 @@ const Board = function(conf) {
             const x = positions[i][0],
                 y = positions[i][1];
             const pieceType = get(x, y).type;
+            // Ensure that only known piece types can be used to select a move function
+            const isKnownPieceType =
+                pieceType === Piece.Pawn ||
+                pieceType === Piece.Rook ||
+                pieceType === Piece.Knight ||
+                pieceType === Piece.Bishop ||
+                pieceType === Piece.Queen ||
+                pieceType === Piece.King;
             if (pieceType != Piece.Empty &&
+                isKnownPieceType &&
                 Object.prototype.hasOwnProperty.call(pieceMoves, pieceType) &&
                 typeof pieceMoves[pieceType] === 'function') {
                 const possibleMoves = pieceMoves[pieceType](x, y);
