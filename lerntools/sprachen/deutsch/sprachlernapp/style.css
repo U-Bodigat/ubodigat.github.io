@@ -70,7 +70,7 @@ header p {
 }
 
 .button {
-    transition: 0.5s;
+    transition: background-color 0.5s, color 0.5s;
     background-color: #012f6b;
     color: #fff;
     text-decoration: none;
@@ -84,10 +84,9 @@ header p {
 }
 
 .button:hover {
-    transition: 0.5s;
+    transition: background-color 0.5s, color 0.5s;
     background-color: #006eff;
     color: #003a1e;
-    font-weight: 800;
 }
 
 .button a {
@@ -234,7 +233,7 @@ body {
 }
 
 #record-button {
-    transition: 0.5s;
+    transition: background-color 0.5s, color 0.5s;
     background-color: #4caf50;
     color: white;
     border: none;
@@ -261,7 +260,7 @@ body {
 }
 
 #next-button {
-    transition: 0.5s;
+    transition: background-color 0.5s, color 0.5s;
     background-color: #3498db;
     color: white;
     border: none;

@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css?family=Poppins:200,300,400,500,600,700,800,900&display=swap');
+
 * {
     margin: 0;
     padding: 0;
@@ -60,7 +61,7 @@ header:hover {
 }
 
 .button {
-    transition: 0.5s;
+    transition: background-color 0.5s, color 0.5s;
     background-color: #012f6b;
     color: #fff;
     text-decoration: none;
@@ -74,10 +75,9 @@ header:hover {
 }
 
 .button:hover {
-    transition: 0.5s;
+    transition: background-color 0.5s, color 0.5s;
     background-color: #006eff;
     color: #003a1e;
-    font-weight: 800;
 }
 
 .button a {
@@ -88,14 +88,13 @@ header:hover {
 
 #canvas {
     padding: 25px;
-    margin-top: 60px;
     -webkit-border-radius: 40px;
     -moz-border-radius: 40px;
     border-radius: 40px;
 }
 
 #tastenbelegungen {
-    transition: 0.5s;
+    transition: background-color 0.5s, color 0.5s;
     text-align: center;
     justify-content: center;
     background-color: #00461e;
@@ -112,10 +111,9 @@ header:hover {
 }
 
 #tastenbelegungen:hover {
-    transition: 0.5s;
-    font-weight: 700;
+    transition: background-color 0.5s, color 0.5s;
     cursor: crosshair;
-    color: #000000;
+    color: transparent;
     background-color: #00ff6e;
     box-shadow: 0 0 7px #fff, 0 0 10px #fff, 0 0 21px #fff, 0 0 42px rgb(255, 255, 255), 0 0 82px rgb(165, 165, 165), 0 0 92px rgb(179, 83, 27), 0 0 102px rgb(255, 255, 255), 0 0 151px rgb(255, 255, 255);
 }
@@ -143,39 +141,116 @@ header:hover {
 #highScoresModal {
     display: none;
     position: fixed;
-    z-index: 1;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
+    z-index: 1000;
+    inset: 0;
     overflow: auto;
-    background-color: rgba(0, 0, 0, 0.454);
-    padding-top: 60px;
+    background-color: rgba(0, 0, 0, 0.75);
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+    align-items: center;
+    justify-content: center;
+    padding: 24px;
 }
 
 #highScoresContent {
-    background-color: #333;
+    position: relative;
+    background-color: #0d0d0d;
     color: #fff;
-    margin: 5% auto;
-    padding: 20px;
-    border: 1px solid #888;
-    width: 25%;
-    max-width: 600px;
-    border-radius: 10px;
+    width: 100%;
+    max-width: 360px;
+    padding: 32px 28px 24px;
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 16px;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.55);
+    font-family: 'Arimo', 'Poppins', sans-serif;
+    text-align: left;
 }
 
+#highScoresContent h2 {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin: 0 0 20px;
+    font-family: 'Inconsolata', 'Arimo', monospace;
+    font-size: 20px;
+    color: #fff;
+}
+
+#highScoresContent h2 svg {
+    width: 22px;
+    height: 22px;
+    stroke: #02a34a;
+    fill: none;
+    stroke-width: 1.8;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    flex-shrink: 0;
+}
+
+#allHighScores {
+    list-style: none;
+    counter-reset: hs;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+#allHighScores li {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 10px 14px;
+    border-radius: 10px;
+    background: rgba(255, 255, 255, 0.05);
+    font-size: 14.5px;
+    font-weight: 600;
+    counter-increment: hs;
+}
+
+#allHighScores li::before {
+    content: counter(hs);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.1);
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 12px;
+    flex-shrink: 0;
+}
+
+#allHighScores li:nth-child(1)::before { background: #d4af37; color: #1a1400; }
+#allHighScores li:nth-child(2)::before { background: #c0c0c0; color: #1a1a1a; }
+#allHighScores li:nth-child(3)::before { background: #cd7f32; color: #1a0f00; }
+
 .close {
+    position: absolute;
+    top: 14px;
+    right: 14px;
+    width: 30px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: unset;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.08);
     color: #aaa;
-    float: right;
-    font-size: 28px;
-    font-weight: bold;
+    font-size: 20px;
+    line-height: 1;
+    cursor: pointer;
+    transition: 0.2s;
 }
 
 .close:hover,
 .close:focus {
     color: #fff;
+    background: rgba(255, 255, 255, 0.16);
     text-decoration: none;
-    cursor: pointer;
 }
 
 
@@ -211,11 +286,13 @@ header:hover {
     header p a {
         margin-left: -70px;
     }
+
     #headerinput {
         display: flex;
         margin-top: -85px;
         margin-bottom: 0px;
     }
+
     #headerinput a button {
         font-size: 10px;
         margin-top: 40px;
@@ -231,14 +308,17 @@ header:hover {
     nav header div {
         margin-bottom: 10px;
     }
+
     header p a {
         margin-left: -70px;
     }
+
     #headerinput {
         display: flex;
         margin-top: -80px;
         margin-bottom: 0px;
     }
+
     #headerinput a button {
         font-size: 10px;
         margin-top: 40px;
@@ -254,18 +334,22 @@ header:hover {
     nav header div {
         margin-bottom: 10px;
     }
+
     header p a {
         margin-left: -70px;
     }
+
     #headerinput {
         display: flex;
         margin-top: -80px;
         margin-bottom: 0px;
     }
+
     #headerinput a {
         margin-left: 80px;
         margin-right: -80px;
     }
+
     #headerinput a button {
         font-size: 10px;
         margin-top: 40px;

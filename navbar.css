@@ -1,0 +1,495 @@
+/*
+   =========================================================================
+   U:Bodigat.com — eigenständiges Navbar-Stylesheet
+   Klassische horizontale Navigationsleiste mit dunklem Hintergrund
+   (+ Light-Mode-Variante über [data-theme="light"] auf <html>).
+   Fast nur class-scoped Regeln, damit dieses Stylesheet auf jeder Seite
+   (auch fremd gestaltete Lernapps/Spiele) nur die Navbar selbst betrifft.
+   Die eine bewusste Ausnahme (body padding-top) ist unten dokumentiert.
+
+   Der Font-Import steht hier (nicht in style.css), weil fremde
+   Lernapp-/Spiele-Seiten NUR dieses Stylesheet laden — ohne ihn hier würde
+   die Navbar auf diesen Seiten lautlos auf die System-Schriftart zurückfallen,
+   obwohl 'Arimo'/'Inconsolata' unten als font-family angegeben sind.
+   =========================================================================
+*/
+
+@import url('https://fonts.googleapis.com/css2?family=Arimo:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Inconsolata:wght@500;600;700;800;900&display=swap');
+
+:root {
+    --nb-black: #000000;
+    --nb-white: #ffffff;
+    --nb-grey: #737373;
+    --nb-green: #018038;
+    --nb-green-bright: #02a34a;
+    --nb-blue: #004aad;
+
+    --nb-bg: rgba(6, 6, 6, 0.92);
+    --nb-dropdown-bg: rgba(6, 6, 6, 0.98);
+    --nb-border: rgba(255, 255, 255, 0.12);
+    --nb-text: #ffffff;
+    --nb-text-dim: #c2c2c2;
+    --nb-text-mid: #8f8f8f;
+    --nb-hover-bg: rgba(255, 255, 255, 0.08);
+    --nb-active-bg: rgba(255, 255, 255, 0.04);
+
+    --nb-radius-sm: 8px;
+    --nb-nav-h: 68px;
+    --nb-ease: cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+
+:root[data-theme="light"] {
+    --nb-bg: rgba(255, 255, 255, 0.9);
+    --nb-dropdown-bg: rgba(255, 255, 255, 0.98);
+    --nb-border: rgba(0, 0, 0, 0.12);
+    --nb-text: #0a0a0a;
+    --nb-text-dim: #3a3a3a;
+    --nb-text-mid: #6b6b6b;
+    --nb-hover-bg: rgba(0, 0, 0, 0.06);
+    --nb-active-bg: rgba(0, 0, 0, 0.04);
+}
+
+body {
+    padding-top: 70px;
+}
+
+.icon {
+    width: 1.2em;
+    height: 1.2em;
+    stroke: currentColor;
+    fill: none;
+    stroke-width: 1.7;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    flex-shrink: 0;
+    vertical-align: -0.2em;
+}
+
+.icon-github {
+    fill: currentColor;
+    stroke: none;
+}
+
+@keyframes nbFadeDown {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.navbar {
+    all: unset;
+    display: block;
+    box-sizing: border-box;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 200;
+    width: 100%;
+    flex-shrink: 0;
+    margin: 0;
+    padding: 0;
+    font-size: 16px;
+    line-height: normal;
+    text-align: initial;
+    opacity: 1;
+    background: var(--nb-bg);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--nb-border);
+    animation: nbFadeDown 0.5s var(--nb-ease);
+}
+
+.navbar-inner {
+    width: calc(100% - 48px);
+    max-width: 1680px;
+    margin: 0 auto;
+    min-height: var(--nb-nav-h);
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    align-items: center;
+    gap: 24px;
+}
+
+.brand {
+    display: flex;
+    align-items: center;
+    flex-shrink: 0;
+}
+
+.brand-logo {
+    display: block;
+    height: 26px;
+    width: auto;
+    transition: transform 0.2s var(--nb-ease);
+}
+
+.brand:hover .brand-logo {
+    transform: scale(1.05);
+}
+
+/* ---- Klassische Link-Reihe ------------------ */
+
+.nav-links {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 4px;
+    flex-wrap: wrap;
+}
+
+.nav-link {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    padding: 9px 14px;
+    font-family: 'Arimo', 'Segoe UI', Arial, sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--nb-text-dim);
+    text-decoration: none;
+    transition: color 0.18s var(--nb-ease), transform 0.18s var(--nb-ease);
+}
+
+.nav-link .icon {
+    width: 16px;
+    height: 16px;
+    stroke-width: 1.8;
+    transition: transform 0.18s var(--nb-ease);
+}
+
+.nav-link::after {
+    content: "";
+    position: absolute;
+    left: 14px;
+    right: 14px;
+    bottom: 4px;
+    height: 2px;
+    background: var(--nb-green-bright);
+    border-radius: 2px;
+    transform: scaleX(0);
+    transform-origin: center;
+    transition: transform 0.22s var(--nb-ease);
+}
+
+.nav-link:hover {
+    color: var(--nb-text);
+    transform: translateY(-1px);
+}
+
+.nav-link:hover .icon {
+    transform: scale(1.12);
+}
+
+.nav-link:hover::after {
+    transform: scaleX(1);
+}
+
+.nav-link[aria-current="page"] {
+    color: var(--nb-text);
+}
+
+.nav-link[aria-current="page"]::after {
+    transform: scaleX(1);
+}
+
+/* Kontextbezogener Zusatzlink (z. B. "Gamemenü", "Lernmenü")*/
+
+.nav-link-extra {
+    color: var(--nb-green-bright);
+    font-weight: 600;
+    margin-left: 6px;
+    padding-left: 16px;
+    border-left: 1px solid var(--nb-border);
+}
+
+.nav-link-extra:hover {
+    color: var(--nb-text);
+}
+
+.nav-link-extra::after {
+    background: var(--nb-green-bright);
+}
+
+/* ---- "Menü"-Dropdown (nur Desktop) ---------------------------------------- */
+
+.nav-item-dropdown {
+    position: relative;
+}
+
+.nav-caret {
+    width: 12px;
+    height: 12px;
+    margin-left: 1px;
+    transition: transform 0.18s var(--nb-ease);
+}
+
+.nav-item-dropdown:hover .nav-caret,
+.nav-item-dropdown:focus-within .nav-caret {
+    transform: rotate(180deg);
+}
+
+.nav-dropdown-panel {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    margin-top: 10px;
+    min-width: 200px;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    padding: 8px;
+    background: var(--nb-dropdown-bg);
+    border: 1px solid var(--nb-border);
+    border-radius: var(--nb-radius-sm);
+    box-shadow: 0 16px 34px rgba(0, 0, 0, 0.35);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-6px);
+    transition: opacity 0.18s var(--nb-ease), transform 0.18s var(--nb-ease), visibility 0.18s;
+}
+
+.nav-item-dropdown:hover .nav-dropdown-panel,
+.nav-item-dropdown:focus-within .nav-dropdown-panel {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+.nav-dropdown-item {
+    display: block;
+    padding: 9px 12px;
+    border-radius: 6px;
+    font-family: 'Arimo', 'Segoe UI', Arial, sans-serif;
+    font-size: 13.5px;
+    font-weight: 500;
+    color: var(--nb-text-dim);
+    white-space: nowrap;
+    transition: 0.14s var(--nb-ease);
+}
+
+.nav-dropdown-item:hover {
+    background: var(--nb-hover-bg);
+    color: var(--nb-text);
+}
+
+/* ---- Zusatzinfo: Wetter München ------------------------------------------ */
+
+.nav-weather {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 6px 12px;
+    border-radius: var(--nb-radius-sm);
+    background: rgba(0, 74, 173, 0.12);
+    border: 1px solid rgba(0, 74, 173, 0.32);
+    font-family: 'Inconsolata', 'Segoe UI', monospace;
+    font-variant-numeric: tabular-nums;
+    font-size: 13px;
+    font-weight: 600;
+    color: #5b9bef;
+    white-space: nowrap;
+}
+
+.nav-weather .icon {
+    width: 15px;
+    height: 15px;
+    color: #5b9bef;
+}
+
+.navbar-actions {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 14px;
+    flex-shrink: 0;
+}
+
+.icon-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 34px;
+    height: 34px;
+    border-radius: var(--nb-radius-sm);
+    border: none;
+    background: transparent;
+    color: var(--nb-text-dim);
+    text-decoration: none;
+    cursor: pointer;
+    transition: color 0.18s var(--nb-ease), background 0.18s var(--nb-ease), transform 0.18s var(--nb-ease);
+}
+
+.icon-btn:hover {
+    color: var(--nb-text);
+    background: var(--nb-hover-bg);
+}
+
+.icon-btn:active {
+    transform: translateY(0) scale(0.96);
+}
+
+/* Theme-Umschalter — zeigt Sonne (dunkel aktiv, Klick -> hell) oder
+   Mond (hell aktiv, Klick -> dunkel) */
+
+.theme-toggle .icon-moon {
+    display: none;
+}
+
+:root[data-theme="light"] .theme-toggle .icon-sun {
+    display: none;
+}
+
+:root[data-theme="light"] .theme-toggle .icon-moon {
+    display: block;
+}
+
+.theme-toggle:hover .icon {
+    transform: rotate(20deg);
+}
+
+/* ---- Hamburger (mobil) --------------------------------------------------- */
+
+.nav-toggle {
+    display: none;
+    width: 36px;
+    height: 36px;
+    border-radius: var(--nb-radius-sm);
+    border: none;
+    background: transparent;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 5px;
+    cursor: pointer;
+    flex-shrink: 0;
+    transition: background 0.18s var(--nb-ease);
+}
+
+.nav-toggle:hover {
+    background: var(--nb-hover-bg);
+}
+
+.nav-toggle span {
+    display: block;
+    width: 20px;
+    height: 2px;
+    background: var(--nb-text);
+    border-radius: 2px;
+    transition: 0.25s var(--nb-ease);
+}
+
+.nav-toggle.open span:nth-child(1) {
+    transform: translateY(7px) rotate(45deg);
+}
+
+.nav-toggle.open span:nth-child(2) {
+    opacity: 0;
+    transform: scaleX(0);
+}
+
+.nav-toggle.open span:nth-child(3) {
+    transform: translateY(-7px) rotate(-45deg);
+}
+
+/* Klassisches Dropdown-Menü*/
+
+@keyframes nbDropdownIn {
+    from {
+        opacity: 0;
+        transform: translateY(-8px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.nav-dropdown {
+    display: none;
+    flex-direction: column;
+    background: var(--nb-dropdown-bg);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border-top: 1px solid var(--nb-border);
+}
+
+.nav-dropdown.open {
+    display: flex;
+    animation: nbDropdownIn 0.22s var(--nb-ease);
+}
+
+.nav-dropdown .nav-link {
+    padding: 15px 22px;
+    border-bottom: 1px solid var(--nb-border);
+    border-left: 2px solid transparent;
+    color: var(--nb-text-dim);
+    transition: color 0.18s var(--nb-ease), background 0.18s var(--nb-ease), border-color 0.18s var(--nb-ease), padding-left 0.18s var(--nb-ease);
+}
+
+.nav-dropdown .nav-link::after {
+    display: none;
+}
+
+.nav-dropdown .nav-link:hover {
+    color: var(--nb-text);
+    background: var(--nb-active-bg);
+    padding-left: 28px;
+    transform: none;
+}
+
+.nav-dropdown .nav-link:last-child {
+    border-bottom: none;
+}
+
+.nav-dropdown .nav-link[aria-current="page"] {
+    color: var(--nb-text);
+    border-left-color: var(--nb-green-bright);
+    background: var(--nb-active-bg);
+}
+
+.nav-dropdown .nav-link-extra {
+    margin-left: 0;
+    padding-left: 22px;
+    border-left: 2px solid transparent;
+    border-top: 2px solid var(--nb-green-bright);
+}
+
+.nav-dropdown .nav-weather {
+    margin: 10px 22px;
+    justify-content: center;
+}
+
+@media (max-width: 860px) {
+    .nav-links {
+        display: none;
+    }
+
+    .navbar-inner {
+        grid-template-columns: 1fr auto;
+    }
+
+    .navbar-actions .nav-weather {
+        display: none;
+    }
+
+    .nav-toggle {
+        display: flex;
+    }
+}
+
+@media (min-width: 861px) {
+    .nav-dropdown {
+        display: none !important;
+    }
+}

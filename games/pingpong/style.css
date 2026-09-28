@@ -85,10 +85,9 @@ header p {
 }
 
 .button:hover {
-    transition: 0.5s;
+    transition: background-color 0.5s, color 0.5s;
     background-color: #006eff;
     color: #003a1e;
-    font-weight: 800;
 }
 
 .button a {
@@ -164,7 +163,7 @@ header p {
 }
 
 #startButton {
-    transition: 0.5s;
+    transition: background-color 0.5s, color 0.5s;
     padding: 12px 34px;
     font-size: 20px;
     border: none;
@@ -176,15 +175,14 @@ header p {
 }
 
 #startButton:hover {
-    transition: 0.5s;
+    transition: background-color 0.5s, color 0.5s;
     background-color: #00ff0d;
     color: #575757;
-    font-weight: 700;
     cursor: pointer;
 }
 
 #resetButton {
-    transition: 0.5s;
+    transition: background-color 0.5s, color 0.5s;
     padding: 12px 34px;
     font-size: 20px;
     border: none;
@@ -198,11 +196,31 @@ header p {
 }
 
 #resetButton:hover {
-    transition: 0.5s;
+    transition: background-color 0.5s, color 0.5s;
     cursor: pointer;
     background-color: #00ff0d;
     color: #575757;
+}
+
+#explainButton {
+    transition: background-color 0.5s, color 0.5s;
+    padding: 12px 34px;
+    font-size: 20px;
+    border: none;
+    background-color: #004aad;
+    color: white;
+    border-radius: 8px;
+    margin-bottom: 16px;
+    margin-left: 20px;
+    cursor: pointer;
     font-weight: 700;
+}
+
+#explainButton:hover {
+    transition: background-color 0.5s, color 0.5s;
+    cursor: pointer;
+    background-color: #0064e6;
+    color: #e8e8e8;
 }
 
 #pingponghintergrund {

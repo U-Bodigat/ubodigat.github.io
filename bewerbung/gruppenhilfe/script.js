@@ -18,44 +18,45 @@ document.getElementById("bewerbungsForm").addEventListener("submit", function(e)
     };
 
     if (!data.vorname || !data.nachname || !data.email || !data.discord) {
-        alert("Bitte fülle alle Pflichtfelder aus.");
+        ubodigatAlert("Bitte fülle alle Pflichtfelder aus.");
         return;
     }
 
-    fetch("mail.php", {
-        method: "POST",
-        headers: { "Content-Type": "application/x-www-form-urlencoded" },
-        body: new URLSearchParams(data)
-    }).then(response => response.text()).then(console.log);
+    if (!document.getElementById("datenschutz").checked) {
+        ubodigatAlert("Bitte bestätige, dass du mit der Verarbeitung deiner Daten laut Datenschutzerklärung einverstanden bist.");
+        return;
+    }
 
-    fetch("DISCORD WEB HOOK", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-            content: `📩 **Neue Bewerbung als Gruppenhilfe eingegangen:**
-            👤 **Name:** ${data.vorname} ${data.nachname}
-            🎮 **Discord:** ${data.discord}
-            📧 **E-Mail:** ${data.email}
-            📱 **Telefon:** ${data.telefon}
-            🎂 **Geburtstag:** ${data.geburtstag}
-            🕒 **Verfügbarkeit:** ${data.verfuegbarkeit}
-            📌 **Erfahrung:** ${data.erfahrung}
-            🛠 **Kenntnisse:** ${data.kenntnisse}
-            💡 **Motivation:** ${data.motivation}
-            🚻 **Geschlecht:** ${data.geschlecht}
-            ✅ **Mindestalter bestätigt:** ${data.mindestalter}
-            📝 **Kommentar:** ${data.kommentar || "-"}`
-        })
-    }).then(response => response.text()).then(console.log);
+    const felder = [
+        ["Vorname", data.vorname],
+        ["Nachname", data.nachname],
+        ["E-Mail", data.email],
+        ["Telefon", data.telefon],
+        ["Discord-Tag/Name", data.discord],
+        ["Geburtstag", data.geburtstag],
+        ["Geschlecht", data.geschlecht],
+        ["Verfügbarkeit", data.verfuegbarkeit],
+        ["Erfahrung mit Discord", data.erfahrung],
+        ["Kenntnisse / technische Skills", data.kenntnisse],
+        ["Motivation", data.motivation],
+        ["Mindestalter bestätigt", data.mindestalter],
+        ["Zusätzlicher Kommentar", data.kommentar || "–"],
+    ];
+    const emailBody = felder.map(([label, value]) => label + ": " + value).join("\n");
+    const mailtoLink = "mailto:bewerbung@ubodigat.com" +
+        "?subject=" + encodeURIComponent("Bewerbung Gruppenhilfe – " + data.vorname + " " + data.nachname + " | " + data.discord) +
+        "&body=" + encodeURIComponent(emailBody);
+
+    window.location.href = mailtoLink;
 
     document.getElementById("bewerbungsForm").reset();
     zeigeErfolgPopup();
 });
 
 function zeigeErfolgPopup() {
-  document.getElementById("erfolgsPopup").classList.remove("hidden");
+    document.getElementById("erfolgsPopup").classList.remove("hidden");
 }
 
 document.getElementById("popupClose").addEventListener("click", () => {
-  document.getElementById("erfolgsPopup").classList.add("hidden");
+    document.getElementById("erfolgsPopup").classList.add("hidden");
 });

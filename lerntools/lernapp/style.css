@@ -78,7 +78,7 @@ header p {
 }
 
 .button {
-    transition: 0.5s;
+    transition: background-color 0.5s, color 0.5s;
     background-color: #012f6b;
     color: #fff;
     text-decoration: none;
@@ -92,10 +92,9 @@ header p {
 }
 
 .button:hover {
-    transition: 0.5s;
+    transition: background-color 0.5s, color 0.5s;
     background-color: #006eff;
     color: #003a1e;
-    font-weight: 900;
 }
 
 .button a {
@@ -876,10 +875,9 @@ input[type="text"]:focus {
 }
 
 .button-row button:hover {
-    transition: 0.5s;
-    background-color: #00ff0d;
+    transition: background-color 0.5s, color 0.5s;
+    background-color: #006eff;
     color: #003a1e;
-    font-weight: 700;
 }
 
 .checkbox-section {
@@ -1063,7 +1061,7 @@ footer>div {
 .green-button {
     justify-content: center;
     gap: 15px;
-    transition: 0.5s;
+    transition: background-color 0.5s, color 0.5s;
     background-color: #4CAF50;
     color: #ffffff;
     cursor: pointer;
@@ -1082,16 +1080,15 @@ footer>div {
 }
 
 .green-button:hover {
-    transition: 0.5s;
-    background-color: #00ff0d;
+    transition: background-color 0.5s, color 0.5s;
+    background-color: #006eff;
     color: #003a1e;
-    font-weight: 900;
 }
 
 .reed-button {
     justify-content: center;
     gap: 15px;
-    transition: 0.5s;
+    transition: background-color 0.5s, color 0.5s;
     background: #cc3333;
     color: #ffffff;
     cursor: pointer;
@@ -1104,10 +1101,9 @@ footer>div {
 }
 
 .reed-button:hover {
-    transition: 0.5s;
+    transition: background-color 0.5s, color 0.5s;
     background: #ff4646;
-    color: #003a1e;
-    font-weight: 900;
+    color: transparent;
 }
 
 .red-button {

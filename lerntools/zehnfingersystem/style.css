@@ -69,7 +69,7 @@ header p {
 }
 
 .button {
-    transition: 0.5s;
+    transition: background-color 0.5s, color 0.5s;
     background-color: #012f6b;
     color: #fff;
     text-decoration: none;
@@ -83,10 +83,9 @@ header p {
 }
 
 .button:hover {
-    transition: 0.5s;
+    transition: background-color 0.5s, color 0.5s;
     background-color: #006eff;
     color: #003a1e;
-    font-weight: 800;
 }
 
 .button a {
@@ -366,7 +365,7 @@ body {
 
 #menu button {
     margin-right: 10%;
-    transition: 0.5s;
+    transition: background-color 0.5s, color 0.5s;
     background-color: #333;
     color: #fff;
     border: none;
@@ -377,9 +376,8 @@ body {
 }
 
 #menu button:hover {
-    transition: 0.5s;
-    color: #2a2a2a;
-    font-weight: 800;
+    transition: background-color 0.5s, color 0.5s;
+    color: transparent;
     background-color: #d8d8d8;
 }
 
@@ -556,14 +554,13 @@ body {
 }
 
 .exam-mode #menu button {
-    transition: 0.5s;
+    transition: background-color 0.5s, color 0.5s;
     background-color: #61b3cc;
 }
 
 .exam-mode #menu button:hover {
-    transition: 0.5s;
-    color: #1e1e1e;
-    font-weight: 800;
+    transition: background-color 0.5s, color 0.5s;
+    color: transparent;
     background-color: #48d4ff;
 }
 
@@ -633,7 +630,6 @@ body {
 .evaluation-popup button:hover {
     background-color: #d8d8d8;
     color: #2a2a2a;
-    font-weight: 800;
 }
 
 .close-button {

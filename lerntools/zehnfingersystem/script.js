@@ -686,16 +686,28 @@ document.addEventListener('DOMContentLoaded', function() {
             if (e.target === popup.querySelector('.modern-eval-overlay')) popup.remove();
         };
         popup.querySelector('#modern-eval-print').onclick = function () {
-            const druckfenster = window.open('print.html');
+            const druckfenster = window.open('/lerntools/zehnfingersystem/print.html');
+            if (!druckfenster) {
+                showErrorOverlayModern('Das Druckfenster wurde von deinem Browser blockiert. Bitte erlaube Popups für diese Seite und versuche es erneut.');
+                return;
+            }
             let tries = 0;
-            let timer = setInterval(() => {
-                if (tries++ > 5) { clearInterval(timer); return; }
-                try { druckfenster.postMessage(ergebnisse, window.location.origin); } catch(e) {}
-            }, 400);
+            let acked = false;
+            const timer = setInterval(() => {
+                if (acked || tries++ > 20) { clearInterval(timer); return; }
+                try { druckfenster.postMessage(ergebnisse, window.location.origin); } catch (e) {}
+            }, 200);
+            window.addEventListener('message', function onAck(ev) {
+                if (ev.origin !== window.location.origin) return;
+                if (ev.data && ev.data.type === 'zfs-print-ready') {
+                    acked = true;
+                    clearInterval(timer);
+                    window.removeEventListener('message', onAck);
+                }
+            });
             setTimeout(() => {
-                clearInterval(timer);
-                druckfenster.print();
-            }, 1000);
+                if (!acked) { try { druckfenster.print(); } catch (e) {} }
+            }, 2500);
         };
     }
 

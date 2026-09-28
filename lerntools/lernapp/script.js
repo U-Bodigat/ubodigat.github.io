@@ -368,7 +368,7 @@ reader.onload = function(e) {
         dictionary = importedData;
         localStorage.setItem('dictionary', JSON.stringify(dictionary));
         render();
-        alert("Import erfolgreich!");
+        ubodigatAlert("Import erfolgreich!");
     } catch (error) {
         showCustomError('Fehler beim Importieren: Ungültige Datei!');
     }
@@ -518,7 +518,7 @@ function showImportOptions(importedData) {
             localStorage.setItem('dictionary', JSON.stringify(dictionary));
             render();
             document.body.removeChild(overlay);
-            alert('✅ Erfolgreich überschrieben!');
+            ubodigatAlert('✅ Erfolgreich überschrieben!');
         };
         buttonContainer.appendChild(überschreibenButton);
     }
@@ -533,7 +533,7 @@ function showImportOptions(importedData) {
         localStorage.setItem('dictionary', JSON.stringify(dictionary));
         render();
         document.body.removeChild(overlay);
-        alert('✅ Erfolgreich hinzugefügt!');
+        ubodigatAlert('✅ Erfolgreich hinzugefügt!');
     };
 
     const abbrechenButton = document.createElement('button');
@@ -942,7 +942,7 @@ function generiereSatzBausteineMitLoesung(vokabel, sprache) {
 function generiereArbeitsblatt() {
     const dictionary = JSON.parse(localStorage.getItem('dictionary')) || {};
     if (Object.keys(dictionary).length === 0) {
-        alert("Es sind keine Vokabeln vorhanden!");
+        ubodigatAlert("Es sind keine Vokabeln vorhanden!");
         return;
     }
     const vokabeln = Object.values(dictionary).sort(() => Math.random() - 0.5);

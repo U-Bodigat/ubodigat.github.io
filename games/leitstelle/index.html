@@ -10,12 +10,12 @@
     <meta name="author" content="U:Bodigat">
     <meta name="publisher" content="U:Bodigat">
     <meta name="copyright" content="U:Bodigat">
-    <meta name="description" content="Dieser Text befindet sich noch in arbeit.">
+    <meta name="description" content="Leitstellenspiel: Disponiere Feuerwehr, Rettungsdienst, Polizei und THW auf echte Einsätze im gesamten Allgäu — in Echtzeit auf der Karte.">
     <meta property="og:site_name" content="U:Bodigat.com">
     <meta property="og:url" content="https://ubodigat.com">
     <meta property="og:title" content="Leitstellenspiel | ubodigat.com">
     <meta property="og:type" content="website">
-    <meta property="og:description" content="Dieser Text befindet sich noch in arbeit.">
+    <meta property="og:description" content="Leitstellenspiel: Disponiere Feuerwehr, Rettungsdienst, Polizei und THW auf echte Einsätze im gesamten Allgäu — in Echtzeit auf der Karte.">
     <meta property="og:image" content="https://cdn.discordapp.com/attachments/1068905447848943697/1161784440004022363/ubodigat_logo_breit_transparent_neutral.png?ex=65398f13&is=65271a13&hm=8bd1f6d65ee3d677dc79e1b8e6d58d7a292f9f88fa9816c01d0535a6d482cd9a&">
     <meta property="og:image:secure_url" content="https://cdn.discordapp.com/attachments/1068905447848943697/1161784440004022363/ubodigat_logo_breit_transparent_neutral.png?ex=65398f13&is=65271a13&hm=8bd1f6d65ee3d677dc79e1b8e6d58d7a292f9f88fa9816c01d0535a6d482cd9a&">
     <meta property="og:image:width" content="1000">
@@ -23,19 +23,20 @@
     <meta property="twitter:card" content="summary_large_image">
     <meta property="twitter:url" content="https://ubodigat.com">
     <meta property="twitter:title" content="Leitstellenspiel | ubodigat.com">
-    <meta property="twitter:description" content="Dieser Text befindet sich noch in arbeit.">
+    <meta property="twitter:description" content="Leitstellenspiel: Disponiere Feuerwehr, Rettungsdienst, Polizei und THW auf echte Einsätze im gesamten Allgäu — in Echtzeit auf der Karte.">
     <meta property="twitter:image" content="https://cdn.discordapp.com/attachments/1068905447848943697/1161784440004022363/ubodigat_logo_breit_transparent_neutral.png?ex=65398f13&is=65271a13&hm=8bd1f6d65ee3d677dc79e1b8e6d58d7a292f9f88fa9816c01d0535a6d482cd9a&">
     <title>Leitstellenspiel | ubodigat.com</title>
-    <link rel="icon" href="/bilder/Wartungsarbeitenprofilbild.png" type="image/x-icon">
-    <link rel="apple-touch-icon" href="https://ubodigat.com/bilder/Wartungsarbeitenprofilbild.png" />
-    <link rel="stylesheet" href="/games/leitstelle/style.css">
+    <link rel="icon" href="/bilder/x-icon.png" type="image/x-icon">
+    <link rel="apple-touch-icon" href="https://ubodigat.com/bilder/x-icon.png" />
+    <link rel="stylesheet" href="/navbar.css">
     <link href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" rel="stylesheet">
-    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700,600' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="/games/leitstelle/style.css">
+    <script src="/games/leitstelle/ils-data.js"></script>
     <script src="/games/leitstelle/script.js"></script>
     <script src="/script.js"></script>
-    <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-BE1B5EZY35"></script>
-    <script>
+    <!-- Google tag (gtag.js) — läuft erst nach Cookie-Zustimmung, siehe script.js -->
+    <script type="text/plain" data-consent="analytics" data-src="https://www.googletagmanager.com/gtag/js?id=G-BE1B5EZY35"></script>
+    <script type="text/plain" data-consent="analytics">
         window.dataLayer = window.dataLayer || [];
 
         function gtag() {
@@ -45,8 +46,8 @@
 
         gtag('config', 'G-BE1B5EZY35');
     </script>
-    <!-- Google Tag Manager -->
-    <script>
+    <!-- Google Tag Manager — läuft erst nach Cookie-Zustimmung, siehe script.js -->
+    <script type="text/plain" data-consent="analytics">
         (function(w, d, s, l, i) {
             w[l] = w[l] || [];
             w[l].push({
@@ -67,41 +68,316 @@
 
 <body id="leitstellenhintergrund">
     <!-- Google Tag Manager (noscript) -->
-    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-WTDQC48"
-    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-    <!-- End Google Tag Manager (noscript) -->
-    <nav>
-        <header>
-            <p> <a id="überschriftlink" href="https://ubodigat.com">U:Bodigat.com</a> | Leitstellenspiel</p>
-            <div id="headerinput">
-                <a href="https://ubodigat.com/datenschutz" target="_blank"> <button class="button">Datenschutz</button></a>
-                <a href="/games/gamemenü"> <button class="button">Zum Gamemenü</button></a>
+
+    <header class="navbar">
+        <div class="navbar-inner">
+            <a href="/" class="brand">
+                <img src="/bilder/logo/ubodigatlogo-breit-weiss.svg" alt="U:Bodigat.com" class="brand-logo">
+            </a>
+            <nav class="nav-links" id="navLinks">
+                <div class="nav-item-dropdown">
+                    <a href="/menu" class="nav-link">
+                        <svg class="icon" viewBox="0 0 24 24">
+                            <rect x="3" y="3" width="7" height="7" rx="1.5"></rect>
+                            <rect x="14" y="3" width="7" height="7" rx="1.5"></rect>
+                            <rect x="3" y="14" width="7" height="7" rx="1.5"></rect>
+                            <rect x="14" y="14" width="7" height="7" rx="1.5"></rect>
+                        </svg>
+                        Menü
+                        <svg class="icon nav-caret" viewBox="0 0 24 24">
+                            <path d="M6 9l6 6 6-6"></path>
+                        </svg>
+                    </a>
+                    <div class="nav-dropdown-panel">
+                        <a href="/lerntools/lernmenü" class="nav-dropdown-item">Lernmenü</a>
+                        <a href="/games/gamemenü" class="nav-dropdown-item">Spiele</a>
+                        <a href="/werkzeuge/" class="nav-dropdown-item">Werkzeuge</a>
+                        <a href="/rechner/" class="nav-dropdown-item">Taschenrechner</a>
+                        <a href="/uhr/" class="nav-dropdown-item">Uhrzeit</a>
+                        <a href="/beschreibung" class="nav-dropdown-item">Beschreibung</a>
+                        <a href="/tutorials" class="nav-dropdown-item">Tutorials</a>
+                    </div>
+                </div>
+                <a href="/kontakt" class="nav-link">
+                    <svg class="icon" viewBox="0 0 24 24">
+                        <rect x="3" y="5" width="18" height="14" rx="2.5"></rect>
+                        <path d="M3 6.5l9 6.5 9-6.5"></path>
+                    </svg>
+                    Kontakt
+                </a>
+                <a href="/download" class="nav-link">
+                    <svg class="icon" viewBox="0 0 24 24">
+                        <path d="M12 3v12"></path>
+                        <path d="M7 10l5 5 5-5"></path>
+                        <path d="M4 19.5h16"></path>
+                    </svg>
+                    Download
+                </a>
+                <a href="/datenschutz" class="nav-link">
+                    <svg class="icon" viewBox="0 0 24 24">
+                        <path d="M12 3l7 3v6c0 4.5-3 7.5-7 9-4-1.5-7-4.5-7-9V6z"></path>
+                    </svg>
+                    Datenschutz
+                </a>
+                <a href="/games/gamemenü" class="nav-link nav-link-extra">
+                    <svg class="icon" viewBox="0 0 24 24">
+                        <rect x="2" y="7" width="20" height="11" rx="5"></rect>
+                        <path d="M6 12h2M7 11v2"></path>
+                        <circle cx="16" cy="10.5" r="0.9" fill="currentColor" stroke="none"></circle>
+                        <circle cx="18" cy="12.5" r="0.9" fill="currentColor" stroke="none"></circle>
+                    </svg>
+                    Gamemenü
+                </a>
+            </nav>
+            <div class="navbar-actions">
+                <span class="nav-weather" id="navWeather">
+                    <svg class="icon" viewBox="0 0 24 24">
+                        <path d="M7 17.5a4 4 0 0 1 .5-8 5.5 5.5 0 0 1 10.6 1.6A3.5 3.5 0 0 1 17.5 18H7z"></path>
+                    </svg>
+                    <span class="nav-weather-value">–</span>
+                </span>
+                <button class="icon-btn theme-toggle" id="themeToggle" aria-label="Theme wechseln" title="Theme wechseln">
+                    <svg class="icon icon-sun" viewBox="0 0 24 24">
+                        <circle cx="12" cy="12" r="4.5"></circle>
+                        <path d="M12 2.5v2.5M12 19v2.5M4.2 4.2l1.8 1.8M18 18l1.8 1.8M2.5 12H5M19 12h2.5M4.2 19.8 6 18M18 6l1.8-1.8"></path>
+                    </svg>
+                    <svg class="icon icon-moon" viewBox="0 0 24 24">
+                        <path d="M20 14.5A8.5 8.5 0 1 1 9.5 4a7 7 0 0 0 10.5 10.5z"></path>
+                    </svg>
+                </button>
+                <button class="nav-toggle" id="navToggle" aria-label="Menü öffnen" aria-expanded="false">
+                    <span></span><span></span><span></span>
+                </button>
             </div>
-        </header>
-    </nav>
+        </div>
+        <nav class="nav-dropdown" id="navDropdown" aria-label="Mobile Navigation">
+            <span class="nav-weather">
+                <svg class="icon" viewBox="0 0 24 24">
+                    <path d="M7 17.5a4 4 0 0 1 .5-8 5.5 5.5 0 0 1 10.6 1.6A3.5 3.5 0 0 1 17.5 18H7z"></path>
+                </svg>
+                <span class="nav-weather-value">–</span>
+            </span>
+            <a href="/menu" class="nav-link">
+                <svg class="icon" viewBox="0 0 24 24">
+                    <rect x="3" y="3" width="7" height="7" rx="1.5"></rect>
+                    <rect x="14" y="3" width="7" height="7" rx="1.5"></rect>
+                    <rect x="3" y="14" width="7" height="7" rx="1.5"></rect>
+                    <rect x="14" y="14" width="7" height="7" rx="1.5"></rect>
+                </svg>
+                Menü
+            </a>
+            <a href="/kontakt" class="nav-link">
+                <svg class="icon" viewBox="0 0 24 24">
+                    <rect x="3" y="5" width="18" height="14" rx="2.5"></rect>
+                    <path d="M3 6.5l9 6.5 9-6.5"></path>
+                </svg>
+                Kontakt
+            </a>
+            <a href="/download" class="nav-link">
+                <svg class="icon" viewBox="0 0 24 24">
+                    <path d="M12 3v12"></path>
+                    <path d="M7 10l5 5 5-5"></path>
+                    <path d="M4 19.5h16"></path>
+                </svg>
+                Download
+            </a>
+            <a href="/datenschutz" class="nav-link">
+                <svg class="icon" viewBox="0 0 24 24">
+                    <path d="M12 3l7 3v6c0 4.5-3 7.5-7 9-4-1.5-7-4.5-7-9V6z"></path>
+                </svg>
+                Datenschutz
+            </a>
+            <a href="/games/gamemenü" class="nav-link nav-link-extra">
+                <svg class="icon" viewBox="0 0 24 24">
+                    <rect x="2" y="7" width="20" height="11" rx="5"></rect>
+                    <path d="M6 12h2M7 11v2"></path>
+                    <circle cx="16" cy="10.5" r="0.9" fill="currentColor" stroke="none"></circle>
+                    <circle cx="18" cy="12.5" r="0.9" fill="currentColor" stroke="none"></circle>
+                </svg>
+                Gamemenü
+            </a>
+        </nav>
+    </header>
 
     <main>
-        <section id="map">
-            <h2 style="color: white;">Karte</h2>
-            <div id="mapContainer"></div>
-        </section>
-
-        <section id="statusMonitor">
-            <h2 style="color: white;">Statusmonitor</h2>
-            <div id="wachen">
-                <h3 style="color: white;">Wachen</h3>
-                <ul id="wachenListe"></ul>
+        <div class="ls-app">
+            <div class="ls-intro">
+                <div class="ls-intro-text">
+                    <span id="liveDot" hidden></span>
+                    <h1>Integrierte Leitstelle</h1>
+                    <p>Disponiere Feuerwehr, Rettungsdienst, Polizei und THW auf echte Einsätze im gesamten Allgäu — von Lindau am Bodensee über Kempten und Oberstdorf bis Kaufbeuren und Memmingen. Wähle passende Fahrzeuge aus deinen Wachen, bevor die Zeit abläuft — jede Alarmierung, Anfahrt und Rückmeldung läuft in Echtzeit auf der Karte.</p>
+                </div>
             </div>
-        </section>
 
-        <section id="einsatzGenerator">
-            <h2 style="color: white;">Einsatzgenerator</h2>
-            <button class="button" id="einsatzErstellen">Einsatz generieren</button>
-            <div id="einsatzDetails" style="margin-top: 1rem; color: white;"></div>
-        </section>
-    </main>
-    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+            <div class="ls-topbar">
+                <div class="ls-stat"><span class="ls-stat-label">Punkte</span><span class="ls-stat-val" id="statPoints">0</span></div>
+                <div class="ls-stat"><span class="ls-stat-label">Erledigt</span><span class="ls-stat-val" id="statDone">0</span></div>
+                <div class="ls-stat"><span class="ls-stat-label">Verpasst</span><span class="ls-stat-val" id="statMissed">0</span></div>
+                <div class="ls-stat"><span class="ls-stat-label">Vertrauen</span><span class="ls-stat-val" id="statRep">100%</span></div>
+                <div class="ls-stat"><span class="ls-stat-label">Bestwert</span><span class="ls-stat-val" id="statBest">0</span></div>
+                <div class="ls-stat"><span class="ls-stat-label">Hilfsfrist</span><span class="ls-stat-val" id="statHf" title="Anteil der Einsätze, bei denen das erste Fahrzeug innerhalb der Hilfsfrist (Feuerwehr 10 Min., Rettungsdienst 12 Min. im Spieltempo) eintraf">—</span></div>
+                <div class="ls-stat"><span class="ls-stat-label">Uhrzeit</span><span class="ls-stat-val" id="statClock">--:--</span></div>
+                <div class="ls-topbar-grow"></div>
+                <div class="ls-shift-controls">
+                    <div class="ls-speedgroup" id="speedGroup" role="group" aria-label="Tempo">
+                        <button type="button" data-speed="1" class="is-active">1×</button>
+                        <button type="button" data-speed="2">2×</button>
+                        <button type="button" data-speed="4">4×</button>
+                    </div>
+                    <button type="button" class="ls-icon-toggle" id="muteBtn" title="Ton aus" aria-label="Ton ein/aus" aria-pressed="false">
+                        <svg class="icon" viewBox="0 0 24 24">
+                            <path d="M4 9v6h4l5 5V4L8 9H4z"></path>
+                            <path d="M16 8a5 5 0 0 1 0 8M18.5 5.5a9 9 0 0 1 0 13"></path>
+                        </svg>
+                    </button>
+                    <button type="button" class="ls-btn" id="shiftBtn">
+                        <svg class="icon" viewBox="0 0 24 24">
+                            <path d="M7 4l13 8-13 8V4z"></path>
+                        </svg>
+                        Schicht beginnen
+                    </button>
+                </div>
+            </div>
+
+            <div class="ls-body">
+                <section class="ls-map-wrap">
+                    <div id="lsMap"></div>
+                    <div class="ls-map-hint" id="mapHint">
+                        <strong>Noch keine Schicht aktiv.</strong><br>Klicke oben auf „Schicht beginnen", um Alarmierungen im gesamten Allgäu zu empfangen.
+                    </div>
+                    <div class="ls-map-legend">
+                        <span class="ls-legend-chip"><i style="background:var(--ls-fire)"></i>Feuerwehr</span>
+                        <span class="ls-legend-chip"><i style="background:var(--ls-ems)"></i>Rettungsdienst</span>
+                        <span class="ls-legend-chip"><i style="background:var(--ls-police)"></i>Polizei</span>
+                        <span class="ls-legend-chip"><i style="background:var(--ls-thw)"></i>THW</span>
+                    </div>
+                </section>
+
+                <aside class="ls-side">
+                    <div class="ls-panel ls-tabcard">
+                        <div class="ls-tabbar" id="sideTabs" role="tablist">
+                            <button type="button" class="ls-tab is-active" data-tab="einsaetze" role="tab">
+                                Einsätze <span class="ls-badge" id="incidentCount">0</span>
+                            </button>
+                            <button type="button" class="ls-tab" data-tab="wachen" role="tab">Wachen</button>
+                            <button type="button" class="ls-tab" data-tab="funk" role="tab">
+                                <svg class="icon" viewBox="0 0 24 24" style="width:14px;height:14px">
+                                    <path d="M4 10v9a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1v-9"></path>
+                                    <path d="M4 10l8-6 8 6"></path>
+                                    <circle cx="12" cy="15" r="2.4"></circle>
+                                </svg>
+                                Funk
+                            </button>
+                        </div>
+
+                        <div class="ls-tabpanel" data-panel="einsaetze">
+                            <div class="ls-empty" id="incidentsEmpty">Noch keine Alarmierungen. Sobald die Schicht läuft, gehen hier neue Einsätze ein.</div>
+                            <div class="ls-incident-list" id="incidentList"></div>
+                        </div>
+
+                        <div class="ls-tabpanel" data-panel="wachen" hidden>
+                            <div class="ls-station-tools">
+                                <input type="search" id="stationSearch" class="ls-search" placeholder="Wache oder Ort suchen …" autocomplete="off" aria-label="Wache oder Ort suchen">
+                                <div class="ls-chipbar" id="stationFilters">
+                                    <button type="button" data-busy="1" class="is-active">Im Einsatz</button>
+                                    <button type="button" data-svc="alle" class="is-active">Alle</button>
+                                    <button type="button" data-svc="feuer">Feuerwehr</button>
+                                    <button type="button" data-svc="rd">Rettung</button>
+                                    <button type="button" data-svc="pol">Polizei</button>
+                                    <button type="button" data-svc="thw">THW</button>
+                                </div>
+                                <div class="ls-fleet-summary" id="fleetSummary"></div>
+                            </div>
+                            <div class="ls-station-list" id="stationList"></div>
+                        </div>
+
+                        <div class="ls-tabpanel" data-panel="funk" hidden>
+                            <div class="ls-empty" id="logEmpty">Noch keine Ereignisse.</div>
+                            <div class="ls-log-list" id="logList"></div>
+                        </div>
+                    </div>
+                </aside>
+            </div>
+        </div>
+
+        <div class="ls-drawer-overlay ls-hidden" id="drawerOverlay">
+            <div class="ls-drawer" id="drawer"></div>
+        </div>
+
+        <div class="ls-overlay-card" id="startCard">
+            <div class="ls-overlay-box">
+                <button type="button" class="ls-overlay-close" id="startCardClose" aria-label="Schließen" title="Schließen">
+                    <svg class="icon" viewBox="0 0 24 24">
+                        <path d="M6 6l12 12M18 6L6 18"></path>
+                    </svg>
+                </button>
+                <h2>Bereit für den Dienst?</h2>
+                <p>Du übernimmst die Integrierte Leitstelle Allgäu für Stadt und Landkreis Kempten, Oberallgäu, Ostallgäu, Unterallgäu, Lindau sowie Kaufbeuren und Memmingen — mit über 440 echten Wachen (Feuerwehren, Rettungswachen, Notarztstandorte, Polizei, THW, Bergwacht, Wasserwacht) und rund 1.000 Fahrzeugen. Die Anforderungen folgen vereinfacht der bayerischen Praxis: Feuerwehr nach AAO, Notarzt nach Notarztindikationskatalog, bei Großlagen Leitender Notarzt und OrgL. Neue Einsätze laufen gemächlich ein und wollen mit den <strong>passenden Fahrzeugen rechtzeitig</strong> bedient werden.</p>
+                <ul>
+                    <li><strong>Klicke einen Einsatz</strong> in der Liste oder auf der Karte, um die Disposition zu öffnen.</li>
+                    <li><strong>Alarmiere</strong> die geforderten Fahrzeuge einzeln, mit „Nach AAO alarmieren“ die jeweils nächsten freien auf einmal — oder wechsle auf „Alle Fahrzeuge“, um auch unpassende zu schicken.</li>
+                    <li>Bei größeren Feuerwachen kannst du per Klick einen kompletten <strong>Löschzug</strong> auf einmal alarmieren, statt ELW, LF und DLK einzeln auszuwählen.</li>
+                    <li>Ist ein Fahrzeug schon unterwegs oder auf Rückfahrt, kannst du es jederzeit zu einem <strong>anderen Einsatz umdisponieren</strong>.</li>
+                    <li>Es gilt echte Tages- und Jahreszeit: <strong>Ehrenamtliche Feuerwehren</strong> rücken werktags tagsüber langsamer aus, im Winter gibt es Skiunfälle, im Sommer Badeunfälle. Die <strong>Hilfsfrist</strong> (Feuerwehr 10, Rettungsdienst 12 Minuten) bringt Bonuspunkte.</li>
+                    <li>Erste Fahrzeuge melden die <strong>Lage</strong>: Es gibt Fehlalarme, Nachforderungen und für Schlaganfall, Herzinfarkt oder Polytrauma die passende <strong>Zielklinik</strong>.</li>
+                    <li>Reagierst du zu langsam, kann sich ein Einsatz <strong>verschärfen</strong> und mehr Kräfte fordern.</li>
+                    <li>Seltene <strong>Großeinsätze</strong> brauchen Spezialkräfte wie SEK, Rettungshubschrauber oder THW — die kommen von außerhalb und brauchen länger.</li>
+                    <li>Der <strong>Funkverkehr</strong>-Reiter zeigt jede Alarmierung, Ankunft und Rückmeldung mit echtem Rufnamen.</li>
+                    <li>Auch andere Disponenten binden Fahrzeuge in <strong>Fremdeinsätzen</strong> — sie fahren sichtbar über die Karte und lassen sich notfalls umdisponieren.</li>
+                    <li>Verpasste Einsätze kosten <strong>Punkte und Vertrauen</strong> der Landkreise in deine Leitstelle.</li>
+                </ul>
+                <button type="button" class="ls-btn" id="startBtn" style="width:100%; justify-content:center;">
+                    <svg class="icon" viewBox="0 0 24 24">
+                        <path d="M7 4l13 8-13 8V4z"></path>
+                    </svg>
+                    Schicht beginnen
+                </button>
+                <div class="ls-board-section">
+                    <div class="ls-board-head"><svg class="icon" viewBox="0 0 24 24">
+                            <path d="M8 21h8M12 17v4"></path>
+                            <path d="M7 4h10v5a5 5 0 0 1-10 0V4z"></path>
+                            <path d="M7 5H4v2a3 3 0 0 0 3 3M17 5h3v2a3 3 0 0 1-3 3"></path>
+                        </svg>Bestenliste</div>
+                    <div id="startBoard"></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="ls-overlay-card ls-hidden" id="endCard">
+            <div class="ls-overlay-box">
+                <button type="button" class="ls-overlay-close" id="endCardClose" aria-label="Schließen" title="Schließen">
+                    <svg class="icon" viewBox="0 0 24 24">
+                        <path d="M6 6l12 12M18 6L6 18"></path>
+                    </svg>
+                </button>
+                <h2 id="endTitle">Schicht beendet</h2>
+                <p id="endText">Hier steht eine kurze Auswertung deiner Schicht.</p>
+                <div class="ls-overlay-stats">
+                    <div class="ls-overlay-stat"><b id="endPoints">0</b><span>Punkte</span></div>
+                    <div class="ls-overlay-stat"><b id="endDone">0</b><span>Erledigt</span></div>
+                    <div class="ls-overlay-stat"><b id="endMissed">0</b><span>Verpasst</span></div>
+                </div>
+                <button type="button" class="ls-btn" id="restartBtn" style="width:100%; justify-content:center;">
+                    <svg class="icon" viewBox="0 0 24 24">
+                        <path d="M21 12a9 9 0 1 1-2.6-6.4M21 4v5h-5"></path>
+                    </svg>
+                    Neue Schicht beginnen
+                </button>
+                <div class="ls-board-section">
+                    <div class="ls-board-head"><svg class="icon" viewBox="0 0 24 24">
+                            <path d="M8 21h8M12 17v4"></path>
+                            <path d="M7 4h10v5a5 5 0 0 1-10 0V4z"></path>
+                            <path d="M7 5H4v2a3 3 0 0 0 3 3M17 5h3v2a3 3 0 0 1-3 3"></path>
+                        </svg>Bestenliste</div>
+                    <div id="endBoard"></div>
+                </div>
+            </div>
+        </div>
+
+        <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 
 </body>
+
+
 
 </html>

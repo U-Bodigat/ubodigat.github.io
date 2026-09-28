@@ -70,7 +70,7 @@ header p {
 }
 
 .button {
-    transition: 0.5s;
+    transition: background-color 0.5s, color 0.5s;
     background-color: #012f6b;
     color: #fff;
     text-decoration: none;
@@ -84,10 +84,9 @@ header p {
 }
 
 .button:hover {
-    transition: 0.5s;
+    transition: background-color 0.5s, color 0.5s;
     background-color: #006eff;
     color: #003a1e;
-    font-weight: 800;
 }
 
 .button a {
@@ -96,8 +95,8 @@ header p {
     text-decoration: none;
 }
 
-#leitstellenhintergrund {
-    background-image: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)), url(/bilder);
+#tetrishintergrund {
+    background-image: linear-gradient(rgba(0, 0, 0, 0.55), rgba(0, 0, 0, 0.72)), url("/bilder/ubodigat.com Tetris Hintergrund.svg");
     background-size: cover;
     background-attachment: fixed;
     background-position: center;
@@ -217,7 +216,8 @@ main {
     align-items: center;
     justify-content: center;
     gap: 40px;
-    height: 100vh;
+    flex-wrap: wrap;
+    padding: 24px 16px;
 }
 
 .instructions {

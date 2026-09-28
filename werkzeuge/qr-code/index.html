@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="de">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="U:Bodigat">
+    <meta name="publisher" content="U:Bodigat">
+    <meta name="copyright" content="U:Bodigat">
+    <meta name="theme-color" content="#0a0e1a">
+    <meta name="description" content="QR-Codes für Links, Text, WLAN, E-Mail, Telefon und Kontakte erzeugen — als PNG oder SVG herunterladen.">
+    <meta property="og:site_name" content="U:Bodigat.com">
+    <meta property="og:url" content="https://ubodigat.com/werkzeuge/qr-code/">
+    <meta property="og:title" content="QR-Code-Generator | ubodigat.com">
+    <meta property="og:type" content="website">
+    <meta property="og:description" content="QR-Codes für Links, Text, WLAN, E-Mail, Telefon und Kontakte erzeugen — als PNG oder SVG herunterladen.">
+    <title>QR-Code-Generator | ubodigat.com</title>
+    <link rel="stylesheet" href="/style.css">
+    <link rel="stylesheet" href="/werkzeuge/werkzeuge.css">
+    <link rel="icon" href="/bilder/x-icon.png" type="image/x-icon">
+    <link rel="apple-touch-icon" href="https://ubodigat.com/bilder/x-icon.png" />
+    <script src="/script.js" defer></script>
+    <script src="/werkzeuge/wz.js" defer></script>
+    <script src="/werkzeuge/qr-code/qrcode-generator.js" defer></script>
+    <script src="/werkzeuge/qr-code/tool.js" defer></script>
+    <!-- Google tag (gtag.js) — läuft erst nach Cookie-Zustimmung, siehe script.js -->
+    <script type="text/plain" data-consent="analytics" data-src="https://www.googletagmanager.com/gtag/js?id=G-BE1B5EZY35"></script>
+    <script type="text/plain" data-consent="analytics">
+        window.dataLayer = window.dataLayer || [];
+
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+        gtag('js', new Date());
+
+        gtag('config', 'G-BE1B5EZY35');
+    </script>
+    <!-- Google Tag Manager — läuft erst nach Cookie-Zustimmung, siehe script.js -->
+    <script type="text/plain" data-consent="analytics">
+        (function(w, d, s, l, i) {
+            w[l] = w[l] || [];
+            w[l].push({
+                'gtm.start': new Date().getTime(),
+                event: 'gtm.js'
+            });
+            var f = d.getElementsByTagName(s)[0],
+                j = d.createElement(s),
+                dl = l != 'dataLayer' ? '&l=' + l : '';
+            j.async = true;
+            j.src =
+                'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
+            f.parentNode.insertBefore(j, f);
+        })(window, document, 'script', 'dataLayer', 'GTM-WTDQC48');
+    </script>
+    <!-- End Google Tag Manager -->
+</head>
+
+<body data-page="werkzeuge">
+    <div class="bg-fx"></div>
+
+    <header class="navbar">
+        <div class="navbar-inner">
+            <a href="/" class="brand">
+                <img src="/bilder/logo/ubodigatlogo-breit-weiss.svg" alt="U:Bodigat.com" class="brand-logo">
+            </a>
+            <nav class="nav-links" id="navLinks">
+                <div class="nav-item-dropdown">
+                    <a href="/menu" class="nav-link">
+                        <svg class="icon" viewBox="0 0 24 24">
+                            <rect x="3" y="3" width="7" height="7" rx="1.5"></rect>
+                            <rect x="14" y="3" width="7" height="7" rx="1.5"></rect>
+                            <rect x="3" y="14" width="7" height="7" rx="1.5"></rect>
+                            <rect x="14" y="14" width="7" height="7" rx="1.5"></rect>
+                        </svg>
+                        Menü
+                        <svg class="icon nav-caret" viewBox="0 0 24 24">
+                            <path d="M6 9l6 6 6-6"></path>
+                        </svg>
+                    </a>
+                    <div class="nav-dropdown-panel">
+                        <a href="/lerntools/lernmenü" class="nav-dropdown-item">Lernmenü</a>
+                        <a href="/games/gamemenü" class="nav-dropdown-item">Spiele</a>
+                        <a href="/werkzeuge/" class="nav-dropdown-item">Werkzeuge</a>
+                        <a href="/rechner/" class="nav-dropdown-item">Taschenrechner</a>
+                        <a href="/uhr/" class="nav-dropdown-item">Uhrzeit</a>
+                        <a href="/beschreibung" class="nav-dropdown-item">Beschreibung</a>
+                        <a href="/tutorials" class="nav-dropdown-item">Tutorials</a>
+                    </div>
+                </div>
+                <a href="/kontakt" class="nav-link">
+                    <svg class="icon" viewBox="0 0 24 24">
+                        <rect x="3" y="5" width="18" height="14" rx="2.5"></rect>
+                        <path d="M3 6.5l9 6.5 9-6.5"></path>
+                    </svg>
+                    Kontakt
+                </a>
+                <a href="/download" class="nav-link">
+                    <svg class="icon" viewBox="0 0 24 24">
+                        <path d="M12 3v12"></path>
+                        <path d="M7 10l5 5 5-5"></path>
+                        <path d="M4 19.5h16"></path>
+                    </svg>
+                    Download
+                </a>
+                <a href="/datenschutz" class="nav-link">
+                    <svg class="icon" viewBox="0 0 24 24">
+                        <path d="M12 3l7 3v6c0 4.5-3 7.5-7 9-4-1.5-7-4.5-7-9V6z"></path>
+                    </svg>
+                    Datenschutz
+                </a>
+                <a href="/werkzeuge/" class="nav-link nav-link-extra">
+                    <svg class="icon" viewBox="0 0 24 24">
+                        <path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"></path>
+                    </svg>
+                    Werkzeuge
+                </a>
+            </nav>
+            <div class="navbar-actions">
+                <span class="nav-weather" id="navWeather">
+                    <svg class="icon" viewBox="0 0 24 24">
+                        <path d="M7 17.5a4 4 0 0 1 .5-8 5.5 5.5 0 0 1 10.6 1.6A3.5 3.5 0 0 1 17.5 18H7z"></path>
+                    </svg>
+                    <span class="nav-weather-value">–</span>
+                </span>
+                <button class="icon-btn theme-toggle" id="themeToggle" aria-label="Theme wechseln" title="Theme wechseln">
+                    <svg class="icon icon-sun" viewBox="0 0 24 24">
+                        <circle cx="12" cy="12" r="4.5"></circle>
+                        <path d="M12 2.5v2.5M12 19v2.5M4.2 4.2l1.8 1.8M18 18l1.8 1.8M2.5 12H5M19 12h2.5M4.2 19.8 6 18M18 6l1.8-1.8"></path>
+                    </svg>
+                    <svg class="icon icon-moon" viewBox="0 0 24 24">
+                        <path d="M20 14.5A8.5 8.5 0 1 1 9.5 4a7 7 0 0 0 10.5 10.5z"></path>
+                    </svg>
+                </button>
+                <button class="nav-toggle" id="navToggle" aria-label="Menü öffnen" aria-expanded="false">
+                    <span></span><span></span><span></span>
+                </button>
+            </div>
+        </div>
+        <nav class="nav-dropdown" id="navDropdown" aria-label="Mobile Navigation">
+            <span class="nav-weather">
+                <svg class="icon" viewBox="0 0 24 24">
+                    <path d="M7 17.5a4 4 0 0 1 .5-8 5.5 5.5 0 0 1 10.6 1.6A3.5 3.5 0 0 1 17.5 18H7z"></path>
+                </svg>
+                <span class="nav-weather-value">–</span>
+            </span>
+            <a href="/menu" class="nav-link">
+                <svg class="icon" viewBox="0 0 24 24">
+                    <rect x="3" y="3" width="7" height="7" rx="1.5"></rect>
+                    <rect x="14" y="3" width="7" height="7" rx="1.5"></rect>
+                    <rect x="3" y="14" width="7" height="7" rx="1.5"></rect>
+                    <rect x="14" y="14" width="7" height="7" rx="1.5"></rect>
+                </svg>
+                Menü
+            </a>
+            <a href="/kontakt" class="nav-link">
+                <svg class="icon" viewBox="0 0 24 24">
+                    <rect x="3" y="5" width="18" height="14" rx="2.5"></rect>
+                    <path d="M3 6.5l9 6.5 9-6.5"></path>
+                </svg>
+                Kontakt
+            </a>
+            <a href="/download" class="nav-link">
+                <svg class="icon" viewBox="0 0 24 24">
+                    <path d="M12 3v12"></path>
+                    <path d="M7 10l5 5 5-5"></path>
+                    <path d="M4 19.5h16"></path>
+                </svg>
+                Download
+            </a>
+            <a href="/datenschutz" class="nav-link">
+                <svg class="icon" viewBox="0 0 24 24">
+                    <path d="M12 3l7 3v6c0 4.5-3 7.5-7 9-4-1.5-7-4.5-7-9V6z"></path>
+                </svg>
+                Datenschutz
+            </a>
+            <a href="/werkzeuge/" class="nav-link nav-link-extra">
+                <svg class="icon" viewBox="0 0 24 24">
+                    <path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"></path>
+                </svg>
+                Werkzeuge
+            </a>
+        </nav>
+    </header>
+
+    <main>
+        <section class="hero-photo hero-photo-banner" style="background-image: url('/bilder/ubodigat.com Werkzeuge QR-Code Hintergrund.svg');">
+            <div class="hero-photo-inner">
+                <span class="eyebrow on-photo"><svg class="icon" viewBox="0 0 24 24">
+                        <rect x="3" y="3" width="7" height="7" rx="1"></rect>
+                        <rect x="14" y="3" width="7" height="7" rx="1"></rect>
+                        <rect x="3" y="14" width="7" height="7" rx="1"></rect>
+                        <path d="M14 14h3v3h-3zM20 14v3M14 20h3M20 20h1"></path>
+                    </svg>
+                    Werkzeuge · QR-Code</span>
+                <h1>QR-Code-Generator</h1>
+                <p class="lead">QR-Codes für Links, Text, WLAN, Kontakte und mehr — als PNG oder scharfes SVG.</p>
+            </div>
+        </section>
+
+        <section class="section">
+            <div class="container">
+                <div class="wz-privacy" style="margin-bottom: 20px;">
+                    <svg class="icon" viewBox="0 0 24 24">
+                        <path d="M12 3l7 3v6c0 4.5-3 7.5-7 9-4-1.5-7-4.5-7-9V6z"></path>
+                        <path d="M9 12l2 2 4-4"></path>
+                    </svg>
+                    <div><strong>Alles bleibt im Browser.</strong> Der QR-Code wird lokal berechnet — deine Eingaben (auch WLAN-Passwörter) werden nirgendwohin gesendet.</div>
+                </div>
+
+                <div class="wz-split">
+                    <div class="wz-wrap">
+                        <div class="wz-panel">
+                            <div class="wz-field">
+                                <span class="wz-label">Inhalt</span>
+                                <div class="wz-seg" id="types">
+                                    <input type="radio" name="type" id="ty-text" value="text" checked><label for="ty-text">Text / Link</label>
+                                    <input type="radio" name="type" id="ty-wifi" value="wifi"><label for="ty-wifi">WLAN</label>
+                                    <input type="radio" name="type" id="ty-mail" value="mail"><label for="ty-mail">E-Mail</label>
+                                    <input type="radio" name="type" id="ty-tel" value="tel"><label for="ty-tel">Telefon</label>
+                                    <input type="radio" name="type" id="ty-sms" value="sms"><label for="ty-sms">SMS</label>
+                                    <input type="radio" name="type" id="ty-card" value="card"><label for="ty-card">Kontakt</label>
+                                </div>
+                            </div>
+
+                            <div class="qr-form" data-type="text">
+                                <div class="wz-field">
+                                    <label class="wz-label" for="fText">Text oder Internetadresse</label>
+                                    <textarea id="fText" rows="4" placeholder="https://ubodigat.com">https://ubodigat.com</textarea>
+                                </div>
+                            </div>
+
+                            <div class="qr-form wz-hidden" data-type="wifi">
+                                <div class="wz-field"><label class="wz-label" for="fSsid">Netzwerkname (SSID)</label><input type="text" id="fSsid" placeholder="Mein-WLAN" autocomplete="off"></div>
+                                <div class="wz-field"><label class="wz-label" for="fWpass">Passwort</label><input type="text" id="fWpass" placeholder="Passwort des WLANs" autocomplete="off"></div>
+                                <div class="wz-field">
+                                    <span class="wz-label">Verschlüsselung</span>
+                                    <div class="wz-seg">
+                                        <input type="radio" name="enc" id="enc-wpa" value="WPA" checked><label for="enc-wpa">WPA / WPA2 / WPA3</label>
+                                        <input type="radio" name="enc" id="enc-wep" value="WEP"><label for="enc-wep">WEP</label>
+                                        <input type="radio" name="enc" id="enc-none" value="nopass"><label for="enc-none">Offen</label>
+                                    </div>
+                                </div>
+                                <label class="wz-switch"><input type="checkbox" id="fHidden"> Verstecktes Netzwerk</label>
+                            </div>
+
+                            <div class="qr-form wz-hidden" data-type="mail">
+                                <div class="wz-field"><label class="wz-label" for="fMailTo">Empfänger</label><input type="email" id="fMailTo" placeholder="name@beispiel.de" autocomplete="off"></div>
+                                <div class="wz-field"><label class="wz-label" for="fMailSub">Betreff (optional)</label><input type="text" id="fMailSub" autocomplete="off"></div>
+                                <div class="wz-field"><label class="wz-label" for="fMailBody">Nachricht (optional)</label><textarea id="fMailBody" rows="3"></textarea></div>
+                            </div>
+
+                            <div class="qr-form wz-hidden" data-type="tel">
+                                <div class="wz-field"><label class="wz-label" for="fTel">Telefonnummer</label><input type="tel" id="fTel" placeholder="+49 170 1234567" autocomplete="off"></div>
+                            </div>
+
+                            <div class="qr-form wz-hidden" data-type="sms">
+                                <div class="wz-field"><label class="wz-label" for="fSmsNum">Telefonnummer</label><input type="tel" id="fSmsNum" placeholder="+49 170 1234567" autocomplete="off"></div>
+                                <div class="wz-field"><label class="wz-label" for="fSmsMsg">Nachricht</label><textarea id="fSmsMsg" rows="3"></textarea></div>
+                            </div>
+
+                            <div class="qr-form wz-hidden" data-type="card">
+                                <div class="wz-row">
+                                    <div class="wz-field wz-grow"><label class="wz-label" for="fFirst">Vorname</label><input type="text" id="fFirst" autocomplete="off"></div>
+                                    <div class="wz-field wz-grow"><label class="wz-label" for="fLast">Nachname</label><input type="text" id="fLast" autocomplete="off"></div>
+                                </div>
+                                <div class="wz-row">
+                                    <div class="wz-field wz-grow"><label class="wz-label" for="fOrg">Firma (optional)</label><input type="text" id="fOrg" autocomplete="off"></div>
+                                    <div class="wz-field wz-grow"><label class="wz-label" for="fCardTel">Telefon (optional)</label><input type="tel" id="fCardTel" autocomplete="off"></div>
+                                </div>
+                                <div class="wz-row">
+                                    <div class="wz-field wz-grow"><label class="wz-label" for="fCardMail">E-Mail (optional)</label><input type="email" id="fCardMail" autocomplete="off"></div>
+                                    <div class="wz-field wz-grow"><label class="wz-label" for="fCardUrl">Webseite (optional)</label><input type="url" id="fCardUrl" autocomplete="off"></div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="wz-panel">
+                            <div class="wz-panel-title">
+                                <svg class="icon" viewBox="0 0 24 24">
+                                    <path d="M4 21v-7M4 10V3M12 21v-9M12 8V3M20 21v-5M20 12V3"></path>
+                                    <path d="M1 14h6M9 8h6M17 16h6"></path>
+                                </svg>
+                                Aussehen
+                            </div>
+                            <div class="wz-row" style="align-items: flex-start;">
+                                <div class="wz-field wz-grow">
+                                    <span class="wz-label">Fehlerkorrektur</span>
+                                    <div class="wz-seg">
+                                        <input type="radio" name="ec" id="ec-l" value="L"><label for="ec-l" title="7 % wiederherstellbar">L</label>
+                                        <input type="radio" name="ec" id="ec-m" value="M" checked><label for="ec-m" title="15 % wiederherstellbar">M</label>
+                                        <input type="radio" name="ec" id="ec-q" value="Q"><label for="ec-q" title="25 % wiederherstellbar">Q</label>
+                                        <input type="radio" name="ec" id="ec-h" value="H"><label for="ec-h" title="30 % wiederherstellbar">H</label>
+                                    </div>
+                                </div>
+                                <div class="wz-field wz-grow">
+                                    <span class="wz-label">Form</span>
+                                    <div class="wz-seg">
+                                        <input type="radio" name="shape" id="sh-sq" value="square" checked><label for="sh-sq">Eckig</label>
+                                        <input type="radio" name="shape" id="sh-rd" value="round"><label for="sh-rd">Abgerundet</label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="wz-row">
+                                <div class="wz-field"><span class="wz-label">Vordergrund</span><input type="color" id="fg" value="#000000" aria-label="Vordergrundfarbe"></div>
+                                <div class="wz-field"><span class="wz-label">Hintergrund</span><input type="color" id="bg" value="#ffffff" aria-label="Hintergrundfarbe"></div>
+                                <div class="wz-field wz-grow">
+                                    <label class="wz-label" for="margin">Rand (Module)</label>
+                                    <div class="wz-range"><input type="range" id="margin" min="0" max="10" value="4"><output id="marginOut">4</output></div>
+                                </div>
+                            </div>
+                            <div class="wz-field">
+                                <label class="wz-label" for="size">Größe für den Download</label>
+                                <div class="wz-range"><input type="range" id="size" min="128" max="2048" step="32" value="768"><output id="sizeOut" style="min-width:6.5em">768 px</output></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="wz-panel qr-preview-panel">
+                        <div class="wz-panel-title">
+                            <svg class="icon" viewBox="0 0 24 24">
+                                <rect x="3" y="3" width="7" height="7" rx="1"></rect>
+                                <rect x="14" y="3" width="7" height="7" rx="1"></rect>
+                                <rect x="3" y="14" width="7" height="7" rx="1"></rect>
+                                <path d="M14 14h3v3h-3zM20 14v3M14 20h3M20 20h1"></path>
+                            </svg>
+                            Vorschau
+                        </div>
+                        <div class="qr-stage" id="qrStage">
+                            <canvas id="qrCanvas" width="300" height="300" aria-label="QR-Code"></canvas>
+                            <div class="qr-empty wz-hidden" id="qrEmpty">Gib links etwas ein.</div>
+                        </div>
+                        <div class="wz-warn wz-hidden" id="qrWarn" style="margin-top: 16px;">
+                            <svg class="icon" viewBox="0 0 24 24">
+                                <path d="M12 3l10 18H2z"></path>
+                                <path d="M12 10v5M12 18v.01"></path>
+                            </svg>
+                            <div id="qrWarnText"></div>
+                        </div>
+                        <p class="wz-note" id="qrInfo" style="margin-top: 14px; text-align: center;">–</p>
+                        <div class="wz-actions" style="margin-top: 16px; justify-content: center;">
+                            <button type="button" class="btn btn-primary" id="dlPng">PNG herunterladen</button>
+                            <button type="button" class="btn btn-secondary" id="dlSvg">SVG herunterladen</button>
+                            <button type="button" class="btn btn-ghost" id="copyPng">Bild kopieren</button>
+                        </div>
+                        <p class="wz-note" style="margin-top: 14px;">Tipp: Teste den Code vor dem Drucken mit deinem Handy. Dunkle Vordergrund- und helle Hintergrundfarbe mit gutem Kontrast scannen am zuverlässigsten.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <div class="container footer-inner">
+            <div class="footer-status">
+                <span class="eyebrow">Diese Webseite befindet sich noch in Entwicklung</span>
+            </div>
+            <div class="footer-links">
+                <a href="/kontakt">Kontakt</a>
+                <a href="/datenschutz">Datenschutz</a>
+                <a href="/projekte">Projekte</a>
+                <a href="https://github.com/ubodigat" target="_blank" rel="noopener">GitHub</a>
+                <a href="http://discord.ubodigat.com" target="_blank" rel="noopener">Discord</a>
+            </div>
+            <span>© <span data-year></span> U:Bodigat</span>
+        </div>
+    </footer>
+
+</body>
+
+</html>

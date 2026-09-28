@@ -26,15 +26,15 @@
     <meta property="twitter:description" content="Dies ist nur eine Seite diese gebracht wird zum drucken der Ergebnisse aus dem Prüfungsmodus der 10 Finger System Lernapp (;">
     <meta property="twitter:image" content="https://cdn.discordapp.com/attachments/1068905447848943697/1161784440004022363/ubodigat_logo_breit_transparent_neutral.png?ex=65398f13&is=65271a13&hm=8bd1f6d65ee3d677dc79e1b8e6d58d7a292f9f88fa9816c01d0535a6d482cd9a&">
     <title>Ergebnisdruck | ubodigat.com</title>
-    <link rel="icon" href="/bilder/Wartungsarbeitenprofilbild.png" type="image/x-icon">
-    <link rel="apple-touch-icon" href="https://ubodigat.com/bilder/Wartungsarbeitenprofilbild.png" />
+    <link rel="icon" href="/bilder/x-icon.png" type="image/x-icon">
+    <link rel="apple-touch-icon" href="https://ubodigat.com/bilder/x-icon.png" />
     <script src="/script.js"></script>
     <link rel="stylesheet" href="/lerntools/zehnfingersystem/style.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&display=swap" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" rel="stylesheet" crossorigin="anonymous" referrerpolicy="no-referrer">
-    <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-BE1B5EZY35"></script>
-    <script>
+    <!-- Google tag (gtag.js) — läuft erst nach Cookie-Zustimmung, siehe script.js -->
+    <script type="text/plain" data-consent="analytics" data-src="https://www.googletagmanager.com/gtag/js?id=G-BE1B5EZY35"></script>
+    <script type="text/plain" data-consent="analytics">
         window.dataLayer = window.dataLayer || [];
 
         function gtag() {
@@ -44,8 +44,8 @@
 
         gtag('config', 'G-BE1B5EZY35');
     </script>
-    <!-- Google Tag Manager -->
-    <script>
+    <!-- Google Tag Manager — läuft erst nach Cookie-Zustimmung, siehe script.js -->
+    <script type="text/plain" data-consent="analytics">
         (function(w, d, s, l, i) {
             w[l] = w[l] || [];
             w[l].push({
@@ -63,7 +63,7 @@
     </script>
     <!-- End Google Tag Manager -->
     <style>
-         :root {
+        :root {
             --bg: #202020;
             --card: #0f2033;
             --row: #163049;
@@ -73,16 +73,16 @@
             --err: #ff3b3b;
             --pri: #3aa8ff;
         }
-        
+
         * {
             box-sizing: border-box
         }
-        
+
         html,
         body {
             height: 100%
         }
-        
+
         body {
             margin: 0;
             font-family: Poppins, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
@@ -97,9 +97,6 @@
 
 <body>
     <!-- Google Tag Manager (noscript) -->
-    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-WTDQC48"
-    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-    <!-- End Google Tag Manager (noscript) -->
 
     <main class="print-card">
         <div class="header">
@@ -124,7 +121,7 @@
             <i class="fa-solid fa-print" id="printbnt" style="margin-right:8px;"></i>Drucken
         </button>
         <button id="backbtn" type="button">
-        <i class="fa-solid fa-arrow-left"></i>&nbsp; Zurück zur Startseite
+            <i class="fa-solid fa-arrow-left"></i>&nbsp; Zurück zur Startseite
         </button>
     </main>
     <a href="https://ubodigat.com/lerntools/zehnfingersystem/" class="print-footer" target="_blank">
@@ -132,13 +129,15 @@
     </a>
 
     <script>
-        window.addEventListener("message", (ev) => {
-                    if (ev.origin !== window.location.origin) return;
-                    const d = ev.data;
-                    if (!d) return;
+        let ergebnisEmpfangen = false;
 
-                    const el = document.getElementById("results");
-                    el.innerHTML = `
+        window.addEventListener("message", (ev) => {
+            if (ev.origin !== window.location.origin) return;
+            const d = ev.data;
+            if (!d || d.type) return;
+
+            const el = document.getElementById("results");
+            el.innerHTML = `
             <div class="row"><span class="label"><i class="fa-regular fa-calendar"></i>Datum:</span><span class="value">${d.datum}</span></div>
             <div class="row"><span class="label"><i class="fa-regular fa-clock"></i>Uhrzeit:</span><span class="value">${d.uhrzeit}</span></div>
             ${d.name ? `<div class="row"><span class="label"><i class="fa-solid fa-user"></i>Name:</span><span class="value">${d.name}</span></div>` : ""}
@@ -149,22 +148,35 @@
             <div class="row"><span class="label"><i class="fa-solid fa-rectangle-list"></i>Textlänge:</span><span class="value">${d.textLaenge}</span></div>
             <div class="row"><span class="label"><i class="fa-solid fa-gauge-simple"></i>Schwierigkeit:</span><span class="value diff">${d.textSchwierigkeit}</span></div>
         `;
+
+            if (ev.source) {
+                try {
+                    ev.source.postMessage({
+                        type: "zfs-print-ready"
+                    }, ev.origin);
+                } catch (_) {}
+            }
+
+            if (!ergebnisEmpfangen) {
+                ergebnisEmpfangen = true;
+                setTimeout(() => window.print(), 50);
+            }
         });
 
-    document.getElementById("backbtn")?.addEventListener("click", () => {
-        const target = "/lerntools/zehnfingersystem/index.html";
-        try {
-        if (window.opener && !window.opener.closed) {
-            window.opener.location.href = target;
-        }
-        } catch(_) {}
+        document.getElementById("backbtn")?.addEventListener("click", () => {
+            const target = "/lerntools/zehnfingersystem/index.html";
+            try {
+                if (window.opener && !window.opener.closed) {
+                    window.opener.location.href = target;
+                }
+            } catch (_) {}
 
-        if (window.opener) {
-        window.close();
-        } else {
-        window.location.href = target;
-        }
-    });
+            if (window.opener) {
+                window.close();
+            } else {
+                window.location.href = target;
+            }
+        });
     </script>
 </body>
 

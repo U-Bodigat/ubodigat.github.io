@@ -191,7 +191,7 @@ function generiereSatzBausteineMitLoesung(vokabel, sprache) {
 function generiereArbeitsblatt() {
     const dictionary = JSON.parse(localStorage.getItem('dictionary')) || {};
     if (Object.keys(dictionary).length === 0) {
-        alert("Es sind keine Vokabeln vorhanden!");
+        ubodigatAlert("Es sind keine Vokabeln vorhanden!");
         return;
     }
     const vokabeln = Object.values(dictionary).sort(() => Math.random() - 0.5);

@@ -10,12 +10,13 @@
     <meta name="author" content="U:Bodigat">
     <meta name="publisher" content="U:Bodigat">
     <meta name="copyright" content="U:Bodigat">
-    <meta name="description" content="Dieser Text befindet sich noch in arbeit.">
+    <meta name="theme-color" content="#000000">
+    <meta name="description" content="Lade Referate und Dateien von U:Bodigat.com herunter.">
     <meta property="og:site_name" content="U:Bodigat.com">
     <meta property="og:url" content="https://ubodigat.com">
     <meta property="og:title" content="Download | ubodigat.com">
     <meta property="og:type" content="website">
-    <meta property="og:description" content="Dieser Text befindet sich noch in arbeit.">
+    <meta property="og:description" content="Lade Referate und Dateien von U:Bodigat.com herunter.">
     <meta property="og:image" content="https://cdn.discordapp.com/attachments/1068905447848943697/1161784440004022363/ubodigat_logo_breit_transparent_neutral.png?ex=65398f13&is=65271a13&hm=8bd1f6d65ee3d677dc79e1b8e6d58d7a292f9f88fa9816c01d0535a6d482cd9a&">
     <meta property="og:image:secure_url" content="https://cdn.discordapp.com/attachments/1068905447848943697/1161784440004022363/ubodigat_logo_breit_transparent_neutral.png?ex=65398f13&is=65271a13&hm=8bd1f6d65ee3d677dc79e1b8e6d58d7a292f9f88fa9816c01d0535a6d482cd9a&">
     <meta property="og:image:width" content="1000">
@@ -23,16 +24,18 @@
     <meta property="twitter:card" content="summary_large_image">
     <meta property="twitter:url" content="https://ubodigat.com">
     <meta property="twitter:title" content="Download | ubodigat.com">
-    <meta property="twitter:description" content="Dieser Text befindet sich noch in arbeit.">
+    <meta property="twitter:description" content="Lade Referate und Dateien von U:Bodigat.com herunter.">
     <meta property="twitter:image" content="https://cdn.discordapp.com/attachments/1068905447848943697/1161784440004022363/ubodigat_logo_breit_transparent_neutral.png?ex=65398f13&is=65271a13&hm=8bd1f6d65ee3d677dc79e1b8e6d58d7a292f9f88fa9816c01d0535a6d482cd9a&">
     <title>Download | ubodigat.com</title>
     <link rel="stylesheet" href="/style.css">
-    <link rel="icon" href="/bilder/Wartungsarbeitenprofilbild.png" type="image/x-icon">
-    <link rel="apple-touch-icon" href="https://ubodigat.com/bilder/Wartungsarbeitenprofilbild.png">
-    <script src="script.js"></script>
-    <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-BE1B5EZY35"></script>
-    <script>
+    <link rel="stylesheet" href="/werkzeuge/werkzeuge.css">
+    <link rel="icon" href="/bilder/x-icon.png" type="image/x-icon">
+    <link rel="apple-touch-icon" href="https://ubodigat.com/bilder/x-icon.png">
+    <script src="script.js" defer></script>
+    <script src="/werkzeuge/wz.js" defer></script>
+    <!-- Google tag (gtag.js) — läuft erst nach Cookie-Zustimmung, siehe script.js -->
+    <script type="text/plain" data-consent="analytics" data-src="https://www.googletagmanager.com/gtag/js?id=G-BE1B5EZY35"></script>
+    <script type="text/plain" data-consent="analytics">
         window.dataLayer = window.dataLayer || [];
 
         function gtag() {
@@ -42,8 +45,8 @@
 
         gtag('config', 'G-BE1B5EZY35');
     </script>
-    <!-- Google Tag Manager -->
-    <script>
+    <!-- Google Tag Manager — läuft erst nach Cookie-Zustimmung, siehe script.js -->
+    <script type="text/plain" data-consent="analytics">
         (function(w, d, s, l, i) {
             w[l] = w[l] || [];
             w[l].push({
@@ -62,75 +65,1017 @@
     <!-- End Google Tag Manager -->
 </head>
 
-<body id="downloadpage">
+<body data-page="download">
     <!-- Google Tag Manager (noscript) -->
-    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-WTDQC48" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-    <!-- End Google Tag Manager (noscript) -->
-    <nav>
-        <header>
-            <p><a id="überschriftlink" href="https://ubodigat.com">U:Bodigat.com</a> | Download</p>
-            <div id="headerinput">
-                <a href="https://ubodigat.com/datenschutz" target="_blank"> <button class="button">Datenschutz</button></a>
-                <a href="/kontakt"> <button class="button">Kontakt</button></a>
-                <a href="/menu"> <button class="button">Zum Menü</button></a>
+    <div class="bg-fx"></div>
+
+    <header class="navbar">
+        <div class="navbar-inner">
+            <a href="/" class="brand">
+                <img src="/bilder/logo/ubodigatlogo-breit-weiss.svg" alt="U:Bodigat.com" class="brand-logo">
+            </a>
+            <nav class="nav-links" id="navLinks">
+                <div class="nav-item-dropdown">
+                    <a href="/menu" class="nav-link">
+                        <svg class="icon" viewBox="0 0 24 24">
+                            <rect x="3" y="3" width="7" height="7" rx="1.5"></rect>
+                            <rect x="14" y="3" width="7" height="7" rx="1.5"></rect>
+                            <rect x="3" y="14" width="7" height="7" rx="1.5"></rect>
+                            <rect x="14" y="14" width="7" height="7" rx="1.5"></rect>
+                        </svg>
+                        Menü
+                        <svg class="icon nav-caret" viewBox="0 0 24 24">
+                            <path d="M6 9l6 6 6-6"></path>
+                        </svg>
+                    </a>
+                    <div class="nav-dropdown-panel">
+                        <a href="/lerntools/lernmenü" class="nav-dropdown-item">Lernmenü</a>
+                        <a href="/games/gamemenü" class="nav-dropdown-item">Spiele</a>
+                        <a href="/werkzeuge/" class="nav-dropdown-item">Werkzeuge</a>
+                        <a href="/rechner/" class="nav-dropdown-item">Taschenrechner</a>
+                        <a href="/uhr/" class="nav-dropdown-item">Uhrzeit</a>
+                        <a href="/beschreibung" class="nav-dropdown-item">Beschreibung</a>
+                        <a href="/tutorials" class="nav-dropdown-item">Tutorials</a>
+                    </div>
+                </div>
+                <a href="/kontakt" class="nav-link">
+                    <svg class="icon" viewBox="0 0 24 24">
+                        <rect x="3" y="5" width="18" height="14" rx="2.5"></rect>
+                        <path d="M3 6.5l9 6.5 9-6.5"></path>
+                    </svg>
+                    Kontakt
+                </a>
+                <a href="/download" class="nav-link" aria-current="page">
+                    <svg class="icon" viewBox="0 0 24 24">
+                        <path d="M12 3v12"></path>
+                        <path d="M7 10l5 5 5-5"></path>
+                        <path d="M4 19.5h16"></path>
+                    </svg>
+                    Download
+                </a>
+                <a href="/datenschutz" class="nav-link">
+                    <svg class="icon" viewBox="0 0 24 24">
+                        <path d="M12 3l7 3v6c0 4.5-3 7.5-7 9-4-1.5-7-4.5-7-9V6z"></path>
+                    </svg>
+                    Datenschutz
+                </a>
+            </nav>
+            <div class="navbar-actions">
+                <span class="nav-weather" id="navWeather">
+                    <svg class="icon" viewBox="0 0 24 24">
+                        <path d="M7 17.5a4 4 0 0 1 .5-8 5.5 5.5 0 0 1 10.6 1.6A3.5 3.5 0 0 1 17.5 18H7z"></path>
+                    </svg>
+                    <span class="nav-weather-value">–</span>
+                </span>
+                <button class="icon-btn theme-toggle" id="themeToggle" aria-label="Theme wechseln" title="Theme wechseln">
+                    <svg class="icon icon-sun" viewBox="0 0 24 24">
+                        <circle cx="12" cy="12" r="4.5"></circle>
+                        <path d="M12 2.5v2.5M12 19v2.5M4.2 4.2l1.8 1.8M18 18l1.8 1.8M2.5 12H5M19 12h2.5M4.2 19.8 6 18M18 6l1.8-1.8"></path>
+                    </svg>
+                    <svg class="icon icon-moon" viewBox="0 0 24 24">
+                        <path d="M20 14.5A8.5 8.5 0 1 1 9.5 4a7 7 0 0 0 10.5 10.5z"></path>
+                    </svg>
+                </button>
+                <button class="nav-toggle" id="navToggle" aria-label="Menü öffnen" aria-expanded="false">
+                    <span></span><span></span><span></span>
+                </button>
             </div>
-        </header>
-    </nav>
-    <main id="maindownload">
-        <div class="container">
-            <h2>Download-Bereich</h2>
-            <p>
-                Willkommen im Download-Bereich von ubodigat.com. Hier kannst du wichtige Dateien herunterladen, die von uns bereitgestellt werden. Bei Fragen oder Problemen stehen wir gerne über Discord oder E-Mail zur Verfügung.
-            </p>
-            <div class="download-link-container">
-                <div class="download-link">
-                    <a href="/downloads/DE Trassexualität.pptx" download>DE Referat Transsexualität <br> herunterladen (78,6 MB)</a>
+        </div>
+        <nav class="nav-dropdown" id="navDropdown" aria-label="Mobile Navigation">
+            <span class="nav-weather">
+                <svg class="icon" viewBox="0 0 24 24">
+                    <path d="M7 17.5a4 4 0 0 1 .5-8 5.5 5.5 0 0 1 10.6 1.6A3.5 3.5 0 0 1 17.5 18H7z"></path>
+                </svg>
+                <span class="nav-weather-value">–</span>
+            </span>
+            <a href="/menu" class="nav-link">
+                <svg class="icon" viewBox="0 0 24 24">
+                    <rect x="3" y="3" width="7" height="7" rx="1.5"></rect>
+                    <rect x="14" y="3" width="7" height="7" rx="1.5"></rect>
+                    <rect x="3" y="14" width="7" height="7" rx="1.5"></rect>
+                    <rect x="14" y="14" width="7" height="7" rx="1.5"></rect>
+                </svg>
+                Menü
+            </a>
+            <a href="/kontakt" class="nav-link">
+                <svg class="icon" viewBox="0 0 24 24">
+                    <rect x="3" y="5" width="18" height="14" rx="2.5"></rect>
+                    <path d="M3 6.5l9 6.5 9-6.5"></path>
+                </svg>
+                Kontakt
+            </a>
+            <a href="/download" class="nav-link" aria-current="page">
+                <svg class="icon" viewBox="0 0 24 24">
+                    <path d="M12 3v12"></path>
+                    <path d="M7 10l5 5 5-5"></path>
+                    <path d="M4 19.5h16"></path>
+                </svg>
+                Download
+            </a>
+            <a href="/datenschutz" class="nav-link">
+                <svg class="icon" viewBox="0 0 24 24">
+                    <path d="M12 3l7 3v6c0 4.5-3 7.5-7 9-4-1.5-7-4.5-7-9V6z"></path>
+                </svg>
+                Datenschutz
+            </a>
+        </nav>
+    </header>
+
+    <main>
+        <section class="hero-photo hero-photo-banner" style="background-image: url('/bilder/ubodigat.com Hintergrund.gif');">
+            <div class="hero-photo-inner">
+                <span class="eyebrow on-photo">
+                    <svg class="icon" viewBox="0 0 24 24">
+                        <path d="M12 3v12"></path>
+                        <path d="M7 10l5 5 5-5"></path>
+                        <path d="M4 19.5h16"></path>
+                    </svg>
+                    Download-Bereich
+                </span>
+                <h1>Dateien &amp; Referate</h1>
+                <p class="lead">
+                    Hier kannst du wichtige Dateien herunterladen, die von uns bereitgestellt werden. Bei Fragen oder Problemen
+                    stehen wir gerne über Discord oder E-Mail zur Verfügung.
+                </p>
+            </div>
+        </section>
+
+        <section class="section">
+            <div class="container">
+                <div class="dl-toolbar">
+                    <div class="dl-search">
+                        <svg class="icon" viewBox="0 0 24 24">
+                            <circle cx="11" cy="11" r="7"></circle>
+                            <path d="M21 21l-4.3-4.3"></path>
+                        </svg>
+                        <input type="search" id="dlSearch" placeholder="Datei suchen …" aria-label="Dateien durchsuchen" autocomplete="off">
+                    </div>
+                    <div class="dl-sort">
+                        <label for="dlSort" class="wz-label">Sortieren</label>
+                        <select id="dlSort" aria-label="Sortierung">
+                            <option value="name">Name (A–Z)</option>
+                            <option value="size-desc">Größe (groß zuerst)</option>
+                            <option value="size-asc">Größe (klein zuerst)</option>
+                        </select>
+                    </div>
                 </div>
-                <div class="download-link">
-                    <a href="/downloads/DE Feuerwehr.pptx" download>DE Referat Feuerwehr <br> herunterladen (38,3 MB)</a>
+
+                <div class="dl-summary" id="dlSummary">
+                    <span class="dl-pill"><svg class="icon" viewBox="0 0 24 24">
+                            <path d="M6 2h9l5 5v15H6z"></path>
+                            <path d="M15 2v5h5"></path>
+                        </svg><b id="sumCount">3</b> Dateien</span>
+                </div>
+
+                <div class="dl-grid" id="dlGrid" aria-live="polite">
+                    <noscript>
+                        <div class="dl-card">
+                            <h3>Downloads ohne JavaScript</h3>
+                            <p class="dl-file"><a href="/downloads/DE Trassexualität.pptx" download>DE Trassexualität.pptx</a></p>
+                            <p class="dl-file"><a href="/downloads/DE Feuerwehr.pptx" download>DE Feuerwehr.pptx</a></p>
+                            <p class="dl-file"><a href="/downloads/DE Rettungsdienst.pptx" download>DE Rettungsdienst.pptx</a></p>
+                        </div>
+                    </noscript>
+                </div>
+                <div class="wz-empty" id="dlEmpty" hidden>Keine Datei gefunden — versuche einen anderen Suchbegriff.</div>
+
+                <div class="wz-split wz-split-even dl-extra">
+                    <div class="wz-panel">
+                        <div class="wz-panel-title">
+                            <svg class="icon" viewBox="0 0 24 24">
+                                <path d="M12 3l7 3v6c0 4.5-3 7.5-7 9-4-1.5-7-4.5-7-9V6z"></path>
+                                <path d="M9 12l2 2 4-4"></path>
+                            </svg>
+                            Heruntergeladene Datei prüfen
+                        </div>
+                        <p class="wz-note" style="margin-bottom: 14px;">Ziehe die Datei hierher — dein Browser berechnet den SHA-256-Wert und vergleicht ihn mit den Werten oben. Die Datei wird dabei <strong>nicht hochgeladen</strong>.</p>
+                        <div class="wz-drop" id="verifyDrop" style="padding: 26px 16px;">
+                            <input type="file" id="verifyInput" aria-label="Datei zum Prüfen auswählen">
+                            <div class="wz-drop-icon" style="width:46px;height:46px;"><svg class="icon" viewBox="0 0 24 24">
+                                    <path d="M12 16V4"></path>
+                                    <path d="M7 9l5-5 5 5"></path>
+                                    <path d="M4 16v3a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1v-3"></path>
+                                </svg></div>
+                            <strong style="font-size: 14.5px;">Datei hier ablegen oder klicken</strong>
+                        </div>
+                        <div class="dl-verify" id="verifyResult" hidden></div>
+                    </div>
+
+                    <div class="wz-panel">
+                        <div class="wz-panel-title">
+                            <svg class="icon" viewBox="0 0 24 24">
+                                <path d="M4 17l6-6-6-6M12 19h8"></path>
+                            </svg>
+                            Prüfsumme selbst berechnen
+                        </div>
+                        <div class="wz-seg" id="osTabs" style="margin-bottom: 14px;">
+                            <input type="radio" name="os" id="os-win" value="win" checked><label for="os-win">Windows</label>
+                            <input type="radio" name="os" id="os-mac" value="mac"><label for="os-mac">macOS</label>
+                            <input type="radio" name="os" id="os-lin" value="lin"><label for="os-lin">Linux</label>
+                        </div>
+                        <div class="wz-out"><code id="osCmd">Get-FileHash ".\Dateiname.pptx" -Algorithm SHA256</code><button type="button" class="wz-icon-btn" id="osCopy" title="Kopieren" aria-label="Befehl kopieren"><svg class="icon" viewBox="0 0 24 24">
+                                    <rect x="9" y="9" width="12" height="12" rx="2"></rect>
+                                    <path d="M5 15V5a2 2 0 0 1 2-2h10"></path>
+                                </svg></button></div>
+                        <p class="wz-note" id="osHint" style="margin-top: 12px;">In der PowerShell ausführen. Alternativ in der Eingabeaufforderung: <code>certUtil -hashfile Dateiname.pptx SHA256</code></p>
+                    </div>
                 </div>
             </div>
-            <div class="download-link-container">
-                <div class="download-link">
-                    <a href="/downloads/DE Rettungsdienst.pptx" download>DE Referat Rettungsdienst <br> herunterladen (16,8 MB)</a>
-                </div>
-                <div class="download-link">
-                    <a href="/bilder/coming soon ... .png" download>Hier kommt bald ein Download (; <br> pls wait for comming soon ... </a>
-                </div>
-            </div>
-            <div class="download-link-container">
-                <div class="download-link">
-                    <a href="/bilder/coming soon ... .png" download>Hier kommt bald ein Download (; <br> pls wait for comming soon ... </a>
-                </div>
-                <div class="download-link">
-                    <a href="/bilder/coming soon ... .png" download>Hier kommt bald ein Download (; <br> pls wait for comming soon ... </a>
-                </div>
-            </div>
-            <div class="download-link-container">
-                <div class="download-link">
-                    <a href="/bilder/coming soon ... .png" download>Hier kommt bald ein Download (; <br> pls wait for comming soon ... </a>
-                </div>
-                <div class="download-link">
-                    <a href="/bilder/coming soon ... .png" download>Hier kommt bald ein Download (; <br> pls wait for comming soon ... </a>
-                </div>
-            </div>
-            <div class="download-link-container">
-                <div class="download-link">
-                    <a href="/bilder/coming soon ... .png" download>Hier kommt bald ein Download (; <br> pls wait for comming soon ... </a>
-                </div>
-                <div class="download-link">
-                    <a href="/bilder/coming soon ... .png" download>Hier kommt bald ein Download (; <br> pls wait for comming soon ... </a>
-                </div>
-            </div>
-            <div class="download-link-container">
-                <div class="download-link">
-                    <a href="/bilder/coming soon ... .png" download>Hier kommt bald ein Download (; <br> pls wait for comming soon ... </a>
-                </div>
-                <div class="download-link">
-                    <a href="/bilder/coming soon ... .png" download>Hier kommt bald ein Download (; <br> pls wait for comming soon ... </a>
-                </div>
-            </div>
+        </section>
     </main>
+
+    <div class="dl-modal-overlay" id="dlModalOverlay" hidden>
+        <div class="dl-modal" role="dialog" aria-modal="true" aria-labelledby="dlModalTitle">
+            <div class="dl-modal-icon">
+                <svg class="icon" viewBox="0 0 24 24">
+                    <path d="M12 3l7 3v6c0 4.5-3 7.5-7 9-4-1.5-7-4.5-7-9V6z"></path>
+                    <path d="M9 12l2 2 4-4"></path>
+                </svg>
+            </div>
+            <h2 id="dlModalTitle">Download bestätigen</h2>
+            <p class="dl-modal-filename" id="dlModalFilename"></p>
+            <dl class="dl-modal-meta">
+                <div>
+                    <dt>Dateigröße</dt>
+                    <dd id="dlModalSize"></dd>
+                </div>
+                <div>
+                    <dt>Dateityp</dt>
+                    <dd id="dlModalType"></dd>
+                </div>
+                <div>
+                    <dt>SHA-256-Prüfsumme</dt>
+                    <dd id="dlModalHash" class="dl-modal-hash"></dd>
+                </div>
+            </dl>
+            <ul class="dl-modal-notes">
+                <li>Vergleiche die Prüfsumme nach dem Download (z. B. mit <code>certUtil -hashfile Datei.pptx SHA256</code> unter Windows) oder ziehe die Datei unten auf dieser Seite in das Prüf-Feld, um sicherzustellen, dass sie unverändert und vollständig ist.</li>
+                <li>Scanne heruntergeladene Dateien vor dem Öffnen mit einem aktuellen Virenschutzprogramm.</li>
+                <li>Die Datei wird direkt und unverändert von GitHub Pages über HTTPS ausgeliefert.</li>
+            </ul>
+            <div class="dl-progress-wrap" id="dlProgressWrap" hidden>
+                <div class="wz-progress" id="dlProgressOuter"><i id="dlProgressBar"></i></div>
+                <p class="dl-progress-text" id="dlProgressText"></p>
+            </div>
+            <div class="dl-modal-actions">
+                <button type="button" id="dlModalCancel" class="btn btn-ghost">Abbrechen</button>
+                <button type="button" id="dlModalConfirm" class="btn btn-primary">Jetzt herunterladen</button>
+            </div>
+        </div>
+    </div>
+
+    <style>
+        /* ---- Toolbar, Zusammenfassung, Karten ------------------------------------ */
+
+        .dl-toolbar {
+            display: flex;
+            align-items: flex-end;
+            justify-content: space-between;
+            gap: 16px;
+            flex-wrap: wrap;
+            margin-bottom: 18px;
+        }
+
+        .dl-search {
+            position: relative;
+            flex: 1 1 280px;
+            max-width: 460px;
+        }
+
+        .dl-search .icon {
+            position: absolute;
+            left: 15px;
+            top: 50%;
+            width: 18px;
+            height: 18px;
+            transform: translateY(-50%);
+            color: var(--text-mid);
+            pointer-events: none;
+        }
+
+        .dl-search input {
+            padding-left: 44px;
+        }
+
+        .dl-sort {
+            display: flex;
+            flex-direction: column;
+            gap: 7px;
+            min-width: 210px;
+        }
+
+        .dl-summary {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: 22px;
+        }
+
+        .dl-pill {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 7px 14px;
+            border: 1px solid var(--border);
+            border-radius: 999px;
+            background: var(--surface);
+            font-size: 13px;
+            color: var(--text-dim);
+        }
+
+        .dl-pill .icon {
+            width: 15px;
+            height: 15px;
+            color: var(--text-mid);
+        }
+
+        .dl-pill b {
+            color: var(--text);
+            font-weight: 700;
+        }
+
+        .dl-pill-good {
+            border-color: rgba(2, 163, 74, 0.45);
+            background: var(--accent-soft);
+            color: var(--text);
+        }
+
+        .dl-pill-good .icon {
+            color: var(--accent-bright);
+        }
+
+        .dl-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(min(100%, 330px), 1fr));
+            gap: 18px;
+        }
+
+        .dl-card {
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            padding: 22px;
+            border: 1px solid var(--border);
+            border-radius: var(--radius-lg);
+            background: var(--surface);
+            overflow: hidden;
+            transition: border-color 0.2s var(--ease), transform 0.2s var(--ease), box-shadow 0.2s var(--ease);
+            animation: dlCardIn 0.4s var(--ease) both;
+        }
+
+        .dl-card::before {
+            content: "";
+            position: absolute;
+            inset: 0 0 auto 0;
+            height: 3px;
+            background: var(--accent-bright);
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.35s var(--ease);
+        }
+
+        .dl-card:hover {
+            border-color: var(--border-strong);
+            transform: translateY(-4px);
+            box-shadow: 0 16px 36px rgba(0, 0, 0, 0.28);
+        }
+
+        .dl-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        @keyframes dlCardIn {
+            from {
+                opacity: 0;
+                transform: translateY(12px);
+            }
+
+            to {
+                opacity: 1;
+                transform: none;
+            }
+        }
+
+        .dl-card-top {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 10px;
+        }
+
+        .dl-type {
+            display: inline-flex;
+            align-items: center;
+            gap: 9px;
+            padding: 7px 12px 7px 9px;
+            border-radius: 12px;
+            background: var(--accent-soft);
+            color: var(--accent-bright);
+            font-family: 'Inconsolata', monospace;
+            font-size: 13px;
+            font-weight: 800;
+            letter-spacing: 0.06em;
+        }
+
+        .dl-type .icon {
+            width: 20px;
+            height: 20px;
+        }
+
+        .dl-badge {
+            padding: 3px 10px;
+            border-radius: 999px;
+            background: var(--surface-strong);
+            color: var(--text-dim);
+            font-size: 11.5px;
+            font-weight: 700;
+        }
+
+        .dl-card h3 {
+            font-size: 19px;
+            color: var(--text);
+            margin-top: 4px;
+        }
+
+        .dl-file {
+            font-size: 13px;
+            color: var(--text-mid);
+            word-break: break-word;
+            line-height: 1.5;
+        }
+
+        .dl-file a {
+            color: var(--accent-bright);
+            text-decoration: underline;
+        }
+
+        .dl-size {
+            margin: 4px 0 2px;
+        }
+
+        .dl-size b {
+            font-family: 'Inconsolata', monospace;
+            font-size: 22px;
+            font-weight: 800;
+            color: var(--text);
+            white-space: nowrap;
+        }
+
+        .dl-hash {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 8px 8px 12px;
+            border: 1px solid var(--border);
+            border-radius: var(--radius-sm);
+            background: var(--bg-1);
+            font-size: 12px;
+            color: var(--text-mid);
+        }
+
+        .dl-hash code {
+            flex: 1;
+            min-width: 0;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            font-family: 'Inconsolata', ui-monospace, monospace;
+            font-size: 13px;
+            color: #5b9bef;
+        }
+
+        .dl-hash .wz-icon-btn {
+            width: 30px;
+            height: 30px;
+        }
+
+        .dl-hash .wz-icon-btn .icon {
+            width: 15px;
+            height: 15px;
+        }
+
+        .dl-actions {
+            margin-top: auto;
+            padding-top: 6px;
+        }
+
+        .dl-actions .btn {
+            width: 100%;
+        }
+
+        .dl-extra {
+            margin-top: 40px;
+        }
+
+        .dl-extra .btn {
+            max-width: 100%;
+            white-space: normal;
+        }
+
+        .dl-verify {
+            margin-top: 16px;
+            padding: 14px 16px;
+            border-radius: var(--radius-md);
+            border: 1px solid var(--border);
+            background: var(--bg-1);
+            font-size: 13.5px;
+            line-height: 1.6;
+            color: var(--text-dim);
+        }
+
+        .dl-verify.is-ok {
+            border-color: rgba(2, 163, 74, 0.6);
+            background: var(--accent-soft);
+        }
+
+        .dl-verify.is-bad {
+            border-color: rgba(229, 83, 75, 0.6);
+            background: rgba(229, 83, 75, 0.1);
+        }
+
+        .dl-verify strong {
+            display: block;
+            margin-bottom: 4px;
+            font-size: 15px;
+            color: var(--text);
+        }
+
+        .dl-verify code {
+            display: block;
+            margin-top: 8px;
+            font-family: 'Inconsolata', ui-monospace, monospace;
+            font-size: 12.5px;
+            word-break: break-all;
+            color: var(--text-mid);
+        }
+
+        /* ---- Bestaetigungs-Dialog --------------------------------------------------- */
+
+        .dl-modal-overlay[hidden] {
+            display: none;
+        }
+
+        .dl-modal-overlay {
+            position: fixed;
+            inset: 0;
+            z-index: 500;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            background: rgba(0, 0, 0, 0.6);
+            backdrop-filter: blur(4px);
+            animation: dlFadeIn 0.2s ease;
+        }
+
+        @keyframes dlFadeIn {
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1;
+            }
+        }
+
+        @keyframes dlSlideUp {
+            from {
+                opacity: 0;
+                transform: translateY(16px) scale(0.98);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
+        }
+
+        .dl-modal {
+            width: 100%;
+            max-width: 460px;
+            max-height: calc(100vh - 40px);
+            overflow-y: auto;
+            background: var(--surface, #14161a);
+            border: 1px solid var(--border, rgba(255, 255, 255, 0.12));
+            border-radius: 16px;
+            padding: 28px;
+            animation: dlSlideUp 0.25s cubic-bezier(0.2, 0.7, 0.2, 1);
+        }
+
+        .dl-modal-icon {
+            width: 46px;
+            height: 46px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 12px;
+            background: rgba(1, 128, 56, 0.15);
+            color: #02a34a;
+            margin-bottom: 14px;
+        }
+
+        .dl-modal-icon .icon {
+            width: 24px;
+            height: 24px;
+            stroke: currentColor;
+            fill: none;
+            stroke-width: 1.8;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+        }
+
+        .dl-modal h2 {
+            font-size: 20px;
+            margin: 0 0 4px;
+        }
+
+        .dl-modal-filename {
+            color: var(--text-dim, #b7b7b7);
+            font-size: 14px;
+            margin: 0 0 18px;
+            word-break: break-word;
+        }
+
+        .dl-modal-meta {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            margin: 0 0 18px;
+            padding: 14px 16px;
+            border-radius: 10px;
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid var(--border, rgba(255, 255, 255, 0.1));
+        }
+
+        .dl-modal-meta>div {
+            display: flex;
+            flex-direction: column;
+            gap: 2px;
+        }
+
+        .dl-modal-meta dt {
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 0.04em;
+            color: var(--text-faint, #888);
+        }
+
+        .dl-modal-meta dd {
+            margin: 0;
+            font-size: 14px;
+            font-weight: 600;
+        }
+
+        .dl-modal-hash {
+            font-family: 'Courier New', monospace;
+            font-size: 12px;
+            font-weight: 500;
+            word-break: break-all;
+            color: #5b9bef;
+        }
+
+        .dl-modal-notes {
+            margin: 0 0 22px;
+            padding-left: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            font-size: 13px;
+            line-height: 1.5;
+            color: var(--text-dim, #b7b7b7);
+        }
+
+        .dl-modal-notes code {
+            font-family: 'Courier New', monospace;
+            font-size: 12px;
+            background: rgba(255, 255, 255, 0.08);
+            padding: 1px 5px;
+            border-radius: 4px;
+        }
+
+        .dl-modal-actions {
+            display: flex;
+            justify-content: flex-end;
+            gap: 10px;
+        }
+
+        .dl-progress-wrap {
+            margin: 0 0 18px;
+        }
+
+        .dl-progress-text {
+            margin-top: 8px;
+            font-size: 12.5px;
+            color: var(--text-dim, #b7b7b7);
+            text-align: right;
+            font-variant-numeric: tabular-nums;
+        }
+
+        :root[data-theme="light"] .dl-modal {
+            background: #ffffff;
+        }
+
+        :root[data-theme="light"] .dl-modal-meta {
+            background: rgba(0, 0, 0, 0.03);
+        }
+
+        :root[data-theme="light"] .dl-modal-notes code {
+            background: rgba(0, 0, 0, 0.06);
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+
+            .dl-card,
+            .dl-modal,
+            .dl-modal-overlay {
+                animation: none;
+            }
+        }
+    </style>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Datenbasis: Dateiname, Anzeigetitel, Groesse in Byte, SHA-256.
+            var FILES = [{
+                    file: 'DE Trassexualität.pptx',
+                    title: 'DE Referat Transsexualität',
+                    bytes: 82442949,
+                    sha: '9c79447bfb3e6d3cd2fbdd1328edbe0aa77c0c26161d07f3568d4f8509a62c75'
+                },
+                {
+                    file: 'DE Feuerwehr.pptx',
+                    title: 'DE Referat Feuerwehr',
+                    bytes: 40261676,
+                    sha: '5607349684f85b5b9b43fe556ea732141eb7bb618b5d070d82c398f625798e2f'
+                },
+                {
+                    file: 'DE Rettungsdienst.pptx',
+                    title: 'DE Referat Rettungsdienst',
+                    bytes: 17692382,
+                    sha: 'c16efbc2cb17b96c3653f7a3253b1ee6b21fb1a7ad68cad0005f8ef7b86f9a15'
+                }
+            ];
+            var TYPES = {
+                pptx: 'PowerPoint-Präsentation (.pptx)',
+                pdf: 'PDF-Dokument (.pdf)',
+                docx: 'Word-Dokument (.docx)',
+                zip: 'ZIP-Archiv (.zip)'
+            };
+            var DOC_ICON = '<svg class="icon" viewBox="0 0 24 24"><path d="M6 2h9l5 5v15H6z"></path><path d="M15 2v5h5"></path></svg>';
+            var COPY_ICON = '<svg class="icon" viewBox="0 0 24 24"><rect x="9" y="9" width="12" height="12" rx="2"></rect><path d="M5 15V5a2 2 0 0 1 2-2h10"></path></svg>';
+
+            var grid = document.getElementById('dlGrid');
+            var empty = document.getElementById('dlEmpty');
+            var overlay = document.getElementById('dlModalOverlay');
+            var pending = null;
+            var downloading = false;
+
+            function sizeText(b) {
+                return (b / 1048576).toFixed(1).replace('.', ',') + ' MB';
+            }
+
+            function sizeLong(b) {
+                return sizeText(b) + ' (' + b.toLocaleString('de-DE') + ' Bytes)';
+            }
+
+            function ext(f) {
+                return f.file.split('.').pop().toLowerCase();
+            }
+
+            function esc(s) {
+                return String(s).replace(/[&<>"']/g, function(c) {
+                    return {
+                        '&': '&amp;',
+                        '<': '&lt;',
+                        '>': '&gt;',
+                        '"': '&quot;',
+                        "'": '&#39;'
+                    } [c];
+                });
+            }
+
+            function visible() {
+                var q = document.getElementById('dlSearch').value.trim().toLowerCase();
+                var list = FILES.filter(function(f) {
+                    return !q || (f.title + ' ' + f.file).toLowerCase().indexOf(q) !== -1;
+                });
+                var mode = document.getElementById('dlSort').value;
+                list.sort(function(a, b) {
+                    if (mode === 'size-desc') return b.bytes - a.bytes;
+                    if (mode === 'size-asc') return a.bytes - b.bytes;
+                    return a.title.localeCompare(b.title, 'de');
+                });
+                return list;
+            }
+
+            function render() {
+                var list = visible();
+                grid.innerHTML = list.map(function(f, i) {
+                    var idx = FILES.indexOf(f);
+                    return '<article class="dl-card" style="animation-delay:' + (i * 60) + 'ms">' +
+                        '<div class="dl-card-top"><span class="dl-type">' + DOC_ICON + ext(f).toUpperCase() + '</span><span class="dl-badge">Referat</span></div>' +
+                        '<h3>' + esc(f.title) + '</h3>' +
+                        '<p class="dl-file">' + esc(f.file) + '</p>' +
+                        '<div class="dl-size"><b>' + sizeText(f.bytes) + '</b></div>' +
+                        '<div class="dl-hash"><span>SHA-256</span><code title="' + f.sha + '">' + f.sha.slice(0, 10) + '…' + f.sha.slice(-8) + '</code>' +
+                        '<button type="button" class="wz-icon-btn js-copy" data-i="' + idx + '" title="Prüfsumme kopieren" aria-label="Prüfsumme kopieren">' + COPY_ICON + '</button></div>' +
+                        '<div class="dl-actions"><button type="button" class="btn btn-primary js-dl" data-i="' + idx + '">Herunterladen</button></div>' +
+                        '</article>';
+                }).join('');
+                empty.hidden = list.length > 0;
+                document.getElementById('sumCount').textContent = list.length;
+            }
+
+            // ---- Dialog ----------------------------------------------------------------
+            function openModal(f) {
+                pending = f;
+                document.getElementById('dlModalFilename').textContent = f.file;
+                document.getElementById('dlModalSize').textContent = sizeLong(f.bytes);
+                document.getElementById('dlModalType').textContent = TYPES[ext(f)] || ('.' + ext(f));
+                document.getElementById('dlModalHash').textContent = f.sha;
+                document.getElementById('dlProgressWrap').hidden = true;
+                document.getElementById('dlProgressBar').style.width = '0%';
+                document.getElementById('dlProgressOuter').classList.remove('is-indeterminate');
+                document.getElementById('dlProgressText').textContent = '';
+                overlay.hidden = false;
+                document.getElementById('dlModalConfirm').focus();
+            }
+
+            function closeModal() {
+                if (downloading) return;
+                overlay.hidden = true;
+                pending = null;
+            }
+
+            function saveBlob(blob, filename) {
+                var a = document.createElement('a');
+                a.href = URL.createObjectURL(blob);
+                a.download = filename;
+                document.body.appendChild(a);
+                a.click();
+                a.remove();
+                setTimeout(function() {
+                    URL.revokeObjectURL(a.href);
+                }, 4000);
+            }
+
+            grid.addEventListener('click', function(e) {
+                var dl = e.target.closest('.js-dl');
+                var cp = e.target.closest('.js-copy');
+                if (dl) openModal(FILES[+dl.dataset.i]);
+                if (cp) WZ.copyText(FILES[+cp.dataset.i].sha, 'SHA-256-Prüfsumme kopiert');
+            });
+
+            document.getElementById('dlModalCancel').addEventListener('click', closeModal);
+            overlay.addEventListener('click', function(e) {
+                if (e.target === overlay) closeModal();
+            });
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'Escape' && !overlay.hidden) closeModal();
+            });
+
+            document.getElementById('dlModalConfirm').addEventListener('click', async function() {
+                if (!pending || downloading) return;
+                var f = pending;
+                var confirmBtn = document.getElementById('dlModalConfirm');
+                var cancelBtn = document.getElementById('dlModalCancel');
+                var wrap = document.getElementById('dlProgressWrap');
+                var bar = document.getElementById('dlProgressBar');
+                var outer = document.getElementById('dlProgressOuter');
+                var text = document.getElementById('dlProgressText');
+
+                downloading = true;
+                confirmBtn.disabled = true;
+                cancelBtn.disabled = true;
+                wrap.hidden = false;
+                text.textContent = 'Download wird gestartet …';
+
+                try {
+                    var res = await fetch('/downloads/' + f.file);
+                    if (!res.ok) throw new Error('HTTP ' + res.status);
+                    var totalHeader = res.headers.get('Content-Length');
+                    var total = totalHeader ? parseInt(totalHeader, 10) : (f.bytes || 0);
+
+                    if (!res.body || !res.body.getReader) {
+                        var blobFallback = await res.blob();
+                        saveBlob(blobFallback, f.file);
+                        text.textContent = 'Fertig · ' + sizeText(blobFallback.size);
+                    } else {
+                        outer.classList.toggle('is-indeterminate', !total);
+                        var reader = res.body.getReader();
+                        var chunks = [];
+                        var received = 0;
+                        for (;;) {
+                            var step = await reader.read();
+                            if (step.done) break;
+                            chunks.push(step.value);
+                            received += step.value.length;
+                            if (total) {
+                                var pct = Math.min(100, Math.round(received / total * 100));
+                                bar.style.width = pct + '%';
+                                text.textContent = pct + ' % · ' + sizeText(received) + ' / ' + sizeText(total);
+                            } else {
+                                text.textContent = sizeText(received) + ' geladen …';
+                            }
+                        }
+                        saveBlob(new Blob(chunks), f.file);
+                        outer.classList.remove('is-indeterminate');
+                        bar.style.width = '100%';
+                        text.textContent = 'Fertig · ' + sizeText(received);
+                    }
+                    downloading = false;
+                    confirmBtn.disabled = false;
+                    cancelBtn.disabled = false;
+                    setTimeout(closeModal, 600);
+                } catch (err) {
+                    text.textContent = 'Download fehlgeschlagen — bitte erneut versuchen.';
+                    downloading = false;
+                    confirmBtn.disabled = false;
+                    cancelBtn.disabled = false;
+                }
+            });
+
+            document.getElementById('dlSearch').addEventListener('input', render);
+            document.getElementById('dlSort').addEventListener('change', render);
+
+            // ---- Datei im Browser pruefen ----------------------------------------------------
+            var result = document.getElementById('verifyResult');
+
+            function show(cls, html) {
+                result.hidden = false;
+                result.className = 'dl-verify ' + cls;
+                result.innerHTML = html;
+            }
+
+            async function verify(file) {
+                if (file.size > 1024 * 1024 * 1024) {
+                    show('is-bad', '<strong>Datei zu groß</strong>Dateien über 1 GB kann der Browser hier nicht prüfen — nutze bitte den Befehl rechts.');
+                    return;
+                }
+                show('', 'Prüfsumme wird berechnet …');
+                try {
+                    var digest = await crypto.subtle.digest('SHA-256', await file.arrayBuffer());
+                    var hex = Array.from(new Uint8Array(digest)).map(function(b) {
+                        return b.toString(16).padStart(2, '0');
+                    }).join('');
+                    var hit = FILES.filter(function(f) {
+                        return f.sha === hex;
+                    })[0];
+                    if (hit) {
+                        show('is-ok', '<strong>✓ Original bestätigt</strong>Die Datei stimmt exakt mit „' + esc(hit.title) + '“ (' + esc(hit.file) + ') überein.<code>' + hex + '</code>');
+                    } else {
+                        var sameName = FILES.filter(function(f) {
+                            return f.file.toLowerCase() === file.name.toLowerCase();
+                        })[0];
+                        show('is-bad', '<strong>✗ Keine Übereinstimmung</strong>' + (sameName ?
+                            'Der Dateiname passt zu „' + esc(sameName.title) + '“, die Prüfsumme aber nicht — der Download ist unvollständig oder die Datei wurde verändert. Lade sie bitte erneut herunter.' :
+                            'Diese Datei gehört nicht zu den Downloads auf dieser Seite (oder wurde verändert).') + '<code>' + hex + '</code>');
+                    }
+                } catch (err) {
+                    show('is-bad', '<strong>Prüfung nicht möglich</strong>Dein Browser konnte die Datei nicht lesen (evtl. zu groß oder nicht über HTTPS geöffnet).');
+                }
+            }
+
+            WZ.bindDrop(document.getElementById('verifyDrop'), function(files) {
+                verify(files[0]);
+            });
+
+            // ---- Befehle je Betriebssystem -------------------------------------------------------------
+            var CMDS = {
+                win: ['Get-FileHash ".\\Dateiname.pptx" -Algorithm SHA256', 'In der PowerShell ausführen. Alternativ in der Eingabeaufforderung: <code>certUtil -hashfile Dateiname.pptx SHA256</code>'],
+                mac: ['shasum -a 256 Dateiname.pptx', 'Im Terminal im Ordner der Datei ausführen.'],
+                lin: ['sha256sum Dateiname.pptx', 'Im Terminal im Ordner der Datei ausführen — mit der SHA256SUMS-Datei geht auch: <code>sha256sum -c SHA256SUMS</code>']
+            };
+
+            document.getElementById('osTabs').addEventListener('change', function() {
+                var c = CMDS[document.querySelector('input[name=os]:checked').value];
+                document.getElementById('osCmd').textContent = c[0];
+                document.getElementById('osHint').innerHTML = c[1];
+            });
+            document.getElementById('osCopy').addEventListener('click', function() {
+                WZ.copyText(document.getElementById('osCmd').textContent, 'Befehl kopiert');
+            });
+
+            render();
+        });
+    </script>
+
+    <footer class="site-footer">
+        <div class="container footer-inner">
+            <div class="footer-status">
+                <span class="eyebrow">Diese Webseite befindet sich noch in Entwicklung</span>
+            </div>
+            <div class="footer-links">
+                <a href="/kontakt">Kontakt</a>
+                <a href="/datenschutz">Datenschutz</a>
+                <a href="/projekte">Projekte</a>
+                <a href="https://github.com/ubodigat" target="_blank" rel="noopener">GitHub</a>
+                <a href="http://discord.ubodigat.com" target="_blank" rel="noopener">Discord</a>
+            </div>
+            <span>© <span data-year></span> U:Bodigat</span>
+        </div>
+    </footer>
 
 </body>
 

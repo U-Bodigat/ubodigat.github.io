@@ -139,5 +139,5 @@ function movePaddle(paddle, speed) {
 // Infotext Funktion
 
 function showPopup() {
-    alert("Ziel: Schlage den Ball mit deinem Paddel über das Netz, um Punkte zu erzielen, indem du den Gegner dazu bringst, den Ball zu verpassen.  Steuerung: Spieler A: Verwende die Pfeiltasten *Auf* und *Ab*. Spieler B: Verwende die Tasten *W* und *S*. Spielablauf: Starte das Spiel durch Klicken auf *Start*. Schlage den Ball über das Netz und versuche, den Gegner zu überlisten. Jeder verpasste Ball gibt dem Gegner einen Punkt. Reset: Klicke auf *Reset*, um das Spiel zurückzusetzen. Viel Spaß!");
+    ubodigatAlert("Ziel: Schlage den Ball mit deinem Paddel über das Netz, um Punkte zu erzielen, indem du den Gegner dazu bringst, den Ball zu verpassen.  Steuerung: Spieler A: Verwende die Pfeiltasten *Auf* und *Ab*. Spieler B: Verwende die Tasten *W* und *S*. Spielablauf: Starte das Spiel durch Klicken auf *Start*. Schlage den Ball über das Netz und versuche, den Gegner zu überlisten. Jeder verpasste Ball gibt dem Gegner einen Punkt. Reset: Klicke auf *Reset*, um das Spiel zurückzusetzen. Viel Spaß!");
 }

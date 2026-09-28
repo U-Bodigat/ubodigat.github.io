@@ -70,7 +70,7 @@ header p {
 }
 
 .button {
-    transition: 0.5s;
+    transition: background-color 0.5s, color 0.5s;
     background-color: #012f6b;
     color: #fff;
     text-decoration: none;
@@ -84,10 +84,9 @@ header p {
 }
 
 .button:hover {
-    transition: 0.5s;
+    transition: background-color 0.5s, color 0.5s;
     background-color: #006eff;
     color: #003a1e;
-    font-weight: 800;
 }
 
 .button a {
@@ -291,7 +290,7 @@ body {
 }
 
 button#restart-button {
-    transition: 0.5s;
+    transition: background-color 0.5s, color 0.5s;
     display: none;
     margin-top: 20px;
     background-color: #4CAF50;
@@ -307,11 +306,10 @@ button#restart-button {
 }
 
 button#restart-button:hover {
-    transition: 0.5s;
+    transition: background-color 0.5s, color 0.5s;
     cursor: pointer;
     background-color: #00ff0d;
     color: #575757;
-    font-weight: 700;
 }
 
 .hidden {

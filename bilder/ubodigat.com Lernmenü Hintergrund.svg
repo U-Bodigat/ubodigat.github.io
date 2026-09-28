@@ -1,0 +1,81 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 400" preserveAspectRatio="xMidYMid slice">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#05070a"/>
+      <stop offset="55%" stop-color="#0a0f14"/>
+      <stop offset="100%" stop-color="#05070a"/>
+    </linearGradient>
+    <radialGradient id="glow1" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#018038" stop-opacity="0.55"/>
+      <stop offset="100%" stop-color="#018038" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="glow2" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#004aad" stop-opacity="0.55"/>
+      <stop offset="100%" stop-color="#004aad" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="glow3" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#02a34a" stop-opacity="0.35"/>
+      <stop offset="100%" stop-color="#02a34a" stop-opacity="0"/>
+    </radialGradient>
+    <pattern id="hatch" width="34" height="34" patternTransform="rotate(135)" patternUnits="userSpaceOnUse">
+      <line x1="0" y1="0" x2="0" y2="34" stroke="#ffffff" stroke-opacity="0.04" stroke-width="1"/>
+    </pattern>
+  </defs>
+
+  <rect width="1600" height="400" fill="url(#bg)"/>
+  <rect width="1600" height="400" fill="url(#hatch)"/>
+  <circle cx="140" cy="200" r="260" fill="url(#glow1)"/>
+  <circle cx="1460" cy="200" r="280" fill="url(#glow2)"/>
+  <circle cx="800" cy="120" r="220" fill="url(#glow3)"/>
+
+  <path d="M0 260 C 220 210, 380 300, 560 250 S 900 190, 1080 250 S 1400 300, 1600 240"
+        fill="none" stroke="#5b9bef" stroke-width="2.5" stroke-opacity="0.3" stroke-linecap="round"/>
+  <circle cx="560" cy="250" r="4.5" fill="#5b9bef" fill-opacity="0.55"/>
+  <circle cx="1080" cy="250" r="4.5" fill="#02a34a" fill-opacity="0.55"/>
+
+  <g fill="none" stroke-linecap="round" stroke-linejoin="round" opacity="0.85">
+    <g transform="translate(150,190) scale(0.85)" stroke="#5b9bef" stroke-width="6">
+      <path d="M-70 -35 C-70 -50 -55 -55 0 -55 C55 -55 70 -50 70 -35 V60 C70 45 55 40 0 40 C-55 40 -70 45 -70 60 Z"/>
+      <path d="M0 -55 V40"/>
+    </g>
+    <g transform="translate(330,290) scale(0.8)" stroke="#02a34a" stroke-width="6">
+      <rect x="-110" y="-40" width="220" height="80" rx="12"/>
+      <line x1="-80" y1="-15" x2="-60" y2="-15"/>
+      <line x1="-40" y1="-15" x2="-20" y2="-15"/>
+      <line x1="0" y1="-15" x2="20" y2="-15"/>
+      <line x1="40" y1="-15" x2="60" y2="-15"/>
+      <line x1="-70" y1="15" x2="60" y2="15"/>
+    </g>
+    <g transform="translate(560,150) scale(0.85)" stroke="#5b9bef" stroke-width="5">
+      <circle cx="0" cy="0" r="46"/>
+      <ellipse cx="0" cy="0" rx="20" ry="46"/>
+      <line x1="-46" y1="0" x2="46" y2="0"/>
+      <line x1="-40" y1="-22" x2="40" y2="-22"/>
+      <line x1="-40" y1="22" x2="40" y2="22"/>
+    </g>
+    <g transform="translate(790,280) scale(0.85)" stroke="#02a34a" stroke-width="6">
+      <circle cx="0" cy="0" r="42"/>
+      <path d="M-18 0 L-4 16 L22 -16"/>
+    </g>
+    <g transform="translate(1020,170) scale(0.85)" stroke="#02a34a" stroke-width="5">
+      <ellipse cx="0" cy="-30" rx="38" ry="14"/>
+      <path d="M-38 -30 V30 C-38 38 -21 44 0 44 C21 44 38 38 38 30 V-30"/>
+      <path d="M-38 0 C-38 8 -21 14 0 14 C21 14 38 8 38 0"/>
+    </g>
+    <g transform="translate(1230,280) scale(0.8)" stroke="#5b9bef" stroke-width="6">
+      <path d="M-30 30 L0 -34 L30 30"/>
+      <line x1="-16" y1="8" x2="16" y2="8"/>
+    </g>
+    <g transform="translate(1440,180) scale(0.85)" stroke="#5b9bef" stroke-width="5">
+      <circle cx="0" cy="0" r="30"/>
+      <line x1="0" y1="-42" x2="0" y2="-30"/>
+      <line x1="0" y1="42" x2="0" y2="30"/>
+      <line x1="-42" y1="0" x2="-30" y2="0"/>
+      <line x1="42" y1="0" x2="30" y2="0"/>
+      <line x1="-30" y1="-30" x2="-21" y2="-21"/>
+      <line x1="30" y1="30" x2="21" y2="21"/>
+      <line x1="-30" y1="30" x2="-21" y2="21"/>
+      <line x1="30" y1="-30" x2="21" y2="-21"/>
+    </g>
+  </g>
+</svg>

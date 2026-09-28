@@ -142,10 +142,10 @@ document.getElementById('highScoresLink').onclick = function() {
     allHighScores.innerHTML = '';
     highScores.forEach((highScore, index) => {
         let li = document.createElement('li');
-        li.textContent = (index + 1) + '. ' + highScore;
+        li.textContent = highScore + ' Punkte';
         allHighScores.appendChild(li);
     });
-    modal.style.display = 'block';
+    modal.style.display = 'flex';
 }
 
 document.getElementsByClassName('close')[0].onclick = function() {

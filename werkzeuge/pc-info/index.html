@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="de">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="U:Bodigat">
+    <meta name="publisher" content="U:Bodigat">
+    <meta name="copyright" content="U:Bodigat">
+    <meta name="theme-color" content="#0a0e1a">
+    <meta name="description" content="Informationen über dein Gerät: Betriebssystem, Browser, Bildschirm, CPU-Kerne, Grafikkarte, Akku, Netzwerk und Browser-Funktionen.">
+    <meta property="og:site_name" content="U:Bodigat.com">
+    <meta property="og:url" content="https://ubodigat.com/werkzeuge/pc-info/">
+    <meta property="og:title" content="PC-Info | ubodigat.com">
+    <meta property="og:type" content="website">
+    <meta property="og:description" content="Informationen über dein Gerät: Betriebssystem, Browser, Bildschirm, CPU-Kerne, Grafikkarte, Akku, Netzwerk und Browser-Funktionen.">
+    <title>PC-Info | ubodigat.com</title>
+    <link rel="stylesheet" href="/style.css">
+    <link rel="stylesheet" href="/werkzeuge/werkzeuge.css">
+    <link rel="icon" href="/bilder/x-icon.png" type="image/x-icon">
+    <link rel="apple-touch-icon" href="https://ubodigat.com/bilder/x-icon.png" />
+    <script src="/script.js" defer></script>
+    <script src="/werkzeuge/wz.js" defer></script>
+
+    <script src="/werkzeuge/pc-info/tool.js" defer></script>
+    <!-- Google tag (gtag.js) — läuft erst nach Cookie-Zustimmung, siehe script.js -->
+    <script type="text/plain" data-consent="analytics" data-src="https://www.googletagmanager.com/gtag/js?id=G-BE1B5EZY35"></script>
+    <script type="text/plain" data-consent="analytics">
+        window.dataLayer = window.dataLayer || [];
+
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+        gtag('js', new Date());
+
+        gtag('config', 'G-BE1B5EZY35');
+    </script>
+    <!-- Google Tag Manager — läuft erst nach Cookie-Zustimmung, siehe script.js -->
+    <script type="text/plain" data-consent="analytics">
+        (function(w, d, s, l, i) {
+            w[l] = w[l] || [];
+            w[l].push({
+                'gtm.start': new Date().getTime(),
+                event: 'gtm.js'
+            });
+            var f = d.getElementsByTagName(s)[0],
+                j = d.createElement(s),
+                dl = l != 'dataLayer' ? '&l=' + l : '';
+            j.async = true;
+            j.src =
+                'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
+            f.parentNode.insertBefore(j, f);
+        })(window, document, 'script', 'dataLayer', 'GTM-WTDQC48');
+    </script>
+    <!-- End Google Tag Manager -->
+</head>
+
+<body data-page="werkzeuge">
+    <div class="bg-fx"></div>
+
+    <header class="navbar">
+        <div class="navbar-inner">
+            <a href="/" class="brand">
+                <img src="/bilder/logo/ubodigatlogo-breit-weiss.svg" alt="U:Bodigat.com" class="brand-logo">
+            </a>
+            <nav class="nav-links" id="navLinks">
+                <div class="nav-item-dropdown">
+                    <a href="/menu" class="nav-link">
+                        <svg class="icon" viewBox="0 0 24 24">
+                            <rect x="3" y="3" width="7" height="7" rx="1.5"></rect>
+                            <rect x="14" y="3" width="7" height="7" rx="1.5"></rect>
+                            <rect x="3" y="14" width="7" height="7" rx="1.5"></rect>
+                            <rect x="14" y="14" width="7" height="7" rx="1.5"></rect>
+                        </svg>
+                        Menü
+                        <svg class="icon nav-caret" viewBox="0 0 24 24">
+                            <path d="M6 9l6 6 6-6"></path>
+                        </svg>
+                    </a>
+                    <div class="nav-dropdown-panel">
+                        <a href="/lerntools/lernmenü" class="nav-dropdown-item">Lernmenü</a>
+                        <a href="/games/gamemenü" class="nav-dropdown-item">Spiele</a>
+                        <a href="/werkzeuge/" class="nav-dropdown-item">Werkzeuge</a>
+                        <a href="/rechner/" class="nav-dropdown-item">Taschenrechner</a>
+                        <a href="/uhr/" class="nav-dropdown-item">Uhrzeit</a>
+                        <a href="/beschreibung" class="nav-dropdown-item">Beschreibung</a>
+                        <a href="/tutorials" class="nav-dropdown-item">Tutorials</a>
+                    </div>
+                </div>
+                <a href="/kontakt" class="nav-link">
+                    <svg class="icon" viewBox="0 0 24 24">
+                        <rect x="3" y="5" width="18" height="14" rx="2.5"></rect>
+                        <path d="M3 6.5l9 6.5 9-6.5"></path>
+                    </svg>
+                    Kontakt
+                </a>
+                <a href="/download" class="nav-link">
+                    <svg class="icon" viewBox="0 0 24 24">
+                        <path d="M12 3v12"></path>
+                        <path d="M7 10l5 5 5-5"></path>
+                        <path d="M4 19.5h16"></path>
+                    </svg>
+                    Download
+                </a>
+                <a href="/datenschutz" class="nav-link">
+                    <svg class="icon" viewBox="0 0 24 24">
+                        <path d="M12 3l7 3v6c0 4.5-3 7.5-7 9-4-1.5-7-4.5-7-9V6z"></path>
+                    </svg>
+                    Datenschutz
+                </a>
+                <a href="/werkzeuge/" class="nav-link nav-link-extra">
+                    <svg class="icon" viewBox="0 0 24 24">
+                        <path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"></path>
+                    </svg>
+                    Werkzeuge
+                </a>
+            </nav>
+            <div class="navbar-actions">
+                <span class="nav-weather" id="navWeather">
+                    <svg class="icon" viewBox="0 0 24 24">
+                        <path d="M7 17.5a4 4 0 0 1 .5-8 5.5 5.5 0 0 1 10.6 1.6A3.5 3.5 0 0 1 17.5 18H7z"></path>
+                    </svg>
+                    <span class="nav-weather-value">–</span>
+                </span>
+                <button class="icon-btn theme-toggle" id="themeToggle" aria-label="Theme wechseln" title="Theme wechseln">
+                    <svg class="icon icon-sun" viewBox="0 0 24 24">
+                        <circle cx="12" cy="12" r="4.5"></circle>
+                        <path d="M12 2.5v2.5M12 19v2.5M4.2 4.2l1.8 1.8M18 18l1.8 1.8M2.5 12H5M19 12h2.5M4.2 19.8 6 18M18 6l1.8-1.8"></path>
+                    </svg>
+                    <svg class="icon icon-moon" viewBox="0 0 24 24">
+                        <path d="M20 14.5A8.5 8.5 0 1 1 9.5 4a7 7 0 0 0 10.5 10.5z"></path>
+                    </svg>
+                </button>
+                <button class="nav-toggle" id="navToggle" aria-label="Menü öffnen" aria-expanded="false">
+                    <span></span><span></span><span></span>
+                </button>
+            </div>
+        </div>
+        <nav class="nav-dropdown" id="navDropdown" aria-label="Mobile Navigation">
+            <span class="nav-weather">
+                <svg class="icon" viewBox="0 0 24 24">
+                    <path d="M7 17.5a4 4 0 0 1 .5-8 5.5 5.5 0 0 1 10.6 1.6A3.5 3.5 0 0 1 17.5 18H7z"></path>
+                </svg>
+                <span class="nav-weather-value">–</span>
+            </span>
+            <a href="/menu" class="nav-link">
+                <svg class="icon" viewBox="0 0 24 24">
+                    <rect x="3" y="3" width="7" height="7" rx="1.5"></rect>
+                    <rect x="14" y="3" width="7" height="7" rx="1.5"></rect>
+                    <rect x="3" y="14" width="7" height="7" rx="1.5"></rect>
+                    <rect x="14" y="14" width="7" height="7" rx="1.5"></rect>
+                </svg>
+                Menü
+            </a>
+            <a href="/kontakt" class="nav-link">
+                <svg class="icon" viewBox="0 0 24 24">
+                    <rect x="3" y="5" width="18" height="14" rx="2.5"></rect>
+                    <path d="M3 6.5l9 6.5 9-6.5"></path>
+                </svg>
+                Kontakt
+            </a>
+            <a href="/download" class="nav-link">
+                <svg class="icon" viewBox="0 0 24 24">
+                    <path d="M12 3v12"></path>
+                    <path d="M7 10l5 5 5-5"></path>
+                    <path d="M4 19.5h16"></path>
+                </svg>
+                Download
+            </a>
+            <a href="/datenschutz" class="nav-link">
+                <svg class="icon" viewBox="0 0 24 24">
+                    <path d="M12 3l7 3v6c0 4.5-3 7.5-7 9-4-1.5-7-4.5-7-9V6z"></path>
+                </svg>
+                Datenschutz
+            </a>
+            <a href="/werkzeuge/" class="nav-link nav-link-extra">
+                <svg class="icon" viewBox="0 0 24 24">
+                    <path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"></path>
+                </svg>
+                Werkzeuge
+            </a>
+        </nav>
+    </header>
+
+    <main>
+        <section class="hero-photo hero-photo-banner" style="background-image: url('/bilder/ubodigat.com Werkzeuge PC-Info Hintergrund.svg');">
+            <div class="hero-photo-inner">
+                <span class="eyebrow on-photo"><svg class="icon" viewBox="0 0 24 24">
+                        <rect x="2" y="3" width="20" height="14" rx="2"></rect>
+                        <path d="M8 21h8M12 17v4"></path>
+                    </svg>
+                    Werkzeuge · System</span>
+                <h1>PC-Info</h1>
+                <p class="lead">Was verrät dein Browser über dein Gerät? Bildschirm, Prozessor, Grafik, Akku, Netzwerk und mehr.</p>
+            </div>
+        </section>
+
+        <section class="section">
+            <div class="container">
+                <div class="wz-privacy" style="margin-bottom: 20px;">
+                    <svg class="icon" viewBox="0 0 24 24">
+                        <path d="M12 3l7 3v6c0 4.5-3 7.5-7 9-4-1.5-7-4.5-7-9V6z"></path>
+                        <path d="M9 12l2 2 4-4"></path>
+                    </svg>
+                    <div><strong>Nichts davon verlässt deinen Browser.</strong> Die Werte werden direkt auf deinem Gerät ausgelesen und weder gespeichert noch übertragen. Browser verraten aus Datenschutzgründen nicht alles — manche Angaben sind gerundet oder bewusst unscharf (z. B. Arbeitsspeicher).</div>
+                </div>
+
+                <div class="wz-panel pc-hero" id="pcHero">
+                    <div class="pc-hero-icon" id="pcHeroIcon">
+                        <svg class="icon" viewBox="0 0 24 24">
+                            <rect x="2" y="3" width="20" height="14" rx="2"></rect>
+                            <path d="M8 21h8M12 17v4"></path>
+                        </svg>
+                    </div>
+                    <div class="pc-hero-text">
+                        <div class="pc-hero-title" id="pcTitle">Wird ausgelesen …</div>
+                        <div class="pc-hero-sub" id="pcSub">&nbsp;</div>
+                    </div>
+                    <div class="wz-actions">
+                        <button type="button" class="btn btn-secondary btn-compact" id="copyAll">Als Text kopieren</button>
+                        <button type="button" class="btn btn-ghost btn-compact" id="saveJson">Als JSON speichern</button>
+                    </div>
+                </div>
+
+                <div class="pc-grid" id="pcGrid"></div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <div class="container footer-inner">
+            <div class="footer-status">
+                <span class="eyebrow">Diese Webseite befindet sich noch in Entwicklung</span>
+            </div>
+            <div class="footer-links">
+                <a href="/kontakt">Kontakt</a>
+                <a href="/datenschutz">Datenschutz</a>
+                <a href="/projekte">Projekte</a>
+                <a href="https://github.com/ubodigat" target="_blank" rel="noopener">GitHub</a>
+                <a href="http://discord.ubodigat.com" target="_blank" rel="noopener">Discord</a>
+            </div>
+            <span>© <span data-year></span> U:Bodigat</span>
+        </div>
+    </footer>
+
+</body>
+
+</html>

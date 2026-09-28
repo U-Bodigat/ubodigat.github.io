@@ -69,7 +69,7 @@ header p {
 }
 
 .button {
-    transition: 0.5s;
+    transition: background-color 0.5s, color 0.5s;
     background-color: #012f6b;
     color: #fff;
     text-decoration: none;
@@ -83,10 +83,9 @@ header p {
 }
 
 .button:hover {
-    transition: 0.5s;
+    transition: background-color 0.5s, color 0.5s;
     background-color: #006eff;
     color: #003a1e;
-    font-weight: 800;
 }
 
 .button a {
@@ -272,10 +271,9 @@ body {
 }
 
 .option:hover {
-    transition: 0.5s;
+    transition: background-color 0.5s, color 0.5s;
     background-color: #00ff0d;
     color: #575757;
-    font-weight: 700;
 }
 
 #sql-input-container {
@@ -297,7 +295,7 @@ body {
 }
 
 #submit-btn {
-    transition: 0.5s;
+    transition: background-color 0.5s, color 0.5s;
     display: none;
     transition: background-color 0.3s ease;
     padding: 12px 20px;
@@ -311,16 +309,15 @@ body {
 }
 
 #submit-btn:hover {
-    transition: 0.5s;
+    transition: background-color 0.5s, color 0.5s;
     background-color: #00ff0d;
     color: #575757;
-    font-weight: 700;
     font-size: 14px;
 }
 
 #submit-btn2 {
     margin-right: -80%;
-    transition: 0.5s;
+    transition: background-color 0.5s, color 0.5s;
     transition: background-color 0.3s ease;
     padding: 12px 20px;
     background-color: #4CAF50;
@@ -333,10 +330,9 @@ body {
 }
 
 #submit-btn2:hover {
-    transition: 0.5s;
+    transition: background-color 0.5s, color 0.5s;
     background-color: #00ff0d;
     color: #575757;
-    font-weight: 700;
     font-size: 14px;
 }
 
@@ -425,10 +421,9 @@ body {
 
 #popup-content button:hover {
     font-size: 15px;
-    transition: 0.5s;
+    transition: background-color 0.5s, color 0.5s;
     background-color: #00ff0d;
     color: #575757;
-    font-weight: 700;
 }
 
 .progress-bar {

@@ -70,7 +70,7 @@ header p {
 }
 
 .button {
-    transition: 0.5s;
+    transition: background-color 0.5s, color 0.5s;
     background-color: #012f6b;
     color: #fff;
     text-decoration: none;
@@ -84,10 +84,9 @@ header p {
 }
 
 .button:hover {
-    transition: 0.5s;
+    transition: background-color 0.5s, color 0.5s;
     background-color: #006eff;
     color: #003a1e;
-    font-weight: 800;
 }
 
 .button a {
@@ -275,7 +274,7 @@ div.piece_container {
 }
 
 #startbutton {
-    transition: 0.5s;
+    transition: background-color 0.5s, color 0.5s;
     background-color: #012f6b;
     color: #fff;
     text-decoration: none;
@@ -299,11 +298,10 @@ div.piece_container {
 }
 
 #startbutton:hover {
-    transition: 0.5s;
+    transition: background-color 0.5s, color 0.5s;
     cursor: pointer;
     background-color: #0077ff;
     color: #333333;
-    font-weight: 900;
 }
 
 #schwirigkeitenhintergrund {

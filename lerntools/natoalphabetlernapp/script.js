@@ -1,10 +1,10 @@
 // Infotext Funktion
 
 function showPopup() {
-    alert("Das NATO - Alphabet wird in der Luftfahrt und anderen Kommunikationsbereichen verwendet, um Buchstaben klar und eindeutig zu übermitteln.Es besteht aus speziellen Wörtern, die jedem Buchstaben zugeordnet sind und Verwechslungen minimieren.Es ermöglicht eine präzise Kommunikation und trägt zur Sicherheit und Effizienz bei.");
+    ubodigatAlert("Das NATO - Alphabet wird in der Luftfahrt und anderen Kommunikationsbereichen verwendet, um Buchstaben klar und eindeutig zu übermitteln.Es besteht aus speziellen Wörtern, die jedem Buchstaben zugeordnet sind und Verwechslungen minimieren.Es ermöglicht eine präzise Kommunikation und trägt zur Sicherheit und Effizienz bei.");
 }
 window.onload = function() {
-    alert("Um ein besseres Lernen zu ermöglichen schalten Sie den Ton ein. Jedes Wort wird Ihnen danach richtig vorgesprochen.");
+    ubodigatAlert("Um ein besseres Lernen zu ermöglichen schalten Sie den Ton ein. Jedes Wort wird Ihnen danach richtig vorgesprochen.");
 };
 
 // NATO_Alphabet Funktionen
@@ -66,9 +66,9 @@ function checkAnswer() {
     const correctAnswer = shuffledAlphabet[currentQuestion].word.toLowerCase();
 
     if (userAnswer === correctAnswer) {
-        alert("Richtig!");
+        ubodigatAlert("Richtig!");
     } else {
-        alert("Falsch! Die richtige Antwort ist: " + shuffledAlphabet[currentQuestion].word);
+        ubodigatAlert("Falsch! Die richtige Antwort ist: " + shuffledAlphabet[currentQuestion].word);
     }
 
     const speech = new SpeechSynthesisUtterance();
@@ -81,7 +81,7 @@ function checkAnswer() {
     if (currentQuestion < shuffledAlphabet.length) {
         showQuestion();
     } else {
-        alert("Das war die letzte Frage!");
+        ubodigatAlert("Das war die letzte Frage!");
     }
 }
 

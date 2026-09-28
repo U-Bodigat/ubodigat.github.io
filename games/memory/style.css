@@ -84,10 +84,9 @@ header p {
 }
 
 .button:hover {
-    transition: 0.5s;
+    transition: background-color 0.5s, color 0.5s;
     background-color: #006eff;
     color: #003a1e;
-    font-weight: 800;
 }
 
 .button a {
@@ -220,33 +219,6 @@ body {
     margin-right: 50px;
 }
 
-.card-row {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.card {
-    width: 100px;
-    height: 100px;
-    margin: 10px;
-    border-radius: 10px;
-    border: 2px solid #cccccc59;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    cursor: pointer;
-    font-size: 24px;
-    background-image: url(/bilder/ubodigat\ logo.png);
-    background-size: cover;
-    background-position: center;
-}
-
-.card.face-up {
-    background-color: #6b6565;
-    background-image: none;
-}
-
 .emoji {
     position: fixed;
 }
@@ -274,11 +246,10 @@ body {
 }
 
 #reset-button:hover {
-    transition: 0.5s;
+    transition: background-color 0.5s, color 0.5s;
     cursor: pointer;
     background-color: #00ff0d;
     color: #575757;
-    font-weight: 700;
 }
 
 main {
@@ -341,6 +312,10 @@ h3 {
 
 .card {
     background-color: #2929297e;
+    background-image: url(/bilder/logo/ubodigatlogo-weiss.svg);
+    background-size: 60%;
+    background-repeat: no-repeat;
+    background-position: center;
     border-radius: 5px;
     color: white;
     font-size: 30px;
@@ -356,6 +331,7 @@ h3 {
 
 .card.face-up {
     background-color: #707070;
+    background-image: none;
     color: #505050;
 }
 
